@@ -1,4 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
-
+/*
+=======================================
+// Title: Bob’s Computer Repair Shop
+// Date: 04 April 2022
+// Authors: Evan Durkin, Keith Hall,
+// Gustavo Roo Gonzalez, and Gunner Bradley
+// Description: Global css styles for BCR Shop App.
+=======================================
+*/
+ 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
