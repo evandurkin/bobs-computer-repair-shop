@@ -54,7 +54,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// findAllByID
+// findAllByID API
 
 router.get("/:id", async (req, res) => {
   try {
@@ -85,6 +85,74 @@ router.get("/:id", async (req, res) => {
       e
     );
     res.status(500).send(findByIdCatchErrorResponse.toObject());
+  }
+});
+
+// updateUser API
+
+router.put("/:id", async (req, res) => {
+  try {
+    // find the user by id
+    User.findOne({ _id: req.params.id }, function (err, user) {
+      // on error
+      if (err) {
+        console.log(err);
+        const updateUserMongodbErrorResponse = new ErrorResponse(
+          500,
+          "Internal server error",
+          err
+        );
+        res.status(500).send(updateUserMongodbErrorResponse.toObject());
+        // update user if found
+      } else {
+        console.log(user);
+
+        user.set({
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          phoneNumber: req.body.phoneNumber,
+          address: req.body.address,
+          email: req.body.email,
+        });
+
+        //user role
+        user.role.set({
+          role: req.body.role,
+        });
+
+        // save the user
+        user.save(function (err, savedUser) {
+          // on error
+          if (err) {
+            console.log(err);
+            const saveUserMongodbErrorResponse = new ErrorResponse(
+              500,
+              "Internal server error",
+              err
+            );
+            res.status(500).send(saveUserMongodbErrorResponse.toObject());
+            // save if valid
+          } else {
+            console.log(savedUser);
+            const saveUserResponse = new BaseResponse(
+              200,
+              "Query successful",
+              savedUser
+            );
+            res.json(saveUserResponse.toObject());
+          }
+        });
+      }
+    });
+  } catch (e) {
+    // catch error
+    console.log(e);
+    const updateUserCatchErrorResponse = new ErrorResponse(
+      500,
+      "Internal server error",
+      e.message
+    );
+    res.status(500).send(updateUserCatchErrorResponse.toObject());
   }
 });
 
