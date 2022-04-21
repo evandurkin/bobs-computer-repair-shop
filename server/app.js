@@ -17,6 +17,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const path = require("path");
 const mongoose = require("mongoose");
+const UserApi = require('./routes/user-api');
 
 /**
  * App configurations
