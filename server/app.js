@@ -18,6 +18,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const mongoose = require("mongoose");
 const UserApi = require('./routes/user-api');
+const SecurityQuestionsApi = require('./routes/security-questions-api')
 
 /**
  * App configurations
@@ -57,6 +58,7 @@ mongoose
  * API(s) go here...
  */
  app.use('/api/users', UserApi);
+ app.use('/api/security-questions', SecurityQuestionsApi);
 
 /**
  * Create and start server

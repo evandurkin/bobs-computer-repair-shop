@@ -28,22 +28,22 @@ router.get('/', async (req, res) => {
           if (error) {
 
             console.log(error);
-            const serverError = new ErrorResponse("500", "Internal server error", error); // Create a variable and instantiate the errorResponse class.
+            const serverError = new ErrorResponse(500, "Internal server error", error); // Create a variable and instantiate the errorResponse class.
             res.status(500).send(serverError.toObject());  // Convert values in the response to native objects.
 
           } else {
 
 			  // Return all users
             console.log(users);
-            const queryResponse = new BaseResponse("200", "MongoDB query was successful", users); // Instantiate baseResponse and convert values to native objects.
+            const queryResponse = new BaseResponse(200, "MongoDB query was successful", users); // Instantiate baseResponse and convert values to native objects.
             res.json(queryResponse.toObject());
         }
       })
 
     } catch (e) {
       console.log(e);
-      res.status(500).send(new ErrorResponse("500",
-        "Internal server error", e.message).toObject());
+      res.status(501).send(new ErrorResponse(501,
+        "MongoDB Exception", e.message).toObject());
     }
 
   });
