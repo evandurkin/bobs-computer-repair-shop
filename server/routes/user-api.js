@@ -95,7 +95,7 @@ router.post("/", async (req, res) => {
       role: "standard",
     };
 
-    //user object
+    // user object
     let newUser = {
       userName: req.body.userName,
       password: hashedPassword,
@@ -107,8 +107,9 @@ router.post("/", async (req, res) => {
       role: standardRole,
       isDisabled: false,
     };
-
+    // create a new user based off the user object
     User.create(newUser, function (err, user) {
+      // error message
       if (err) {
         console.log(err);
         const createUserMongodbErrorResponse = new ErrorResponse(
@@ -118,6 +119,7 @@ router.post("/", async (req, res) => {
         );
         res.status(500).send(createUserMongodbErrorResponse.toObject());
       } else {
+        // returns json of new user if successful
         console.log(user);
         const createUserResponse = new BaseResponse(
           200,
