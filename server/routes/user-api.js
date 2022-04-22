@@ -55,7 +55,6 @@ router.get("/", async (req, res) => {
 });
 
 // findAllByID API
-
 router.get("/:id", async (req, res) => {
   try {
     User.findOne({ _id: req.params.id }, function (err, user) {
@@ -88,8 +87,57 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// updateUser API
+// createUser API
+router.post("/", async (req, res) => {
+  try {
+    let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // salt/hash the password
+    standardRole = {
+      role: "standard",
+    };
 
+    //user object
+    let newUser = {
+      userName: req.body.userName,
+      password: hashedPassword,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      phoneNumber: req.body.phoneNumber,
+      address: req.body.address,
+      email: req.body.email,
+      role: standardRole,
+    };
+
+    User.create(newUser, function (err, user) {
+      if (err) {
+        console.log(err);
+        const createUserMongodbErrorResponse = new ErrorResponse(
+          500,
+          "Internal server error",
+          err
+        );
+        res.status(500).send(createUserMongodbErrorResponse.toObject());
+      } else {
+        console.log(user);
+        const createUserResponse = new BaseResponse(
+          200,
+          "Query successful",
+          user
+        );
+        res.json(createUserResponse.toObject());
+      }
+    });
+  } catch (e) {
+    console.log(e);
+    const createUserCatchErrorResponse = new BaseResponse(
+      500,
+      "Internal server error",
+      e.message
+    );
+    res.status(500).send(createUserCatchErrorResponse.toObject());
+  }
+});
+
+// updateUser API
 router.put("/:id", async (req, res) => {
   try {
     // find the user by id
