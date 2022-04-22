@@ -1,7 +1,16 @@
+/*
+=======================================
+// Title: Bob’s Computer Repair Shop
+// Date: 04 April 2022
+// Authors: Evan Durkin, Keith Hall,
+// Gustavo Roo Gonzalez, and Gunner Bradley
+// Description: Environment.ts:
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-
+=======================================
+*/
+ 
 export const environment = {
   production: false
 };

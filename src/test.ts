@@ -1,5 +1,13 @@
-// This file is required by karma.conf.js and loads recursively all the .spec and framework files
-
+/*
+=======================================
+// Title: Bob’s Computer Repair Shop
+// Date: 04 April 2022
+// Authors: Evan Durkin, Keith Hall,
+// Gustavo Roo Gonzalez, and Gunner Bradley
+// Description: This file is required by karma.conf.js and loads recursively all the .spec and framework files.
+=======================================
+*/
+ 
 import 'zone.js/dist/zone-testing';
 import { getTestBed } from '@angular/core/testing';
 import {
