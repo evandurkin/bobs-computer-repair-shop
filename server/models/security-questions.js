@@ -18,7 +18,7 @@ let securityQuestionSchema = new Schema(
     text: { type: String },
     isDisabled: { type: Boolean, default: false },
   },
-  { collection: "securityQuestions" }
+  { collection: "security-questions" }
 );
 
 // Export Module
