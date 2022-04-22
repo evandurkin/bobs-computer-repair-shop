@@ -21,8 +21,8 @@ router.get("/", async (req, res) => {
   try {
     //Finds and returns all users as an array
     User.find({})
-      .where("isEnabled")
-      .equals(true)
+      .where("isDisabled")
+      .equals(false)
       .exec(function (error, users) {
         // Error handling
         if (error) {
@@ -105,6 +105,7 @@ router.post("/", async (req, res) => {
       address: req.body.address,
       email: req.body.email,
       role: standardRole,
+      isDisabled: false,
     };
 
     User.create(newUser, function (err, user) {
