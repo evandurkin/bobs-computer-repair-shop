@@ -36,6 +36,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import { SecurityQuestionEditComponent } from './pages/security-question-edit/security-question-edit.component';
+import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
 
 
 
@@ -47,7 +49,9 @@ import { MatMenuModule } from '@angular/material/menu';
     BaseLayoutComponent,
     AuthLayoutComponent,
     UserUpdateComponent,
-    UserListComponent
+    UserListComponent,
+    SecurityQuestionEditComponent,
+    SecurityQuestionListComponent
   ],
   imports: [
     BrowserModule,

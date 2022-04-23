@@ -1,1 +1,17 @@
-<p>user-update works!</p>
+<h2 style="font-size: headline;" mat-dialog-title>Edit User</h2>
+
+<mat-dialog-content [formGroup]="userForm">
+  <mat-form-field style="width: 500px;">
+  <input type="text" placeholder="First Name" matInput formControlName="firstName"/>
+  <input type="text" placeholder="Last Name" matInput formControlName="lastName"/>
+  <input type="text" placeholder="Address" matInput formControlName="address"/>
+  <input type="text" placeholder="Phone Number" matInput formControlName="phoneNumber"/>
+  <input type="text" placeholder="Email Address" matInput formControlName="email"/>
+  <input type="text" placeholder="role" matInput formControlName="role"/>
+</mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions layout-align="end">
+  <button mat-button (click)="cancel()">cancel</button>
+  <button mat-button [disabled]="!userForm.valid" (click)="editUser()">update</button>
+</mat-dialog-actions>
