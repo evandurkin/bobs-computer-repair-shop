@@ -11,12 +11,12 @@
 // Require Statements
 const express = require("express");
 const User = require("../models/user");
+const bcrypt = require("bcrypt");
 const BaseResponse = require("../services/base-response");
 const ErrorResponse = require("../services/error-response");
 
 let router = express.Router();
-const bcrypt = require("bcryptjs");
-const saltRounds = 10;
+const saltRounds = 10; //used for hashing password
 
 // findAllUsers API
 router.get("/", async (req, res) => {
