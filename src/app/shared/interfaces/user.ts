@@ -19,6 +19,6 @@ export interface User {
   lastName: string;
   address: string;
   email: string;
-  telephone: string;
+  phoneNumber: string;
   role: UserRole;
 }
