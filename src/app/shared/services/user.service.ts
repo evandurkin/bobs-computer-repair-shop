@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from '../interfaces/user'
+import { User } from '../interfaces/user';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   // service for API: finding all users
   findAllUsers(): Observable<any> {
@@ -17,7 +16,7 @@ export class UserService {
 
   // service for API: finding a user by their ID
   findUserById(userId: string): Observable<any> {
-    return this.http.get('/api/users/' + userId)
+    return this.http.get('/api/users/' + userId);
   }
 
   // service for API: creating a new user
@@ -29,8 +28,8 @@ export class UserService {
       lastName: user.lastName,
       address: user.address,
       email: user.email,
-      phoneNumber: user.phoneNumber
-    })
+      phoneNumber: user.phoneNumber,
+    });
   }
 
   //service for API: updating a user
@@ -41,8 +40,8 @@ export class UserService {
       address: user.address,
       email: user.email,
       phoneNumber: user.phoneNumber,
-      role: user.role
-    })
+      role: user.role,
+    });
   }
 
   //service for API: deleting a user

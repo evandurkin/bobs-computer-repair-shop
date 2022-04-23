@@ -38,6 +38,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { SecurityQuestionEditComponent } from './pages/security-question-edit/security-question-edit.component';
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
+import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component';
 
 
 
@@ -51,7 +52,8 @@ import { SecurityQuestionListComponent } from './pages/security-question-list/se
     UserUpdateComponent,
     UserListComponent,
     SecurityQuestionEditComponent,
-    SecurityQuestionListComponent
+    SecurityQuestionListComponent,
+    DeleteRecordDialogComponent
   ],
   imports: [
     BrowserModule,

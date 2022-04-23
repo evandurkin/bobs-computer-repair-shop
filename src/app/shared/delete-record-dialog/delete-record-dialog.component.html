@@ -1,0 +1,28 @@
+<!--/*
+============================================================
+// Title: Bob’s Computer Repair Shop
+// Date: 23 April 2022
+// Authors: Evan Durkin, Keith Hall,
+// Gustavo Roo Gonzalez, and Gunner Bradley
+// Description: HTML file for delete user pop-up Component
+============================================================
+*/-->
+
+<!-- delete confirmation pop up -->
+<h2 mat-dialog-title>{{ dialogHeader }}</h2>
+
+<div mat-dialog-content>
+  <p>{{ dialogBody }}</p>
+  <small style="color: red"
+    >WARNING: Deleted records cannot be recovered.</small
+  >
+</div>
+
+<div mat-dialog-actions>
+  <button mat-raised-button matDialogClose="cancel" cdkFocusInitial>
+    No Thanks
+  </button>
+  <button mat-raised-button matDialogClose="confirm" color="warn">
+    Accept
+  </button>
+</div>
