@@ -209,4 +209,51 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+// delete user API
+router.delete("/:id", async (req, res) => {
+  try {
+    User.findOne({ _id: req.params.id }, function (err, user) {
+      if (err) {
+        console.log(err);
+        const deleteUserMongoDbErrorResponse = new ErrorResponse(
+          501,
+          "MongoDB Exception Error",
+          err
+        );
+        res.status(501).send(deleteUserMongoDbErrorResponse.toObject());
+      } else {
+        console.log(user);
+        user.set({ isDisabled: true });
+        user.save(function (err, savedUser) {
+          if (err) {
+            console.log(err);
+            const savedUserMongoDbErrorResponse = new ErrorResponse(
+              500,
+              "Internal Server Error",
+              err
+            );
+            res.status(500).send(savedUserMongoDbErrorResponse.toObject());
+          } else {
+            console.log(savedUser);
+            const deleteUserResponse = new BaseResponse(
+              200,
+              "User successfully deleted",
+              user
+            );
+            res.json(deleteUserResponse.toObject());
+          }
+        });
+      }
+    });
+  } catch (e) {
+    console.log(e);
+    const deleteUserCatchErrorResponse = new ErrorResponse(
+      500,
+      "Internal Server Error",
+      e.message
+    );
+    res.status(500).send(deleteUserCatchErrorResponse.toObject());
+  }
+});
+
 module.exports = router;
