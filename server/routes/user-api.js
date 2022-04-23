@@ -15,6 +15,7 @@ const BaseResponse = require("../services/base-response");
 const ErrorResponse = require("../services/error-response");
 
 let router = express.Router();
+const saltRounds = 10;
 
 // findAllUsers API
 router.get("/", async (req, res) => {
