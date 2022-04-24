@@ -47,7 +47,7 @@ export class UserUpdateComponent implements OnInit {
   }
 
   // submits the user data updates to the form
-  editUser() {
+  updateUser() {
     this.dialogRef.close(this.userForm.value);
   }
 

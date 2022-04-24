@@ -15,7 +15,7 @@ const bcrypt = require("bcrypt");
 const BaseResponse = require("../services/base-response");
 const ErrorResponse = require("../services/error-response");
 
-let router = express.Router();
+const router = express.Router();
 const saltRounds = 10; //used for hashing password
 
 // findAllUsers API
