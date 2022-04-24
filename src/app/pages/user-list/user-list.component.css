@@ -8,11 +8,15 @@
 =======================================
 */
 
+
+/************* Main Mat-Card Styling *************/
 .users-list-card {
   border-radius: 0;
   padding: 0;
   background-color: #ffffff;
 }
+
+/************* Users Table Styling *************/
 th,
 td {
  width: 180px;
@@ -42,6 +46,8 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
   margin-bottom: 0;
   background-color: #343434;
 }
+
+/************* Add User Button Styling *************/
 
 .btn-add-user {
   background-color: #568e67;
