@@ -42,11 +42,11 @@ export class AuthLayoutComponent implements OnInit {
   }
 
   userConfig(): void {
-    this.router.navigate([]);
+    this.router.navigate(['/session/users']);
   }
 
   questionConfig(): void {
-    this.router.navigate([]);
+    this.router.navigate(['/session/security-questions']);
   }
 
   signOut() {
