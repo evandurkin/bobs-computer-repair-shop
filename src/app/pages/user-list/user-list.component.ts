@@ -13,6 +13,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { DeleteRecordDialogComponent } from './../../shared/delete-record-dialog/delete-record-dialog.component';
 import { UserService } from './../../shared/services/user.service';
 import { User } from './../../shared/interfaces/user';
+import { UserUpdateComponent } from '../user-update/user-update.component';
+
 
 @Component({
   selector: 'app-user-list',
@@ -44,6 +46,12 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  openUserUpdateDialog() {
+    const dialogRef = this.dialog.open(UserUpdateComponent, {
+      disableClose: true
+    })
+  }
 
   delete(userId: string, recordId: string): void {
     const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {

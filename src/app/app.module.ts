@@ -43,8 +43,11 @@ import { MatTableModule } from '@angular/material/table';
 import { SecurityQuestionEditComponent } from './pages/security-question-edit/security-question-edit.component';
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
 import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component';
+<<<<<<< HEAD
 import { MatDividerModule } from '@angular/material/divider';
 
+=======
+>>>>>>> 94f0bd1a4c66056c70306a9ce96f2d1e648b5148
 
 @NgModule({
   declarations: [
@@ -57,8 +60,11 @@ import { MatDividerModule } from '@angular/material/divider';
     SecurityQuestionEditComponent,
     SecurityQuestionListComponent,
     DeleteRecordDialogComponent,
+<<<<<<< HEAD
     SignInComponent,
     DashboardAdminComponent,
+=======
+>>>>>>> 94f0bd1a4c66056c70306a9ce96f2d1e648b5148
   ],
   imports: [
     BrowserModule,
@@ -79,9 +85,12 @@ import { MatDividerModule } from '@angular/material/divider';
     MatTableModule,
     MatMenuModule,
     BrowserAnimationsModule,
+<<<<<<< HEAD
     MatDividerModule
+=======
+>>>>>>> 94f0bd1a4c66056c70306a9ce96f2d1e648b5148
   ],
   providers: [CookieService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
