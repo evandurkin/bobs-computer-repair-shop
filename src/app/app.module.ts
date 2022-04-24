@@ -20,7 +20,7 @@ import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component'
 import { UserUpdateComponent } from './pages/user-update/user-update.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
-import { DashboardAdminComponent } from './pages/dashboard-admin/dashboard-admin.component';
+import { DashboardAdminComponent } from './pages/dashboard-admin/dashboard-admin.component'; 
 
 // Browser, Http, Forms, and Cookie imports
 import { HttpClient, HttpClientModule } from '@angular/common/http';
