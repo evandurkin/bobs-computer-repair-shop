@@ -6,6 +6,8 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { DashboardAdminComponent } from './pages/dashboard-admin/dashboard-admin.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { AuthGuard } from './auth.guard';
+import { UserListComponent } from './pages/user-list/user-list.component';
+import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
 
 
 const routes: Routes = [
@@ -30,6 +32,14 @@ const routes: Routes = [
       {
         path: 'dashboard-admin',
         component: DashboardAdminComponent
+      },
+      {
+        path: 'users',
+        component: UserListComponent
+      },
+      {
+        path: 'security-questions',
+        component: SecurityQuestionListComponent
       }
     ],
   },
