@@ -55,6 +55,8 @@ import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delet
     SecurityQuestionEditComponent,
     SecurityQuestionListComponent,
     DeleteRecordDialogComponent,
+    SignInComponent,
+    DashboardAdminComponent
   ],
   imports: [
     BrowserModule,
