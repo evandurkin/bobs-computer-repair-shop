@@ -7,7 +7,9 @@
 // Description: styling for the auth-layout component.
 =======================================================
 */
-
+.main-content {
+  margin: 0 auto;
+}
 .mat-toolbar-row, .mat-toolbar-single-row {
   align-items: flex-end;
   height: fit-content;
@@ -35,7 +37,7 @@
 }
 
 .main-content {
-  padding-left: 30px;
+  /* padding-left: 30px; */
 }
 
 .footer {
