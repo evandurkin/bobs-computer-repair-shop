@@ -11,17 +11,17 @@ export class UserService {
 
   // service for API: finding all users
   findAllUsers(): Observable<any> {
-    return this.http.get('/api/users');
+    return this.http.get('/api/session/users');
   }
 
   // service for API: finding a user by their ID
   findUserById(userId: string): Observable<any> {
-    return this.http.get('/api/users/' + userId);
+    return this.http.get('/api/session/users/' + userId);
   }
 
   // service for API: creating a new user
   createUser(user: User): Observable<any> {
-    return this.http.post('/api/users/', {
+    return this.http.post('/api/session/users/', {
       userName: user.userName,
       password: user.password,
       firstName: user.firstName,
@@ -34,7 +34,7 @@ export class UserService {
 
   //service for API: updating a user
   updateUser(userId: string, user: User): Observable<any> {
-    return this.http.put('/api/users' + userId, {
+    return this.http.put('/api/session/users' + userId, {
       firstName: user.firstName,
       lastName: user.lastName,
       address: user.address,
@@ -46,6 +46,6 @@ export class UserService {
 
   //service for API: deleting a user
   deleteUser(userId: string): Observable<any> {
-    return this.http.delete('/api/users/' + userId);
+    return this.http.delete('/api/session/users/' + userId);
   }
 }
