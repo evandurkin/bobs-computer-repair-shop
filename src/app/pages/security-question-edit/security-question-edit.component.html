@@ -1,1 +1,27 @@
-<p>security-question-edit works!</p>
+<div fxLayout="column">
+  <mat-card class="mat-elevation-z8">
+    <mat-card-title>Edit Security Question</mat-card-title>
+    <br/>
+    <form [formGroup]="questionForm" (ngSubmit)="editQuestion()" #questionForm>
+      <mat-card-content>
+        <div fxLayout="column" fxLayoutGap="10px">
+          <mat-form-field>
+            <input matInput [formControl]="questionForm.controls['text']"
+              placeholder="Security question text..." (keydown.enter)="editQuestion()"/>
+              <mat-error class="error" *ngIf="questionForm.controls.text.hasError('required') && questionForm.controls.text.touched">
+                Security question is a required field.
+              </mat-error>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+
+      <br/>
+
+      <mat-card-actions layout-align="end">
+        <button mat-stroked-button (click)="cancel()" color="warn">cancel</button>
+        <button mat-stroked-button [disabled]="!questionForm.valid" color="accent">submit</button>
+      </mat-card-actions>
+    </form>
+
+  </mat-card>
+</div>
