@@ -36,12 +36,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import { CdkTableModule } from '@angular/cdk/table';
+import { MatTableModule } from '@angular/material/table';
 import { SecurityQuestionEditComponent } from './pages/security-question-edit/security-question-edit.component';
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
 import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component';
-
-
-
 
 @NgModule({
   declarations: [
@@ -53,7 +52,7 @@ import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delet
     UserListComponent,
     SecurityQuestionEditComponent,
     SecurityQuestionListComponent,
-    DeleteRecordDialogComponent
+    DeleteRecordDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,15 +64,17 @@ import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delet
     MatIconModule,
     HttpClientModule,
     FormsModule,
+    CdkTableModule,
     ReactiveFormsModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
+    MatTableModule,
     MatMenuModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [CookieService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

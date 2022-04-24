@@ -14,6 +14,7 @@ import { DeleteRecordDialogComponent } from './../../shared/delete-record-dialog
 import { UserService } from './../../shared/services/user.service';
 import { User } from './../../shared/interfaces/user';
 
+
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
