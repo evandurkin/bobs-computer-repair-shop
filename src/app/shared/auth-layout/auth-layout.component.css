@@ -1,0 +1,64 @@
+/*
+=======================================================
+// Title: Bob’s Computer Repair Shop
+// Date: 04 April 2022
+// Authors: Evan Durkin, Keith Hall,
+// Gustavo Roo Gonzalez, and Gunner Bradley
+// Description: styling for the auth-layout component.
+=======================================================
+*/
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  align-items: flex-end;
+  height: fit-content;
+}
+
+.logo-navbar {
+    font-size: 46px;
+    letter-spacing: -2pt;
+    text-align: left;
+    color: #568e67;
+  }
+
+.profile-icon {
+  padding-left: 16px;
+}
+
+.navbar-container {
+  margin: 2em;
+  display: flex;
+  align-items: flex-end;
+}
+
+.navbar-link {
+  font-size: 24px;
+}
+
+.main-content {
+  padding-left: 30px;
+}
+
+.footer {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.footer-content {
+  font-size: 16px;
+  padding-left: 100px;
+  letter-spacing: 3px;
+  font-family: 'Karla', sans-serif;
+  font-weight: 400;
+  padding: 20px;
+  background-color: #8a8a8a;
+}
+
+.bu-link {
+  color: white;
+  text-decoration: none;
+}
+
+.bu-link:hover {
+  text-decoration: underline;
+}

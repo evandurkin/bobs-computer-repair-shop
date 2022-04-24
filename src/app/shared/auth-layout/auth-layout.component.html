@@ -14,24 +14,22 @@
       <!-- navbar container -->
       <div class="navbar-container">
         <!-- logo -->
-        <button class="logo" routerLink="/" mat-button>BCRS</button>
+        <button class="logo-navbar" routerLink="/" mat-button>Bob's <br/> Computer Repair Shop</button>
 
-        <button class="navbar-link" routerLink="/" mat-button>Dashboard</button>
-        <button class="navbar-link" routerLink="/" mat-button></button>
-        <button class="navbar-link" mat-button>more features ^</button>
-      </div>
-      <div fxFlex></div>
-        <button class="profile-icon" mat-icon-button [matMenuTriggerFor]="profileMenu" aria-label="User Profile Menu">Admin
-          <mat-icon style="color:#7CFC00">perm_identity</mat-icon>
-        </button>
-        <!-- Icon drop down menu items -->
-        <mat-menu #profileMenu="matMenu">
-          <p style="padding: 10px;color:white; font-size:16px" class="menu">
-              <span style="margin-left:4px"></span><mat-icon>account_box</mat-icon><span style="margin-left:6%">Signed in as</span>
-              <span
-                style="font-weight: 600;font-size: 24px"
-              >{{ userName }}</span>
-          </p>
+        <button class="navbar-link" routerLink="/" mat-button>dashboard</button>
+        <button class="navbar-link" mat-button>more features</button>
+        <button class="navbar-link profile-icon"
+          mat-icon-button [matMenuTriggerFor]="profileMenu"
+          aria-label="User Profile Menu">admin
+          <mat-icon>perm_identity</mat-icon>
+          <!-- Icon drop down menu items -->
+          <mat-menu #profileMenu="matMenu">
+            <p style="padding: 10px;color:white;" class="menu">
+                <span style="margin-left:4px"></span>
+                <mat-icon>account_box</mat-icon>
+                <span style="margin-left:6%">Signed in as</span>
+                <span style="font-weight: 600;font-size: 24px">{{ userName }}</span>
+            </p>
           <mat-divider></mat-divider>
           <button  mat-menu-item (click)="userConfig()" class="menu">
             <mat-icon class="menu">people</mat-icon>
@@ -55,6 +53,9 @@
             <span class="menu">Sign-Out</span>
           </button>
         </mat-menu>
+        </button>
+      </div>
+
     </mat-toolbar>
   </nav>
 
