@@ -20,7 +20,7 @@ const router = express.Router();
 const saltRounds = 10; // Salt rounds for hashing algorithm
 
 // User sign-in api
-router.post('/signin', async(req, res) => {
+router.post('/sign-in', async(req, res) => {
 
   try {
       User.findOne({ 'userName': req.body.userName }, function(err, user) {
