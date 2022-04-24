@@ -1,3 +1,14 @@
+/*
+=======================================
+// Title: Bob’s Computer Repair Shop
+// Date: 04 April 2022
+// Authors: Evan Durkin, Keith Hall,
+// Gustavo Roo Gonzalez, and Gunner Bradley
+// Description: TS file for the base-layout component.
+=======================================
+*/
+
+// Imported Modules
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service'
@@ -19,8 +30,9 @@ export class DashboardAdminComponent implements OnInit {
     this.isLoggedIn = this.cookieService.get('session_user') ? true : false;
     this.userName = sessionStorage.getItem('userName');
     console.log('Signed in as: ' + this.userName);
-
   }
+
+  // Logic for icon menu items
  ngOnInit(): void {
     this.userName = this.cookieService.get('session_user');
   }

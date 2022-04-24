@@ -20,8 +20,7 @@ import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component'
 import { UserUpdateComponent } from './pages/user-update/user-update.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
-import { SecurityQuestionEditComponent } from './pages/security-question-edit/security-question-edit.component';
-import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
+import { DashboardAdminComponent } from './pages/dashboard-admin/dashboard-admin.component';
 
 // Browser, Http, Forms, and Cookie imports
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -39,8 +38,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import { CdkTableModule } from '@angular/cdk/table';
+import { MatTableModule } from '@angular/material/table';
+import { SecurityQuestionEditComponent } from './pages/security-question-edit/security-question-edit.component';
+import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
+import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component';
 import { MatDividerModule } from '@angular/material/divider';
-import { DashboardAdminComponent } from './pages/dashboard-admin/dashboard-admin.component';
+
 
 @NgModule({
   declarations: [
@@ -52,6 +56,7 @@ import { DashboardAdminComponent } from './pages/dashboard-admin/dashboard-admin
     UserListComponent,
     SecurityQuestionEditComponent,
     SecurityQuestionListComponent,
+    DeleteRecordDialogComponent,
     SignInComponent,
     DashboardAdminComponent,
   ],
@@ -65,11 +70,13 @@ import { DashboardAdminComponent } from './pages/dashboard-admin/dashboard-admin
     MatIconModule,
     HttpClientModule,
     FormsModule,
+    CdkTableModule,
     ReactiveFormsModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
+    MatTableModule,
     MatMenuModule,
     BrowserAnimationsModule,
     MatDividerModule
