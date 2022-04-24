@@ -1,7 +1,7 @@
 /*
 =======================================
 // Title: Bob’s Computer Repair Shop
-// Date: 04 April 2022
+// Date: 22 April 2022
 // Authors: Evan Durkin, Keith Hall,
 // Gustavo Roo Gonzalez, and Gunner Bradley
 // Description: App module for BCRS App.
@@ -19,6 +19,8 @@ import { BaseLayoutComponent } from './shared/base-layout/base-layout.component'
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { UserUpdateComponent } from './pages/user-update/user-update.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
+import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { DashboardAdminComponent } from './pages/dashboard-admin/dashboard-admin.component';
 
 // Browser, Http, Forms, and Cookie imports
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -41,6 +43,11 @@ import { MatTableModule } from '@angular/material/table';
 import { SecurityQuestionEditComponent } from './pages/security-question-edit/security-question-edit.component';
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
 import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component';
+<<<<<<< HEAD
+import { MatDividerModule } from '@angular/material/divider';
+
+=======
+>>>>>>> 94f0bd1a4c66056c70306a9ce96f2d1e648b5148
 
 @NgModule({
   declarations: [
@@ -53,6 +60,11 @@ import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delet
     SecurityQuestionEditComponent,
     SecurityQuestionListComponent,
     DeleteRecordDialogComponent,
+<<<<<<< HEAD
+    SignInComponent,
+    DashboardAdminComponent,
+=======
+>>>>>>> 94f0bd1a4c66056c70306a9ce96f2d1e648b5148
   ],
   imports: [
     BrowserModule,
@@ -73,6 +85,10 @@ import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delet
     MatTableModule,
     MatMenuModule,
     BrowserAnimationsModule,
+<<<<<<< HEAD
+    MatDividerModule
+=======
+>>>>>>> 94f0bd1a4c66056c70306a9ce96f2d1e648b5148
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],

@@ -1,18 +1,12 @@
-/*
-=======================================
-// Title: Bob’s Computer Repair Shop
-// Date: 04 April 2022
-// Authors: Evan Durkin, Keith Hall,
-// Gustavo Roo Gonzalez, and Gunner Bradley
-// Description: Routing module for BCRS App.
-=======================================
-*/
-
 import { HomeComponent } from './pages/home/home.component';
-import { UserListComponent } from './pages/user-list/user-list.component';
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { DashboardAdminComponent } from './pages/dashboard-admin/dashboard-admin.component';
+import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
+import { AuthGuard } from './auth.guard';
+
 
 const routes: Routes = [
   {
@@ -22,12 +16,26 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent
-      },
-      {
-        path: 'users',
-        component: UserListComponent
       }
     ]
+  },
+  {
+    path: 'session',
+    component: AuthLayoutComponent,
+    children: [
+      {
+        path: 'sign-in',
+        component: SignInComponent
+      },
+      {
+        path: 'dashboard-admin',
+        component: DashboardAdminComponent
+      }
+    ],
+  },
+  {
+    path: '**',
+    redirectTo: 'session/not-found',
   }
 ];
 
