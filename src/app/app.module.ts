@@ -43,6 +43,7 @@ import { MatTableModule } from '@angular/material/table';
 import { SecurityQuestionEditComponent } from './pages/security-question-edit/security-question-edit.component';
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
 import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delet
     MatTableModule,
     MatMenuModule,
     BrowserAnimationsModule,
+    MatDividerModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],
