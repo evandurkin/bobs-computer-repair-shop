@@ -29,6 +29,7 @@ export class UserService {
       address: user.address,
       email: user.email,
       phoneNumber: user.phoneNumber,
+      selectedSecurityQuestion: user.selectedSecurityQuestion,
     });
   }
 

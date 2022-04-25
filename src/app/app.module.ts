@@ -20,7 +20,8 @@ import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component'
 import { UserUpdateComponent } from './pages/user-update/user-update.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
-import { DashboardAdminComponent } from './pages/dashboard-admin/dashboard-admin.component'; 
+import { DashboardAdminComponent } from './pages/dashboard-admin/dashboard-admin.component';
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
 
 // Browser, Http, Forms, and Cookie imports
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -32,6 +33,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -44,6 +46,9 @@ import { SecurityQuestionEditComponent } from './pages/security-question-edit/se
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
 import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatListModule } from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -57,7 +62,8 @@ import { MatDividerModule } from '@angular/material/divider';
     SecurityQuestionListComponent,
     DeleteRecordDialogComponent,
     SignInComponent,
-    DashboardAdminComponent
+    DashboardAdminComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,6 +72,7 @@ import { MatDividerModule } from '@angular/material/divider';
     FlexLayoutModule,
     MatToolbarModule,
     MatButtonModule,
+    MatButtonToggleModule,
     MatIconModule,
     HttpClientModule,
     FormsModule,
@@ -78,7 +85,10 @@ import { MatDividerModule } from '@angular/material/divider';
     MatTableModule,
     MatMenuModule,
     BrowserAnimationsModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTabsModule,
+    MatListModule,
+    MatSelectModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],

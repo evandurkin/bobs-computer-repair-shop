@@ -10,7 +10,7 @@
 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const UserRoleSchema = require("../schemas/user-role");
+const userRoleSchema = require("../schemas/user-role");
 const selectedSecurityQuestionsSchema = require("../schemas/selected-security-questions");
 
 // Defines the structure of the User document.
@@ -24,7 +24,7 @@ var userSchema = new Schema(
     address: { type: String },
     email: { type: String },
     isDisabled: { type: Boolean, default: false },
-    role: UserRoleSchema,
+    role: userRoleSchema,
     selectedSecurityQuestion: [selectedSecurityQuestionsSchema],
     date_created: { type: Date, default: new Date() },
     date_updated: { type: Date },

@@ -107,6 +107,7 @@ router.post("/", async (req, res) => {
       address: req.body.address,
       email: req.body.email,
       role: standardRole,
+      selectedSecurityQuestion: req.body.selectedSecurityQuestion,
       isDisabled: false,
     };
     // create a new user based off the user object

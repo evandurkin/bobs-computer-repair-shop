@@ -8,7 +8,8 @@
 ============================================
 */
 
-import { UserRole } from "./user-role";
+import { UserRole } from './user-role';
+import { SelectedSecurityQuestion } from './selected-security-question';
 
 // user interface
 export interface User {
@@ -21,4 +22,5 @@ export interface User {
   email: string;
   phoneNumber: string;
   role: UserRole;
+  selectedSecurityQuestion: [SelectedSecurityQuestion];
 }

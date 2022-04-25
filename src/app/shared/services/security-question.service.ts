@@ -14,15 +14,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SecurityQuestionService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   //service for API: find all security questions
   findAllSecurityQuestions(): Observable<any> {
-    return this.http.get('/api/session/security-questions')
+    return this.http.get('/api/security-questions');
   }
 
   //service for API: find security question by ID
@@ -31,21 +30,26 @@ export class SecurityQuestionService {
   }
 
   //service for API: create a new security question
-  createSecurityQuestion(newSecurityQuestion: SecurityQuestion): Observable<any> {
+  createSecurityQuestion(
+    newSecurityQuestion: SecurityQuestion
+  ): Observable<any> {
     return this.http.post('/api/session/security-questions', {
-      text: newSecurityQuestion.text
-    })
+      text: newSecurityQuestion.text,
+    });
   }
 
   //service for updating a security question
-  updateSecurityQuestion(questionId: string, updatedSecurityQuestion: SecurityQuestion) {
+  updateSecurityQuestion(
+    questionId: string,
+    updatedSecurityQuestion: SecurityQuestion
+  ) {
     return this.http.put('/api/session/security-questions/' + questionId, {
-      text: updatedSecurityQuestion.text
-    })
+      text: updatedSecurityQuestion.text,
+    });
   }
 
   //service for deleting a security question
   deleteSecurityQuestion(questionId: string): Observable<any> {
-    return this.http.delete('/api/session/security-questions/' + questionId)
+    return this.http.delete('/api/session/security-questions/' + questionId);
   }
 }
