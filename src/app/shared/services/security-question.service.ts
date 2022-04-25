@@ -21,7 +21,7 @@ export class SecurityQuestionService {
 
   //service for API: find all security questions
   findAllSecurityQuestions(): Observable<any> {
-    return this.http.get('/api/security-questions');
+    return this.http.get('/api/session/security-questions');
   }
 
   //service for API: find security question by ID
