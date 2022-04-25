@@ -1,0 +1,25 @@
+<!--
+    Title: index.html
+    Date: 22 April 2022
+    Authors: Evan Durkin, Keith Hall,
+    Gustavo Roo Gonzalez, and Gunner Bradley
+    Description: Html file for th base-layout component.
+-->
+
+<div fxLayout="column">
+
+  <!-- navigation -->
+  <nav fxFlex>
+    <router-outlet></router-outlet>
+  </nav>
+
+  <!-- main content -->
+  <div fxFlex>
+    <main class="main-content" fxFlex="100%;">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+
+
+</div>
+

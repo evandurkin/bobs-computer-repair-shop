@@ -248,6 +248,12 @@ $altTheme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
   font-size: 24px;
   font-family: "Material Icons", "Material Icons";
   .mat-badge-content {
-    font-family: "Karla";
+  font-family: "Karla";
+  font-weight: 800;
   }
 }
+
+body {
+  margin: 0;
+  background-color: #cccccc }
+

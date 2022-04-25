@@ -4,47 +4,63 @@
 // Date: 04 April 2022
 // Authors: Evan Durkin, Keith Hall,
 // Gustavo Roo Gonzalez, and Gunner Bradley
-// Description: Css file for the base-layout component.  
+// Description: Css file for the base-layout component.
 =======================================
 */
+.main-content {
+  margin: 0 auto;
+}
+  .mat-toolbar-row, .mat-toolbar-single-row {
+    align-items: flex-end;
+    height: fit-content;
+  }
 
-.logo {
-    margin-left: 75px;
-    font-size: 24px;
-    font-weight: lighter;;
+  .logo-navbar {
+      font-size: 46px;
+      letter-spacing: -3pt;
+      text-align: left;
+      color: #568e67;
+    }
+
+  .signInLink {
+    color: white;
   }
-  
+
   .navbar-container {
-    padding: 5px;
+    margin: 2em;
+    display: flex;
+    align-items: flex-end;
   }
-  
+
   .navbar-link {
     font-size: 24px;
-    font-weight: lighter;
   }
-  
+
   .main-content {
     padding-left: 30px;
   }
-  
+
   .footer {
     bottom: 0;
     position: absolute;
     width: 100%;
   }
-  
+
   .footer-content {
     font-size: 16px;
-    font-weight: lighter;
     padding-left: 100px;
     letter-spacing: 3px;
+    font-family: 'Karla', sans-serif;
+    font-weight: 400;
+    padding: 20px;
+    background-color: #8a8a8a;
   }
-  
+
   .bu-link {
+    color: white;
     text-decoration: none;
   }
-  
+
   .bu-link:hover {
     text-decoration: underline;
   }
-  

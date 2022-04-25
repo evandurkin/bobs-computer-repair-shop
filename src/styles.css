@@ -7,6 +7,9 @@
 // Description: Global css styles for BCR Shop App.
 =======================================
 */
- 
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.functions-icon:hover {
+  color: #33ff66;
+}

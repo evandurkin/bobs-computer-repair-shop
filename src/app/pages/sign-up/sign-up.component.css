@@ -1,0 +1,32 @@
+.signup-main {
+  width: 50%;
+  min-height: 600px;
+  padding: 0 0 15px 0;
+  margin: 20px auto;
+}
+
+.signup-title {
+  text-align: center;
+  height: 100%;
+  padding-top: 15px;
+}
+
+.mat-tab-group {
+  min-height: 400px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-card-actions {
+  margin: 10px;
+}
+
+.mat-card-actions button {
+  padding: 5px 30px;
+}
+
+.spacer {
+  height: 50px;
+}

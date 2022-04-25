@@ -1,25 +1,38 @@
 <!--
     Title: index.html
-    Date: 04 April 2022
+    Date: 22 April 2022
     Authors: Evan Durkin, Keith Hall,
     Gustavo Roo Gonzalez, and Gunner Bradley
     Description: Html file for th base-layout component.
 -->
 
 <div fxLayout="column">
-
   <!-- navigation -->
   <nav fxFlex>
-    <mat-toolbar>
+    <mat-toolbar class="toolbar">
       <!-- navbar container -->
       <div class="navbar-container">
         <!-- logo -->
-        <button class="logo" routerLink="/" mat-button>BCRS</button>
-
-        <button class="navbar-link" routerLink="/" mat-button>Home</button>
-        <button class="navbar-link" mat-button>About</button>
+        <button class="logo-navbar" routerLink="/" mat-button>
+          Bob's <br />Computer Repair Shop
+        </button>
+        <button class="navbar-link" mat-button>services</button>
+        <button class="navbar-link" routerLink="/" mat-button>about</button>
+        <button class="navbar-link" routerLink="/" mat-button>contact</button>
+        <button class="navbar-link" routerLink="/sign-up" mat-button>
+          sign up
+        </button>
+        <a href="/api/session/sign-in" class="signInLink"
+          >Sign into your account</a
+        >
+        <button
+          class="navbar-link signInLink"
+          routerLink="/session/sign-in"
+          mat-button
+        >
+          Sign into your account
+        </button>
       </div>
-
     </mat-toolbar>
   </nav>
 
@@ -34,11 +47,23 @@
   <div fxFlex>
     <footer class="footer">
       <mat-toolbar class="footer-content">
-        <p>
-          &copy; {{year | date: 'yyyy'}} - Bob's Computer Repair Shop - <a href="https://www.bellevue.edu/" class="bu-link" target="_blank">Bellevue University</a>
+        <<<<<<< HEAD
+        <p style="margin-left: 2em">
+          &copy; {{ year | date: "yyyy" }} - Bob's Computer Repair Shop -
+          <a href="https://www.bellevue.edu/" class="bu-link" target="_blank"
+            >Bellevue University</a
+          >
+          =======
+        </p>
+
+        <p style="margin-left: 2em">
+          &copy; {{ year | date: "yyyy" }} - Bob's Computer Repair Shop -
+          <a href="https://www.bellevue.edu/" class="bu-link" target="_blank"
+            >Bellevue University</a
+          >
+          >>>>>>> 2fa3e27f11ebbfde09b4e5f36ae64a34aa832a7f
         </p>
       </mat-toolbar>
     </footer>
   </div>
-
 </div>
