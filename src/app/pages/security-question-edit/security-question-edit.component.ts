@@ -31,7 +31,7 @@ export class SecurityQuestionEditComponent implements OnInit {
     private fb: FormBuilder,
     private securityQuestionService: SecurityQuestionService)
     {
-    this.questionId = this.route.snapshot.paramMap.get('questionId');
+    this.questionId = this.route.snapshot.paramMap.get('question_id');
 
     this.securityQuestionService.findSecurityQuestionById(this.questionId).subscribe(res => {
       this.questionData = res['data'];

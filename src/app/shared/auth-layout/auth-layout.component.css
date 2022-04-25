@@ -8,62 +8,42 @@
 =======================================================
 */
 
-<<<<<<< HEAD
-/* Navigation styling */
-=======
-/************* Main Container *************/
-.main-content {
-  margin: 0 auto;
-}
-
-/************* Navigation Bar Styling *************/
-.navbar-container {
-  margin: 2em;
-  display: flex;
-  align-items: flex-end;
-}
-
-.navbar-link {
-  font-size: 24px;
-}
-
->>>>>>> b2d24f6fdaf1c16933a8edc56c067feacc14de10
 .mat-toolbar-row, .mat-toolbar-single-row {
   align-items: flex-end;
   height: fit-content;
 }
+
 .logo-navbar {
-  font-size: 46px;
-  letter-spacing: -3pt;
-  text-align: left;
-  color: #568e67;
- }
+    font-size: 46px;
+    letter-spacing: -2pt;
+    text-align: left;
+    color: #568e67;
+  }
+
 .profile-icon {
   padding-left: 16px;
 }
-<<<<<<< HEAD
+
 .navbar-container {
   margin: 2em;
   display: flex;
   align-items: flex-end;
 }
+
 .navbar-link {
   font-size: 24px;
 }
-/* Main content area */
+
 .main-content {
   padding-left: 30px;
 }
-=======
 
-/************* Footer Styling *************/
->>>>>>> b2d24f6fdaf1c16933a8edc56c067feacc14de10
-
-/* footer */
 .footer {
-  margin-top: 10%;
+  bottom: 0;
+  position: absolute;
   width: 100%;
 }
+
 .footer-content {
   font-size: 16px;
   padding-left: 100px;
@@ -73,10 +53,12 @@
   padding: 20px;
   background-color: #8a8a8a;
 }
+
 .bu-link {
   color: white;
   text-decoration: none;
 }
+
 .bu-link:hover {
   text-decoration: underline;
 }
