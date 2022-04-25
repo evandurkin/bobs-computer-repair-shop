@@ -7,7 +7,9 @@
 // Description: Css file for the base-layout component.
 =======================================
 */
-
+.main-content {
+  margin: 0 auto;
+}
   .mat-toolbar-row, .mat-toolbar-single-row {
     align-items: flex-end;
     height: fit-content;
@@ -15,7 +17,7 @@
 
   .logo-navbar {
       font-size: 46px;
-      letter-spacing: -2pt;
+      letter-spacing: -3pt;
       text-align: left;
       color: #568e67;
     }

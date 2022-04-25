@@ -22,6 +22,10 @@ import { UserListComponent } from './pages/user-list/user-list.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { DashboardAdminComponent } from './pages/dashboard-admin/dashboard-admin.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { SecurityQuestionEditComponent } from './pages/security-question-edit/security-question-edit.component';
+import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
+import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
+import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component';
 
 // Browser, Http, Forms, and Cookie imports
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -42,9 +46,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { CdkTableModule } from '@angular/cdk/table';
 import { MatTableModule } from '@angular/material/table';
-import { SecurityQuestionEditComponent } from './pages/security-question-edit/security-question-edit.component';
-import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
-import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
@@ -64,6 +65,7 @@ import { MatSelectModule } from '@angular/material/select';
     SignInComponent,
     DashboardAdminComponent,
     SignUpComponent,
+    SecurityQuestionCreateComponent,
   ],
   imports: [
     BrowserModule,
