@@ -20,7 +20,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class AuthLayoutComponent implements OnInit {
 
   year: number = Date.now();
-  isLoggedIn: boolean; // Checks if a user is logged in.
+  isLoggedIn: boolean;       // Checks if a user is logged in.
   userName: string;
   userRole: any;
 
@@ -37,6 +37,7 @@ export class AuthLayoutComponent implements OnInit {
     this.userName = this.cookieService.get('session_user');
   }
 
+// Check if user has Admin role
   isAdmin(): boolean {
     return this.userRole.role === 'admin';
   }
@@ -49,9 +50,10 @@ export class AuthLayoutComponent implements OnInit {
     this.router.navigate(['/session/security-questions']);
   }
 
+// Delete session-user cookie and redirect to home page
   signOut() {
     this.cookieService.deleteAll();
-    this.router.navigate([]);
+    this.router.navigate(['/']);
   }
   roleConfig(): void{
     this.router.navigate([]);
