@@ -8,7 +8,26 @@
 =======================================================
 */
 
+<<<<<<< HEAD
 /* Navigation styling */
+=======
+/************* Main Container *************/
+.main-content {
+  margin: 0 auto;
+}
+
+/************* Navigation Bar Styling *************/
+.navbar-container {
+  margin: 2em;
+  display: flex;
+  align-items: flex-end;
+}
+
+.navbar-link {
+  font-size: 24px;
+}
+
+>>>>>>> b2d24f6fdaf1c16933a8edc56c067feacc14de10
 .mat-toolbar-row, .mat-toolbar-single-row {
   align-items: flex-end;
   height: fit-content;
@@ -22,6 +41,7 @@
 .profile-icon {
   padding-left: 16px;
 }
+<<<<<<< HEAD
 .navbar-container {
   margin: 2em;
   display: flex;
@@ -34,6 +54,10 @@
 .main-content {
   padding-left: 30px;
 }
+=======
+
+/************* Footer Styling *************/
+>>>>>>> b2d24f6fdaf1c16933a8edc56c067feacc14de10
 
 /* footer */
 .footer {
