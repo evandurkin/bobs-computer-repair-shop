@@ -8,6 +8,7 @@ import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component'
 import { AuthGuard } from './auth.guard';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
+import { PostLayoutComponent } from './shared/post-layout/post-layout.component';
 
 
 const routes: Routes = [
@@ -26,10 +27,6 @@ const routes: Routes = [
     component: AuthLayoutComponent,
     children: [
       {
-        path: 'sign-in',
-        component: SignInComponent
-      },
-      {
         path: 'dashboard-admin',
         component: DashboardAdminComponent
       },
@@ -43,12 +40,21 @@ const routes: Routes = [
       }
     ],
   },
+   {
+    path: 'post-session',
+    component: PostLayoutComponent,
+    children: [
+      {
+        path: 'sign-in',
+        component: SignInComponent
+      }
+    ],
+  },
   {
     path: '**',
     redirectTo: 'session/not-found',
   }
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes, { useHash: true, enableTracing: false, scrollPositionRestoration: 'enabled', relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]

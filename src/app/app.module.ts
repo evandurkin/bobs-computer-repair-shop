@@ -25,6 +25,7 @@ import { SecurityQuestionEditComponent } from './pages/security-question-edit/se
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
 import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component';
+import { PostLayoutComponent } from './shared/post-layout/post-layout.component';
 
 // Browser, Http, Forms, and Cookie imports
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -59,7 +60,8 @@ import { MatDividerModule } from '@angular/material/divider';
     DeleteRecordDialogComponent,
     SignInComponent,
     DashboardAdminComponent,
-    SecurityQuestionCreateComponent
+    SecurityQuestionCreateComponent,
+    PostLayoutComponent
   ],
   imports: [
     BrowserModule,
