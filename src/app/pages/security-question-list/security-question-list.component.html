@@ -8,14 +8,18 @@
 =======================================
 */-->
 
-<div fxLayout="column" style="margin-top: 3em">
+<div fxLayout="column">
   <!--mat card to hold users configuration table-->
   <mat-card class="users-list-card">
     <mat-card-title class="users-title"
       >Security Question Configuration</mat-card-title
     >
 
-    <mat-card-content *ngIf="questions">
+    <mat-card-content
+      *ngIf="questions"
+      fxLayout="column"
+      fxLayoutAlign="center none"
+    >
       <!-- mat-table with header sections for user data-->
       <table mat-table [dataSource]="questions">
         <ng-container matColumnDef="question">
@@ -51,14 +55,16 @@
       </table>
 
       <!-- button to add a new users -->
-      <button
-        mat-button
-        routerLink="/security-questions/"
-        class="btn-add-user"
-        style="margin-bottom: 10px"
-      >
-        add +
-      </button>
+      <div fxLayout="column" fxLayoutAlign="center end">
+        <button
+          mat-button
+          routerLink="/security-questions/"
+          class="btn-add-user"
+          style="margin-bottom: 10px"
+        >
+          add +
+        </button>
+      </div>
     </mat-card-content>
   </mat-card>
 </div>
