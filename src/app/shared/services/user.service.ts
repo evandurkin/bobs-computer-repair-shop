@@ -13,7 +13,6 @@ export class UserService {
   findAllUsers(): Observable<any> {
     return this.http.get('/api/session/users');
   }
-
   // service for API: finding a user by their ID
   findUserById(userId: string): Observable<any> {
     return this.http.get('/api/session/users/' + userId);
@@ -29,6 +28,7 @@ export class UserService {
       address: user.address,
       email: user.email,
       phoneNumber: user.phoneNumber,
+	  role: user.role,
       selectedSecurityQuestion: user.selectedSecurityQuestion,
     });
   }
