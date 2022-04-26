@@ -1,17 +1,31 @@
-import { HomeComponent } from './pages/home/home.component';
-import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
+/*
+=======================================
+// Title: Bob’s Computer Repair Shop
+// Date: 25 April 2022
+// Authors: Evan Durkin, Keith Hall,
+// Gustavo Roo Gonzalez, and Gunner Bradley
+// Description: App routing module for BCRS App.
+=======================================
+*/
+
+// Routers
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+// Layouts
+import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
-import { AuthGuard } from './auth.guard';
+import { PostLayoutComponent } from './shared/post-layout/post-layout.component';
 
 // Pages
+import { HomeComponent } from './pages/home/home.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { DashboardAdminComponent } from './pages/dashboard-admin/dashboard-admin.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
+
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {
@@ -33,10 +47,6 @@ const routes: Routes = [
     component: AuthLayoutComponent,
     children: [
       {
-        path: 'sign-in',
-        component: SignInComponent,
-      },
-      {
         path: 'dashboard-admin',
         component: DashboardAdminComponent,
       },
@@ -48,6 +58,16 @@ const routes: Routes = [
         path: 'security-questions',
         component: SecurityQuestionListComponent,
       },
+    ],
+  },
+  {
+    path: 'post-session',
+    component: PostLayoutComponent,
+    children: [
+      {
+        path: 'sign-in',
+        component: SignInComponent
+      }
     ],
   },
   {

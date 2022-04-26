@@ -50,6 +50,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
+import { PostLayoutComponent } from './shared/post-layout/post-layout.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { MatSelectModule } from '@angular/material/select';
     DashboardAdminComponent,
     SignUpComponent,
     SecurityQuestionCreateComponent,
+    PostLayoutComponent,
   ],
   imports: [
     BrowserModule,
