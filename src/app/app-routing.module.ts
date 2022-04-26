@@ -36,7 +36,7 @@ import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
 
-  /* Public User Routes */
+  /* Public Routes for guests */
   {
     path: '',
     component: BaseLayoutComponent,
@@ -99,7 +99,7 @@ const routes: Routes = [
     ]
   },
 
- /* Routes for pages with no headers */
+ /* Routes to pages with no headers */
   {
     path: 'post-session',
     component: PostLayoutComponent,
