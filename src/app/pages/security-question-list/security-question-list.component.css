@@ -13,13 +13,11 @@
   border-radius: 0;
   padding: 0;
   background-color: #ffffff;
+  width: 50%;
+  margin: 20px auto;
 }
 
 /************* Users Table Styling *************/
-th,
-td {
-  width: 180px;
-}
 
 th {
   font-family: "Karla", sans-serif;
