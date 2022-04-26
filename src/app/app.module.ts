@@ -26,6 +26,13 @@ import { SecurityQuestionEditComponent } from './pages/security-question-edit/se
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
 import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component';
+import { PostLayoutComponent } from './shared/post-layout/post-layout.component';
+import { UserCreateComponent } from './pages/user-create/user-create.component';
+import { AboutComponent } from './pages/about/about.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { StandardLayoutComponent } from './shared/standard-layout/standard-layout.component';
+import { DashboardEmployeeComponent } from './pages/dashboard-employee/dashboard-employee.component';
 
 // Browser, Http, Forms, and Cookie imports
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -50,7 +57,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
-import { PostLayoutComponent } from './shared/post-layout/post-layout.component';
+
 
 @NgModule({
   declarations: [
@@ -68,6 +75,12 @@ import { PostLayoutComponent } from './shared/post-layout/post-layout.component'
     SignUpComponent,
     SecurityQuestionCreateComponent,
     PostLayoutComponent,
+    UserCreateComponent,
+    AboutComponent,
+    ContactComponent,
+    NotFoundComponent,
+    StandardLayoutComponent,
+    DashboardEmployeeComponent,
   ],
   imports: [
     BrowserModule,

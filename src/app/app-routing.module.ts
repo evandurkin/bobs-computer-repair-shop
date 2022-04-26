@@ -16,18 +16,27 @@ import { Routes, RouterModule } from '@angular/router';
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { PostLayoutComponent } from './shared/post-layout/post-layout.component';
+import { StandardLayoutComponent } from './shared/standard-layout/standard-layout.component';
 
 // Pages
 import { HomeComponent } from './pages/home/home.component';
+import { AboutComponent } from './pages/about/about.component';
+import { ContactComponent } from './pages/contact/contact.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { DashboardAdminComponent } from './pages/dashboard-admin/dashboard-admin.component';
+import { DashboardEmployeeComponent } from './pages/dashboard-employee/dashboard-employee.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
+import { UserUpdateComponent } from './pages/user-update/user-update.component';
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
+import { UserCreateComponent } from './pages/user-create/user-create.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
+
+  /* Public User Routes */
   {
     path: '',
     component: BaseLayoutComponent,
@@ -37,11 +46,21 @@ const routes: Routes = [
         component: HomeComponent,
       },
       {
+        path: 'about',
+        component: AboutComponent,
+      },
+      {
+        path: 'contact',
+        component: ContactComponent,
+      },
+      {
         path: 'sign-up',
         component: SignUpComponent,
       },
     ],
   },
+
+  /* Admin User Routes */
   {
     path: 'session',
     component: AuthLayoutComponent,
@@ -55,11 +74,32 @@ const routes: Routes = [
         component: UserListComponent,
       },
       {
+        path: 'user-create',
+        component: UserCreateComponent,
+      },
+      {
+        path: 'user-update',
+        component: UserUpdateComponent,
+      },
+      {
         path: 'security-questions',
         component: SecurityQuestionListComponent,
       },
     ],
   },
+  /* Standard Routes (employees) */
+  {
+    path: 'session-employee',
+    component: StandardLayoutComponent,
+    children: [
+      {
+        path: 'dashboard-employee',
+        component: DashboardEmployeeComponent
+      }
+    ]
+  },
+
+ /* Routes for pages with no headers */
   {
     path: 'post-session',
     component: PostLayoutComponent,
@@ -67,6 +107,10 @@ const routes: Routes = [
       {
         path: 'sign-in',
         component: SignInComponent
+      },
+      {
+        path: 'not-found',
+        component: NotFoundComponent
       }
     ],
   },
