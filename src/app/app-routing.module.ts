@@ -78,7 +78,7 @@ const routes: Routes = [
         component: UserCreateComponent,
       },
       {
-        path: 'user-update',
+        path: 'users/:userId',
         component: UserUpdateComponent,
       },
       {
