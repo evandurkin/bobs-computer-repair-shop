@@ -60,7 +60,7 @@ const routes: Routes = [
     ],
   },
 
-  /* Admin User Routes */
+  /* Admin Users (canActivate routes) */
   {
     path: 'session',
     component: AuthLayoutComponent,
@@ -87,7 +87,7 @@ const routes: Routes = [
       },
     ],
   },
-  /* Standard Routes (employees) */
+  /* Standard-employee users (canActivate) */
   {
     path: 'session-employee',
     component: StandardLayoutComponent,
