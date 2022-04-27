@@ -13,14 +13,14 @@ import { SelectedSecurityQuestion } from './selected-security-question';
 
 // user interface
 export interface User {
-  _id: string;
-  userName: string;
-  password: string;
+  _id?: string;
+  userName?: string;
+  password?: string;
   firstName: string;
   lastName: string;
   address: string;
   email: string;
   phoneNumber: string;
-  role: UserRole;
-  selectedSecurityQuestion: [SelectedSecurityQuestion];
+  role?: UserRole;
+  selectedSecurityQuestion?: [SelectedSecurityQuestion];
 }
