@@ -35,9 +35,14 @@ import { StandardLayoutComponent } from './shared/standard-layout/standard-layou
 import { DashboardEmployeeComponent } from './pages/dashboard-employee/dashboard-employee.component';
 
 // Browser, Http, Forms, and Cookie imports
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import {
+  HttpClient,
+  HttpClientModule,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
+import { ErrorInterceptor } from './shared/error.interceptor'
 
 
 // Flex Layout and Material UI Imports
@@ -107,7 +112,13 @@ import { UserUpdateComponent } from './pages/user-update/user-update.component';
     MatListModule,
     MatSelectModule
   ],
-  providers: [CookieService],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true,
+    },
+    CookieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
