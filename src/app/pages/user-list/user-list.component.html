@@ -16,7 +16,7 @@
 
     <mat-card-content *ngIf="users">
       <!-- mat-table with header sections for user data-->
-      <table mat-table [dataSource]="users">
+             <table mat-table fxFlexFill [dataSource]="users">
         <ng-container matColumnDef="userName">
           <th mat-header-cell *matHeaderCellDef>Username</th>
           <td mat-cell *matCellDef="let element">
@@ -35,7 +35,7 @@
         </ng-container>
 
         <ng-container matColumnDef="phoneNumber">
-          <th mat-header-cell *matHeaderCellDef>Phone Name</th>
+          <th mat-header-cell *matHeaderCellDef>Phone Number</th>
           <td mat-cell *matCellDef="let element">{{ element.phoneNumber }}</td>
         </ng-container>
 
@@ -48,18 +48,20 @@
           <th mat-header-cell *matHeaderCellDef>Email</th>
           <td mat-cell *matCellDef="let element">{{ element.email }}</td>
         </ng-container>
-
         <ng-container matColumnDef="functions">
+
           <!-- functions for editing and deleting a user -->
-          <th mat-header-cell *matHeaderCellDef>Functions</th>
+          <th mat-header-cell *matHeaderCellDef></th>
           <td mat-cell *matCellDef="let element">
-            <button mat-icon-button routerLink="/users/{{ element._id }}" (click)="openUserUpdateDialog()">
-              <mat-icon class="edit-icon functions-icon">edit</mat-icon>
+
+            <button mat-icon-button routerLink="/session/users/{{ element._id }}">
+              <mat-icon color="secondary-icon">edit</mat-icon>
             </button>
             <button
               mat-icon-button
-              (click)="delete(element._id, element.userName)">
-              <mat-icon color="black" class="functions-icon">delete</mat-icon>
+              (click)="delete(element._id, element.userName)"
+            >
+              <mat-icon color="black" class="functions-icon" >delete</mat-icon>
             </button>
           </td>
         </ng-container>
@@ -69,7 +71,7 @@
       </table>
 
       <!-- button to add a new users -->
-      <button mat-button routerLink="/users/create/new" class="btn-add-user" style="margin-bottom: 10px;">
+      <button mat-button routerLink="/session/user-create" class="btn-add-user" style="margin-bottom: 10px;">
         add +
       </button>
 

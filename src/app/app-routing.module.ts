@@ -1,19 +1,42 @@
-import { HomeComponent } from './pages/home/home.component';
-import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
+/*
+=======================================
+// Title: Bob’s Computer Repair Shop
+// Date: 25 April 2022
+// Authors: Evan Durkin, Keith Hall,
+// Gustavo Roo Gonzalez, and Gunner Bradley
+// Description: App routing module for BCRS App.
+=======================================
+*/
+
+// Routers
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+// Layouts
+import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
-import { AuthGuard } from './auth.guard';
+import { PostLayoutComponent } from './shared/post-layout/post-layout.component';
+import { StandardLayoutComponent } from './shared/standard-layout/standard-layout.component';
 
 // Pages
+import { HomeComponent } from './pages/home/home.component';
+import { AboutComponent } from './pages/about/about.component';
+import { ContactComponent } from './pages/contact/contact.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { DashboardAdminComponent } from './pages/dashboard-admin/dashboard-admin.component';
+import { DashboardEmployeeComponent } from './pages/dashboard-employee/dashboard-employee.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
+import { UserUpdateComponent } from './pages/user-update/user-update.component';
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
+import { UserCreateComponent } from './pages/user-create/user-create.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
+
+  /* Public Routes for guests */
   {
     path: '',
     component: BaseLayoutComponent,
@@ -23,19 +46,25 @@ const routes: Routes = [
         component: HomeComponent,
       },
       {
+        path: 'about',
+        component: AboutComponent,
+      },
+      {
+        path: 'contact',
+        component: ContactComponent,
+      },
+      {
         path: 'sign-up',
         component: SignUpComponent,
       },
     ],
   },
+
+  /* Admin Users (canActivate routes) */
   {
     path: 'session',
     component: AuthLayoutComponent,
     children: [
-      {
-        path: 'sign-in',
-        component: SignInComponent,
-      },
       {
         path: 'dashboard-admin',
         component: DashboardAdminComponent,
@@ -45,9 +74,44 @@ const routes: Routes = [
         component: UserListComponent,
       },
       {
+        path: 'user-create',
+        component: UserCreateComponent,
+      },
+      {
+        path: 'users/:userId',
+        component: UserUpdateComponent,
+      },
+      {
         path: 'security-questions',
         component: SecurityQuestionListComponent,
       },
+    ],
+  },
+  /* Standard-employee users (canActivate) */
+  {
+    path: 'session-employee',
+    component: StandardLayoutComponent,
+    children: [
+      {
+        path: 'dashboard-employee',
+        component: DashboardEmployeeComponent
+      }
+    ]
+  },
+
+ /* Routes to pages with no headers */
+  {
+    path: 'post-session',
+    component: PostLayoutComponent,
+    children: [
+      {
+        path: 'sign-in',
+        component: SignInComponent
+      },
+      {
+        path: 'not-found',
+        component: NotFoundComponent
+      }
     ],
   },
   {
