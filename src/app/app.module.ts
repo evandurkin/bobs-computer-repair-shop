@@ -63,6 +63,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { UserUpdateComponent } from './pages/user-update/user-update.component';
+import { ResetPasswordComponent } from './shared/forms/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import { UserUpdateComponent } from './pages/user-update/user-update.component';
     StandardLayoutComponent,
     DashboardEmployeeComponent,
     UserUpdateComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserModule,
