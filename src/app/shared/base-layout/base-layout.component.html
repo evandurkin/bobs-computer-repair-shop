@@ -13,28 +13,23 @@
       <!-- navbar container -->
       <div class="navbar-container">
         <!-- logo -->
-        <button class="logo-navbar" routerLink="/" mat-button>
+        <a href="/" class="logo-navbar">
           Bob's <br />Computer Repair Shop
-        </button>
-        <button class="navbar-link" mat-button>services</button>
-        <button class="navbar-link" routerLink="/about" mat-button>
+        </a>
+        <a href="/about" class="navbar-link">
           about
-        </button>
-        <button class="navbar-link" routerLink="/contact" mat-button>
+        </a>
+        <a href="/contact" class="navbar-link">
           contact
-        </button>
-        <button class="navbar-link" routerLink="/sign-up" mat-button>
-          sign up
-        </button>
-        <a href="/api/post-session/sign-in" class="signInLink"
-          >Sign into your account</a
-        >
+        </a>
         <button
-          class="navbar-link signInLink"
-          routerLink="/post-session/sign-in"
-          mat-button>
-          Sign into your account
-        </button>
+        class="signInLink"
+        routerLink="/post-session/sign-in"
+        mat-button style="float: right;">
+        sign-in
+      </button>
+      <br/>
+      <a href="/sign-up" class="registerLink">register for an account</a>
       </div>
     </mat-toolbar>
   </nav>

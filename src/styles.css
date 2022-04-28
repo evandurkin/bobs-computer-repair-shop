@@ -5,6 +5,8 @@
 // Authors: Evan Durkin, Keith Hall,
 // Gustavo Roo Gonzalez, and Gunner Bradley
 // Description: Global css styles for BCR Shop App.
+// References:
+// - logo hover: https://css-tricks.com/4-ways-to-animate-the-color-of-a-text-link-on-hover/
 =======================================
 */
 
@@ -13,3 +15,92 @@ html, body { height: 100%; }
 .functions-icon:hover {
   color: #33ff66;
 }
+
+
+/*********** navbar logo ***********/
+.logo-navbar {
+  font-size: 46px;
+  letter-spacing: -3pt;
+  text-align: left;
+  text-decoration: none;
+  color: #568e67;
+  line-height: 80%;
+  overflow: hidden;
+  background: linear-gradient(to right, white, white 50%, #568e67 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  background-position: 100%;
+  transition: background-position 275ms ease;
+}
+
+.logo-navbar:hover {
+  background-position: 0 100%;
+}
+
+.logo-navbar:focus {
+  text-decoration: underline;
+}
+
+/*********** navbar links ***********/
+.navbar-link {
+  font-size: 24px;
+  font-family: 'Aldrich', sans-serif;
+  text-decoration: none;
+  color: white;
+  margin-left: 2em;
+
+}
+
+.navbar-link:hover {
+  text-decoration: underline;
+}
+
+.navbar-link:active {
+  text-decoration: underline;
+}
+
+.navbar-link:visited {
+  color: white;
+}
+
+.navbar-container {
+  margin: 2em;
+  display: flex;
+  align-items: flex-end;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  align-items: flex-end;
+  height: fit-content;
+}
+
+
+/*********** footer ***********/
+
+.footer {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.footer-content {
+  font-size: 16px;
+  padding-left: 100px;
+  letter-spacing: 3px;
+  font-family: 'Karla', sans-serif;
+  font-weight: 400;
+  padding: 20px;
+  background-color: #8a8a8a;
+}
+
+.bu-link {
+  color: white;
+  text-decoration: none;
+}
+
+.bu-link:hover {
+  text-decoration: underline;
+}
+

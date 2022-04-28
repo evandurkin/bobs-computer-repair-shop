@@ -7,60 +7,38 @@
 // Description: Css file for the base-layout component.
 =======================================
 */
-.main-content {
-  margin: 0 auto;
-}
-  .mat-toolbar-row, .mat-toolbar-single-row {
-    align-items: flex-end;
-    height: fit-content;
+  .main-content {
+    margin: 0 auto;
   }
-
-  .logo-navbar {
-      font-size: 46px;
-      letter-spacing: -3pt;
-      text-align: left;
-      color: #568e67;
-    }
 
   .signInLink {
-    color: white;
-  }
-
-  .navbar-container {
-    margin: 2em;
-    display: flex;
-    align-items: flex-end;
-  }
-
-  .navbar-link {
+    font-family: 'Aldrich', sans-serif;
+    color: #003716;
+    background-color: #579068;
+    border-radius: 0;
     font-size: 24px;
+  }
+
+  .signInLink:hover {
+    background-color: #33ff66;
+    transition: .5s;
+  }
+
+  .registerLink {
+    font-family: 'Karla', sans-serif;
+    font-size: 16px;
+    color: white;
+    text-decoration: underline;
+  }
+
+  .registerLink:hover {
+    color: #579068;
   }
 
   .main-content {
     padding-left: 30px;
   }
 
-  .footer {
-    bottom: 0;
-    position: absolute;
-    width: 100%;
-  }
-
   .footer-content {
-    font-size: 16px;
-    padding-left: 100px;
-    letter-spacing: 3px;
-    font-family: 'Karla', sans-serif;
-    font-weight: 400;
-    padding: 20px;
-    background-color: #8a8a8a;
-  }
-
-  .bu-link {
-    color: white;
-    text-decoration: none;
-  }
-
-  .bu-link:hover {
-    text-decoration: underline;
-  }
+   padding: 20px
+ }
