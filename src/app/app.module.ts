@@ -64,6 +64,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { UserUpdateComponent } from './pages/user-update/user-update.component';
 import { ResetPasswordComponent } from './shared/forms/reset-password/reset-password.component';
+import { VerifyUsernameComponent } from './shared/forms/verify-username/verify-username.component';
+import { VerifyPasswordComponent } from './shared/forms/verify-password/verify-password.component';
+import { VerifySecurityQuestionsComponent } from './shared/forms/verify-security-questions/verify-security-questions.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +91,9 @@ import { ResetPasswordComponent } from './shared/forms/reset-password/reset-pass
     DashboardEmployeeComponent,
     UserUpdateComponent,
     ResetPasswordComponent,
+    VerifyUsernameComponent,
+    VerifyPasswordComponent,
+    VerifySecurityQuestionsComponent,
   ],
   imports: [
     BrowserModule,

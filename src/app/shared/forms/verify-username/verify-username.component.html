@@ -1,0 +1,40 @@
+
+
+ <!-- Form for verifying username -->
+<div fxLayout="row wrap" fxLayoutAlign="center" class="main-container">
+  <div fxFlex class="verification-form">
+    <mat-card style="width: 80%;"  class="mat-elevation-z8">
+      <mat-card-title class="mat-headline">
+        Verify User
+      </mat-card-title>
+
+      <br>
+      <br>
+
+      <!-- Error message when an invalid username is entered -->
+      <small style="color: #df546a" *ngIf="error">
+        {{ error }}
+        <br />
+      </small>
+
+
+      <!-- Username verification -->
+      <p>Please verify your username </p>
+      <br/>
+      <form [formGroup]="form" (ngSubmit)="GetUsername()">
+        <mat-card-content fxLayout="column">
+          <mat-form-field fxFlex>
+            <input matInput
+                   [formControl]="form.controls['username']"
+                   placeholder="Username"/>
+          </mat-form-field>
+
+          <br/><br/>
+          <div fxFlex fxLayoutAlign="end">
+            <button mat-raised-button color="accent">Submit</button>
+          </div>
+        </mat-card-content>
+      </form>
+    </mat-card>
+  </div>
+</div>

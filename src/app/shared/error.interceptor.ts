@@ -13,7 +13,7 @@ import { Router } from "@angular/router";
 import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
 
-import {                // Import interceptor
+import {  // Import interceptor
   HttpRequest,
   HttpHandler,
   HttpEvent,
@@ -25,6 +25,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   constructor(private router:Router){}
 
+  // Interceptor
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
       return next.handle(req).pipe(catchError(err=>{
 

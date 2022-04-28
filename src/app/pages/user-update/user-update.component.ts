@@ -40,9 +40,9 @@ export class UserUpdateComponent implements OnInit {
 
     // Angular Service finds user by id.
     this.userService.findUserById(this.userId).subscribe(
-     
+
       (res) => {
-         
+
         this.user = res['data'];
       },
       // Error handling
@@ -63,10 +63,10 @@ export class UserUpdateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-	  
+
     // Form validators
     this.form = this.fb.group({
-		
+
       firstName: [null, Validators.compose([Validators.required])],
       lastName: [null, Validators.compose([Validators.required])],
       phoneNumber: [null, Validators.compose([Validators.required])],
@@ -76,7 +76,7 @@ export class UserUpdateComponent implements OnInit {
     });
   }
   saveUser(): void {
-	  
+
     // Get form values
     const updatedUser: User = {
       firstName: this.form.controls.firstName.value,
@@ -87,21 +87,24 @@ export class UserUpdateComponent implements OnInit {
       role: this.form.controls.role.value,
     };
 
+    console.log('savedUser object');
+    console.log(updatedUser);
+
     // Update the user
     this.userService.updateUser(this.userId, updatedUser).subscribe(
-      
+
       (res) => {
         // Route to the users -list component
         this.router.navigate(['/session/users']);
       },
-       
+
       (err) => {
-        console.log(err);  
+        console.log(err);
       }
     );
   }
 
-  // Cancel  
+  // Cancel
   cancel(): void {
     this.router.navigate(['/session/users']);
   }

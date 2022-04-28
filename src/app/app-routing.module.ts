@@ -31,6 +31,8 @@ import { UserUpdateComponent } from './pages/user-update/user-update.component';
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
 import { UserCreateComponent } from './pages/user-create/user-create.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { VerifyUsernameComponent } from './shared/forms/verify-username/verify-username.component';
+import { VerifySecurityQuestionsComponent } from './shared/forms/verify-security-questions/verify-security-questions.component';
 
 import { AuthGuard } from './auth.guard';
 
@@ -108,6 +110,15 @@ const routes: Routes = [
         path: 'sign-in',
         component: SignInComponent
       },
+      {
+        path: 'user-details',
+        component: VerifyUsernameComponent,
+      },
+      {
+        path: 'verify-security-questions',
+        component: VerifySecurityQuestionsComponent,
+      },
+
       {
         path: 'not-found',
         component: NotFoundComponent
