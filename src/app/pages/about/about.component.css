@@ -7,3 +7,32 @@
 // Description: Css file for the about component.
 =======================================
 */
+
+.about-container {
+  margin: 50px 27%;
+  color: var(--accent-color);
+}
+
+.about-main-title {
+  width: 500px;
+  padding: 150px 0px;
+  font-size: 65px;
+  line-height: 1em;
+  border-right: 10px solid var(--accent-darker-color);
+}
+.about-main-title span {
+  font-size: 125px;
+  text-shadow: 2px 2px var(--accent-darker-color);
+}
+.about-container h2 {
+  font-size: 30px;
+  padding-top: 30px;
+}
+.about-container p {
+  font-size: 25px;
+  width: 525px;
+  line-height: 1.15em;
+}
+.about-main-body {
+  padding-left: 30px;
+}
