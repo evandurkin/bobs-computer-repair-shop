@@ -257,7 +257,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-// find selected security questions API
+// find selected security questions API for a specific user
 router.get("/:userName/security-questions", async (req, res) => {
   try {
     // finds user by ID
