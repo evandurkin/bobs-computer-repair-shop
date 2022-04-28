@@ -156,106 +156,6 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// createUser API
-router.post("/", async (req, res) => {
-  try {
-    let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // salt/hash the password
-    standardRole = {
-      role: "standard",
-    };
-
-    // user object
-    let newUser = {
-      userName: req.body.userName,
-      password: hashedPassword,
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      phoneNumber: req.body.phoneNumber,
-      address: req.body.address,
-      email: req.body.email,
-      role: standardRole,
-      isDisabled: false,
-    };
-    // create a new user based off the user object
-    User.create(newUser, function (err, user) {
-      // error message
-      if (err) {
-        console.log(err);
-        const createUserMongodbErrorResponse = new ErrorResponse(
-          500,
-          "Internal server error",
-          err
-        );
-        res.status(500).send(createUserMongodbErrorResponse.toObject());
-      } else {
-        // returns json of new user if successful
-        console.log(user);
-        const createUserResponse = new BaseResponse(
-          200,
-          "Query successful",
-          user
-        );
-        res.json(createUserResponse.toObject());
-      }
-    });
-  } catch (e) {
-    console.log(e);
-    const createUserCatchErrorResponse = new BaseResponse(
-      500,
-      "Internal server error",
-      e.message
-    );
-    res.status(500).send(createUserCatchErrorResponse.toObject());
-  }
-});
-
-// delete user API
-router.delete("/:id", async (req, res) => {
-  try {
-    User.findOne({ _id: req.params.id }, function (err, user) {
-      if (err) {
-        console.log(err);
-        const deleteUserMongoDbErrorResponse = new ErrorResponse(
-          501,
-          "MongoDB Exception Error",
-          err
-        );
-        res.status(501).send(deleteUserMongoDbErrorResponse.toObject());
-      } else {
-        console.log(user);
-        user.set({ isDisabled: true });
-        user.save(function (err, savedUser) {
-          if (err) {
-            console.log(err);
-            const savedUserMongoDbErrorResponse = new ErrorResponse(
-              500,
-              "Internal Server Error",
-              err
-            );
-            res.status(500).send(savedUserMongoDbErrorResponse.toObject());
-          } else {
-            console.log(savedUser);
-            const deleteUserResponse = new BaseResponse(
-              200,
-              "User successfully deleted",
-              user
-            );
-            res.json(deleteUserResponse.toObject());
-          }
-        });
-      }
-    });
-  } catch (e) {
-    console.log(e);
-    const deleteUserCatchErrorResponse = new ErrorResponse(
-      500,
-      "Internal Server Error",
-      e.message
-    );
-    res.status(500).send(deleteUserCatchErrorResponse.toObject());
-  }
-});
-
 // Verify Users
 router.get("/verify/users/:userName", async (req, res) => {
   try {
@@ -304,19 +204,16 @@ router.get("/verify/users/:userName", async (req, res) => {
   }
 });
 
-
 /**
  * ResetPassword
  */
 
 router.post("/users/:userName/reset-password", async (req, res) => {
-
   try {
     const password = req.body.password; // Set new password in req.body as a variable.
 
     // Find username in MongoDB
     User.findOne({ userName: req.params.userName }, function (err, user) {
-
       //Error Response
       if (err) {
         console.log(err);
@@ -341,7 +238,6 @@ router.post("/users/:userName/reset-password", async (req, res) => {
 
         // Save new password
         user.save(function (err, updatedUser) {
-
           // Error Response
           if (err) {
             console.log(err);
@@ -352,7 +248,6 @@ router.post("/users/:userName/reset-password", async (req, res) => {
               err
             );
             res.status(500).send(updatedUserMongodbErrorResponse.toObject());
-
           } else {
             console.log(updatedUser);
 
@@ -367,7 +262,6 @@ router.post("/users/:userName/reset-password", async (req, res) => {
         });
       }
     });
-
   } catch (e) {
     console.log(e);
     const resetPasswordCatchError = new ErrorResponse(
