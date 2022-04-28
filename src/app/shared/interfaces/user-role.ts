@@ -9,6 +9,6 @@
 */
 
 export interface UserRole {
-  _id: string;
+  _id?: string;
   text: string;
 }

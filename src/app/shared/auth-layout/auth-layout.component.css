@@ -18,27 +18,10 @@ span {
 
 .main-content {
   padding-left: 0px;
-}
-
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  margin-bottom: 5%;
 }
 
 .footer-content {
-  font-size: 16px;
-  font-weight: lighter;
-  padding-left: 100px;
-  letter-spacing: 3px;
+  padding: 20px
 }
 
-.bu-link {
-  text-decoration: none;
-  color: wheat;
-}
-
-.bu-link:hover {
-  text-decoration: underline;
-}

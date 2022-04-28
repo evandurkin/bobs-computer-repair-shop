@@ -1,0 +1,31 @@
+
+/*
+* Main container styling
+*/
+.main-container {
+  margin-top: 8%;
+}
+
+/*
+* Registration form container styling
+*/
+.verification-form {
+  width: 50%;
+  margin-left: 16%;
+}
+
+.mat-headline {
+ text-align: center;
+ font-size: 35px;
+ font-weight: lighter;
+}
+
+/*
+* Styling for smaller screen
+*/
+@media only screen and (max-width: 780px) {
+  .verification-form {
+    width: 80%;
+    margin-left: 10%;
+  }
+}

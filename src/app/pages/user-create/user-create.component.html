@@ -1,1 +1,149 @@
-<p>user-create works!</p>
+<!--
+/*
+============================================
+// Title: Bob’s Computer Repair Shop
+// Date: 21 April 2022
+// Authors: Evan Durkin, Keith Hall,
+// Gustavo Roo Gonzalez, and Gunner Bradley
+// Description: TS file for the user-create component.
+============================================
+*/
+-->
+
+<div fxLayout="column">
+  <mat-card style="margin: 1% 19% 1% 19%" class="mat-elevation-Z5">
+    <mat-card-title class="accent">Create User</mat-card-title>
+    <br />
+
+    <form
+      [formGroup]="form"
+      #userForm
+      (ngSubmit)="createUser()"
+      autocomplete="off">
+      <mat-card-content>
+        <div fxLayout="column" fxLayoutGap="10px">
+          <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input
+              type="text"
+              matInput
+              [formControl]="form.controls['userName']"/>
+
+            <mat-error
+              class="error"
+              *ngIf="
+                form.controls.userName.hasError('required') &&
+                form.controls.userName.touched">
+              Username is a required field.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input type="password" matInput [formControl]="form.controls['password']" />
+
+            <mat-error
+              class="error" *ngIf=
+			  "form.controls.password.hasError('required') &&
+               form.controls.password.touched">Password is a required field.
+            </mat-error>
+
+            <mat-error
+              class="error"
+              *ngIf="
+                form.controls.password.hasError('pattern') &&
+                form.controls.password.touched">
+              Password must be at least 8 characters, contain one letter, and
+              one number.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>First name</mat-label>
+            <input type="text"
+              matInput
+              [formControl]="form.controls['firstName']"/>
+            <mat-error
+              class="error" *ngIf=
+			  "form.controls.firstName.hasError('required') &&
+               form.controls.firstName.touched">First name is a required field.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Last name</mat-label>
+            <input
+              type="text"
+              matInput
+              [formControl]="form.controls['lastName']"/>
+            <mat-error
+              class="error"
+              *ngIf="
+                form.controls.lastName.hasError('required') &&
+                form.controls.lastName.touched" >
+              Last name is a required field.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Phone number</mat-label>
+            <input
+              type="text"
+              matInput
+              [formControl]="form.controls['phoneNumber']"/>
+            <mat-error
+              class="error"
+              *ngIf="
+                form.controls.phoneNumber.hasError('required') &&
+                form.controls.phoneNumber.touched">
+              Phone number is a required field.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field >
+            <mat-label>Address</mat-label>
+            <input
+              type="text"
+              matInput
+              [formControl]="form.controls['address']"/>
+            <mat-error
+              class="error" *ngIf="form.controls.address.hasError('required') &&
+                form.controls.address.touched" >
+              Address is a required field.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field >
+            <mat-label>Email</mat-label>
+            <input
+              type="text"
+              matInput
+              [formControl]="form.controls['email']" />
+            <mat-error
+              class="error"
+              *ngIf="
+                form.controls.email.hasError('required') &&
+                form.controls.email.touched">
+              Email is a required field.
+            </mat-error>
+
+            <mat-error
+              class="error"
+              *ngIf="
+                form.controls.email.hasError('email') &&
+                form.controls.email.touched">
+              Invalid email format.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <br />
+      <mat-card-actions fxLayoutAlign="end">
+        <button mat-raised-button (click)="cancel()" color="accent">Cancel</button>
+        <button type="submit" mat-raised-button [disabled]="!form.valid" color="accent">
+          Submit
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

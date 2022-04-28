@@ -173,7 +173,7 @@ $mat-primary: (
 $theme-primary: mat-palette($mat-primary, main, lighter, darker);
 
 body {
-  --accent-color: #29603c;
+  --accent-color: #568e67;
   --accent-lighter-color: #bfcfc5;
   --accent-darker-color: #194427;
   --text-accent-color: #{$light-primary-text};
@@ -181,10 +181,10 @@ body {
   --text-accent-darker-color: #{$light-primary-text};
 }
 $mat-accent: (
-  main: #29603c,
+  main: #568e67,
   lighter: #bfcfc5,
   darker: #194427,
-  200: #29603c,
+  200: #568e67,
   // For slide toggle,
   contrast:
     (
@@ -248,12 +248,12 @@ $altTheme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
   font-size: 24px;
   font-family: "Material Icons", "Material Icons";
   .mat-badge-content {
-  font-family: "Karla";
-  font-weight: 800;
+    font-family: "Karla";
+    font-weight: 800;
   }
 }
 
 body {
   margin: 0;
-  background-color: #cccccc }
-
+  background-color: #cccccc;
+}

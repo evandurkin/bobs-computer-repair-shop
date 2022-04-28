@@ -9,6 +9,7 @@
 */
 
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -17,7 +18,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
-import { UserUpdateComponent } from './pages/user-update/user-update.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { DashboardAdminComponent } from './pages/dashboard-admin/dashboard-admin.component';
@@ -35,10 +35,15 @@ import { StandardLayoutComponent } from './shared/standard-layout/standard-layou
 import { DashboardEmployeeComponent } from './pages/dashboard-employee/dashboard-employee.component';
 
 // Browser, Http, Forms, and Cookie imports
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  HttpClient,
+  HttpClientModule,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
+import { ErrorInterceptor } from './shared/error.interceptor'
+
 
 // Flex Layout and Material UI Imports
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -57,7 +62,11 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
-
+import { UserUpdateComponent } from './pages/user-update/user-update.component';
+import { ResetPasswordComponent } from './shared/forms/reset-password/reset-password.component';
+import { VerifyUsernameComponent } from './shared/forms/verify-username/verify-username.component';
+import { VerifyPasswordComponent } from './shared/forms/verify-password/verify-password.component';
+import { VerifySecurityQuestionsComponent } from './shared/forms/verify-security-questions/verify-security-questions.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +74,6 @@ import { MatSelectModule } from '@angular/material/select';
     HomeComponent,
     BaseLayoutComponent,
     AuthLayoutComponent,
-    UserUpdateComponent,
     UserListComponent,
     SecurityQuestionEditComponent,
     SecurityQuestionListComponent,
@@ -81,6 +89,11 @@ import { MatSelectModule } from '@angular/material/select';
     NotFoundComponent,
     StandardLayoutComponent,
     DashboardEmployeeComponent,
+    UserUpdateComponent,
+    ResetPasswordComponent,
+    VerifyUsernameComponent,
+    VerifyPasswordComponent,
+    VerifySecurityQuestionsComponent,
   ],
   imports: [
     BrowserModule,
@@ -105,9 +118,15 @@ import { MatSelectModule } from '@angular/material/select';
     MatDividerModule,
     MatTabsModule,
     MatListModule,
-    MatSelectModule,
+    MatSelectModule
   ],
-  providers: [CookieService],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true,
+    },
+    CookieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
