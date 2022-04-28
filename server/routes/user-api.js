@@ -1,7 +1,7 @@
 /*
 =======================================
 // Title: Bob’s Computer Repair Shop
-// Date: 20 April 2022
+// Date: 27 April 2022
 // Authors: Evan Durkin, Keith Hall,
 // Gustavo Roo Gonzalez, and Gunner Bradley
 // Description: CRUD APIs for users.
@@ -254,6 +254,43 @@ router.delete("/:id", async (req, res) => {
       e.message
     );
     res.status(500).send(deleteUserCatchErrorResponse.toObject());
+  }
+});
+
+// find selected security questions API
+router.get("/:userName/security-questions", async (req, res) => {
+  try {
+    // finds user by ID
+    User.findOne({ userName: req.params.userName }, function (err, user) {
+      if (err) {
+        // returns server error if error
+        console.log(err);
+        const findSelectedSecurityQuestionsMongodbErrorResponse =
+          new ErrorResponse("500", "Internal Server Error", err);
+        res
+          .status(500)
+          .send(findSelectedSecurityQuestionsMongodbErrorResponse.toObject());
+      } else {
+        // returns user's security questions if user is found
+        console.log(user);
+        const findSelectedSecurityQuestionsResponse = new BaseResponse(
+          "200",
+          "Query successful",
+          user.selectedSecurityQuestions
+        );
+        res.json(findSelectedSecurityQuestionsResponse.toObject());
+      }
+    });
+  } catch (e) {
+    console.log(e);
+    const findSelectedSecurityQuestionsErrorResponse = new ErrorResponse(
+      "500",
+      "Internal Server Error",
+      e
+    );
+    res
+      .status(500)
+      .send(findSelectedSecurityQuestionsCatchErrorResponse.toObject());
   }
 });
 
