@@ -349,4 +349,79 @@ router.post("/verify/users/:userName/security-questions", async (req, res) => {
   }
 });
 
+// register new user API
+router.post("/register", async (req, res) => {
+  try {
+    User.findOne({ userName: req.body.userName }, function (err, user) {
+      if (err) {
+        console.log(err);
+        const registerUserMongoDbErrorResponse = new ErrorResponse(
+          "500",
+          "Internal server error",
+          err
+        );
+        res.status(500).send(registerUserMongoDbErrorResponse.toObject());
+      } else {
+        if (!user) {
+          let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // salt/hash the password
+          standardRole = {
+            text: "Standard",
+          };
+
+          // registered user object
+          let registeredUser = {
+            userName: req.body.userName,
+            password: hashedPassword,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            phoneNumber: req.body.phoneNumber,
+            address: req.body.address,
+            email: req.body.email,
+            role: standardRole,
+            selectedSecurityQuestions: req.body.selectedSecurityQuestions,
+          };
+
+          User.create(registeredUser, function (err, newUser) {
+            if (err) {
+              console.log(err);
+              const newUserMongoDbErrorResponse = new ErrorResponse(
+                "500",
+                "Internal server error",
+                err
+              );
+              res.status(500).send(newUserMongoDbErrorResponse.toObject());
+            } else {
+              console.log(newUser);
+              const newUserResponse = new BaseResponse(
+                "200",
+                "Query successful",
+                newUser
+              );
+              res.json(newUserResponse.toObject());
+            }
+          });
+        } else {
+          console.log(
+            "This username already exists. Please choose a different username."
+          );
+          const userExistsErrorResponse = new BaseResponse(
+            "200",
+            "This username already exists. Please choose a different username.",
+            err
+          );
+          res.status(200).send(userExistsErrorResponse.toObject());
+        }
+      }
+    });
+  } catch (e) {
+    console.log(e);
+    const createUserCatchErrorResponse = new ErrorResponse(
+      "500",
+      "Internal server error",
+      e.message
+    );
+    res.status(500).send(createUserCatchErrorResponse.toObject());
+  }
+});
+
 module.exports = router;
