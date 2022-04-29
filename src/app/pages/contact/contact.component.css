@@ -1,4 +1,4 @@
- /*
+/*
 =======================================
 // Title: Bob’s Computer Repair Shop
 // Date: 22 April 2022
@@ -7,3 +7,28 @@
 // Description: Css file for the contact component.
 =======================================
 */
+
+.contact-container {
+  margin: 70px;
+  color: var(--accent-darker-color);
+  font-size: 30px;
+  font-style: bold;
+}
+
+.h2 {
+  font-size: 50px;
+  padding-top: 10px;
+}
+.contact-container p {
+  font-size: 25px;
+  width: 25px;
+  line-height: 1.15em;
+}
+
+.center {
+  text-align: center;
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+  color: var(--accent-color);
+}
