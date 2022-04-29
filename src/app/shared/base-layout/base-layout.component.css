@@ -31,8 +31,12 @@
   }
 
   .signInBtn:hover {
-   color: #33ff66;
-    transition: .5s;
+  background-color: #2a623d;
+  color: white;
+  cursor: pointer;
+  transition: .5s;
+   /* color: #33ff66;
+    transition: .5s; */
   }
 
   .registerLink {
