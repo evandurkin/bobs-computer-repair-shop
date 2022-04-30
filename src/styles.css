@@ -13,8 +13,23 @@
 html, body { height: 100%; }
 
 .functions-icon:hover {
-  color: #33ff66;
+  color: #5fed8a;
 }
+
+.btn-primary {
+  font-family: 'Aldrich', sans-serif;
+  color: #003716;
+  background-color: #568e67;
+  border: none;
+  border-radius: 0px;
+}
+
+.btn-primary:hover {
+  background-color: #5fed8a;
+  transition: .5s;
+  cursor: pointer;
+}
+
 
 
 /*********** navbar logo ***********/
@@ -148,3 +163,52 @@ li a:hover:not(.active) {
   text-decoration: underline;
 }
 
+/*********** error pages ***********/
+.error-container {
+  margin: 10% auto;
+}
+.error-card {
+  background-color: #cccccc;
+  margin: 0 auto;
+}
+
+.error-logo {
+  font-family: 'Aldrich', sans-serif;
+  color: #003716;
+  font-size: 2em;
+  letter-spacing: -2pt;
+  text-decoration: none;
+  text-align: center;
+  margin-bottom: 2em;
+}
+.error {
+  font-family: 'Aldrich', sans-serif;
+  color: #568e67;
+  line-height: normal;
+  text-align: center;
+  line-height: 90%;
+}
+
+.error-title {
+  font-size: 6em;
+  letter-spacing: -1pt;
+}
+
+.error-subtitle {
+  font-size: 3em;
+  letter-spacing: -2pt;
+}
+
+.error-message {
+  font-size: 2em;
+}
+
+.img-not-found {
+  max-width: 700px;
+  margin-bottom: 10px;
+}
+
+.btn-error {
+  font-size: 1.5em;
+  padding: 10px;
+}

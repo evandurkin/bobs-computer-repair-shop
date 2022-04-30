@@ -1,1 +1,32 @@
-<p>internal-server-error works!</p>
+<!--
+    Title: index.html
+    Date: 30 April 2022
+    Authors: Evan Durkin, Keith Hall,
+    Gustavo Roo Gonzalez, and Gunner Bradley
+    Description: Html file for the internal server error component.
+-->
+
+<!-- page container -->
+<div fxLayout="column" class="error-container">
+
+  <!-- logo link back to home page -->
+  <a routerLink="/" class="error-logo">Bob's Computer Repair Shop</a>
+
+  <!-- error card -->
+  <mat-card class="error-card" style="box-shadow: none;">
+    <mat-card-title class="error error-title">500 Error</mat-card-title>
+    <mat-card-subtitle class="error error-subtitle" style="margin-bottom: 30px;">internal server error</mat-card-subtitle>
+
+    <!-- error image and message -->
+    <mat-card-content>
+      <img src="./assets/500.png" class="img-not-found">
+      <br/><br/>
+      <p class="error error-message">the magic isn't there anymore.. try again</p>
+
+      <!-- button back to home page -->
+      <button mat-stroked-button routerLink="/" class="btn-primary btn-error" style="border-radius: 0px; padding: 7px 30px;">back to the shop</button>
+    </mat-card-content>
+  </mat-card>
+
+</div>
+

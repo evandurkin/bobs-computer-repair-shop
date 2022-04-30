@@ -7,3 +7,7 @@
 // Description: Css file for the standard-layout component.
 =======================================
 */
+
+.main-content {
+  margin: 5% 7%;
+}
