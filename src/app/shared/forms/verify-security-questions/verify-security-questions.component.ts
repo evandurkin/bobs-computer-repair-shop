@@ -9,6 +9,11 @@
 */
 
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { SecurityQuestion } from 'src/app/shared/interfaces/security-question';
+
 
 @Component({
   selector: 'app-verify-security-questions',
@@ -17,9 +22,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VerifySecurityQuestionsComponent implements OnInit {
 
-  constructor() { }
+  selectedSecurityQuestions: SecurityQuestion;
+  question1: string;
+  question2: string;
+  question3: string;
+  username: string;
+  form: FormGroup;
+  errorMessage: string;
 
-  ngOnInit(): void {
+  constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient, private fb: FormBuilder) {
+
   }
 
+  ngOnInit(): void {
+
+  }
+
+
 }
+

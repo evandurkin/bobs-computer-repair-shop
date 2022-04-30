@@ -59,7 +59,7 @@ mongoose
 /**
  * API(s) go here...
  */
-app.use("/api/session/users", UserApi);
+app.use("/api/users", UserApi);
 app.use("/api/session/security-questions", SecurityQuestionsApi);
 app.use("/api/session", SessionApi);
 
