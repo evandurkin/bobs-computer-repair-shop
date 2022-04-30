@@ -41,7 +41,7 @@ export class SignInComponent implements OnInit {
     const password = this.form.controls.password.value;
 
     // Service call to server api to authenticate user
-    this.http.post('/api/post-session/sign-in', {
+    this.http.post('/api/session/sign-in', {
 
       userName,
       password
