@@ -67,6 +67,7 @@ import { ResetPasswordComponent } from './shared/forms/reset-password/reset-pass
 import { VerifyUsernameComponent } from './shared/forms/verify-username/verify-username.component';
 import { VerifyPasswordComponent } from './shared/forms/verify-password/verify-password.component';
 import { VerifySecurityQuestionsComponent } from './shared/forms/verify-security-questions/verify-security-questions.component';
+import { InternalServerErrorComponent } from './pages/internal-server-error/internal-server-error.component';
 
 @NgModule({
   declarations: [
@@ -94,6 +95,7 @@ import { VerifySecurityQuestionsComponent } from './shared/forms/verify-security
     VerifyUsernameComponent,
     VerifyPasswordComponent,
     VerifySecurityQuestionsComponent,
+    InternalServerErrorComponent
   ],
   imports: [
     BrowserModule,
