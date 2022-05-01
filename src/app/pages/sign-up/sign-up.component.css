@@ -28,7 +28,7 @@
 }
 
 .mat-card-actions {
-  margin: 10px;
+  margin: 15px;
 }
 
 .mat-card-actions button {
@@ -47,10 +47,35 @@ mat-tab-label {
   margin: 0 25px
 }
 
-mat-label {
-  color: #323232
+mat-label, input {
+  color: black;
+  font-size: 14px;
+}
+
+mat-hint {
+  color: #323232;
 }
 
 .mat-tab-group.mat-background-primary > .mat-tab-header .mat-tab-label, .mat-tab-group.mat-background-primary > .mat-tab-link-container .mat-tab-link, .mat-tab-nav-bar.mat-background-primary > .mat-tab-header .mat-tab-label, .mat-tab-nav-bar.mat-background-primary > .mat-tab-link-container .mat-tab-link {
   margin: 0 30px;
+}
+
+.return-sign-in {
+  color: #323232;
+  display: inline-flex;
+}
+
+.btn-sign-up {
+  border-radius: 0;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+mat-option {
+  font-family: 'Karla', sans-serif;
+  font-weight: 400;
+}
+
+mat-select-value {
+  color: black;
 }

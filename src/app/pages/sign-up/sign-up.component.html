@@ -160,11 +160,11 @@
             fxLayout="row"
             fxLayoutGap="30px"
             fxLayoutAlign="center stretch"
-            style="padding-top: 30px"
+            style="padding-top: 50px; padding-bottom: 30px;"
           >
             <div fxLayout="column" fxFlex="40%">
               <mat-form-field appearance="fill">
-                <mat-label>Questions</mat-label>
+                <mat-label> Select Question 1</mat-label>
                 <mat-select formControlName="securityQuestion1">
                   <mat-option
                     *ngFor="let question of securityQuestions"
@@ -184,7 +184,7 @@
                 >
               </mat-form-field>
               <mat-form-field appearance="fill">
-                <mat-label>Questions</mat-label>
+                <mat-label>Select Question 2</mat-label>
                 <mat-select formControlName="securityQuestion2">
                   <mat-option
                     *ngFor="let question of securityQuestions"
@@ -204,7 +204,7 @@
                 >
               </mat-form-field>
               <mat-form-field appearance="fill">
-                <mat-label>Questions</mat-label>
+                <mat-label>Select Question 3</mat-label>
                 <mat-select formControlName="securityQuestion3">
                   <mat-option
                     *ngFor="let question of securityQuestions"
@@ -293,13 +293,14 @@
             fxLayout="row"
             fxLayoutGap="30px"
             fxLayoutAlign="center stretch"
-            style="padding-top: 30px"
+            style="padding-top: 50px; padding-bottom: 30px;"
           >
             <div fxLayout="column" fxFlex="40%">
               <mat-form-field appearance="fill">
                 <mat-label>Username</mat-label>
                 <input matInput formControlName="userName" />
               </mat-form-field>
+
               <mat-form-field appearance="fill">
                 <mat-label>Password</mat-label>
                 <input
@@ -307,6 +308,8 @@
                   matInput
                   [formControl]="newUserFormGroup.controls['password']"
                 />
+                <mat-hint>Password must be at least 8 characters, contain one letter,
+                  and one number.</mat-hint>
                 <mat-error
                   class="error-input"
                   *ngIf="
@@ -315,7 +318,7 @@
                     ) && newUserFormGroup.controls['password'].touched
                   "
                 >
-                  Password is a required field
+                  You must create a password
                 </mat-error>
 
                 <mat-error
@@ -337,52 +340,58 @@
   </mat-card-content>
 
   <mat-card-actions fxLayout="row-reverse">
+
     <div *ngIf="btnNextPrev.index == 0">
+      <!-- <a routerLink="/" class="return-sign-in" style="">return to sign-in</a> -->
       <button
-        mat-raised-button
-        color="primary"
+        mat-button
+        class="btn-primary btn-sign-up"
         [disabled]="btnNextPrev.next"
         (click)="navig('next')"
       >
-        Next
+        next
       </button>
+      <a routerLink="/" class="return-sign-in" style="float:left; margin-right: 470px;">return to sign-in</a>
     </div>
 
     <div *ngIf="btnNextPrev.index == 1">
       <button
-        mat-raised-button
-        color="primary"
+        mat-button
+        class="btn-primary btn-sign-up"
+        style="background-color: rgba(86, 131, 103, .6);"
         [disabled]="btnNextPrev.prev"
         (click)="navig('prev')"
       >
-        Prev
+        prev
       </button>
       <button
-        mat-raised-button
-        color="primary"
+        mat-button
+        class="btn-primary btn-sign-up"
         [disabled]="btnNextPrev.next"
         (click)="navig('next')"
       >
-        Next
+        next
       </button>
     </div>
     <div *ngIf="btnNextPrev.index == 2">
       <button
-        mat-raised-button
-        color="primary"
+        mat-button
+        class="btn-primary btn-sign-up"
+        style="background-color: rgba(86, 131, 103, .6);"
         [disabled]="btnNextPrev.prev"
         (click)="navig('prev')"
       >
-        Prev
+        prev
       </button>
       <button
-        mat-raised-button
-        color="accent"
+        mat-button
+        class="btn-primary btn-sign-up"
         type="submit"
         (click)="registerAccount()"
       >
-        Submit
+        submit
       </button>
+
     </div>
   </mat-card-actions>
 </mat-card>
