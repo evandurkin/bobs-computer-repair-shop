@@ -49,7 +49,13 @@ export class SignUpComponent implements OnInit {
       securityQuestion3Answer: new FormControl(null, Validators.required),
 
       userName: new FormControl(null, Validators.required),
-      password: new FormControl(null, Validators.required),
+      password: new FormControl(
+        null,
+        Validators.compose([
+          Validators.required,
+          Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$'),
+        ])
+      ),
     });
     this.securityQuestionService.findAllSecurityQuestions().subscribe((res) => {
       this.securityQuestions = res['data'];

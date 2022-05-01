@@ -2,6 +2,7 @@
   <mat-card-title class="signup-title mat-display-1"
     >Account Registration</mat-card-title
   >
+
   <mat-card-content>
     <form [formGroup]="newUserFormGroup">
       <mat-tab-group
@@ -28,26 +29,78 @@
                   required
                   fxFlex="50"
                 />
+                <mat-error
+                  class="error"
+                  *ngIf="
+                    newUserFormGroup.controls['firstName'].hasError(
+                      'required'
+                    ) && newUserFormGroup.controls['firstName'].touched
+                  "
+                  >First name is a required field.</mat-error
+                >
               </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Last Name</mat-label>
                 <input matInput formControlName="lastName" required />
+                <mat-error
+                  class="error"
+                  *ngIf="
+                    newUserFormGroup.controls['lastName'].hasError(
+                      'required'
+                    ) && newUserFormGroup.controls['lastName'].touched
+                  "
+                  >Last name is a required field.</mat-error
+                >
               </mat-form-field>
               <div class="spacer"></div>
 
               <mat-form-field appearance="fill">
                 <mat-label>Telephone</mat-label>
                 <input matInput formControlName="phoneNumber" required />
+                <mat-error
+                  class="error"
+                  *ngIf="
+                    newUserFormGroup.controls['phoneNumber'].hasError(
+                      'required'
+                    ) && newUserFormGroup.controls['phoneNumber'].touched
+                  "
+                  >Telephone is a required field.</mat-error
+                >
               </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Email <Address></Address></mat-label>
                 <input matInput formControlName="email" required />
+                <mat-error
+                  class="error"
+                  *ngIf="
+                    newUserFormGroup.controls['email'].hasError('required') &&
+                    newUserFormGroup.controls['email'].touched
+                  "
+                  >Email is a required field.</mat-error
+                >
+                <mat-error
+                  class="error"
+                  *ngIf="
+                    newUserFormGroup.controls['email'].hasError('email') &&
+                    newUserFormGroup.controls['email'].touched
+                  "
+                  >Invalid email format.</mat-error
+                >
               </mat-form-field>
             </div>
             <div fxLayout="column" fxFlex="40%">
               <mat-form-field appearance="fill">
                 <mat-label>Address Line 1</mat-label>
                 <input matInput formControlName="address1" required />
+                <mat-error
+                  class="error"
+                  *ngIf="
+                    newUserFormGroup.controls['address1'].hasError(
+                      'required'
+                    ) && newUserFormGroup.controls['address1'].touched
+                  "
+                  >Address is a required field.</mat-error
+                >
               </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Address Line 2</mat-label>
@@ -62,14 +115,38 @@
                 <mat-form-field appearance="fill" fxFlex="45%">
                   <mat-label>City</mat-label>
                   <input matInput formControlName="city" required />
+                  <mat-error
+                    class="error"
+                    *ngIf="
+                      newUserFormGroup.controls['city'].hasError('required') &&
+                      newUserFormGroup.controls['city'].touched
+                    "
+                    >City is a required field.</mat-error
+                  >
                 </mat-form-field>
                 <mat-form-field appearance="fill" fxFlex="15%">
                   <mat-label>State</mat-label>
                   <input matInput formControlName="state" required />
+                  <mat-error
+                    class="error"
+                    *ngIf="
+                      newUserFormGroup.controls['state'].hasError('required') &&
+                      newUserFormGroup.controls['state'].touched
+                    "
+                    >ST REQ</mat-error
+                  >
                 </mat-form-field>
                 <mat-form-field appearance="fill" fxFlex="35%">
                   <mat-label>Zip Code</mat-label>
                   <input matInput formControlName="zip" required />
+                  <mat-error
+                    class="error"
+                    *ngIf="
+                      newUserFormGroup.controls['zip'].hasError('required') &&
+                      newUserFormGroup.controls['zip'].touched
+                    "
+                    >Zip is a required field.</mat-error
+                  >
                 </mat-form-field>
               </div>
             </div>
@@ -96,6 +173,15 @@
                     {{ question.text }}
                   </mat-option>
                 </mat-select>
+                <mat-error
+                  class="error"
+                  *ngIf="
+                    newUserFormGroup.controls['securityQuestion1'].hasError(
+                      'required'
+                    ) && newUserFormGroup.controls['securityQuestion1'].touched
+                  "
+                  >Required field.</mat-error
+                >
               </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Questions</mat-label>
@@ -107,6 +193,15 @@
                     {{ question.text }}
                   </mat-option>
                 </mat-select>
+                <mat-error
+                  class="error"
+                  *ngIf="
+                    newUserFormGroup.controls['securityQuestion2'].hasError(
+                      'required'
+                    ) && newUserFormGroup.controls['securityQuestion2'].touched
+                  "
+                  >Required field.</mat-error
+                >
               </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Questions</mat-label>
@@ -118,6 +213,15 @@
                     {{ question.text }}
                   </mat-option>
                 </mat-select>
+                <mat-error
+                  class="error"
+                  *ngIf="
+                    newUserFormGroup.controls['securityQuestion3'].hasError(
+                      'required'
+                    ) && newUserFormGroup.controls['securityQuestion3'].touched
+                  "
+                  >Required field.</mat-error
+                >
               </mat-form-field>
             </div>
             <div fxLayout="column" fxFlex="40%">
@@ -128,6 +232,17 @@
                   matInput
                   required
                 />
+                <mat-error
+                  class="error"
+                  *ngIf="
+                    newUserFormGroup.controls[
+                      'securityQuestion1Answer'
+                    ].hasError('required') &&
+                    newUserFormGroup.controls['securityQuestion1Answer'].touched
+                  "
+                >
+                  Answer Required
+                </mat-error>
               </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Answer</mat-label>
@@ -136,6 +251,17 @@
                   matInput
                   required
                 />
+                <mat-error
+                  class="error"
+                  *ngIf="
+                    newUserFormGroup.controls[
+                      'securityQuestion2Answer'
+                    ].hasError('required') &&
+                    newUserFormGroup.controls['securityQuestion2Answer'].touched
+                  "
+                >
+                  Answer Required
+                </mat-error>
               </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Answer</mat-label>
@@ -144,6 +270,17 @@
                   matInput
                   required
                 />
+                <mat-error
+                  class="error"
+                  *ngIf="
+                    newUserFormGroup.controls[
+                      'securityQuestion3Answer'
+                    ].hasError('required') &&
+                    newUserFormGroup.controls['securityQuestion3Answer'].touched
+                  "
+                >
+                  Answer Required
+                </mat-error>
               </mat-form-field>
             </div>
           </div>
@@ -165,7 +302,32 @@
               </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Password</mat-label>
-                <input matInput formControlName="password" />
+                <input
+                  type="password"
+                  matInput
+                  [formControl]="newUserFormGroup.controls['password']"
+                />
+                <mat-error
+                  class="error"
+                  *ngIf="
+                    newUserFormGroup.controls['password'].hasError(
+                      'required'
+                    ) && newUserFormGroup.controls['password'].touched
+                  "
+                >
+                  Password is a required field
+                </mat-error>
+
+                <mat-error
+                  class="error"
+                  *ngIf="
+                    newUserFormGroup.controls.password.hasError('pattern') &&
+                    newUserFormGroup.controls.password.touched
+                  "
+                >
+                  Password must be at least 8 characters, contain one letter,
+                  and one number.
+                </mat-error>
               </mat-form-field>
             </div>
           </div>
