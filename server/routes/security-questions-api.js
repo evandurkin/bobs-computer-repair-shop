@@ -9,7 +9,7 @@
 */
 
 const express = require("express");
-const SecurityQuestion = require("../models/security-questions");
+const SecurityQuestion = require("../models/security-question");
 const BaseResponse = require("../services/base-response");
 const ErrorResponse = require("../services/error-response");
 

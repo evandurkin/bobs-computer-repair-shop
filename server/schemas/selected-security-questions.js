@@ -11,7 +11,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const selectedSecurityQuestionsSchema = new Schema({
+let selectedSecurityQuestionsSchema = new Schema({
   questionText: { type: String },
   answerText: { type: String },
 });
