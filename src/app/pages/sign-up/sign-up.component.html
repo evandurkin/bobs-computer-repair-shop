@@ -1,6 +1,6 @@
 <mat-card class="signup-main">
   <mat-card-title class="signup-title mat-display-1"
-    >Account Registration</mat-card-title
+    >Employee Account Registration</mat-card-title
   >
 
   <mat-card-content>
@@ -180,7 +180,7 @@
                       'required'
                     ) && newUserFormGroup.controls['securityQuestion1'].touched
                   "
-                  >Required field.</mat-error
+                  >You must select a first question</mat-error
                 >
               </mat-form-field>
               <mat-form-field appearance="fill">
@@ -200,7 +200,7 @@
                       'required'
                     ) && newUserFormGroup.controls['securityQuestion2'].touched
                   "
-                  >Required field.</mat-error
+                  >You must select a second question</mat-error
                 >
               </mat-form-field>
               <mat-form-field appearance="fill">
@@ -220,7 +220,7 @@
                       'required'
                     ) && newUserFormGroup.controls['securityQuestion3'].touched
                   "
-                  >Required field.</mat-error
+                  >You must select a third question</mat-error
                 >
               </mat-form-field>
             </div>
@@ -241,7 +241,7 @@
                     newUserFormGroup.controls['securityQuestion1Answer'].touched
                   "
                 >
-                  Answer Required
+                  Required field
                 </mat-error>
               </mat-form-field>
               <mat-form-field appearance="fill">
@@ -260,7 +260,7 @@
                     newUserFormGroup.controls['securityQuestion2Answer'].touched
                   "
                 >
-                  Answer Required
+                Required field
                 </mat-error>
               </mat-form-field>
               <mat-form-field appearance="fill">
@@ -279,7 +279,7 @@
                     newUserFormGroup.controls['securityQuestion3Answer'].touched
                   "
                 >
-                  Answer Required
+                Required field
                 </mat-error>
               </mat-form-field>
             </div>
@@ -351,7 +351,7 @@
       >
         next
       </button>
-      <a routerLink="/" class="return-sign-in" style="float:left; margin-right: 470px;">return to sign-in</a>
+      <a routerLink="/post-session/sign-in" class="return-sign-in" style="float:left; margin-right: 470px;">return to sign-in</a>
     </div>
 
     <div *ngIf="btnNextPrev.index == 1">

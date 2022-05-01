@@ -57,11 +57,7 @@ const routes: Routes = [
       {
         path: 'contact',
         component: ContactComponent,
-      },
-      {
-        path: 'sign-up',
-        component: SignUpComponent,
-      },
+      }
     ],
   },
 
@@ -116,6 +112,10 @@ const routes: Routes = [
       {
         path: 'sign-in',
         component: SignInComponent
+      },
+      {
+        path: 'sign-up',
+        component: SignUpComponent,
       },
       {
         path: 'user-details',
