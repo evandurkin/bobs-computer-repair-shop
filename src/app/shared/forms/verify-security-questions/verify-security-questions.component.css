@@ -7,3 +7,16 @@
 // Description: CSS file for the verify-security-questions component.
 =======================================
 */
+.card-container {
+  border-radius: 0;
+  padding: 0;
+  margin:auto;
+  width: 60%;
+
+}
+.mat-headline {
+  text-align: center;
+  font-size: 32px;
+  font-family:Aldrich;
+  margin-top:20%;
+}

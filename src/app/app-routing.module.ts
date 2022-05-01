@@ -33,6 +33,7 @@ import { UserCreateComponent } from './pages/user-create/user-create.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { VerifyUsernameComponent } from './shared/forms/verify-username/verify-username.component';
 import { VerifySecurityQuestionsComponent } from './shared/forms/verify-security-questions/verify-security-questions.component';
+import { ResetPasswordComponent } from './shared/forms/reset-password/reset-password.component';
 import { InternalServerErrorComponent } from './pages/internal-server-error/internal-server-error.component';
 import { AuthGuard } from './auth.guard';
 
@@ -119,7 +120,10 @@ const routes: Routes = [
         path: 'verify-security-questions',
         component: VerifySecurityQuestionsComponent,
       },
-
+      {
+        path: 'reset-password',
+        component: ResetPasswordComponent,
+      },
       {
         path: '404-error',
         component: NotFoundComponent
