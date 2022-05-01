@@ -41,6 +41,7 @@ export class SecurityQuestionListComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // opens the update-question dialog box
   openSecurityQuestionUpdateDialog(id, question) {
     const dialogRef = this.dialog.open(SecurityQuestionEditComponent, {
       disableClose: true,
@@ -49,6 +50,7 @@ export class SecurityQuestionListComponent implements OnInit {
       }
     });
 
+    // after the dialog is closed the question data is added
     dialogRef.afterClosed().subscribe(data => {
       if(data) {
         console.log(data)
@@ -65,6 +67,7 @@ export class SecurityQuestionListComponent implements OnInit {
     })
   }
 
+  // delete question dialog box
   delete(questionId: string, questionText: string): void {
     const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {
       data: {
