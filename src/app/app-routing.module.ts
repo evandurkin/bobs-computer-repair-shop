@@ -35,6 +35,7 @@ import { VerifyUsernameComponent } from './shared/forms/verify-username/verify-u
 import { VerifySecurityQuestionsComponent } from './shared/forms/verify-security-questions/verify-security-questions.component';
 import { InternalServerErrorComponent } from './pages/internal-server-error/internal-server-error.component';
 import { AuthGuard } from './auth.guard';
+import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
 
 
 const routes: Routes = [
@@ -88,6 +89,10 @@ const routes: Routes = [
         path: 'security-questions',
         component: SecurityQuestionListComponent,
       },
+      {
+        path: 'security-questions/create',
+        component: SecurityQuestionCreateComponent
+      }
     ],
   },
   /* Standard-employee users (canActivate) */
@@ -132,7 +137,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'session/404-error',
+    redirectTo: 'session/not-found',
   },
 ];
 

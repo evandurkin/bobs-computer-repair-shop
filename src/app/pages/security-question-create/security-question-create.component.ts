@@ -32,14 +32,14 @@ export class SecurityQuestionCreateComponent implements OnInit {
     }
 
     this.securityQuestionService.createSecurityQuestion(newSecurityQuestion).subscribe(res => {
-      this.router.navigate(['/security-questions']);
+      this.router.navigate(['/session/security-questions']);
     }, err => {
       console.log(err);
     });
   }
 
   cancel(): void {
-    this.router.navigate(['/security-questions']);
+    this.router.navigate(['/session/security-questions']);
   }
 
 }
