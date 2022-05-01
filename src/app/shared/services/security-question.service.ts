@@ -42,7 +42,7 @@ export class SecurityQuestionService {
   updateSecurityQuestion(
     questionId: string,
     updatedSecurityQuestion: SecurityQuestion
-  ) {
+  ): Observable<any> {
     return this.http.put('/api/session/security-questions/' + questionId, {
       text: updatedSecurityQuestion.text,
     });
