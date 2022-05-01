@@ -4,7 +4,7 @@
 // Date: 04 April 2022
 // Authors: Evan Durkin, Keith Hall,
 // Gustavo Roo Gonzalez, and Gunner Bradley
-// Description: AApp.js file for BCRS App.
+// Description: App.js file for BCRS App.
 =======================================
 */
 
@@ -59,7 +59,7 @@ mongoose
  * API(s) go here...
  */
 app.use("/api/users", UserApi);
-app.use("/api/session/security-questions", SecurityQuestionsApi);
+app.use("/api/security-questions", SecurityQuestionsApi);
 app.use("/api/session", SessionApi);
 
 /**

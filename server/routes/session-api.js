@@ -84,82 +84,11 @@ router.post("/sign-in", async (req, res) => {
   }
 });
 
-// start here
-// findAllUsers API
-router.get("/", async (req, res) => {
-  try {
-    //Finds and returns all users as an array
-    User.find({})
-      .where("isDisabled")
-      .equals(false)
-      .exec(function (error, users) {
-        // Error handling
-        if (error) {
-          console.log(error);
-          const serverError = new ErrorResponse(
-            "500",
-            "Internal server error",
-            error
-          ); // Create a variable and instantiate the errorResponse class.
-          res.status(500).send(serverError.toObject()); // Convert values in the response to native objects.
-        } else {
-          // Return all users
-          console.log(users);
-          const queryResponse = new BaseResponse(
-            "200",
-            "MongoDB query was successful",
-            users
-          ); // Instantiate baseResponse and convert values to native objects.
-          res.json(queryResponse.toObject());
-        }
-      });
-  } catch (e) {
-    console.log(e);
-    res
-      .status(500)
-      .send(
-        new ErrorResponse("500", "Internal server error", e.message).toObject()
-      );
-  }
-});
-
-// findAllByID API
-router.get("/:id", async (req, res) => {
-  try {
-    User.findOne({ _id: req.params.id }, function (err, user) {
-      if (err) {
-        console.log(err);
-        const findByIdMongodbErrorResponse = new ErrorResponse(
-          500,
-          "Internal server error",
-          err
-        );
-        res.status(500).send(findByIdMongodbErrorResponse.toObject());
-      } else {
-        console.log(user);
-        const findByIdResponse = new BaseResponse(
-          200,
-          "Query successful",
-          user
-        );
-        res.json(findByIdResponse.toObject());
-      }
-    });
-  } catch (e) {
-    console.log(e);
-    const findByIdCatchErrorResponse = new ErrorResponse(
-      500,
-      "Internal server error",
-      e
-    );
-    res.status(500).send(findByIdCatchErrorResponse.toObject());
-  }
-});
-
 // Verify Users
 router.get("/verify/users/:userName", async (req, res) => {
   try {
     User.findOne({ userName: req.params.userName }, function (err, user) {
+
       // Error processing query
       if (err) {
         console.log(err);
@@ -278,8 +207,9 @@ router.post("/users/:userName/reset-password", async (req, res) => {
  */
 router.post("/verify/users/:userName/security-questions", async (req, res) => {
   try {
-    User.findOne({ userName: req.params.userName }, function (err, user) {
-      // on error
+    User.findOne({ userName: req.params.userName }, function (err, user) { // Find by user name
+
+      // Eror response
       if (err) {
         console.log(err);
         const verifySecurityQuestionsMongodbErrorResponse = new ErrorResponse(
@@ -290,7 +220,8 @@ router.post("/verify/users/:userName/security-questions", async (req, res) => {
         res
           .status(500)
           .send(verifySecurityQuestionsMongodbErrorResponse.toObject());
-        // on success
+
+        // Success response
       } else {
         console.log(user);
         const selectedSecurityQuestionOne = user.selectedSecurityQuestions.find(
@@ -304,7 +235,7 @@ router.post("/verify/users/:userName/security-questions", async (req, res) => {
             (q3) => q3.questionText === req.body.questionText3
           );
 
-        // validate matching answers
+        // Validate matching answers
         const isValidAnswerOne =
           selectedSecurityQuestionOne.answerText === req.body.answerText1;
         const isValidAnswerTwo =
@@ -312,7 +243,7 @@ router.post("/verify/users/:userName/security-questions", async (req, res) => {
         const isValidAnswerThree =
           selectedSecurityQuestionThree.answerText === req.body.answerText3;
 
-        // if all answers match
+        // If answers match
         if (isValidAnswerOne && isValidAnswerTwo && isValidAnswerThree) {
           console.log(
             `User ${user.userName} answered their security questions correctly`
@@ -323,7 +254,7 @@ router.post("/verify/users/:userName/security-questions", async (req, res) => {
             user
           );
           res.json(validSecurityQuestionsResponse.toObject());
-          // if answers are incorrect
+
         } else {
           console.log(
             `User ${user.userName} did not answer their security questions correctly`
@@ -337,7 +268,7 @@ router.post("/verify/users/:userName/security-questions", async (req, res) => {
         }
       }
     });
-    // catch error
+    // Catch error
   } catch (e) {
     console.log(e);
     const verifySecurityQuestionsCatchErrorResponse = new ErrorResponse(
@@ -349,7 +280,7 @@ router.post("/verify/users/:userName/security-questions", async (req, res) => {
   }
 });
 
-// register new user API
+// Register new user API
 router.post("/register", async (req, res) => {
   try {
     User.findOne({ userName: req.body.userName }, function (err, user) {
@@ -368,7 +299,6 @@ router.post("/register", async (req, res) => {
             text: "Standard",
           };
 
-          // registered user object
           let registeredUser = {
             userName: req.body.userName,
             password: hashedPassword,
