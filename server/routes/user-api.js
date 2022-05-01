@@ -25,7 +25,7 @@ router.get("/", async (req, res) => {
     User.find({})
       .where("isDisabled")
       .equals(false)
-      .exec(function (err, users) {
+      .exec(function (error, users) {
         // Error handling
         if (error) {
           console.log(error);
@@ -33,7 +33,7 @@ router.get("/", async (req, res) => {
             "500",
             "Internal server error",
             error
-          );  // Create a variable and instantiate the errorResponse class.
+          ); // Create a variable and instantiate the errorResponse class.
           res.status(500).send(serverError.toObject());
         } else {
           // Return all users
@@ -43,18 +43,18 @@ router.get("/", async (req, res) => {
             "Query Successful",
             users
           ); // Instantiate baseResponse and convert values to native objects.
-            res.json(queryResponse.toObject());
-          }
-        });
-    } catch (e) {
-      console.log(e);
-      res
-        .status(500)
-        .send(
-          new ErrorResponse("500", "Internal server error", e.message).toObject()
-        );
-    }
-  });
+          res.json(queryResponse.toObject());
+        }
+      });
+  } catch (e) {
+    console.log(e);
+    res
+      .status(500)
+      .send(
+        new ErrorResponse("500", "Internal server error", e.message).toObject()
+      );
+  }
+});
 
 // findAllByID API
 router.get("/:id", async (req, res) => {
