@@ -24,3 +24,7 @@ span {
 .footer-content {
   padding: 20px
 }
+
+.mat-menu-content {
+  margin-right: 10px;
+}

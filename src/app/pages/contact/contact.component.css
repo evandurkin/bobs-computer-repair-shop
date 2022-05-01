@@ -10,18 +10,19 @@
 
 .contact-container {
   margin: 70px;
-  color: var(--accent-darker-color);
+  color: #2a623d;
+  font-family: 'Karla', sans-serif;
   font-size: 30px;
-  font-style: bold;
+  letter-spacing: -1pt;
 }
 
-.h2 {
-  font-size: 50px;
+.contact-title {
+  font-size: 40px;
   padding-top: 10px;
 }
-.contact-container p {
+
+.contact-p {
   font-size: 25px;
-  width: 25px;
   line-height: 1.15em;
 }
 

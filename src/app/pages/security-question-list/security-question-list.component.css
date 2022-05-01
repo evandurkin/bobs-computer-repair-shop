@@ -9,12 +9,13 @@
 */
 
 /************* Main Mat-Card Styling *************/
-.users-list-card {
+.question-list-card {
   border-radius: 0;
   padding: 0;
   background-color: #ffffff;
   width: 50%;
-  margin: 20px auto;
+  min-width: 670px;
+  margin: 5% auto;
 }
 
 /************* Users Table Styling *************/
@@ -36,6 +37,12 @@ th.mat-header-cell,
 td.mat-cell,
 td.mat-footer-cell {
   column-gap: 10px;
+}
+
+th.mat-header-cell:last-of-type,
+td.mat-cell:last-of-type,
+td.mat-footer-cell:last-of-type {
+  padding-right: 0;
 }
 
 .users-title {
