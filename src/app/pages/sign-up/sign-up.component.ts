@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../../shared/services/user.service';
 import { SecurityQuestionService } from 'src/app/shared/services/security-question.service';
 
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -56,7 +57,13 @@ export class SignUpComponent implements OnInit {
       securityQuestion3Answer: new FormControl(null, Validators.required),
 
       userName: new FormControl(null, Validators.required),
-      password: new FormControl(null, Validators.required),
+      password: new FormControl(
+        null,
+        Validators.compose([
+          Validators.required,
+          Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$'),
+        ])
+      ),
     });
     this.securityQuestionService.findAllSecurityQuestions().subscribe((res) => {
       this.securityQuestions = res['data'];
@@ -110,6 +117,7 @@ export class SignUpComponent implements OnInit {
         console.log(err);
       } else {
         console.log(this.newUser);
+        // this.router.navigate(['/']);
       }
     });
 

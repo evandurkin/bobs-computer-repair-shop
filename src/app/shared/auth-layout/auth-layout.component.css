@@ -4,7 +4,7 @@
   font-weight: lighter;
 }
 span {
-  font-family: Karla;
+  font-family: 'Karla', sans-serif;
 }
 
 .navbar-container {
@@ -18,10 +18,14 @@ span {
 
 .main-content {
   padding-left: 0px;
-  margin-bottom: 5%;
+  padding-bottom: 8%;
+  margin: 2% 12% 5%;
 }
 
 .footer-content {
   padding: 20px
 }
 
+.mat-menu-content {
+  margin-right: 10px;
+}

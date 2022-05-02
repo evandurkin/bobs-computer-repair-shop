@@ -1,0 +1,40 @@
+/*
+    Title: security question dialog
+    Date: 1 May 2022
+    Authors: Evan Durkin, Keith Hall,
+    Gustavo Roo Gonzalez, and Gunner Bradley
+    Description: CSS for security question dialog
+*/
+
+.dialog-questions {
+  height: 100%;
+}
+
+.mat-dialog-content {
+  overflow: inherit;
+  font-family: 'Karla', sans-serif;
+}
+
+.btn-dialog {
+  border-radius: 0;
+  font-size: 14px;
+}
+
+.btn-dialog-cancel {
+  border-radius: 0;
+  font-size: 14px;
+  color: rgb(240, 240, 240);
+  background-color: #888888;
+}
+
+.mat-input-element {
+  font-family: 'Karla', sans-serif;
+}
+
+.dialog-title {
+  margin-bottom: 40px;
+}
+
+.error-question {
+  font-size: 11pt;
+}

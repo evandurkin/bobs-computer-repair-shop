@@ -33,6 +33,12 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { StandardLayoutComponent } from './shared/standard-layout/standard-layout.component';
 import { DashboardEmployeeComponent } from './pages/dashboard-employee/dashboard-employee.component';
+import { UserUpdateComponent } from './pages/user-update/user-update.component';
+import { ResetPasswordComponent } from './shared/forms/reset-password/reset-password.component';
+import { VerifyUsernameComponent } from './shared/forms/verify-username/verify-username.component';
+import { VerifyPasswordComponent } from './shared/forms/verify-password/verify-password.component';
+import { VerifySecurityQuestionsComponent } from './shared/forms/verify-security-questions/verify-security-questions.component';
+import { InternalServerErrorComponent } from './pages/internal-server-error/internal-server-error.component';
 
 // Browser, Http, Forms, and Cookie imports
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -42,8 +48,7 @@ import {
   HttpClientModule,
   HTTP_INTERCEPTORS,
 } from '@angular/common/http';
-import { ErrorInterceptor } from './shared/error.interceptor'
-
+import { ErrorInterceptor } from './shared/error.interceptor';
 
 // Flex Layout and Material UI Imports
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -62,11 +67,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
-import { UserUpdateComponent } from './pages/user-update/user-update.component';
-import { ResetPasswordComponent } from './shared/forms/reset-password/reset-password.component';
-import { VerifyUsernameComponent } from './shared/forms/verify-username/verify-username.component';
-import { VerifyPasswordComponent } from './shared/forms/verify-password/verify-password.component';
-import { VerifySecurityQuestionsComponent } from './shared/forms/verify-security-questions/verify-security-questions.component';
+import { MatStepperModule } from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
@@ -94,6 +95,7 @@ import { VerifySecurityQuestionsComponent } from './shared/forms/verify-security
     VerifyUsernameComponent,
     VerifyPasswordComponent,
     VerifySecurityQuestionsComponent,
+    InternalServerErrorComponent,
   ],
   imports: [
     BrowserModule,
@@ -118,7 +120,8 @@ import { VerifySecurityQuestionsComponent } from './shared/forms/verify-security
     MatDividerModule,
     MatTabsModule,
     MatListModule,
-    MatSelectModule
+    MatSelectModule,
+    MatStepperModule,
   ],
   providers: [
     {
@@ -126,7 +129,8 @@ import { VerifySecurityQuestionsComponent } from './shared/forms/verify-security
       useClass: ErrorInterceptor,
       multi: true,
     },
-    CookieService],
+    CookieService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

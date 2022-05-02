@@ -41,16 +41,35 @@ export class SecurityQuestionListComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  openSecurityQuestionUpdateDialog(questionId: string, questionText: string) {
+  // opens the update-question dialog box
+  openSecurityQuestionUpdateDialog(id, question) {
     const dialogRef = this.dialog.open(SecurityQuestionEditComponent, {
       disableClose: true,
       data: {
-        _id: questionId,
-        text: questionText,
+        questionData: question
       },
+      height: '300px',
+      width: '550px'
     });
+
+    // after the dialog is closed the question data is added
+    dialogRef.afterClosed().subscribe(data => {
+      if(data) {
+        console.log(data)
+        this.securityQuestionService.updateSecurityQuestion(id, data).subscribe(() => {
+          console.log("Question has been updated!");
+          this.securityQuestionService.findAllSecurityQuestions().subscribe(res => {
+            this.questions = res.data;
+            console.log(this.questions);
+          }, err => {
+            console.log(err);
+          });
+        })
+      }
+    })
   }
 
+  // delete question dialog box
   delete(questionId: string, questionText: string): void {
     const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {
       data: {

@@ -1,3 +1,14 @@
+/*
+=======================================
+// Title: Bob’s Computer Repair Shop
+// Date: 27 April 2022
+// Authors: Evan Durkin, Keith Hall,
+// Gustavo Roo Gonzalez, and Gunner Bradley
+// Description: TS file for the verify-user component.
+=======================================
+*/
+
+// Imported Modules
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -11,33 +22,34 @@ import { Router } from '@angular/router';
 export class VerifyUsernameComponent implements OnInit {
 
   form: FormGroup;
-  error: string;
+  errorMessages:  string;
 
   constructor(private http: HttpClient, private router: Router, private fb: FormBuilder, ) { }
 
-  /**
-   * requires the username in order to reset password
-   */
+
+   // Requires username on form
   ngOnInit(): void {
     this.form = this.fb.group({
       username: [null, Validators.compose([Validators.required])]
     });
   }
 
-  /**
-   * with the queryParams, user link will not change
-   */
-  GetUsername() {
+  // Validation
+  validateUsername() {
     const username = this.form.controls['username'].value;
 
-    this.http.get(`/api/session/verify/users/${username}`).subscribe(res => {
+    // Calls verify user api to match username
+    this.http.get('/api/session/verify/users/' + username).subscribe(res => {
+
+      // If username matches, user is routed to verify-security-questions.
       if (res) {
-        this.router.navigate(['/session/verify-security-questions'], {queryParams: {username: username},
+        this.router.navigate(['/post-session/verify-security-questions'], {queryParams: {username: username},
         skipLocationChange: true
       });
       }
+      // If user enters invalid username
     }, err => {
-      this.error = 'Invalid Username';
+      this.errorMessages = ('Invalid user name. Please try again.')
       console.log(err);
     })
   }
