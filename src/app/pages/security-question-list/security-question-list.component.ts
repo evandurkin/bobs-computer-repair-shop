@@ -47,7 +47,9 @@ export class SecurityQuestionListComponent implements OnInit {
       disableClose: true,
       data: {
         questionData: question
-      }
+      },
+      height: '300px',
+      width: '550px'
     });
 
     // after the dialog is closed the question data is added

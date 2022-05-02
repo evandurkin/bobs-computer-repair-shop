@@ -1,12 +1,23 @@
-<mat-dialog-content fxFlex fxLayout="column" [formGroup]="questionForm">
-  <h2 mat-dialog-title>Edit Security Question</h2>
+<!--
+    Title: security question edit dialog
+    Date: 1 May 2022
+    Authors: Evan Durkin, Keith Hall,
+    Gustavo Roo Gonzalez, and Gunner Bradley
+    Description: Html file for the dialog to edit security quesitons
+-->
+
+<mat-dialog-content fxFlex fxLayout="column" [formGroup]="questionForm" class="dialog-questions">
+  <h2 mat-dialog-title class="dialog-title">Edit Security Question</h2>
 
   <mat-form-field>
       <input type="text" placeholder="Question" matInput formControlName="text" [value]="questionData.text"/>
+      <mat-error *ngIf="questionForm.controls.text.hasError('required') && questionForm.controls.text.touched" class="error-question">
+        Security question is required
+      </mat-error>
   </mat-form-field>
 
   <div mat-dialog-actions align="end">
-    <button mat-button (click)="cancel()">Cancel</button>
-    <button mat-raised-button (click)="editQuestion()"  color="primary">Update</button>
+    <button mat-button (click)="cancel()" class="btn-primary btn-dialog-cancel">cancel</button>
+    <button mat-raised-button (click)="editQuestion()"  class="btn-primary btn-dialog">submit</button>
   </div>
 </mat-dialog-content>

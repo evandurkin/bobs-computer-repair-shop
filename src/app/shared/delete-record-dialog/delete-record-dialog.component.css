@@ -1,0 +1,23 @@
+.delete-title {
+  margin-bottom: 40px;
+}
+
+.dialog-text {
+  font-size: 16px;
+}
+
+.btn-dialog {
+  border-radius: 0;
+  font-size: 14px;
+}
+
+.btn-dialog-cancel {
+  border-radius: 0;
+  font-size: 14px;
+  color: rgb(240, 240, 240);
+  background-color: #888888;
+}
+
+.btns-div {
+  margin-top: 20px;
+}

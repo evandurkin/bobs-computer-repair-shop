@@ -10,7 +10,9 @@
 =======================================
 */
 
-html, body { height: 100%; }
+html, body {
+  height: 100%;
+}
 
 .functions-icon:hover {
   color: #5fed8a;
@@ -30,7 +32,6 @@ html, body { height: 100%; }
   transition: .5s;
   cursor: pointer;
 }
-
 
 
 /*********** navbar logo ***********/
@@ -141,7 +142,7 @@ li a:hover:not(.active) {
 
 .footer {
   bottom: 0;
-  position: absolute;
+  position: fixed;
   width: 100%;
 }
 
@@ -214,6 +215,9 @@ li a:hover:not(.active) {
   padding: 10px;
 }
 
+
+
+
 #form-field {
   border-radius: 0px;
 }
@@ -227,4 +231,9 @@ li a:hover:not(.active) {
 
 .mat-select-value { /* the text of the security question that the user selects */
   color: black;
+}
+
+.mat-dialog-container {
+  border-radius: 0px;
+
 }

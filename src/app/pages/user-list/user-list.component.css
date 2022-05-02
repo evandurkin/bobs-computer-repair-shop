@@ -68,3 +68,7 @@ td.mat-footer-cell:last-of-type {
   background-color: #5fed8a;
   transition: .5s;
 }
+
+#mat-dialog-title-0 {
+  margin: 0 0 40px 0
+}
