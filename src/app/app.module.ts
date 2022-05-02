@@ -33,6 +33,12 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { StandardLayoutComponent } from './shared/standard-layout/standard-layout.component';
 import { DashboardEmployeeComponent } from './pages/dashboard-employee/dashboard-employee.component';
+import { UserUpdateComponent } from './pages/user-update/user-update.component';
+import { ResetPasswordComponent } from './shared/forms/reset-password/reset-password.component';
+import { VerifyUsernameComponent } from './shared/forms/verify-username/verify-username.component';
+import { VerifyPasswordComponent } from './shared/forms/verify-password/verify-password.component';
+import { VerifySecurityQuestionsComponent } from './shared/forms/verify-security-questions/verify-security-questions.component';
+import { InternalServerErrorComponent } from './pages/internal-server-error/internal-server-error.component';
 
 // Browser, Http, Forms, and Cookie imports
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -62,12 +68,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
-import { UserUpdateComponent } from './pages/user-update/user-update.component';
-import { ResetPasswordComponent } from './shared/forms/reset-password/reset-password.component';
-import { VerifyUsernameComponent } from './shared/forms/verify-username/verify-username.component';
-import { VerifyPasswordComponent } from './shared/forms/verify-password/verify-password.component';
-import { VerifySecurityQuestionsComponent } from './shared/forms/verify-security-questions/verify-security-questions.component';
-import { InternalServerErrorComponent } from './pages/internal-server-error/internal-server-error.component';
 
 @NgModule({
   declarations: [

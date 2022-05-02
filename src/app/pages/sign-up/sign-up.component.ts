@@ -9,6 +9,7 @@ import {
 import { UserService } from '../../shared/services/user.service';
 import { SecurityQuestionService } from 'src/app/shared/services/security-question.service';
 
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -106,6 +107,7 @@ export class SignUpComponent implements OnInit {
         console.log(err);
       } else {
         console.log(this.newUser);
+        // this.router.navigate(['/']);
       }
     });
   }
