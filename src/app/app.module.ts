@@ -48,8 +48,7 @@ import {
   HttpClientModule,
   HTTP_INTERCEPTORS,
 } from '@angular/common/http';
-import { ErrorInterceptor } from './shared/error.interceptor'
-
+import { ErrorInterceptor } from './shared/error.interceptor';
 
 // Flex Layout and Material UI Imports
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -68,6 +67,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
+import { MatStepperModule } from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
@@ -95,7 +95,7 @@ import { MatSelectModule } from '@angular/material/select';
     VerifyUsernameComponent,
     VerifyPasswordComponent,
     VerifySecurityQuestionsComponent,
-    InternalServerErrorComponent
+    InternalServerErrorComponent,
   ],
   imports: [
     BrowserModule,
@@ -120,7 +120,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatDividerModule,
     MatTabsModule,
     MatListModule,
-    MatSelectModule
+    MatSelectModule,
+    MatStepperModule,
   ],
   providers: [
     {
@@ -128,7 +129,8 @@ import { MatSelectModule } from '@angular/material/select';
       useClass: ErrorInterceptor,
       multi: true,
     },
-    CookieService],
+    CookieService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
