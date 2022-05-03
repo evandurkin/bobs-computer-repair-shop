@@ -1,3 +1,13 @@
+/*
+===================================================
+// Title: Bob’s Computer Repair Shop
+// Date: 1 May 2022
+// Authors: Evan Durkin, Keith Hall,
+// Gustavo Roo Gonzalez, and Gunner Bradley
+// Description: TS file for the sign-up component.
+===================================================
+*/
+
 import { Component, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import {
@@ -8,6 +18,7 @@ import {
 } from '@angular/forms';
 import { UserService } from '../../shared/services/user.service';
 import { SecurityQuestionService } from 'src/app/shared/services/security-question.service';
+// import { Router } from '@angular/router';
 
 
 @Component({
@@ -28,7 +39,8 @@ export class SignUpComponent implements OnInit {
   constructor(
     private userService: UserService,
     private securityQuestionService: SecurityQuestionService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    // private router: Router
   ) {}
   ngOnInit() {
     this.newUserFormGroup = this.fb.group({
@@ -107,6 +119,8 @@ export class SignUpComponent implements OnInit {
         console.log(err);
       } else {
         console.log(this.newUser);
+        // console.log(this.router);
+        // console.log(this)
         // this.router.navigate(['/']);
       }
     });

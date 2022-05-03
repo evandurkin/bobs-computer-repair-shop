@@ -4,7 +4,7 @@
 // Date: 23 April 2022
 // Authors: Evan Durkin, Keith Hall,
 // Gustavo Roo Gonzalez, and Gunner Bradley
-// Description: User List Component
+// Description: Security Question List Component
 =======================================
 */
 

@@ -4,7 +4,7 @@
 // Date: 1 May 2022
 // Authors: Evan Durkin, Keith Hall,
 // Gustavo Roo Gonzalez, and Gunner Bradley
-// Description: User List Component
+// Description: TS file for creating a security question
 =======================================
 */
 
