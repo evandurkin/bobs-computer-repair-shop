@@ -257,3 +257,11 @@ body {
   margin: 0;
   background-color: #cccccc;
 }
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: #dddcdc;
+}
+
+.mat-tab-group.mat-background-primary > .mat-tab-header .mat-tab-label, .mat-tab-group.mat-background-primary > .mat-tab-link-container .mat-tab-link, .mat-tab-nav-bar.mat-background-primary > .mat-tab-header .mat-tab-label, .mat-tab-nav-bar.mat-background-primary > .mat-tab-link-container .mat-tab-link {
+  margin: 0 20px;
+}

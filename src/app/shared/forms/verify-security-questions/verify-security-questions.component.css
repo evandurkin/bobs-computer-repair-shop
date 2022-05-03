@@ -1,0 +1,22 @@
+/*
+=======================================
+// Title: Bob’s Computer Repair Shop
+// Date: 23 April 2022
+// Authors: Evan Durkin, Keith Hall,
+// Gustavo Roo Gonzalez, and Gunner Bradley
+// Description: CSS file for the verify-security-questions component.
+=======================================
+*/
+.card-container {
+  border-radius: 0;
+  padding: 0;
+  margin:auto;
+  width: 60%;
+
+}
+.mat-headline {
+  text-align: center;
+  font-size: 32px;
+  font-family:Aldrich;
+  margin-top:20%;
+}

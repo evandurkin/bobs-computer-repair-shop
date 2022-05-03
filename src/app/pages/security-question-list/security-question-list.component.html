@@ -1,16 +1,16 @@
 <!--/*
-=======================================
+==================================================
 // Title: Bob’s Computer Repair Shop
 // Date: 23 April 2022
 // Authors: Evan Durkin, Keith Hall,
 // Gustavo Roo Gonzalez, and Gunner Bradley
 // Description: Security Questions List HTML file
-=======================================
+==================================================
 */-->
 
 <div fxLayout="column">
   <!--mat card to hold users configuration table-->
-  <mat-card class="users-list-card">
+  <mat-card class="question-list-card">
     <mat-card-title class="users-title"
       >Security Question Configuration</mat-card-title
     >
@@ -38,7 +38,7 @@
               mat-icon-button
               routerLink="/security-questions/{{ element._id }}"
               (click)="
-                openSecurityQuestionUpdateDialog(element._id, element.text)
+                openSecurityQuestionUpdateDialog(element._id, element)
               "
             >
               <mat-icon class="edit-icon functions-icon">edit</mat-icon>
@@ -58,10 +58,9 @@
       <div fxLayout="column" fxLayoutAlign="center end">
         <button
           mat-button
-          routerLink="/security-questions/"
+          routerLink="/session/security-questions/create"
           class="btn-add-user"
-          style="margin-bottom: 10px"
-        >
+          style="margin-bottom: 10px">
           add +
         </button>
       </div>

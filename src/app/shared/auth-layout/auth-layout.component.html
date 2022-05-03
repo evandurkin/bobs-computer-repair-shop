@@ -14,57 +14,61 @@
       <!-- navbar container -->
       <div class="navbar-container">
         <!-- logo -->
-        <a href="/" class="logo-navbar">Bob's <br/> Computer Repair Shop</a>
-        <a href="/" class="navbar-link">dashboard</a>
-        <a href="/" class="navbar-link">more features</a>
-        <button class="navbar-link profile-icon"
-          mat-icon-button [matMenuTriggerFor]="profileMenu"
-          aria-label="User Profile Menu">admin
-          <mat-icon>perm_identity</mat-icon>
-
-          <!-- Icon drop down menu items -->
-          <mat-menu #profileMenu="matMenu">
-            <p style="padding: 10px;color:white;" class="menu">
-                <span style="margin-left:4px"></span>
-                <mat-icon>account_box</mat-icon>
-                <span style="margin-left:6%">Signed in as</span>
-                <span style="font-weight: 600;font-size: 24px;margin-left:10px">{{ userName }}</span>
-            </p>
-
-          <!-- Divider space in dropdown -->
-          <mat-divider></mat-divider>
-
-          <!-- Dropdown menu links -->
-          <button  mat-menu-item (click)="userConfig()" class="menu">
-            <mat-icon class="menu">people</mat-icon>
-            <span class="menu">User Configuration</span>
-          </button>
-
-          <button  mat-menu-item (click)="questionConfig()" class="menu">
-            <mat-icon class="menu">security</mat-icon>
-            <span class="menu">Security Question Configuration</span>
-          </button>
-
-          <button  mat-menu-item (click)="roleConfig()" class="menu">
-            <mat-icon class="menu">admin_panel_settings</mat-icon>
-            <span class="menu">Role Configuration</span>
-          </button>
-
-          <button  mat-menu-item (click)="adminReport()">
-            <mat-icon class="menu">pie_chart_outline</mat-icon>
-            <span class="menu">Service Graph</span>
-          </button>
-          <!-- Lower divider -->
-          <mat-divider></mat-divider>
-          <button mat-menu-item (click)="signOut()" class="menu">
-            <mat-icon class="menu">logout</mat-icon>
-            <span class="menu">Sign-Out</span>
-          </button>
-        </mat-menu>
-        </button>
+        <a routerLink="/" class="logo-navbar">Bob's <br/> Computer Repair Shop</a>
+        <title class="dashboard-header">administrator dashboard</title>
       </div>
 
     </mat-toolbar>
+    <ul>
+      <li><a>Create an Invoice</a></li>
+      <li><a (click)="userConfig()">Users</a></li>
+      <li><a (click)="questionConfig()">Security Questions</a></li>
+      <li><a (click)="roleConfig()">Roles</a></li>
+      <li><a (click)="adminReport()">Service Graph</a></li>
+
+      <li style="float:right"><a class="active" [matMenuTriggerFor]="profileMenu"
+        aria-label="User Profile Menu">admin <mat-icon style="font-size: 18px;">perm_identity</mat-icon>
+      <!-- Icon drop down menu items -->
+      <mat-menu #profileMenu="matMenu">
+        <p style="padding: 10px;color:white;" class="menu">
+            <span style="margin-left:4px"></span>
+            <mat-icon>account_box</mat-icon>
+            <span style="margin-left:6%">Signed in as</span>
+            <span style="font-weight: 600;font-size: 16px;margin-left:10px">{{ userName }}</span>
+        </p>
+
+      <!-- Divider space in dropdown -->
+      <mat-divider></mat-divider>
+
+      <!-- Dropdown menu links -->
+      <button  mat-menu-item (click)="userConfig()" class="menu">
+        <mat-icon class="menu">people</mat-icon>
+        <span class="menu">User Configuration</span>
+      </button>
+
+      <button  mat-menu-item (click)="questionConfig()" class="menu">
+        <mat-icon class="menu">security</mat-icon>
+        <span class="menu">Security Question Configuration</span>
+      </button>
+
+      <button  mat-menu-item (click)="roleConfig()" class="menu">
+        <mat-icon class="menu">admin_panel_settings</mat-icon>
+        <span class="menu">Role Configuration</span>
+      </button>
+
+      <button  mat-menu-item (click)="adminReport()">
+        <mat-icon class="menu">pie_chart_outline</mat-icon>
+        <span class="menu">Service Graph</span>
+      </button>
+      <!-- Lower divider -->
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="signOut()" class="menu">
+        <mat-icon class="menu">logout</mat-icon>
+        <span class="menu">Sign-Out</span>
+      </button>
+    </mat-menu>
+      </a></li>
+    </ul>
   </nav>
 
   <!-- main content -->

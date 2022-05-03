@@ -33,8 +33,11 @@ import { UserCreateComponent } from './pages/user-create/user-create.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { VerifyUsernameComponent } from './shared/forms/verify-username/verify-username.component';
 import { VerifySecurityQuestionsComponent } from './shared/forms/verify-security-questions/verify-security-questions.component';
-
+import { ResetPasswordComponent } from './shared/forms/reset-password/reset-password.component';
+import { InternalServerErrorComponent } from './pages/internal-server-error/internal-server-error.component';
 import { AuthGuard } from './auth.guard';
+import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
+
 
 const routes: Routes = [
 
@@ -54,11 +57,7 @@ const routes: Routes = [
       {
         path: 'contact',
         component: ContactComponent,
-      },
-      {
-        path: 'sign-up',
-        component: SignUpComponent,
-      },
+      }
     ],
   },
 
@@ -87,6 +86,10 @@ const routes: Routes = [
         path: 'security-questions',
         component: SecurityQuestionListComponent,
       },
+      {
+        path: 'security-questions/create',
+        component: SecurityQuestionCreateComponent
+      }
     ],
   },
   /* Standard-employee users (canActivate) */
@@ -111,6 +114,10 @@ const routes: Routes = [
         component: SignInComponent
       },
       {
+        path: 'sign-up',
+        component: SignUpComponent,
+      },
+      {
         path: 'user-details',
         component: VerifyUsernameComponent,
       },
@@ -118,16 +125,23 @@ const routes: Routes = [
         path: 'verify-security-questions',
         component: VerifySecurityQuestionsComponent,
       },
-
       {
-        path: 'not-found',
+        path: 'reset-password',
+        component: ResetPasswordComponent,
+      },
+      {
+        path: '404-error',
         component: NotFoundComponent
+      },
+      {
+        path: '500-error',
+        component: InternalServerErrorComponent
       }
     ],
   },
   {
     path: '**',
-    redirectTo: 'session/not-found',
+    component: NotFoundComponent,
   },
 ];
 

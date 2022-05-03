@@ -84,182 +84,11 @@ router.post("/sign-in", async (req, res) => {
   }
 });
 
-// start here
-// findAllUsers API
-router.get("/", async (req, res) => {
-  try {
-    //Finds and returns all users as an array
-    User.find({})
-      .where("isDisabled")
-      .equals(false)
-      .exec(function (error, users) {
-        // Error handling
-        if (error) {
-          console.log(error);
-          const serverError = new ErrorResponse(
-            "500",
-            "Internal server error",
-            error
-          ); // Create a variable and instantiate the errorResponse class.
-          res.status(500).send(serverError.toObject()); // Convert values in the response to native objects.
-        } else {
-          // Return all users
-          console.log(users);
-          const queryResponse = new BaseResponse(
-            "200",
-            "MongoDB query was successful",
-            users
-          ); // Instantiate baseResponse and convert values to native objects.
-          res.json(queryResponse.toObject());
-        }
-      });
-  } catch (e) {
-    console.log(e);
-    res
-      .status(500)
-      .send(
-        new ErrorResponse("500", "Internal server error", e.message).toObject()
-      );
-  }
-});
-
-// findAllByID API
-router.get("/:id", async (req, res) => {
-  try {
-    User.findOne({ _id: req.params.id }, function (err, user) {
-      if (err) {
-        console.log(err);
-        const findByIdMongodbErrorResponse = new ErrorResponse(
-          500,
-          "Internal server error",
-          err
-        );
-        res.status(500).send(findByIdMongodbErrorResponse.toObject());
-      } else {
-        console.log(user);
-        const findByIdResponse = new BaseResponse(
-          200,
-          "Query successful",
-          user
-        );
-        res.json(findByIdResponse.toObject());
-      }
-    });
-  } catch (e) {
-    console.log(e);
-    const findByIdCatchErrorResponse = new ErrorResponse(
-      500,
-      "Internal server error",
-      e
-    );
-    res.status(500).send(findByIdCatchErrorResponse.toObject());
-  }
-});
-
-// createUser API
-router.post("/", async (req, res) => {
-  try {
-    let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // salt/hash the password
-    standardRole = {
-      role: "standard",
-    };
-
-    // user object
-    let newUser = {
-      userName: req.body.userName,
-      password: hashedPassword,
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      phoneNumber: req.body.phoneNumber,
-      address: req.body.address,
-      email: req.body.email,
-      role: standardRole,
-      isDisabled: false,
-    };
-    // create a new user based off the user object
-    User.create(newUser, function (err, user) {
-      // error message
-      if (err) {
-        console.log(err);
-        const createUserMongodbErrorResponse = new ErrorResponse(
-          500,
-          "Internal server error",
-          err
-        );
-        res.status(500).send(createUserMongodbErrorResponse.toObject());
-      } else {
-        // returns json of new user if successful
-        console.log(user);
-        const createUserResponse = new BaseResponse(
-          200,
-          "Query successful",
-          user
-        );
-        res.json(createUserResponse.toObject());
-      }
-    });
-  } catch (e) {
-    console.log(e);
-    const createUserCatchErrorResponse = new BaseResponse(
-      500,
-      "Internal server error",
-      e.message
-    );
-    res.status(500).send(createUserCatchErrorResponse.toObject());
-  }
-});
-
-// delete user API
-router.delete("/:id", async (req, res) => {
-  try {
-    User.findOne({ _id: req.params.id }, function (err, user) {
-      if (err) {
-        console.log(err);
-        const deleteUserMongoDbErrorResponse = new ErrorResponse(
-          501,
-          "MongoDB Exception Error",
-          err
-        );
-        res.status(501).send(deleteUserMongoDbErrorResponse.toObject());
-      } else {
-        console.log(user);
-        user.set({ isDisabled: true });
-        user.save(function (err, savedUser) {
-          if (err) {
-            console.log(err);
-            const savedUserMongoDbErrorResponse = new ErrorResponse(
-              500,
-              "Internal Server Error",
-              err
-            );
-            res.status(500).send(savedUserMongoDbErrorResponse.toObject());
-          } else {
-            console.log(savedUser);
-            const deleteUserResponse = new BaseResponse(
-              200,
-              "User successfully deleted",
-              user
-            );
-            res.json(deleteUserResponse.toObject());
-          }
-        });
-      }
-    });
-  } catch (e) {
-    console.log(e);
-    const deleteUserCatchErrorResponse = new ErrorResponse(
-      500,
-      "Internal Server Error",
-      e.message
-    );
-    res.status(500).send(deleteUserCatchErrorResponse.toObject());
-  }
-});
-
 // Verify Users
 router.get("/verify/users/:userName", async (req, res) => {
   try {
     User.findOne({ userName: req.params.userName }, function (err, user) {
+
       // Error processing query
       if (err) {
         console.log(err);
@@ -304,19 +133,16 @@ router.get("/verify/users/:userName", async (req, res) => {
   }
 });
 
-
 /**
  * ResetPassword
  */
 
 router.post("/users/:userName/reset-password", async (req, res) => {
-
   try {
     const password = req.body.password; // Set new password in req.body as a variable.
 
     // Find username in MongoDB
     User.findOne({ userName: req.params.userName }, function (err, user) {
-
       //Error Response
       if (err) {
         console.log(err);
@@ -341,7 +167,6 @@ router.post("/users/:userName/reset-password", async (req, res) => {
 
         // Save new password
         user.save(function (err, updatedUser) {
-
           // Error Response
           if (err) {
             console.log(err);
@@ -352,7 +177,6 @@ router.post("/users/:userName/reset-password", async (req, res) => {
               err
             );
             res.status(500).send(updatedUserMongodbErrorResponse.toObject());
-
           } else {
             console.log(updatedUser);
 
@@ -367,7 +191,6 @@ router.post("/users/:userName/reset-password", async (req, res) => {
         });
       }
     });
-
   } catch (e) {
     console.log(e);
     const resetPasswordCatchError = new ErrorResponse(
@@ -378,4 +201,157 @@ router.post("/users/:userName/reset-password", async (req, res) => {
     res.status(500).send(resetPasswordCatchError.toObject());
   }
 });
+
+/**
+ * verifySecurityQuestions
+ */
+router.post("/verify/users/:userName/security-questions", async (req, res) => {
+  try {
+    User.findOne({ userName: req.params.userName }, function (err, user) { // Find by user name
+
+      // Eror response
+      if (err) {
+        console.log(err);
+        const verifySecurityQuestionsMongodbErrorResponse = new ErrorResponse(
+          "500",
+          "Internal server error",
+          err
+        );
+        res
+          .status(500)
+          .send(verifySecurityQuestionsMongodbErrorResponse.toObject());
+
+        // Success response
+      } else {
+        console.log(user);
+        const selectedSecurityQuestionOne = user.selectedSecurityQuestions.find(
+          (q) => q.questionText === req.body.questionText1
+        );
+        const selectedSecurityQuestionTwo = user.selectedSecurityQuestions.find(
+          (q2) => q2.questionText === req.body.questionText2
+        );
+        const selectedSecurityQuestionThree =
+          user.selectedSecurityQuestions.find(
+            (q3) => q3.questionText === req.body.questionText3
+          );
+
+        // Validate matching answers
+        const isValidAnswerOne =
+          selectedSecurityQuestionOne.answerText === req.body.answerText1;
+        const isValidAnswerTwo =
+          selectedSecurityQuestionTwo.answerText === req.body.answerText2;
+        const isValidAnswerThree =
+          selectedSecurityQuestionThree.answerText === req.body.answerText3;
+
+        // If answers match
+        if (isValidAnswerOne && isValidAnswerTwo && isValidAnswerThree) {
+          console.log(
+            `User ${user.userName} answered their security questions correctly`
+          );
+          const validSecurityQuestionsResponse = new BaseResponse(
+            "200",
+            "success",
+            user
+          );
+          res.json(validSecurityQuestionsResponse.toObject());
+
+        } else {
+          console.log(
+            `User ${user.userName} did not answer their security questions correctly`
+          );
+          const invalidSecurityQuestionsResponse = new BaseResponse(
+            "200",
+            "Error: incorrect answers",
+            user
+          );
+          res.json(invalidSecurityQuestionsResponse.toObject());
+        }
+      }
+    });
+    // Catch error
+  } catch (e) {
+    console.log(e);
+    const verifySecurityQuestionsCatchErrorResponse = new ErrorResponse(
+      "500",
+      "Internal server error",
+      e.message
+    );
+    res.status(500).send(verifySecurityQuestionsCatchErrorResponse.toObject());
+  }
+});
+
+// Register new user API
+router.post("/register", async (req, res) => {
+  try {
+    User.findOne({ userName: req.body.userName }, function (err, user) {
+      if (err) {
+        console.log(err);
+        const registerUserMongoDbErrorResponse = new ErrorResponse(
+          "500",
+          "Internal server error",
+          err
+        );
+        res.status(500).send(registerUserMongoDbErrorResponse.toObject());
+      } else {
+        if (!user) {
+          let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // salt/hash the password
+          standardRole = {
+            text: "Standard",
+          };
+
+          let registeredUser = {
+            userName: req.body.userName,
+            password: hashedPassword,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            phoneNumber: req.body.phoneNumber,
+            address: req.body.address,
+            email: req.body.email,
+            role: standardRole,
+            selectedSecurityQuestions: req.body.selectedSecurityQuestions,
+          };
+
+          User.create(registeredUser, function (err, newUser) {
+            if (err) {
+              console.log(err);
+              const newUserMongoDbErrorResponse = new ErrorResponse(
+                "500",
+                "Internal server error",
+                err
+              );
+              res.status(500).send(newUserMongoDbErrorResponse.toObject());
+            } else {
+              console.log(newUser);
+              const newUserResponse = new BaseResponse(
+                "200",
+                "Query successful",
+                newUser
+              );
+              res.json(newUserResponse.toObject());
+            }
+          });
+        } else {
+          console.log(
+            "This username already exists. Please choose a different username."
+          );
+          const userExistsErrorResponse = new BaseResponse(
+            "200",
+            "This username already exists. Please choose a different username.",
+            err
+          );
+          res.status(200).send(userExistsErrorResponse.toObject());
+        }
+      }
+    });
+  } catch (e) {
+    console.log(e);
+    const createUserCatchErrorResponse = new ErrorResponse(
+      "500",
+      "Internal server error",
+      e.message
+    );
+    res.status(500).send(createUserCatchErrorResponse.toObject());
+  }
+});
+
 module.exports = router;

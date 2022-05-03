@@ -57,11 +57,12 @@ export class UserListComponent implements OnInit {
     const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {  // Find the selected user by id and open confirmation dialog.
       data: {
         recordId,
-        dialogHeader: 'Delete Record Dialog',
-        dialogBody: `Are you sure you want to delete user: '${recordId}'?`,
+        dialogHeader: 'Delete User Confirmation',
+        dialogBody: `Are you sure you want to delete user: ${recordId}?`,
       },
       disableClose: true,
-      width: '800px',
+      width: '500px',
+      height: '250px'
     });
 
     // Remove the record upon closing the dialog.

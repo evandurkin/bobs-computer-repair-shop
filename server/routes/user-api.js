@@ -34,13 +34,13 @@ router.get("/", async (req, res) => {
             "Internal server error",
             error
           ); // Create a variable and instantiate the errorResponse class.
-          res.status(500).send(serverError.toObject()); // Convert values in the response to native objects.
+          res.status(500).send(serverError.toObject());
         } else {
           // Return all users
           console.log(users);
           const queryResponse = new BaseResponse(
             "200",
-            "MongoDB query was successful",
+            "Query Successful",
             users
           ); // Instantiate baseResponse and convert values to native objects.
           res.json(queryResponse.toObject());
@@ -257,7 +257,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-// find selected security questions API
+// find selected security questions API for a specific user
 router.get("/:userName/security-questions", async (req, res) => {
   try {
     // finds user by ID

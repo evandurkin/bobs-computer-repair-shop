@@ -9,30 +9,36 @@
 */
 
 .about-container {
-  margin: 50px 27%;
-  color: var(--accent-color);
+  margin: 10% auto;
+  color: #579068;
 }
 
 .about-main-title {
-  width: 500px;
-  padding: 150px 0px;
+  width: 425px;
+  padding: 175px 0px;
   font-size: 65px;
   line-height: 1em;
-  border-right: 10px solid var(--accent-darker-color);
+  border-right: 10px solid #393939;
+  letter-spacing: -3pt;
 }
+
 .about-main-title span {
   font-size: 125px;
   text-shadow: 2px 2px var(--accent-darker-color);
 }
+
 .about-container h2 {
-  font-size: 30px;
+  font-size: 35px;
   padding-top: 30px;
+  font-weight: 900;
 }
+
 .about-container p {
   font-size: 25px;
   width: 525px;
   line-height: 1.15em;
 }
+
 .about-main-body {
-  padding-left: 30px;
+  margin-left: 4em;
 }

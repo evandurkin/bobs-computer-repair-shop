@@ -30,7 +30,7 @@ export class UserService {
 
   // service for API: creating a new user
   createUser(user: User): Observable<any> {
-    return this.http.post('/api/session/users/', {
+    return this.http.post('/api/session/users', {
       userName: user.userName,
       password: user.password,
       firstName: user.firstName,

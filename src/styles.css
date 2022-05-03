@@ -1,7 +1,7 @@
 /*
 =======================================
 // Title: Bob’s Computer Repair Shop
-// Date: 04 April 2022
+// Date: 28 April 2022
 // Authors: Evan Durkin, Keith Hall,
 // Gustavo Roo Gonzalez, and Gunner Bradley
 // Description: Global css styles for BCR Shop App.
@@ -10,10 +10,27 @@
 =======================================
 */
 
-html, body { height: 100%; }
+html, body {
+  height: 100%;
+}
 
 .functions-icon:hover {
-  color: #33ff66;
+  color: #5fed8a;
+  transition: .3s;
+}
+
+.btn-primary {
+  font-family: 'Aldrich', sans-serif;
+  color: #003716;
+  background-color: #568e67;
+  border: none;
+  border-radius: 0px;
+}
+
+.btn-primary:hover {
+  background-color: #5fed8a;
+  transition: .5s;
+  cursor: pointer;
 }
 
 
@@ -32,7 +49,7 @@ html, body { height: 100%; }
   -webkit-text-fill-color: transparent;
   background-size: 200% 100%;
   background-position: 100%;
-  transition: background-position 275ms ease;
+  transition: background-position .5s ease;
 }
 
 .logo-navbar:hover {
@@ -76,12 +93,56 @@ html, body { height: 100%; }
   height: fit-content;
 }
 
+.dashboard-header {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 24px;
+  color: white;
+  margin-left: 20px;
+  display: inline-block;
+}
+
+/*********** dashboard links ***********/
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0 0 0 60px;
+  overflow: hidden;
+  background-color: #5b5b5b;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 16px 25px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: rgba(102, 102, 102, .4);
+  cursor: pointer;
+}
+
+.active {
+  background-color: #5b5b5b;
+}
+
+.active:hover {
+  cursor: pointer;
+  background-color: rgba(102, 102, 102, .4);
+}
+
 
 /*********** footer ***********/
 
 .footer {
   bottom: 0;
-  position: absolute;
+  position: fixed;
   width: 100%;
 }
 
@@ -104,3 +165,75 @@ html, body { height: 100%; }
   text-decoration: underline;
 }
 
+/*********** error pages ***********/
+.error-container {
+  margin: 10% auto;
+}
+.error-card {
+  background-color: #cccccc;
+  margin: 0 auto;
+}
+
+.error-logo {
+  font-family: 'Aldrich', sans-serif;
+  color: #003716;
+  font-size: 2em;
+  letter-spacing: -2pt;
+  text-decoration: none;
+  text-align: center;
+  margin-bottom: 2em;
+}
+.error {
+  font-family: 'Aldrich', sans-serif;
+  color: #568e67;
+  line-height: normal;
+  text-align: center;
+  line-height: 90%;
+}
+
+.error-title {
+  font-size: 6em;
+  letter-spacing: -1pt;
+}
+
+.error-subtitle {
+  font-size: 3em;
+  letter-spacing: -2pt;
+}
+
+.error-message {
+  font-size: 2em;
+}
+
+.img-not-found {
+  max-width: 700px;
+  margin-bottom: 10px;
+}
+
+.btn-error {
+  font-size: 1.5em;
+  padding: 10px;
+}
+
+
+
+
+#form-field {
+  border-radius: 0px;
+}
+
+.mat-card:not([class*=mat-elevation-z]) {
+  box-shadow:
+  0px 10px 11px 0px rgb(0 0 0 / 20%),
+  0px 10px 11px 0px rgb(0 0 0 / 14%),
+  0px 1px 3px 0px rgb(0 0 0 / 12%);
+}
+
+.mat-select-value { /* the text of the security question that the user selects */
+  color: black;
+}
+
+.mat-dialog-container {
+  border-radius: 0px;
+
+}
