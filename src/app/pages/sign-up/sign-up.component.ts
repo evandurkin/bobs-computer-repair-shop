@@ -8,12 +8,18 @@ import {
 } from '@angular/forms';
 import { UserService } from '../../shared/services/user.service';
 import { SecurityQuestionService } from 'src/app/shared/services/security-question.service';
-
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css'],
+  providers: [
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: { showError: true },
+    },
+  ],
 })
 export class SignUpComponent implements OnInit {
   // styling variables
