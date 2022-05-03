@@ -354,8 +354,12 @@
       </mat-tab-group>
     </form>
   </mat-card-content>
+  <mat-card-actions> </mat-card-actions>
 
-  <mat-card-actions fxLayout="row-reverse">
+  <mat-card-actions fxLayout="row" fxLayoutAlign="space-between center">
+    <div>
+      <button mat-button color="accent">Employee Sign In</button>
+    </div>
     <div *ngIf="btnNextPrev.index == 0">
       <!-- <a routerLink="/" class="return-sign-in" style="">return to sign-in</a> -->
       <button
