@@ -16,15 +16,23 @@ import {
   FormBuilder,
   Validators,
 } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 import { UserService } from '../../shared/services/user.service';
 import { SecurityQuestionService } from 'src/app/shared/services/security-question.service';
-// import { Router } from '@angular/router';
-
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css'],
+  providers: [
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: { showError: true },
+    },
+  ],
 })
 export class SignUpComponent implements OnInit {
   // styling variables
@@ -35,12 +43,15 @@ export class SignUpComponent implements OnInit {
   newUserFormGroup: FormGroup;
   newUser: any;
   securityQuestions: any;
+  errorMessage: string;
 
   constructor(
     private userService: UserService,
     private securityQuestionService: SecurityQuestionService,
     private fb: FormBuilder,
-    // private router: Router
+    private cookieService: CookieService,
+    private router: Router,
+    private http: HttpClient
   ) {}
   ngOnInit() {
     this.newUserFormGroup = this.fb.group({
@@ -108,12 +119,15 @@ export class SignUpComponent implements OnInit {
       firstName: this.newUserFormGroup.get('firstName').value.trim(),
       lastName: this.newUserFormGroup.get('lastName').value.trim(),
       phoneNumber: this.newUserFormGroup.get('phoneNumber').value.trim(),
+      email: this.newUserFormGroup.get('email').value.trim(),
       address: fullAddress,
       selectedSecurityQuestion: newSelectedSecurityQuestions,
       userName: this.newUserFormGroup.get('userName').value.trim(),
       password: this.newUserFormGroup.get('password').value.trim(),
     };
     console.log(this.newUser);
+
+    // sends user data to database
     this.userService.createUser(this.newUser).subscribe((err) => {
       if (err) {
         console.log(err);
@@ -124,6 +138,30 @@ export class SignUpComponent implements OnInit {
         // this.router.navigate(['/']);
       }
     });
+
+    //Logs user in after registering
+    const userName = this.newUserFormGroup.get('userName').value.trim();
+    const password = this.newUserFormGroup.get('password').value.trim();
+
+    // Service call to server api to authenticate user
+    this.http
+      .post('/api/post-session/sign-in', {
+        userName,
+        password,
+      })
+      .subscribe(
+        (res) => {
+          console.log(res['data']);
+          if (res['data'].userName) {
+            this.cookieService.set('session_user', res['data'].userName, 1);
+            this.router.navigate(['/session/dashboard-admin']);
+          }
+        },
+        (err) => {
+          console.log(err);
+          this.errorMessage = err.error.message;
+        }
+      );
   }
 
   // Tabs counter config;

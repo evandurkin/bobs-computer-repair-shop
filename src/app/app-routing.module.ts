@@ -141,7 +141,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'session/not-found',
+    component: NotFoundComponent,
   },
 ];
 
