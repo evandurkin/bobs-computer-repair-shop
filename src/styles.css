@@ -152,16 +152,16 @@ li a:hover:not(.active) {
   letter-spacing: 3px;
   font-family: 'Karla', sans-serif;
   font-weight: 400;
-  padding: 20px;
+  padding: 40px;
   background-color: #8a8a8a;
 }
 
-.bu-link {
+.footer-link {
   color: white;
   text-decoration: none;
 }
 
-.bu-link:hover {
+.footer-link:hover {
   text-decoration: underline;
 }
 
