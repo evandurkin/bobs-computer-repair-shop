@@ -12,22 +12,23 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const UserRoleSchema = require('../schemas/user-role');
 const SelectedSecurityQuestionSchema = require('../schemas/selected-security-questions');
+const UserAddressSchema = require('../schemas/user-address');
 
 // Defines the structure of the User document.
 let userSchema = new Schema(
      {
-        userName: {type: String, required: true, unique: true, dropDups: true },
-        password: {type: String, required: true },
-        firstName: {type: String },
-        lastName: {type: String },
-        phoneNumber: {type: String },
-        address: {type: String },
-        email: {type: String },
-        isDisabled: {type: Boolean, default: false },
+        userName: {type: String, required: true, unique: true, dropDups: true},
+        password: {type: String, required: true},
+        firstName: {type: String},
+        lastName: {type: String},
+        phoneNumber: {type: String},
+        address: [UserAddressSchema],
+        email: {type: String},
+        isDisabled: {type: Boolean, default: false},
         role: UserRoleSchema,
         selectedSecurityQuestions: [SelectedSecurityQuestionSchema],
         dateCreated: {type: Date, default: new Date() },
-        dateModified: {type: Date }
+        dateModified: {type: Date}
      },
 
    {collection: 'users'}

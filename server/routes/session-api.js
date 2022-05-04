@@ -209,7 +209,7 @@ router.post("/verify/users/:userName/security-questions", async (req, res) => {
   try {
     User.findOne({ userName: req.params.userName }, function (err, user) { // Find by user name
 
-      // Eror response
+      // Error response
       if (err) {
         console.log(err);
         const verifySecurityQuestionsMongodbErrorResponse = new ErrorResponse(
@@ -259,7 +259,7 @@ router.post("/verify/users/:userName/security-questions", async (req, res) => {
           console.log(
             `User ${user.userName} did not answer their security questions correctly`
           );
-          const invalidSecurityQuestionsResponse = new BaseResponse(
+          const invalidSecurityQuestionsResponse = new ErrorResponse(
             "200",
             "Error: incorrect answers",
             user
@@ -269,8 +269,8 @@ router.post("/verify/users/:userName/security-questions", async (req, res) => {
       }
     });
     // Catch error
-  } catch (e) {
-    console.log(e);
+  } catch (err) {
+    console.log(err);
     const verifySecurityQuestionsCatchErrorResponse = new ErrorResponse(
       "500",
       "Internal server error",
@@ -305,7 +305,10 @@ router.post("/register", async (req, res) => {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             phoneNumber: req.body.phoneNumber,
-            address: req.body.address,
+            street: req.body.street,
+            city: req.body.city,
+            state: req.body.state,
+            zip: req.body.zip,
             email: req.body.email,
             role: standardRole,
             selectedSecurityQuestions: req.body.selectedSecurityQuestions,
