@@ -14,6 +14,7 @@ const Schema = mongoose.Schema;
 let lineItemSchema = new Schema({
   serviceName: { type: String },
   price: { type: Number },
+  isDisabled: { type: Boolean },
 });
 
 module.exports = lineItemSchema;
