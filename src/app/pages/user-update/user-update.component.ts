@@ -13,6 +13,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../shared/services/user.service';
+import { RoleService } from './../../shared/services/role.service';
 import { User } from '../../shared/interfaces/user';
 import { UserRole } from '../../shared/interfaces/user-role';
 
@@ -33,6 +34,7 @@ export class UserUpdateComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private userService: UserService,
+    private roleService: RoleService
 
   ) {
     // Retrieve user id from the url
@@ -58,6 +60,10 @@ export class UserUpdateComponent implements OnInit {
         this.form.controls.role.setValue(this.user.role['role']);
 
         console.log(this.user);
+
+        this.roleService.findAllRoles().subscribe((res) => {
+          this.roles = res.data;
+        });
       }
     );
   }

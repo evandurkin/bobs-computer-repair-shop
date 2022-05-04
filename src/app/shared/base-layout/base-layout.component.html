@@ -23,16 +23,6 @@
           contact
         </a>
       </div>
-      <div class="signInContainer">
-        <button
-        class="signInBtn"
-        routerLink="/post-session/sign-in"
-        mat-button>
-        sign-in
-      </button>
-      <br/>
-      <a routerLink="/post-session/sign-up" class="registerLink">register for an account</a>
-    </div>
     </mat-toolbar>
   </nav>
 
@@ -47,10 +37,9 @@
   <div fxFlex>
     <footer class="footer">
       <mat-toolbar class="footer-content">
-        <p style="margin-left: 2em">
-          &copy; {{ year | date: "yyyy" }} - Bob's Computer Repair Shop -
-          <a href="https://www.bellevue.edu/" class="bu-link" target="_blank">Bellevue University</a>
-        </p>
+        &copy; {{ year | date: "yyyy" }} - Bob's Computer Repair Shop -&nbsp;
+         <a href="https://www.bellevue.edu/" class="footer-link" target="_blank">Bellevue University</a>
+        <a routerLink="/post-session/sign-in" class="footer-link" style="margin-left: 200px;">Employee Sign-In</a>
       </mat-toolbar>
     </footer>
   </div>
