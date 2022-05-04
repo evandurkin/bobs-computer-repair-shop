@@ -4,7 +4,7 @@
 // Date: 04 May 2022
 // Authors: Evan Durkin, Keith Hall,
 // Gustavo Roo Gonzalez, and Gunner Bradley
-// Description: User service for BCRS.
+// Description: Role service for BCRS.
 =======================================
 */
 
