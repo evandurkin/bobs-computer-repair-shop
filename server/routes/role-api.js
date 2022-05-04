@@ -89,6 +89,41 @@ router.get("/:username/role", async (req, res) => {
   }
 });
 
+/**
+ * API: createRole goes here
+ */
+router.post("/", async (req, res) => {
+  try {
+    let newRole = {
+      text: req.body.text,
+    };
+
+    Role.create(newRole, function (err, role) {
+      if (err) {
+        console.log(err);
+        const createRoleMongodbErrorResponse = new ErrorResponse(
+          500,
+          "Internal server error",
+          err
+        );
+        res.status(500).send(createRoleMongodbErrorResponse.toObject());
+      } else {
+        console.log(role);
+        const createRole = new BaseResponse(200, "Query successful", role);
+        res.json(createRole.toObject());
+      }
+    });
+  } catch (err) {
+    console.log(err);
+    const createRoleErrorResponse = new ErrorResponse(
+      500,
+      "Internal server error",
+      err.message
+    );
+    res.status(500).send(createRoleErrorResponse.toObject());
+  }
+});
+
 // Delete role by id
 router.delete("/:roleId", async (req, res) => {
   try {
@@ -192,7 +227,7 @@ router.delete("/:roleId", async (req, res) => {
 });
 
 /**
- * updateRole by ID 
+ * updateRole by ID
  */
 router.put("/:roleId", async (req, res) => {
   try {
