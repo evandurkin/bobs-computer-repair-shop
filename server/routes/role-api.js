@@ -1,10 +1,10 @@
 /*
 =======================================
 // Title: Bob’s Computer Repair Shop
-// Date: 27 April 2022
+// Date: 4 May 2022
 // Authors: Evan Durkin, Keith Hall,
 // Gustavo Roo Gonzalez, and Gunner Bradley
-// Description: CRUD APIs for users.
+// Description: CRUD APIs for roles
 =======================================
 */
 
@@ -52,6 +52,42 @@ router.get("/", async (req, res) => {
       e.message
     );
     res.status(500).send(findAllRolesCatchErrorResponse.toObject());
+  }
+});
+
+// Find user role by ID
+router.get("/:roleId", async (req, res) => {
+  try {
+    //finds the role ID number
+    Role.findOne({ _id: req.params.roleId }, function (err, role) {
+      if (err) {
+        // if error, response with 500 error message
+        console.log(err);
+        const findRoleByIdMongodbErrorResponse = new ErrorResponse(
+          "500",
+          "Internal Server Error",
+          err
+        );
+        res.status(500).send(findRoleByIdMongodbErrorResponse.toObject());
+      } else {
+        // if success it returns the role
+        console.log(role);
+        const findRoleByIdResponse = new BaseResponse(
+          "200",
+          "Query Successful",
+          role
+        );
+        res.json(findRoleByIdResponse.toObject());
+      }
+    });
+  } catch (e) {
+    console.log(e);
+    const findRoleByIdCatchErrorResponse = new ErrorResponse(
+      "500",
+      "Internal Server Error",
+      e.message
+    );
+    res.status(500).send(findRoleByIdCatchErrorResponse.toObject());
   }
 });
 
