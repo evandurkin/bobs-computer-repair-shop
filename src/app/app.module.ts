@@ -68,6 +68,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MessagesModule } from 'node_modules/primeng/messages';
+import { MessageModule } from 'node_modules/primeng/message';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -122,14 +125,17 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatListModule,
     MatSelectModule,
     MatStepperModule,
+    MessageModule,
+    MessagesModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
-      multi: true,
+      multi: true
     },
     CookieService,
+    MessageService
   ],
   bootstrap: [AppComponent],
 })

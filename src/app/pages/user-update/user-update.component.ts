@@ -16,6 +16,7 @@ import { UserService } from '../../shared/services/user.service';
 import { User } from '../../shared/interfaces/user';
 import { UserRole } from '../../shared/interfaces/user-role';
 
+
 @Component({
   selector: 'app-user-update',
   templateUrl: './user-update.component.html',
@@ -32,8 +33,7 @@ export class UserUpdateComponent implements OnInit {
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private router: Router,
-    private userService: UserService,
-
+    private userService: UserService
   ) {
     // Retrieve user id from the url
     this.userId = this.route.snapshot.paramMap.get('userId');

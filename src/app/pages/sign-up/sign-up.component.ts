@@ -51,7 +51,7 @@ export class SignUpComponent implements OnInit {
     private fb: FormBuilder,
     private cookieService: CookieService,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
   ) {}
   ngOnInit() {
     this.newUserFormGroup = this.fb.group({
