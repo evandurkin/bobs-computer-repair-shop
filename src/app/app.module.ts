@@ -39,6 +39,7 @@ import { VerifyUsernameComponent } from './shared/forms/verify-username/verify-u
 import { VerifyPasswordComponent } from './shared/forms/verify-password/verify-password.component';
 import { VerifySecurityQuestionsComponent } from './shared/forms/verify-security-questions/verify-security-questions.component';
 import { InternalServerErrorComponent } from './pages/internal-server-error/internal-server-error.component';
+import { InvoiceComponent } from './pages/invoice/invoice.component';
 
 // Browser, Http, Forms, and Cookie imports
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -101,6 +102,7 @@ import { MessageService } from 'primeng/api';
     VerifyPasswordComponent,
     VerifySecurityQuestionsComponent,
     InternalServerErrorComponent,
+    InvoiceComponent,
   ],
   imports: [
     BrowserModule,
