@@ -55,6 +55,41 @@ router.get("/", async (req, res) => {
 });
 
 /**
+ * API: Find Service by ID
+ */
+router.get("/:id", async (req, res) => {
+  try {
+    LineItem.findOne({ _id: req.params.id }, function (err, lineItem) {
+      if (err) {
+        console.log(err);
+        const findLineItemByIdMongodbErrorResponse = new ErrorResponse(
+          500,
+          "Internal server error",
+          err
+        );
+        res.status(500).send(findLineItemByIdMongodbErrorResponse.toObject());
+      } else {
+        console.log(lineItem);
+        const findLineItemByIdResponse = new BaseResponse(
+          200,
+          "Query successful",
+          lineItem
+        );
+        res.json(findLineItemByIdResponse.toObject());
+      }
+    });
+  } catch (e) {
+    console.log(e);
+    const findByIdCatchErrorResponse = new ErrorResponse(
+      500,
+      "Internal server error",
+      e
+    );
+    res.status(500).send(findByIdCatchErrorResponse.toObject());
+  }
+});
+
+/**
  * API: Delete service by id
  */
 
@@ -104,6 +139,67 @@ router.delete("/:id", async (req, res) => {
       e.message
     );
     res.status(501).send(deleteLineItemCatchErrorResponse.toObject());
+  }
+});
+
+/**
+ * API: Update Service by ID
+ */
+router.put("/:id", async (req, res) => {
+  try {
+    // find the service by id
+    LineItem.findOne({ _id: req.params.id }, function (err, lineItem) {
+      // on error
+      if (err) {
+        console.log(err);
+        const updateLineItemMongodbErrorResponse = new ErrorResponse(
+          500,
+          "Internal server error",
+          err
+        );
+        res.status(500).send(updateLineItemMongodbErrorResponse.toObject());
+        // update service if found
+      } else {
+        console.log(lineItem);
+
+        lineItem.set({
+          title: req.body.title,
+          price: req.body.price,
+        });
+
+        // save the Service
+        lineItem.save(function (err, savedLineItem) {
+          // on error
+          if (err) {
+            console.log(err);
+            const saveLineItemMongodbErrorResponse = new ErrorResponse(
+              500,
+              "Internal server error",
+              err
+            );
+            res.status(500).send(saveLIneItemMongodbErrorResponse.toObject());
+            // save if valid
+          } else {
+            console.log(savedLineItem);
+            const saveLineItemResponse = new BaseResponse(
+              200,
+              "Query successful",
+              savedLineItem
+            );
+            res.json(saveLineItemResponse.toObject());
+          }
+        });
+      }
+    });
+  } catch (e) {
+    // catch error
+    console.log(e);
+    const updateLineItemCatchErrorResponse = new ErrorResponse(
+      500,
+      "Internal server error",
+      e.message
+    );
+    res.status(500).send(updateLineItemCatchErrorResponse.toObject());
   }
 });
 
