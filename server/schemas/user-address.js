@@ -1,20 +1,21 @@
 /*
 =======================================
 // Title: Bob’s Computer Repair Shop
-// Date: 3 May 2022
+// Date: 21 April 2022
 // Authors: Evan Durkin, Keith Hall,
 // Gustavo Roo Gonzalez, and Gunner Bradley
-// Description: Line item schema for BCRS.
+// Description: CRUD APIs for users.
 =======================================
 */
 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-let lineItemSchema = new Schema({
-  serviceName: { type: String },
-  price: { type: Number },
-  isDisabled: { type: Boolean },
+let userAddressSchema = new Schema({
+    street: {type: String},
+    city: {type: String},
+    state: {type: String},
+    zip: {type: String}
 });
 
-module.exports = lineItemSchema;
+module.exports = userAddressSchema;

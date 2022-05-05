@@ -1,4 +1,13 @@
-.signup-main {
+/*
+=======================================
+// Title: Bob’s Computer Repair Shop
+// Date: 22 April 2022
+// Authors: Evan Durkin, Keith Hall,
+// Gustavo Roo Gonzalez, and Gunner Bradley
+// Description: Css file for the sign-up component.
+=======================================
+*/
+.card-container {
   width: 50%;
   min-width: 750px;
   min-height: 600px;
@@ -8,7 +17,7 @@
   background-color: #f5f5f6;;
 }
 
-.signup-title {
+.card-title {
   text-align: center;
   padding-top: 12px;
   padding-bottom: 12px;
@@ -16,7 +25,6 @@
   font-size: 26px;
   margin-bottom: 0;
 }
-
 .mat-tab-group {
   min-height: 400px;
 }
