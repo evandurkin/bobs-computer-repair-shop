@@ -74,6 +74,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MessagesModule } from 'node_modules/primeng/messages';
 import { MessageModule } from 'node_modules/primeng/message';
 import { MessageService } from 'primeng/api';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -103,6 +104,7 @@ import { MessageService } from 'primeng/api';
     VerifySecurityQuestionsComponent,
     InternalServerErrorComponent,
     InvoiceComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,

@@ -37,6 +37,7 @@ import { ResetPasswordComponent } from './shared/forms/reset-password/reset-pass
 import { InternalServerErrorComponent } from './pages/internal-server-error/internal-server-error.component';
 import { AuthGuard } from './auth.guard';
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 
 const routes: Routes = [
@@ -100,6 +101,14 @@ const routes: Routes = [
       {
         path: 'dashboard-employee',
         component: DashboardEmployeeComponent
+      },
+      {
+        path: 'user-profile',
+        component: UserProfileComponent
+      },
+      {
+        path: 'user-create',
+        component: UserCreateComponent,
       }
     ]
   },
