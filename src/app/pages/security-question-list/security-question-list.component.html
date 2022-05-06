@@ -36,10 +36,7 @@
             <!-- edit -->
             <button
               mat-icon-button
-              routerLink="/security-questions/{{ element._id }}"
-              (click)="
-                openSecurityQuestionUpdateDialog(element._id, element)
-              "
+              (click)="openSecurityQuestionUpdateDialog(element._id, element)"
             >
               <mat-icon class="edit-icon functions-icon">edit</mat-icon>
             </button>

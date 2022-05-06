@@ -165,6 +165,10 @@ li a:hover:not(.active) {
   text-decoration: underline;
 }
 
+.footer-link:visited {
+  color: white;
+}
+
 /*********** error pages ***********/
 .error-container {
   margin: 10% auto;
