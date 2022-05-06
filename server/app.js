@@ -68,7 +68,7 @@ app.use("/api/session/users", UserApi);
 app.use("/api/session/security-questions", SecurityQuestionsApi);
 app.use("/api/session", SessionApi);
 app.use("/api/roles", RoleApi);
-app.use("/api/services", ServicesApi);
+app.use("/api/session/services", ServicesApi);
 
 /**
  * Create and start server

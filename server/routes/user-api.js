@@ -104,8 +104,11 @@ router.post("/", async (req, res) => {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       phoneNumber: req.body.phoneNumber,
-      address: req.body.address,
       email: req.body.email,
+      street: req.body.street,
+      city: req.body.city,
+      state: req.body.state,
+      zip: req.body.zip,
       role: standardRole,
       selectedSecurityQuestions: req.body.selectedSecurityQuestion,
       isDisabled: false,
@@ -164,8 +167,11 @@ router.put("/:id", async (req, res) => {
         user.set({
           firstName: req.body.firstName,
           lastName: req.body.lastName,
+          street: req.body.street,
+          city: req.body.city,
+          state: req.body.state,
+          zip: req.body.zip,
           phoneNumber: req.body.phoneNumber,
-          address: req.body.address,
           email: req.body.email,
         });
 
@@ -283,10 +289,10 @@ router.get("/:userName/security-questions", async (req, res) => {
     });
   } catch (e) {
     console.log(e);
-    const findSelectedSecurityQuestionsErrorResponse = new ErrorResponse(
+    const findSelectedSecurityQuestionsCatchErrorResponse = new ErrorResponse(
       "500",
       "Internal Server Error",
-      e
+      e.message
     );
     res
       .status(500)

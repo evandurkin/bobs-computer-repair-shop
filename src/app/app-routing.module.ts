@@ -38,6 +38,8 @@ import { InternalServerErrorComponent } from './pages/internal-server-error/inte
 import { AuthGuard } from './auth.guard';
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { ServicesListComponent } from './pages/services-list/services-list.component';
+import { ServicesEditComponent } from './pages/services-edit/services-edit.component';
 
 
 const routes: Routes = [
@@ -90,6 +92,14 @@ const routes: Routes = [
       {
         path: 'security-questions/create',
         component: SecurityQuestionCreateComponent
+      },
+      {
+        path: 'services',
+        component: ServicesListComponent
+      },
+      {
+        path: 'services/create',
+        component: ServicesEditComponent
       }
     ],
   },

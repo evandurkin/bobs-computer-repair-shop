@@ -40,16 +40,20 @@ import { VerifyPasswordComponent } from './shared/forms/verify-password/verify-p
 import { VerifySecurityQuestionsComponent } from './shared/forms/verify-security-questions/verify-security-questions.component';
 import { InternalServerErrorComponent } from './pages/internal-server-error/internal-server-error.component';
 import { InvoiceComponent } from './pages/invoice/invoice.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { ServicesListComponent } from './pages/services-list/services-list.component';
+import { ServicesEditComponent } from './pages/services-edit/services-edit.component';
+import { DeleteServiceDialogComponent } from './shared/delete-service-dialog/delete-service-dialog.component';
 
 // Browser, Http, Forms, and Cookie imports
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import { ErrorInterceptor } from './shared/error.interceptor';
 import {
   HttpClient,
   HttpClientModule,
   HTTP_INTERCEPTORS,
 } from '@angular/common/http';
-import { ErrorInterceptor } from './shared/error.interceptor';
 
 // Flex Layout and Material UI Imports
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -74,7 +78,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MessagesModule } from 'node_modules/primeng/messages';
 import { MessageModule } from 'node_modules/primeng/message';
 import { MessageService } from 'primeng/api';
-import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -105,6 +109,9 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
     InternalServerErrorComponent,
     InvoiceComponent,
     UserProfileComponent,
+    ServicesListComponent,
+    ServicesEditComponent,
+    DeleteServiceDialogComponent,
   ],
   imports: [
     BrowserModule,
