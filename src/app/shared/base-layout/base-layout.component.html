@@ -37,9 +37,11 @@
   <div fxFlex>
     <footer class="footer">
       <mat-toolbar class="footer-content">
-        &copy; {{ year | date: "yyyy" }} - Bob's Computer Repair Shop -&nbsp;
-         <a href="https://www.bellevue.edu/" class="footer-link" target="_blank">Bellevue University</a>
-        <a routerLink="/post-session/sign-in" class="footer-link" style="margin-left: 200px;">Employee Sign-In | Register</a>
+        <p style="margin-left: 2em; margin-right: 2em; width: 100%;">
+          &copy; {{ year | date: "yyyy" }} - Bob's Computer Repair Shop -
+          <a href="https://www.bellevue.edu/" class="footer-link" target="_blank">Bellevue University</a>
+          <a routerLink="/post-session/sign-in" class="footer-link" style="float: right;">Employee Sign-In | Register</a>
+        </p>
       </mat-toolbar>
     </footer>
   </div>
