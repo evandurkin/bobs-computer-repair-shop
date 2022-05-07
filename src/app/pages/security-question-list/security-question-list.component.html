@@ -1,1 +1,66 @@
-<p>security-question-list works!</p>
+<!--/*
+==================================================
+// Title: Bob’s Computer Repair Shop
+// Date: 23 April 2022
+// Authors: Evan Durkin, Keith Hall,
+// Gustavo Roo Gonzalez, and Gunner Bradley
+// Description: Security Questions List HTML file
+==================================================
+*/-->
+
+<div fxLayout="column">
+  <!--mat card to hold users configuration table-->
+  <mat-card class="question-list-card">
+    <mat-card-title class="users-title"
+      >Security Question Configuration</mat-card-title
+    >
+
+    <mat-card-content
+      *ngIf="questions"
+      fxLayout="column"
+      fxLayoutAlign="center none"
+    >
+      <!-- mat-table with header sections for user data-->
+      <table mat-table [dataSource]="questions">
+        <ng-container matColumnDef="question">
+          <th mat-header-cell *matHeaderCellDef>Questions</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.text }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="functions">
+          <!-- functions for editing and deleting a user -->
+          <th mat-header-cell *matHeaderCellDef>Functions</th>
+          <td mat-cell *matCellDef="let element">
+            <!-- edit -->
+            <button
+              mat-icon-button
+              (click)="openSecurityQuestionUpdateDialog(element._id, element)"
+            >
+              <mat-icon class="edit-icon functions-icon">edit</mat-icon>
+            </button>
+            <!-- delete -->
+            <button mat-icon-button (click)="delete(element._id, element.text)">
+              <mat-icon color="black" class="functions-icon">delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <!-- button to add a new users -->
+      <div fxLayout="column" fxLayoutAlign="center end">
+        <button
+          mat-button
+          routerLink="/session/security-questions/create"
+          class="btn-add-user"
+          style="margin-bottom: 10px">
+          add +
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

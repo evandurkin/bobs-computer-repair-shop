@@ -1,3 +1,13 @@
+/*
+=======================================
+// Title: Bob’s Computer Repair Shop
+// Date: 1 May 2022
+// Authors: Evan Durkin, Keith Hall,
+// Gustavo Roo Gonzalez, and Gunner Bradley
+// Description: TS file for creating a security question
+=======================================
+*/
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -25,6 +35,7 @@ export class SecurityQuestionCreateComponent implements OnInit {
     });
   }
 
+  // create new security question
   create(): void {
     const newSecurityQuestion: SecurityQuestion = {
       text: this.form.controls.text.value,
@@ -32,14 +43,15 @@ export class SecurityQuestionCreateComponent implements OnInit {
     }
 
     this.securityQuestionService.createSecurityQuestion(newSecurityQuestion).subscribe(res => {
-      this.router.navigate(['/security-questions']);
+      this.router.navigate(['/session/security-questions']);
     }, err => {
       console.log(err);
     });
   }
 
+  // cancel button to close dialog
   cancel(): void {
-    this.router.navigate(['/security-questions']);
+    this.router.navigate(['/session/security-questions']);
   }
 
 }

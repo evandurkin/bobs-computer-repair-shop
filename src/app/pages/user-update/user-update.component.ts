@@ -1,20 +1,22 @@
 /*
-=======================================
+============================================
 // Title: Bob’s Computer Repair Shop
-// Date: 04 April 2022
+// Date: 21 April 2022
 // Authors: Evan Durkin, Keith Hall,
 // Gustavo Roo Gonzalez, and Gunner Bradley
-// Description: updating user dialog
-// Reference: For building forms https://angular-templates.io/tutorials/about/angular-forms-and-validations
-=======================================
+// Description: TS file for the user-update component.
+============================================
 */
 
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { User } from 'src/app/shared/interfaces/user';
-import { UserRole } from 'src/app/shared/interfaces/user-role';
+// Imported Modules
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from '../../shared/services/user.service';
+import { RoleService } from './../../shared/services/role.service';
+import { User } from '../../shared/interfaces/user';
+import { UserRole } from '../../shared/interfaces/user-role';
+
 
 @Component({
   selector: 'app-user-update',
@@ -23,37 +25,94 @@ import { UserRole } from 'src/app/shared/interfaces/user-role';
 })
 export class UserUpdateComponent implements OnInit {
 
-  userInfo: User;
-  userRole: UserRole;
-  userForm: FormGroup;
+  user: User;
+  userId: string;
+  form: FormGroup;
+  roles: UserRole[];
 
   constructor(
-    private dialogRef: MatDialogRef<UserUpdateComponent>,
+    private route: ActivatedRoute,
     private fb: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) data)
-    {
-    this.userInfo = data.userInfo;
+    private router: Router,
+    private userService: UserService,
+    private roleService: RoleService
+
+  ) {
+    // Retrieve user id from the url
+    this.userId = this.route.snapshot.paramMap.get('userId');
+
+    // Angular Service finds user by id.
+    this.userService.findUserById(this.userId).subscribe(
+
+      (res) => {
+
+        this.user = res['data'];
+      },
+      // Error handling
+      (err) => {
+        console.log(err); // Log the error
+      },
+      () => {
+        this.form.controls.firstName.setValue(this.user.firstName);
+        this.form.controls.lastName.setValue(this.user.lastName);
+        this.form.controls.phoneNumber.setValue(this.user.phoneNumber);
+        this.form.controls.address.setValue(this.user.address);
+        this.form.controls.email.setValue(this.user.email);
+        this.form.controls.role.setValue(this.user.role['role']);
+
+        console.log(this.user);
+
+        this.roleService.findAllRoles().subscribe((res) => {
+          this.roles = res.data;
+        });
+      }
+    );
   }
 
   ngOnInit(): void {
-    this.userForm = new FormGroup({
-      firstName: new FormControl(this.userInfo.firstName, Validators.required),
-      lastName: new FormControl(this.userInfo.lastName, Validators.required),
-      address: new FormControl(this.userInfo.address, Validators.required),
-      phoneNumber: new FormControl(this.userInfo.phoneNumber, Validators.required),
-      email: new FormControl(this.userInfo.email, Validators.required),
-      role: new FormControl(this.userInfo.role, Validators.required)
-    })
+
+    // Form validators
+    this.form = this.fb.group({
+
+      firstName: [null, Validators.compose([Validators.required])],
+      lastName: [null, Validators.compose([Validators.required])],
+      phoneNumber: [null, Validators.compose([Validators.required])],
+      address: [null, Validators.compose([Validators.required])],
+      email: [null, Validators.compose([Validators.required, Validators.email]),],
+      role: [null, Validators.compose([Validators.required])],
+    });
+  }
+  saveUser(): void {
+
+    // Get form values
+    const updatedUser: User = {
+      firstName: this.form.controls.firstName.value,
+      lastName: this.form.controls.lastName.value,
+      phoneNumber: this.form.controls.phoneNumber.value,
+      address: this.form.controls.address.value,
+      email: this.form.controls.email.value,
+      role: this.form.controls.role.value,
+    };
+
+    console.log('savedUser object');
+    console.log(updatedUser);
+
+    // Update the user
+    this.userService.updateUser(this.userId, updatedUser).subscribe(
+
+      (res) => {
+        // Route to the users -list component
+        this.router.navigate(['/session/users']);
+      },
+
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
-  // submits the user data updates to the form
-  updateUser() {
-    this.dialogRef.close(this.userForm.value);
+  // Cancel
+  cancel(): void {
+    this.router.navigate(['/session/users']);
   }
-
-  // cancel button to close the editUser dialog
-  cancel() {
-    this.dialogRef.close
-  }
-
 }

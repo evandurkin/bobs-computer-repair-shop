@@ -7,39 +7,44 @@
 -->
 
   <div fxLayout="row wrap" fxLayoutAlign="center start">
-    <div fxFlex.gt-sm="45" fxFlex="100">
+    <div fxFlex.gt-sm="45">
 
       <!-- Sign in card -->
-      <mat-card class="mat-elevation-z5 sign-in-container"><br><br>
+      <mat-card class="mat-elevation-z5 sign-in-container">
+      <br><br>
 
-        <mat-card-title color="accent" style="text-align: center; font-size: 32px; font-weight: 400;color: #568e67;font-family:Aldrich">
+        <!-- Title and Subtitle -->
+        <mat-card-title
+          color="#323232"
+          class="logo-sign-in">
           Bob's Computer Repair Shop
         </mat-card-title>
-        <br><br>
-        <mat-card-subtitle class="valid-title" style="text-align: center;font-family:Karla;color:#f5f5f5">Please enter a valid username and password to proceed</mat-card-subtitle>
+        <br/><br/>
+        <mat-card-subtitle class="sign-in-subtitle">
+          Employee Sign-In
+        </mat-card-subtitle>
+        <p class="valid-title" style="text-align: center;font-family:Karla;color:#f5f5f5">Please enter a valid username and password to proceed</p>
         <mat-card-content>
-          <small  style="color: red;font-family:Karla"  *ngIf="errorMessage"> {{ errorMessage }}</small>
+          <small class="error-sign-in"  *ngIf="errorMessage"> {{ errorMessage }}</small>
           <br>
-          <mat-card class="mat-elevation-z0">
+          <mat-card class="mat-elevation-z0" class="form-card">
 
             <!-- Sign in Form -->
             <form [formGroup]="form" (ngSubmit)="signin(); form.reset()" #loginForm="ngForm">
               <mat-card-content fxLayout="column" fxLayoutGap="10px">
 
                 <!-- Username field with placeholder-->
-                <mat-form-field>
-
-                  <input type="text" matInput fxFlex [formControl]="form.controls['userName']" placeholder="User Name"/>
-                  <mat-error class="error" *ngIf="form.controls.userName.hasError('required') && form.controls.userName.touched">
+                <mat-form-field appearance="fill">
+                  <input type="text" matInput fxFlex [formControl]="form.controls['userName']" placeholder="Username" class="input"/>
+                  <mat-error class="error-sign-in" *ngIf="form.controls.userName.hasError('required') && form.controls.userName.touched">
                     Username is a required field.
                   </mat-error>
                 </mat-form-field>
 
                 <!-- Password field with placeholder-->
-                <mat-form-field>
-
+                <mat-form-field appearance="fill">
                   <input type="password" matInput fxFlex [formControl]="form.controls['password']" placeholder="Password"/>
-                  <mat-error class="error" *ngIf="form.controls.password.hasError('required') && form.controls.password.touched">
+                  <mat-error class="error-sign-in" *ngIf="form.controls.password.hasError('required') && form.controls.password.touched">
                     Password must be at least 8 characters, contain one number, and one letter.
                   </mat-error>
                 </mat-form-field>
@@ -47,10 +52,23 @@
 
               <!-- Sign-in button -->
               <mat-card-actions>
-                <button mat-raised-button style="color:#003515;background-color:#568e67;font-size:18px;font-family:Karla" type="submit" [disabled]="!form.valid" fxFlex>Sign In</button>
+                <button
+                  mat-button
+                  class="btn-primary btn-signIn"
+                  type="submit"
+                  [disabled]="!form.valid" fxFlex>sign in
+                </button>
               </mat-card-actions>
-              <p style="text-align: center; font-weight: lighter;"><a routerLink="#" style="text-decoration: underline;color:#F5F5F5" class="help-link" color="primary">Create an Account</a></p>
-              <p style="text-align:center"><a routerLink="#" style="text-decoration: underline; color:#F5F5F5" class="help-link" align="end">Forgot Password?</a></p>
+
+              <p style="text-align: center; font-weight: lighter;">
+                <a routerLink="/post-session/sign-up" style="text-decoration: underline;color:#F5F5F5" class="help-link" color="primary">Register for an Account</a>
+              </p>
+
+              <p style="text-align:center; font-weight: lighter;">
+                <a routerLink="/post-session/user-details" style="text-decoration: underline; color:#F5F5F5" class="help-link" align="end">Forgot Password?</a>
+              </p>
+
+
             </form>
           </mat-card>
         </mat-card-content>

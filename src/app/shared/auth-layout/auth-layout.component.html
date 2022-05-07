@@ -10,59 +10,61 @@
 
   <!-- navigation -->
   <nav fxFlex>
-
-    <mat-toolbar>
+    <mat-toolbar class="toolbar">
       <!-- navbar container -->
       <div class="navbar-container">
         <!-- logo -->
-        <button class="logo-navbar" routerLink="/" mat-button>Bob's <br/> Computer Repair Shop</button>
-        <button class="navbar-link" routerLink="/" mat-button>dashboard</button>
-        <button class="navbar-link" mat-button>more features</button>
-        <button class="navbar-link profile-icon"
-          mat-icon-button [matMenuTriggerFor]="profileMenu"
-          aria-label="User Profile Menu">admin
-          <mat-icon>perm_identity</mat-icon>
+        <a routerLink="/" class="logo-navbar">Bob's <br/> Computer Repair Shop</a>
+        <title class="dashboard-header">administrator dashboard</title>
 
-          <!-- Icon drop down menu items -->
-          <mat-menu #profileMenu="matMenu">
-            <p style="padding: 10px;color:white;" class="menu">
-                <span style="margin-left:4px"></span>
-                <mat-icon>account_box</mat-icon>
-                <span style="margin-left:6%">Signed in as</span>
-                <span style="font-weight: 600;font-size: 24px;margin-left:10px">{{ userName }}</span>
-            </p>
+        <a [matMenuTriggerFor]="profileMenu"
+        aria-label="User Profile Menu" style="font-size: 24px; margin-left: 40px;">admin <mat-icon style="font-size: 18px;">perm_identity</mat-icon>
+      <!-- Icon drop down menu items -->
+      <mat-menu #profileMenu="matMenu">
+        <p style="padding: 10px;color:white;" class="menu">
+            <span style="margin-left:4px"></span>
+            <mat-icon>account_box</mat-icon>
+            <span style="margin-left:6%">Signed in as</span>
+            <span style="font-weight: 600;font-size: 16px;margin-left:10px">{{ userName }}</span>
+        </p>
 
-          <!-- Divider space in dropdown -->
-          <mat-divider></mat-divider>
+      <!-- Divider space in dropdown -->
+      <mat-divider></mat-divider>
 
-          <!-- Dropdown menu links -->
-          <button  mat-menu-item (click)="userConfig()" class="menu">
-            <mat-icon class="menu">people</mat-icon>
-            <span class="menu">User Configuration</span>
-          </button>
+      <!-- Dropdown menu links -->
+      <button  mat-menu-item (click)="servicesConfig()">
+        <mat-icon class="menu">list_alt</mat-icon>
+        <span class="menu">Service Configuration</span>
+      </button>
 
-          <button  mat-menu-item (click)="questionConfig()" class="menu">
-            <mat-icon class="menu">security</mat-icon>
-            <span class="menu">Security Question Configuration</span>
-          </button>
+      <button  mat-menu-item (click)="adminReport()">
+        <mat-icon class="menu">pie_chart_outline</mat-icon>
+        <span class="menu">Service Graph</span>
+      </button>
 
-          <button  mat-menu-item (click)="roleConfig()" class="menu">
-            <mat-icon class="menu">admin_panel_settings</mat-icon>
-            <span class="menu">Role Configuration</span>
-          </button>
+      <button  mat-menu-item (click)="userConfig()" class="menu">
+        <mat-icon class="menu">people</mat-icon>
+        <span class="menu">User Configuration</span>
+      </button>
 
-          <button  mat-menu-item (click)="adminReport()">
-            <mat-icon class="menu">pie_chart_outline</mat-icon>
-            <span class="menu">Service Graph</span>
-          </button>
-          <!-- Lower divider -->
-          <mat-divider></mat-divider>
-          <button mat-menu-item (click)="signOut()" class="menu">
-            <mat-icon class="menu">logout</mat-icon>
-            <span class="menu">Sign-Out</span>
-          </button>
-        </mat-menu>
-        </button>
+      <button  mat-menu-item (click)="roleConfig()" class="menu">
+        <mat-icon class="menu">admin_panel_settings</mat-icon>
+        <span class="menu">Role Configuration</span>
+      </button>
+
+      <button  mat-menu-item (click)="questionConfig()" class="menu">
+        <mat-icon class="menu">security</mat-icon>
+        <span class="menu">Security Question Configuration</span>
+      </button>
+
+      <!-- Lower divider -->
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="signOut()" class="menu">
+        <mat-icon class="menu">logout</mat-icon>
+        <span class="menu">Sign-Out</span>
+      </button>
+    </mat-menu>
+      </a>
       </div>
 
     </mat-toolbar>
@@ -79,8 +81,10 @@
   <div fxFlex>
     <footer class="footer">
       <mat-toolbar class="footer-content">
-        <p style="margin-left: 2em;">
-          &copy; {{year | date: 'yyyy'}} - Bob's Computer Repair Shop - <a href="https://www.bellevue.edu/" class="bu-link" target="_blank">Bellevue University</a>
+        <p style="margin-left: 2em">
+          &copy; {{ year | date: "yyyy" }} - Bob's Computer Repair Shop -
+          <a href="https://www.bellevue.edu/" class="footer-link" target="_blank">Bellevue University</a>
+          <a routerLink="/post-session/sign-in" class="footer-link" style="margin-left: 200px;">Employee Sign-In | Register</a>
         </p>
       </mat-toolbar>
     </footer>

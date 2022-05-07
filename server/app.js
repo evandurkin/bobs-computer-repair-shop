@@ -4,7 +4,7 @@
 // Date: 04 April 2022
 // Authors: Evan Durkin, Keith Hall,
 // Gustavo Roo Gonzalez, and Gunner Bradley
-// Description: AApp.js file for BCRS App.
+// Description: App.js file for BCRS App.
 =======================================
 */
 
@@ -17,10 +17,15 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const path = require("path");
 const mongoose = require("mongoose");
+
+/**
+ * Required API's
+ */
 const UserApi = require("./routes/user-api");
 const SecurityQuestionsApi = require("./routes/security-questions-api");
 const SessionApi = require("./routes/session-api");
-const PostSessionApi = require("./routes/post-session-api");
+const RoleApi = require("./routes/role-api");
+const ServicesApi = require("./routes/services-api");
 
 /**
  * App configurations
@@ -60,9 +65,10 @@ mongoose
  * API(s) go here...
  */
 app.use("/api/session/users", UserApi);
-app.use("/api/security-questions", SecurityQuestionsApi);
+app.use("/api/session/security-questions", SecurityQuestionsApi);
 app.use("/api/session", SessionApi);
-app.use("/api/post-session", PostSessionApi);
+app.use("/api/roles", RoleApi);
+app.use("/api/session/services", ServicesApi);
 
 /**
  * Create and start server

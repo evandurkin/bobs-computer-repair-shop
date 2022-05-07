@@ -1,0 +1,53 @@
+<!--
+    Title: index.html
+    Date: 28 April 2022
+    Authors: Evan Durkin, Keith Hall,
+    Gustavo Roo Gonzalez, and Gunner Bradley
+    Description: Html file for the verify-username component.
+-->
+
+<div fxLayout="column" class="cardContainer">
+  <mat-card class="mat-elevation-z8">
+    <h1 style="margin-top:10px" class="accent">Bob's <br />Computer Repair Shop</h1>
+    <mat-card-title style="text-align:center;margin-top:27%" class="subtitle-accent">Forgot Password?</mat-card-title>
+    <br />
+
+    <!-- Form logic -->
+    <form
+      [formGroup]="form"
+      (ngSubmit)="validateUsername()"
+      #usernameForm
+      (keydown.enter)="$event.preventDefault()"
+      autocomplete="off">
+
+      <mat-card-content fxLayout="column">
+        <mat-form-field fxFlex>
+          <mat-label >Username <span class="required">*</span></mat-label>
+
+          <input matInput [formControl]="form.controls['username']" />
+
+          <!-- Create error message if field is touched without entering username. -->
+          <mat-error
+            class="error"
+            *ngIf="
+              form.controls['username'].hasError('required') &&
+              form.controls['username'].touched" >
+            Username is a required field.
+          </mat-error>
+        </mat-form-field>
+        <br /><br />
+
+        <!-- Buttons container -->
+        <div style="margin-top:20%; margin-right:21.8%" fxFlex fxLayoutAlign="end" class="p5">
+
+          <button
+            mat-raised-button
+            color="accent"
+            routerLink="/post-session/sign-in">Cancel</button>
+          &nbsp;&nbsp;
+           <button mat-raised-button color="accent" (click)="validateUsername();" [disabled] ='!form.valid'>Submit</button>
+        </div>
+      </mat-card-content>
+    </form>
+  </mat-card>
+</div>

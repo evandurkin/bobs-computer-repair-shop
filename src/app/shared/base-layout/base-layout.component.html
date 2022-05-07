@@ -1,25 +1,27 @@
 <!--
     Title: index.html
-    Date: 22 April 2022
+    Date: 28 April 2022
     Authors: Evan Durkin, Keith Hall,
     Gustavo Roo Gonzalez, and Gunner Bradley
     Description: Html file for th base-layout component.
 -->
 
 <div fxLayout="column">
-
   <!-- navigation -->
   <nav fxFlex>
     <mat-toolbar class="toolbar">
       <!-- navbar container -->
       <div class="navbar-container">
         <!-- logo -->
-        <button class="logo-navbar" routerLink="/" mat-button>Bob's <br/>Computer Repair Shop</button>
-        <button class="navbar-link" mat-button>services</button>
-        <button class="navbar-link" routerLink="/" mat-button>about</button>
-        <button class="navbar-link" routerLink="/" mat-button>contact</button>
-        <button class="navbar-link" routerLink="/" mat-button>sign up</button>
-        <button class="navbar-link signInLink" routerLink='/post-session/sign-in' mat-button>Sign into your account</button>
+        <a routerLink="/" class="logo-navbar">
+          Bob's <br />Computer Repair Shop
+        </a>
+        <a routerLink="/about" class="navbar-link">
+          about
+        </a>
+        <a routerLink="contact" class="navbar-link">
+          contact
+        </a>
       </div>
     </mat-toolbar>
   </nav>
@@ -35,13 +37,10 @@
   <div fxFlex>
     <footer class="footer">
       <mat-toolbar class="footer-content">
-        <p style="margin-left: 2em;">
-          &copy; {{year | date: 'yyyy'}} - Bob's Computer Repair Shop - <a href="https://www.bellevue.edu/" class="bu-link" target="_blank">Bellevue University</a>
-        </p>
+        &copy; {{ year | date: "yyyy" }} - Bob's Computer Repair Shop -&nbsp;
+         <a href="https://www.bellevue.edu/" class="footer-link" target="_blank">Bellevue University</a>
+        <a routerLink="/post-session/sign-in" class="footer-link" style="margin-left: 200px;">Employee Sign-In | Register</a>
       </mat-toolbar>
     </footer>
   </div>
-
 </div>
-
-

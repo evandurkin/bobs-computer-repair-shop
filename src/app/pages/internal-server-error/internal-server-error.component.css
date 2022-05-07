@@ -1,0 +1,5 @@
+/* this centers the mat-button on the page */
+.mat-card>:last-child:not(.mat-card-footer), .mat-card-content>:last-child:not(.mat-card-footer) {
+  margin: 10px auto;
+  text-align: -webkit-center;
+  }

@@ -1,0 +1,89 @@
+/*
+=======================================
+// Title: Bob’s Computer Repair Shop
+// Date: 22 April 2022
+// Authors: Evan Durkin, Keith Hall,
+// Gustavo Roo Gonzalez, and Gunner Bradley
+// Description: Css file for the sign-up component.
+=======================================
+*/
+.card-container {
+  width: 50%;
+  min-width: 750px;
+  min-height: 600px;
+  padding: 0 0 15px 0;
+  margin: 5% auto;
+  border-radius: 0px;
+  background-color: #f5f5f6;;
+}
+
+.card-title {
+  text-align: center;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #323232;
+  font-size: 26px;
+  margin-bottom: 0;
+}
+.mat-tab-group {
+  min-height: 400px;
+}
+
+.mat-form-field {
+  width: 100%;
+  padding-bottom: 0;
+  margin-bottom: 5px;
+}
+
+.mat-card-actions {
+  margin: 15px;
+}
+
+.mat-card-actions button {
+  padding: 5px 30px;
+}
+
+.spacer {
+  height: 50px;
+}
+
+.error-input {
+  background-color: #f5f5f6;
+}
+
+mat-tab-label {
+  margin: 0 25px
+}
+
+mat-label, input {
+  color: black;
+  font-size: 14px;
+}
+
+mat-hint {
+  color: #323232;
+}
+
+.mat-tab-group.mat-background-primary > .mat-tab-header .mat-tab-label, .mat-tab-group.mat-background-primary > .mat-tab-link-container .mat-tab-link, .mat-tab-nav-bar.mat-background-primary > .mat-tab-header .mat-tab-label, .mat-tab-nav-bar.mat-background-primary > .mat-tab-link-container .mat-tab-link {
+  margin: 0 30px;
+}
+
+.return-sign-in {
+  color: #323232;
+  display: inline-flex;
+}
+
+.btn-sign-up {
+  border-radius: 0;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+mat-option {
+  font-family: 'Karla', sans-serif;
+  font-weight: 400;
+}
+
+mat-select-value {
+  color: black;
+}

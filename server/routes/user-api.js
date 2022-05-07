@@ -1,7 +1,7 @@
 /*
 =======================================
 // Title: Bob’s Computer Repair Shop
-// Date: 20 April 2022
+// Date: 27 April 2022
 // Authors: Evan Durkin, Keith Hall,
 // Gustavo Roo Gonzalez, and Gunner Bradley
 // Description: CRUD APIs for users.
@@ -34,13 +34,13 @@ router.get("/", async (req, res) => {
             "Internal server error",
             error
           ); // Create a variable and instantiate the errorResponse class.
-          res.status(500).send(serverError.toObject()); // Convert values in the response to native objects.
+          res.status(500).send(serverError.toObject());
         } else {
           // Return all users
           console.log(users);
           const queryResponse = new BaseResponse(
             "200",
-            "MongoDB query was successful",
+            "Query Successful",
             users
           ); // Instantiate baseResponse and convert values to native objects.
           res.json(queryResponse.toObject());
@@ -104,9 +104,13 @@ router.post("/", async (req, res) => {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       phoneNumber: req.body.phoneNumber,
-      address: req.body.address,
       email: req.body.email,
+      street: req.body.street,
+      city: req.body.city,
+      state: req.body.state,
+      zip: req.body.zip,
       role: standardRole,
+      selectedSecurityQuestions: req.body.selectedSecurityQuestion,
       isDisabled: false,
     };
     // create a new user based off the user object
@@ -163,8 +167,11 @@ router.put("/:id", async (req, res) => {
         user.set({
           firstName: req.body.firstName,
           lastName: req.body.lastName,
+          street: req.body.street,
+          city: req.body.city,
+          state: req.body.state,
+          zip: req.body.zip,
           phoneNumber: req.body.phoneNumber,
-          address: req.body.address,
           email: req.body.email,
         });
 
@@ -253,6 +260,43 @@ router.delete("/:id", async (req, res) => {
       e.message
     );
     res.status(500).send(deleteUserCatchErrorResponse.toObject());
+  }
+});
+
+// find selected security questions API for a specific user
+router.get("/:userName/security-questions", async (req, res) => {
+  try {
+    // finds user by ID
+    User.findOne({ userName: req.params.userName }, function (err, user) {
+      if (err) {
+        // returns server error if error
+        console.log(err);
+        const findSelectedSecurityQuestionsMongodbErrorResponse =
+          new ErrorResponse("500", "Internal Server Error", err);
+        res
+          .status(500)
+          .send(findSelectedSecurityQuestionsMongodbErrorResponse.toObject());
+      } else {
+        // returns user's security questions if user is found
+        console.log(user);
+        const findSelectedSecurityQuestionsResponse = new BaseResponse(
+          "200",
+          "Query successful",
+          user.selectedSecurityQuestions
+        );
+        res.json(findSelectedSecurityQuestionsResponse.toObject());
+      }
+    });
+  } catch (e) {
+    console.log(e);
+    const findSelectedSecurityQuestionsCatchErrorResponse = new ErrorResponse(
+      "500",
+      "Internal Server Error",
+      e.message
+    );
+    res
+      .status(500)
+      .send(findSelectedSecurityQuestionsCatchErrorResponse.toObject());
   }
 });
 

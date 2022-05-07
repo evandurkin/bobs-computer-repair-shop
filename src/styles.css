@@ -1,15 +1,243 @@
 /*
 =======================================
 // Title: Bob’s Computer Repair Shop
-// Date: 04 April 2022
+// Date: 28 April 2022
 // Authors: Evan Durkin, Keith Hall,
 // Gustavo Roo Gonzalez, and Gunner Bradley
 // Description: Global css styles for BCR Shop App.
+// References:
+// - logo hover: https://css-tricks.com/4-ways-to-animate-the-color-of-a-text-link-on-hover/
 =======================================
 */
 
-html, body { height: 100%; }
+html, body {
+  height: 100%;
+}
 
 .functions-icon:hover {
-  color: #33ff66;
+  color: #5fed8a;
+  transition: .3s;
+}
+
+.btn-primary {
+  font-family: 'Aldrich', sans-serif;
+  color: #003716;
+  background-color: #568e67;
+  border: none;
+  border-radius: 0px;
+}
+
+.btn-primary:hover {
+  background-color: #5fed8a;
+  transition: .5s;
+  cursor: pointer;
+}
+
+
+/*********** navbar logo ***********/
+.logo-navbar {
+  font-size: 46px;
+  letter-spacing: -3pt;
+  text-align: left;
+  text-decoration: none;
+  color: #568e67;
+  line-height: 80%;
+  overflow: hidden;
+  background: linear-gradient(to right, white, white 50%, #568e67 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  background-position: 100%;
+  transition: background-position .5s ease;
+}
+
+.logo-navbar:hover {
+  background-position: 0 100%;
+}
+
+.logo-navbar:focus {
+  text-decoration: underline;
+}
+
+/*********** navbar links ***********/
+.navbar-link {
+  font-size: 24px;
+  font-family: 'Aldrich', sans-serif;
+  text-decoration: none;
+  color: white;
+  margin-left: 2em;
+
+}
+
+.navbar-link:hover {
+  text-decoration: underline;
+}
+
+.navbar-link:active {
+  text-decoration: underline;
+}
+
+.navbar-link:visited {
+  color: white;
+}
+
+.navbar-container {
+  margin: 2em;
+  display: flex;
+  align-items: flex-end;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  align-items: flex-end;
+  height: fit-content;
+}
+
+.dashboard-header {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 24px;
+  color: white;
+  margin-left: 20px;
+  display: inline-block;
+}
+
+/*********** dashboard links ***********/
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0 0 0 60px;
+  overflow: hidden;
+  background-color: #5b5b5b;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 16px 25px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: rgba(102, 102, 102, .4);
+  cursor: pointer;
+}
+
+.active {
+  background-color: #5b5b5b;
+}
+
+.active:hover {
+  cursor: pointer;
+  background-color: rgba(102, 102, 102, .4);
+}
+
+
+/*********** footer ***********/
+
+.footer {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+}
+
+.footer-content {
+  font-size: 16px;
+  padding-left: 100px;
+  letter-spacing: 3px;
+  font-family: 'Karla', sans-serif;
+  font-weight: 400;
+  padding: 40px;
+  background-color: #8a8a8a;
+}
+
+.footer-link {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+.footer-link:visited {
+  color: white;
+}
+
+/*********** error pages ***********/
+.error-container {
+  margin: 10% auto;
+}
+.error-card {
+  background-color: #cccccc;
+  margin: 0 auto;
+}
+
+.error-logo {
+  font-family: 'Aldrich', sans-serif;
+  color: #003716;
+  font-size: 2em;
+  letter-spacing: -2pt;
+  text-decoration: none;
+  text-align: center;
+  margin-bottom: 2em;
+}
+.error {
+  font-family: 'Aldrich', sans-serif;
+  color: #568e67;
+  line-height: normal;
+  text-align: center;
+  line-height: 90%;
+}
+
+.error-title {
+  font-size: 6em;
+  letter-spacing: -1pt;
+}
+
+.error-subtitle {
+  font-size: 3em;
+  letter-spacing: -2pt;
+}
+
+.error-message {
+  font-size: 2em;
+}
+
+.img-not-found {
+  max-width: 700px;
+  margin-bottom: 10px;
+}
+
+.btn-error {
+  font-size: 1.5em;
+  padding: 10px;
+}
+
+
+
+
+#form-field {
+  border-radius: 0px;
+}
+
+.mat-card:not([class*=mat-elevation-z]) {
+  box-shadow:
+  0px 10px 11px 0px rgb(0 0 0 / 20%),
+  0px 10px 11px 0px rgb(0 0 0 / 14%),
+  0px 1px 3px 0px rgb(0 0 0 / 12%);
+}
+
+.mat-select-value { /* the text of the security question that the user selects */
+  color: black;
+}
+
+.mat-dialog-container {
+  border-radius: 0px;
+
 }

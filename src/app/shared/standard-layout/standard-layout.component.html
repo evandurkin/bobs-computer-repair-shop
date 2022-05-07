@@ -1,0 +1,75 @@
+<!--
+    Title: index.html
+    Date: 28 April 2022
+    Authors: Evan Durkin, Keith Hall,
+    Gustavo Roo Gonzalez, and Gunner Bradley
+    Description: Html file for the standard-layout component.
+    This component is used for standard employees to access information.
+-->
+
+<div fxLayout="column">
+
+  <!-- navigation -->
+  <nav fxFlex>
+    <mat-toolbar class="toolbar">
+      <!-- navbar container -->
+      <div class="navbar-container">
+        <!-- logo and page title -->
+        <a routerLink="/" class="logo-navbar">Bob's <br/> Computer Repair Shop</a>
+        <title class="dashboard-header">employee dashboard</title>
+        <a [matMenuTriggerFor]="profileMenu"
+        aria-label="User Profile Menu" style="font-size: 24px; margin-left: 40px;">employee <mat-icon style="font-size: 18px;">perm_identity</mat-icon>
+          <!-- Icon drop down menu items -->
+          <mat-menu #profileMenu="matMenu">
+            <p style="padding: 10px;color:white;" class="menu">
+                <span style="margin-left:4px"></span>
+                <mat-icon>account_box</mat-icon>
+                <span style="margin-left:6%">Signed in as</span>
+                <span style="font-weight: 600;font-size: 24px;margin-left:10px">{{ userName }}</span>
+            </p>
+
+          <!-- Divider space in dropdown -->
+          <mat-divider></mat-divider>
+
+          <!-- Lower divider -->
+          <mat-divider></mat-divider>
+          <button  mat-menu-item  class="menu"> <!--need to add the (click) event-->
+            <mat-icon class="menu">people</mat-icon>
+            <span class="menu">Edit Profile</span>
+          </button>
+          <button  mat-menu-item (click)="adminReport()">
+            <mat-icon class="menu">pie_chart_outline</mat-icon>
+            <span class="menu">Service Graph</span>
+          </button>
+          <button mat-menu-item (click)="signOut()" class="menu">
+            <mat-icon class="menu">logout</mat-icon>
+            <span class="menu">Sign-Out</span>
+          </button>
+          </mat-menu>
+        </a>
+      </div>
+    </mat-toolbar>
+  </nav>
+
+  <!-- main content -->
+  <div fxFlex>
+    <main class="main-content" fxFlex="100%;">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+
+  <!-- footer -->
+  <div fxFlex>
+    <footer class="footer">
+      <mat-toolbar class="footer-content" style="padding: 20px;">
+        <p style="margin-left: 2em">
+          &copy; {{ year | date: "yyyy" }} - Bob's Computer Repair Shop -
+          <a href="https://www.bellevue.edu/" class="footer-link" target="_blank">Bellevue University</a>
+          <a routerLink="/post-session/sign-in" class="footer-link" style="margin-left: 200px;">Employee Sign-In | Register</a>
+        </p>
+      </mat-toolbar>
+    </footer>
+  </div>
+
+</div>
+

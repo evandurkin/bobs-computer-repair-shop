@@ -1,0 +1,15 @@
+/*
+=======================================
+// Title: Bob’s Computer Repair Shop
+// Date: 22 April 2022
+// Authors: Evan Durkin, Keith Hall,
+// Gustavo Roo Gonzalez, and Gunner Bradley
+// Description: Css file for the not-found component.
+=======================================
+*/
+
+/* this centers the mat-button on the page */
+.mat-card>:last-child:not(.mat-card-footer), .mat-card-content>:last-child:not(.mat-card-footer) {
+  margin: 20px auto;
+  text-align: -webkit-center;
+  }

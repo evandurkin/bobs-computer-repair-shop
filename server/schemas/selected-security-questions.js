@@ -1,4 +1,4 @@
- /*
+/*
 =======================================
 // Title: Bob’s Computer Repair Shop
 // Date: 20 April 2022
@@ -8,12 +8,12 @@
 =======================================
 */
 
- const mongoose = require('mongoose');
- const Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
- const selectedSecurityQuestionsSchema = new Schema({
-    questionText: {type: String },
-    answerText: {type: String }
- });
+let selectedSecurityQuestionsSchema = new Schema({
+  questionText: { type: String },
+  answerText: { type: String },
+});
 
- module.exports = selectedSecurityQuestionsSchema;
+module.exports = selectedSecurityQuestionsSchema;

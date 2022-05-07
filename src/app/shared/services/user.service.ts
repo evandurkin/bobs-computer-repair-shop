@@ -1,3 +1,13 @@
+/*
+=======================================
+// Title: Bob’s Computer Repair Shop
+// Date: 22 April 2022
+// Authors: Evan Durkin, Keith Hall,
+// Gustavo Roo Gonzalez, and Gunner Bradley
+// Description: User service for BCRS.
+=======================================
+*/
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -13,7 +23,6 @@ export class UserService {
   findAllUsers(): Observable<any> {
     return this.http.get('/api/session/users');
   }
-
   // service for API: finding a user by their ID
   findUserById(userId: string): Observable<any> {
     return this.http.get('/api/session/users/' + userId);
@@ -21,7 +30,7 @@ export class UserService {
 
   // service for API: creating a new user
   createUser(user: User): Observable<any> {
-    return this.http.post('/api/session/users/', {
+    return this.http.post('/api/session/users', {
       userName: user.userName,
       password: user.password,
       firstName: user.firstName,
@@ -29,12 +38,14 @@ export class UserService {
       address: user.address,
       email: user.email,
       phoneNumber: user.phoneNumber,
+	  role: user.role,
+      selectedSecurityQuestion: user.selectedSecurityQuestion,
     });
   }
 
   //service for API: updating a user
   updateUser(userId: string, user: User): Observable<any> {
-    return this.http.put('/api/session/users' + userId, {
+    return this.http.put('/api/session/users/' + userId, {
       firstName: user.firstName,
       lastName: user.lastName,
       address: user.address,
