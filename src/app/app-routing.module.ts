@@ -35,11 +35,14 @@ import { VerifyUsernameComponent } from './shared/forms/verify-username/verify-u
 import { VerifySecurityQuestionsComponent } from './shared/forms/verify-security-questions/verify-security-questions.component';
 import { ResetPasswordComponent } from './shared/forms/reset-password/reset-password.component';
 import { InternalServerErrorComponent } from './pages/internal-server-error/internal-server-error.component';
-import { AuthGuard } from './auth.guard';
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { ServicesListComponent } from './pages/services-list/services-list.component';
 import { ServicesEditComponent } from './pages/services-edit/services-edit.component';
+
+// Guards
+import { AuthGuard } from './auth.guard';
+import { RoleGuard } from './role.guard';
 
 
 const routes: Routes = [
