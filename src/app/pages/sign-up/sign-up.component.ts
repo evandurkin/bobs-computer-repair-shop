@@ -127,7 +127,7 @@ export class SignUpComponent implements OnInit {
 
       // User is authenticated and permitted access to the employee dashboard.
       this.CookieService.set('sessionuser', credentials.userName, 1);
-      this.router.navigate(['session/dashboard-employee']);
+      this.router.navigate(['session-employee/dashboard-employee']);
     }, err => {
       this.errorMessages = (`Node.js server error; httpCode:${err.httpCode};message:${err.message}`)
       console.log(err);
