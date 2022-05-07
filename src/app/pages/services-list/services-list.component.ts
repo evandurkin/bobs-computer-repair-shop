@@ -22,7 +22,7 @@ import { ServicesEditComponent } from 'src/app/pages/services-edit/services-edit
 })
 export class ServicesListComponent implements OnInit {
   services: LineItem[];
-  displayedColumns = ['services','functions'];
+  displayedColumns = ['serviceName', 'price', 'functions'];
 
   constructor(
     private dialog: MatDialog,
