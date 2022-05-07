@@ -88,7 +88,6 @@ router.post("/sign-in", async (req, res) => {
 router.get("/verify/users/:userName", async (req, res) => {
   try {
     User.findOne({ userName: req.params.userName }, function (err, user) {
-
       // Error processing query
       if (err) {
         console.log(err);
@@ -207,7 +206,8 @@ router.post("/users/:userName/reset-password", async (req, res) => {
  */
 router.post("/verify/users/:userName/security-questions", async (req, res) => {
   try {
-    User.findOne({ userName: req.params.userName }, function (err, user) { // Find by user name
+    User.findOne({ userName: req.params.userName }, function (err, user) {
+      // Find by user name
 
       // Error response
       if (err) {
@@ -254,7 +254,6 @@ router.post("/verify/users/:userName/security-questions", async (req, res) => {
             user
           );
           res.json(validSecurityQuestionsResponse.toObject());
-
         } else {
           console.log(
             `User ${user.userName} did not answer their security questions correctly`
