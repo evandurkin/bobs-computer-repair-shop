@@ -84,8 +84,9 @@ html, body {
 
 .navbar-container {
   margin: 2em;
-  display: flex;
+  display: inline-block;
   align-items: flex-end;
+  width: 100%;
 }
 
 .mat-toolbar-row, .mat-toolbar-single-row {
