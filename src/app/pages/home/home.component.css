@@ -32,6 +32,8 @@ p {
   font-size: 2em;
   text-align: center;
   margin-left: 25%;
+  line-height: 1;
+  letter-spacing: .3;
 }
 
 .main-welcome {
