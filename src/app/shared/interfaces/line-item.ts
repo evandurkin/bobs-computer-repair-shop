@@ -9,6 +9,6 @@
 */
 
 export interface LineItem {
-  serviceName: string,
-  price: number
+  serviceName?: string,
+  price?: number
 }

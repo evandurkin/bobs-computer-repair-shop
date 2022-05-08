@@ -10,17 +10,23 @@
   <!-- navigation -->
   <nav fxFlex>
     <mat-toolbar class="toolbar">
+       <!-- logo -->
+       <a routerLink="/" class="logo-navbar">
+        Bob's <br />Computer Repair Shop
+      </a>
       <!-- navbar container -->
       <div class="navbar-container">
-        <!-- logo -->
-        <a routerLink="/" class="logo-navbar">
-          Bob's <br />Computer Repair Shop
+        <a routerLink="/" class="navbar-link">
+          Home
+        </a>
+        <a routerLink="/guest-services" class="navbar-link">
+          Services
         </a>
         <a routerLink="/about" class="navbar-link">
-          about
+          About
         </a>
         <a routerLink="contact" class="navbar-link">
-          contact
+          Contact
         </a>
       </div>
     </mat-toolbar>

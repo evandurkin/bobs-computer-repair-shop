@@ -40,7 +40,7 @@ import { SecurityQuestionCreateComponent } from './pages/security-question-creat
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { ServicesListComponent } from './pages/services-list/services-list.component';
 import { ServicesEditComponent } from './pages/services-edit/services-edit.component';
-
+import { GuestServicesComponent } from './pages/guest-services/guest-services.component';
 
 const routes: Routes = [
 
@@ -52,6 +52,10 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
+      },
+      {
+        path: 'guest-services',
+        component: GuestServicesComponent,
       },
       {
         path: 'about',

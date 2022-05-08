@@ -1,0 +1,40 @@
+/*
+=======================================
+// Title: Bob’s Computer Repair Shop
+// Date: 22 April 2022
+// Authors: Evan Durkin, Keith Hall,
+// Gustavo Roo Gonzalez, and Gunner Bradley
+// Description: CSS file for the dashboard-employee component.
+=======================================
+*/
+
+.main-welcome {
+  margin-top: -4%;
+}
+
+.title {
+  text-align: center;
+  font-weight: lighter;
+}
+.service-list {
+  margin-top: -20%;
+}
+
+mat-card {
+  height: 400px;
+  overflow: auto;
+}
+
+mat-icon {
+  cursor: pointer;
+}
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+}
+
+@media screen and (max-height: 750px) {
+  mat-card  {
+    height: 250px
+  }
+}

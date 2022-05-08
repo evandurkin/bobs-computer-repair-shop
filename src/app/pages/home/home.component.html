@@ -6,6 +6,16 @@
     Description: Html file for the home component.
 -->
 
-<div fxLayout="column" class="main-welcome">
-
+<div class="home">
+  <div class="home-message">
+    <h1>Bob's <br /><br>Computer Repair Shop</h1><br /><br>
+    <p style="width:50%">We offer repair services for many different types computing devices including
+      smartphones, laptops, and tablets</p><br>
+    <button mat-flat-button color=accent style="margin-right: 10px" [routerLink]="['/services']">Get A Free Estimate</button>
+  </div>
+  <div class="blue caption">
+    <em>
+      Photo by Cottonbro on <a class="attribution-link " class="accent" href="https://www.pexels.com/search/Computer%20Repair/" target="_blank">Pixels</a>
+    </em>
+  </div>
 </div>

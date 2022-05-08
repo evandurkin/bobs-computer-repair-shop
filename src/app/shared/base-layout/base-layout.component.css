@@ -11,6 +11,17 @@
     margin: 0 auto;
     padding-bottom: 5%;
   }
+  .navbar-link {
+    font-size: 18px;
+
+  }
+  .navbar-container {
+    margin-left: 8%;
+  }
+  .logo-navbar {
+    margin-left: 5%;
+    font-size: 32px;
+  }
 
   .signInContainer {
     align-self: flex-end;
@@ -28,7 +39,7 @@
     color: #003716;
     background-color: #579068;
     border-radius: 0;
-    font-size: 24px;
+    font-size: 18px;
   }
 
   .signInBtn:hover {

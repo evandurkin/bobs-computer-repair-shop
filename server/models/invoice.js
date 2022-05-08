@@ -1,7 +1,7 @@
 /*
 ===================================================
 // Title: Bob’s Computer Repair Shop
-// Date: 14May 2022
+// Date: 14 May 2022
 // Authors: Evan Durkin, Keith Hall,
 // Gustavo Roo Gonzalez, and Gunner Bradley
 // Description: Model for invoices.
@@ -13,11 +13,12 @@ const lineItemSchema = require("../schemas/line-item");
 
 let invoiceSchema = new Schema(
   {
+    username: { type: String },
     lineItem: [lineItemSchema],
     partsTotal: { type: Number },
     laborTotal: { type: Number },
+    lineItemTotal: { type: Number },
     total: { type: Number },
-    username: { type: String },
     created: { type: Date },
     isDisabled: { type: Boolean, default: false },
   },
@@ -26,4 +27,4 @@ let invoiceSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model("invoice", invoiceSchema);
+module.exports = mongoose.model("Invoice", invoiceSchema);

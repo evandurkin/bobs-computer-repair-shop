@@ -44,6 +44,11 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { ServicesListComponent } from './pages/services-list/services-list.component';
 import { ServicesEditComponent } from './pages/services-edit/services-edit.component';
 import { DeleteServiceDialogComponent } from './shared/delete-service-dialog/delete-service-dialog.component';
+import { GuestServicesComponent } from './pages/guest-services/guest-services.component';
+import { InvoiceDialogComponent } from './shared/invoice-dialog/invoice-dialog.component';
+import { AddItemToInvoiceComponent } from './shared/add-item-to-invoice/add-item-to-invoice.component';
+import { PrintDialogComponent } from './shared/print-dialog/print-dialog.component';
+
 
 // Browser, Http, Forms, and Cookie imports
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -73,12 +78,13 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 // PrimeNG Imports
 import { MessagesModule } from 'node_modules/primeng/messages';
 import { MessageModule } from 'node_modules/primeng/message';
 import { MessageService } from 'primeng/api';
-
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -112,6 +118,11 @@ import { MessageService } from 'primeng/api';
     ServicesListComponent,
     ServicesEditComponent,
     DeleteServiceDialogComponent,
+    GuestServicesComponent,
+    InvoiceDialogComponent,
+    AddItemToInvoiceComponent,
+    PrintDialogComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -139,7 +150,9 @@ import { MessageService } from 'primeng/api';
     MatSelectModule,
     MatStepperModule,
     MessageModule,
-    MessagesModule
+    MessagesModule,
+    MatProgressSpinnerModule,
+    ToastModule
   ],
   providers: [
     {

@@ -10,8 +10,7 @@
 
 // Require statements
 const express = require("express");
-const Role = require("../models/role");
-const User = require("../models/user");
+const Invoice = require('../models/invoice');
 const ErrorResponse = require("../services/error-response");
 const BaseResponse = require("../services/base-response");
 
@@ -19,11 +18,11 @@ const router = express.Router();
 
 // create invoice API
 router.post("/:userName", async (req, res) => {
+
   try {
-    const userName = req.params.username;
 
     const newInvoice = {
-      username: userName,
+      userName: req.params.userName,
       lineItem: req.body.lineItem,
       partsTotal: req.body.partsTotal,
       laborTotal: req.body.laborTotal,
@@ -34,14 +33,15 @@ router.post("/:userName", async (req, res) => {
     console.log(newInvoice);
 
     Invoice.create(newInvoice, function (err, invoice) {
+
       if (err) {
         console.log(err);
-        const createInvoiceMongodbErrorResponse = new ErrorResponse(
+        const createInvoiceErrorResponse = new ErrorResponse(
           "500",
           "Internal Server Error",
           err
         );
-        res.status(500).send(createInvoiceMongodbErrorResponse.toObject());
+        res.status(500).send(createInvoiceErrorResponse.toObject());
       } else {
         console.log(invoice);
         const createInvoiceResponse = new BaseResponse(
@@ -62,3 +62,4 @@ router.post("/:userName", async (req, res) => {
     res.status(500).send(createInvoiceCatchErrorResponse.toObject());
   }
 });
+module.exports = router;
