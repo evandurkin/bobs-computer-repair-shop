@@ -10,6 +10,7 @@
 =======================================
 */
 
+
 html, body {
   height: 100%;
 }
@@ -219,7 +220,20 @@ li a:hover:not(.active) {
   padding: 10px;
 }
 
+/* Account Registration */
+.mat-horizontal-content-container {
+  background-color: #ffffff;
+}
 
+.mat-horizontal-stepper-header-container {
+  background-color: #8a8a8a;
+  font-family: 'Aldrich', sans-serif;
+  height: 60px;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  border-radius: 0;
+}
 
 
 #form-field {
@@ -240,4 +254,8 @@ li a:hover:not(.active) {
 .mat-dialog-container {
   border-radius: 0px;
 
+}
+
+.mat-form-field-subscript-wrapper{
+  margin-top: -1.3333333333000006em;
 }
