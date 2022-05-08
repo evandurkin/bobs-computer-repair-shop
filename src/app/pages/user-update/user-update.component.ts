@@ -56,12 +56,12 @@ export class UserUpdateComponent implements OnInit {
         this.form.controls.firstName.setValue(this.user.firstName);
         this.form.controls.lastName.setValue(this.user.lastName);
         this.form.controls.phoneNumber.setValue(this.user.phoneNumber);
+        this.form.controls.email.setValue(this.user.email);
         this.form.controls.addressLineOne.setValue(this.user.addressLineOne);
         this.form.controls.addressLineTwo.setValue(this.user.addressLineTwo);
         this.form.controls.city.setValue(this.user.city);
         this.form.controls.state.setValue(this.user.state);
         this.form.controls.zip.setValue(this.user.zip);
-        this.form.controls.email.setValue(this.user.email);
         this.form.controls.role.setValue(this.user.role['role']);
 
         console.log(this.user);
@@ -91,7 +91,7 @@ export class UserUpdateComponent implements OnInit {
       role: [null, Validators.compose([Validators.required])],
     });
   }
-  saveUser(): void {
+  updateUser(): void {
 
     // Get form values
     const updatedUser: User = {

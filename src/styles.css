@@ -34,6 +34,25 @@ html, body {
   cursor: pointer;
 }
 
+.btn-back {
+  font-family: 'Aldrich', sans-serif;
+  border: none;
+  border-radius: 0;
+  font-size: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 3px;
+  padding-top: 3px;
+  background-color: #dddcdc;
+  color: #8a8a8a;
+}
+
+.btn-back:hover {
+  background-color: #8a8a8a;
+  color: #dddcdc;
+  transition: .5s;
+}
+
 
 /*********** navbar logo ***********/
 .logo-navbar {
@@ -154,7 +173,7 @@ li a:hover:not(.active) {
   font-family: 'Karla', sans-serif;
   font-weight: 400;
   padding: 40px;
-  background-color: #8a8a8a;
+  background-color: #888888;
 }
 
 .footer-link {
@@ -220,7 +239,7 @@ li a:hover:not(.active) {
   padding: 10px;
 }
 
-/* Account Registration */
+/*********** Register for an Account process ***********/
 .mat-horizontal-content-container {
   background-color: #ffffff;
 }
@@ -267,3 +286,24 @@ li a:hover:not(.active) {
 .mat-select-value-text .mat-select-value {
   font-size: 14px;
 }
+
+/*********** Edit User and Update User Cards ***********/
+.user-title {
+background-color: #5b5b5b;
+padding: 18px;
+font-family: 'Aldrich', sans-serif;
+color: white;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: black;
+}
+
+.mat-form-field-empty.mat-form-field-label, .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  color: black;
+}
+
+.mat-select-arrow {
+  color: black;
+}
+
