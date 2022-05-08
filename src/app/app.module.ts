@@ -47,6 +47,7 @@ import { DeleteServiceDialogComponent } from './shared/delete-service-dialog/del
 import { RoleListComponent } from './pages/role-list/role-list.component';
 import { RoleDetailsComponent } from './pages/role-details/role-details.component';
 import { RoleCreateComponent } from './pages/role-create/role-create.component';
+import { ServicesGraphComponent } from './pages/services-graph/services-graph.component';
 
 // Browser, Http, Forms, and Cookie imports
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -117,6 +118,7 @@ import { MessageService } from 'primeng/api';
     RoleCreateComponent,
     RoleDetailsComponent,
     RoleListComponent,
+    ServicesGraphComponent,
   ],
   imports: [
     BrowserModule,

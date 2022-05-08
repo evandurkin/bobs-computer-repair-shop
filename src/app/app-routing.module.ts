@@ -42,6 +42,7 @@ import { ServicesEditComponent } from './pages/services-edit/services-edit.compo
 import { RoleCreateComponent } from './pages/role-create/role-create.component';
 import { RoleDetailsComponent } from './pages/role-details/role-details.component';
 import { RoleListComponent } from './pages/role-list/role-list.component';
+import { ServicesGraphComponent } from './pages/services-graph/services-graph.component';
 
 // Guards
 import { AuthGuard } from './auth.guard';
@@ -116,6 +117,10 @@ const routes: Routes = [
       {
         path: 'services/create',
         component: ServicesEditComponent,
+      },
+      {
+        path: 'services-graph',
+        component: ServicesGraphComponent,
       },
     ],
   },
