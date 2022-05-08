@@ -6,18 +6,18 @@
     Description: Html file for the dialog to edit security quesitons
 -->
 
-<mat-dialog-content fxFlex fxLayout="column" [formGroup]="questionForm" class="dialog-questions">
+<mat-dialog-content fxFlex fxLayout="column" [formGroup]="questionForm" class="dialog-questions" >
   <h2 mat-dialog-title class="dialog-title">Edit Security Question</h2>
 
-  <mat-form-field>
+  <mat-form-field style="padding: 15px; margin: 0px;">
       <input type="text" placeholder="Question" matInput formControlName="text" [value]="questionData.text"/>
       <mat-error *ngIf="questionForm.controls.text.hasError('required') && questionForm.controls.text.touched" class="error-question">
         Security question is required
       </mat-error>
   </mat-form-field>
 
-  <div mat-dialog-actions align="end">
-    <button mat-button (click)="cancel()" class="btn-primary btn-dialog-cancel">cancel</button>
+  <div mat-dialog-actions align="end" style="padding: 15px; margin: 0px;">
+    <button mat-button (click)="cancel()" class="btn-back">cancel</button>
     <button mat-raised-button (click)="editQuestion()"  class="btn-primary btn-dialog">submit</button>
   </div>
 </mat-dialog-content>

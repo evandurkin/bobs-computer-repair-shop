@@ -310,3 +310,22 @@ color: white;
   color: black;
 }
 
+.btn-back {
+  border-radius: 0px;
+}
+
+
+.create-card {
+  margin: 0 auto;
+  width: 50%;
+  min-width: 580px;
+  background-color: #ffffff;
+}
+
+.create-title {
+  padding: 15px;
+  color: white;
+  background-color: #5b5b5b;
+  font-family: 'Aldrich', sans-serif;
+}
+

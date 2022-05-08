@@ -7,19 +7,19 @@
 -->
 
 <div fxLayout="column">
-  <mat-card class="mat-elevation-z8">
-    <mat-card-title>Create Security Question</mat-card-title>
+  <mat-card class="mat-elevation-z8" style="padding: 0px;" class="create-card">
+    <mat-card-title class="create-title">Create Security Question</mat-card-title>
 
     <br/>
 
-    <form [formGroup]="form" (ngSubmit)="create()" #securityQuestionForm>
+    <form [formGroup]="form" (ngSubmit)="create()" #securityQuestionForm class="create-form">
       <mat-card-content>
         <div fxLayout="column" fxLayoutGap="10px">
           <mat-form-field>
             <input type="text" matInput [formControl]="form.controls['text']"
-                    placeholder="Question Text" (keydown.enter)="create()" />
+                    placeholder="Question" (keydown.enter)="create()" />
 
-                    <mat-error *ngIf="form.controls.text.hasError('required') && form.controls.text.touched" class="error">
+                    <mat-error *ngIf="form.controls.text.hasError('required') && form.controls.text.touched" style="font-size:12px;">
                       Security question is a required field.
                     </mat-error>
           </mat-form-field>
@@ -27,11 +27,12 @@
       </mat-card-content>
 
       <br/>
-
-      <mat-card-actions layout-align="end">
-        <button mat-stroked-button (click)="cancel()">cancel</button>
-        <button type="submit" [disabled]="!form.valid" mat-stroked-button>submit</button>
-      </mat-card-actions>
     </form>
+    <mat-card-actions fxLayoutAlign="end"  style="margin: 25px;">
+      <button mat-stroked-button (click)="cancel()" class="btn-back">cancel</button>
+      <button type="submit" mat-raised-button [disabled]="!form.valid" class="btn-primary">
+        submit
+      </button>
+    </mat-card-actions>
   </mat-card>
 </div>

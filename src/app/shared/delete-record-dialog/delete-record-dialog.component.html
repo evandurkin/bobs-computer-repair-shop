@@ -11,7 +11,7 @@
 <!-- delete confirmation pop up -->
 <h2 mat-dialog-title class="delete-title">{{ dialogHeader }}</h2>
 
-<div mat-dialog-content>
+<div mat-dialog-content class="dialog-content" style="padding: 15px; margin: 0px;">
   <p class="dialog-text">{{ dialogBody }}</p>
   <small style="color: red; font-size: 14px;"
     >WARNING: Deleted records cannot be recovered.</small
@@ -19,6 +19,6 @@
 </div>
 
 <div mat-dialog-actions align="end" class="btns-div">
-  <button mat-button matDialogClose="cancel" class="btn-primary btn-dialog-cancel">cancel</button>
-  <button mat-raised-button matDialogClose="confirm"  class="btn-primary btn-dialog">submit</button>
+  <button mat-button matDialogClose="cancel" class="btn-back">cancel</button>
+  <button mat-raised-button matDialogClose="confirm"  class="btn-primary btn-dialog">delete</button>
 </div>
