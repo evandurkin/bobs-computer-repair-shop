@@ -13,7 +13,7 @@ const lineItemSchema = require("../schemas/line-item");
 
 let invoiceSchema = new Schema(
   {
-    lineItem: [lineItemSchema],
+    lineItems: [lineItemSchema],
     partsTotal: { type: Number },
     laborTotal: { type: Number },
     total: { type: Number },
@@ -26,4 +26,4 @@ let invoiceSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model("invoice", invoiceSchema);
+module.exports = mongoose.model("Invoice", invoiceSchema);

@@ -10,8 +10,7 @@
 
 // Require statements
 const express = require("express");
-const Role = require("../models/role");
-const User = require("../models/user");
+const Invoice = require("../models/invoice");
 const ErrorResponse = require("../services/error-response");
 const BaseResponse = require("../services/base-response");
 
@@ -20,11 +19,11 @@ const router = express.Router();
 // create invoice API
 router.post("/:userName", async (req, res) => {
   try {
-    const userName = req.params.username;
+    const userName = req.params.userName;
 
     const newInvoice = {
       username: userName,
-      lineItem: req.body.lineItem,
+      lineItems: req.body.lineItems,
       partsTotal: req.body.partsTotal,
       laborTotal: req.body.laborTotal,
       total: req.body.total,
@@ -62,3 +61,61 @@ router.post("/:userName", async (req, res) => {
     res.status(500).send(createInvoiceCatchErrorResponse.toObject());
   }
 });
+
+/*
+ * FindPurchasesByGraph
+ */
+router.get("/purchases-graph", async (req, res) => {
+  try {
+    Invoice.aggregate(
+      [
+        {
+          $unwind: "$lineItems",
+        },
+        {
+          $group: {
+            _id: {
+              title: "$lineItems.title",
+              price: "$lineItems.price",
+            },
+            count: {
+              $sum: 1,
+            },
+          },
+        },
+        {
+          $sort: {
+            "_id.title": 1,
+          },
+        },
+      ],
+      function (err, purchaseGraph) {
+        if (err) {
+          console.log(err);
+          const findPurchasesByGraphMongodbErrorResponse = new ErrorResponse(
+            "500",
+            "Internal Server Error",
+            err
+          );
+          res
+            .status(500)
+            .json(findPurchasesByGraphMongodbErrorResponse.toObject());
+        } else {
+          console.log(purchaseGraph);
+          const findPurchasesByGraphResponse = new BaseResponse(
+            "200",
+            "Query Successful",
+            purchaseGraph
+          );
+          res.status(200).json(findPurchasesByGraphResponse.toObject());
+        }
+      }
+    );
+  } catch (e) {
+    console.log(e);
+    const ErrorMessage = new ErrorResponse("500", "Internal Server Error", e);
+    res.status(500).json(ErrorMessage.toObject());
+  }
+});
+
+module.exports = router;
