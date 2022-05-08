@@ -12,10 +12,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 let userAddressSchema = new Schema({
-    street: {type: String},
-    city: {type: String},
-    state: {type: String},
-    zip: {type: String}
+  addressLineOne: { type: String },
+  addressLineTwo: { type: String },
+  city: { type: String },
+  state: { type: String },
+  zip: { type: String },
 });
 
 module.exports = userAddressSchema;

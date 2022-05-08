@@ -29,7 +29,11 @@ export class UserListComponent implements OnInit {
     'firstName',
     'lastName',
     'phoneNumber',
-    'address',
+    'addressLineOne',
+    'addressLineTwo',
+    'city',
+    'state',
+    'zip',
     'email',
     'functions',
   ];

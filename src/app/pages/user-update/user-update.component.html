@@ -59,12 +59,52 @@
           </mat-form-field>
 
           <mat-form-field>
-            <input type="text" matInput [formControl]="form.controls['address']
-			"placeholder="Address" />
+            <input type="text" matInput [formControl]="form.controls['addressLineOne']
+			"placeholder="Address Line 2" />
             <mat-error
               class="error" *ngIf="
                 form.controls.address.hasError('required') &&
                 form.controls.address.touched">Address is a required field.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input type="text" matInput [formControl]="form.controls['addressLineTwo']
+			"placeholder="Address Line 2" />
+            <mat-error
+              class="error" *ngIf="
+                form.controls.address.hasError('required') &&
+                form.controls.address.touched">Address is a required field.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input type="text" matInput [formControl]="form.controls['city']
+			"placeholder="City" />
+            <mat-error
+              class="error" *ngIf="
+                form.controls.address.hasError('required') &&
+                form.controls.address.touched">City is a required field.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input type="text" matInput [formControl]="form.controls['state']
+			"placeholder="State" />
+            <mat-error
+              class="error" *ngIf="
+                form.controls.address.hasError('required') &&
+                form.controls.address.touched">State is a required field.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input type="text" matInput [formControl]="form.controls['zip']
+			"placeholder="Zip Code" />
+            <mat-error
+              class="error" *ngIf="
+                form.controls.address.hasError('zip') &&
+                form.controls.zip.touched">Zip is a required field.
             </mat-error>
           </mat-form-field>
 

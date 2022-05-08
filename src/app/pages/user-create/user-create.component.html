@@ -97,17 +97,70 @@
           </mat-form-field>
 
           <mat-form-field >
-            <mat-label>Address</mat-label>
+            <mat-label>Address Line 1</mat-label>
             <input
               type="text"
               matInput
-              [formControl]="form.controls['address']"/>
+              [formControl]="form.controls['addressLineOne']"/>
             <mat-error
-              class="error" *ngIf="form.controls.address.hasError('required') &&
-                form.controls.address.touched" >
+              class="error" *ngIf="form.controls.addressLineOne.hasError('required') &&
+                form.controls.addressLineOne.touched" >
               Address is a required field.
             </mat-error>
           </mat-form-field>
+
+          <mat-form-field >
+            <mat-label>Address Line 2</mat-label>
+            <input
+              type="text"
+              matInput
+              [formControl]="form.controls['addressLineTwo']"/>
+            <mat-error
+              class="error" *ngIf="form.controls.addressLineTwo.hasError('required') &&
+                form.controls.addressLineTwo.touched" >
+              Address is a required field.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field >
+            <mat-label>City</mat-label>
+            <input
+              type="text"
+              matInput
+              [formControl]="form.controls['city']"/>
+            <mat-error
+              class="error" *ngIf="form.controls.city.hasError('required') &&
+                form.controls.city.touched" >
+              City is a required field.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field >
+            <mat-label>State</mat-label>
+            <input
+              type="text"
+              matInput
+              [formControl]="form.controls['state']"/>
+            <mat-error
+              class="error" *ngIf="form.controls.state.hasError('required') &&
+                form.controls.state.touched" >
+              State is a required field.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field >
+            <mat-label>Zip</mat-label>
+            <input
+              type="text"
+              matInput
+              [formControl]="form.controls['zip']"/>
+            <mat-error
+              class="error" *ngIf="form.controls.zip.hasError('required') &&
+                form.controls.zip.touched" >
+              Zip is a required field.
+            </mat-error>
+          </mat-form-field>
+
 
           <mat-form-field >
             <mat-label>Email</mat-label>

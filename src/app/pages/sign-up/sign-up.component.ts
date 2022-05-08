@@ -62,7 +62,8 @@ export class SignUpComponent implements OnInit {
       lastName: [null, Validators.compose([Validators.required])],
       phoneNumber: [null, Validators.compose([Validators.required])],
       email: [null, Validators.compose([Validators.required, Validators.email])],
-      street: [null, Validators.compose([Validators.required])],
+      addressLineOne: [null, Validators.compose([Validators.required])],
+      addressLineTwo: [null, Validators.compose([Validators.required])],
       city: [null, Validators.compose([Validators.required])],
       state: [null, Validators.compose([Validators.required])],
       zip: [null, Validators.compose([Validators.required])]
@@ -120,7 +121,11 @@ export class SignUpComponent implements OnInit {
       firstName: contactInformation.firstName,
       lastName: contactInformation.lastName,
       phoneNumber: contactInformation.phoneNumber,
-      address: contactInformation.address,
+      addressLineOne: contactInformation.addressLineOne,
+      addressLineTwo: contactInformation.addressLineTwo,
+      city: contactInformation.city,
+      state: contactInformation.state,
+      zip: contactInformation.zip,
       email: contactInformation.email,
       selectedSecurityQuestions: selectedSecurityQuestions
     }).subscribe(res => {

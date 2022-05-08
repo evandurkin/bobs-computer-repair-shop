@@ -11,6 +11,7 @@
 import { UserRole } from './user-role';
 import { SelectedSecurityQuestion } from './selected-security-question';
 
+
 // user interface
 export interface User {
   _id?: string;
@@ -18,7 +19,11 @@ export interface User {
   password?: string;
   firstName: string;
   lastName: string;
-  address: string;
+  addressLineOne: string;
+  addressLineTwo: string;
+  city: string;
+  state: string;
+  zip: string;
   email: string;
   phoneNumber: string;
   role?: UserRole;

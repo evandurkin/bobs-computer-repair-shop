@@ -39,9 +39,29 @@
           <td mat-cell *matCellDef="let element">{{ element.phoneNumber }}</td>
         </ng-container>
 
-        <ng-container matColumnDef="address">
-          <th mat-header-cell *matHeaderCellDef>Address</th>
-          <td mat-cell *matCellDef="let element">{{ element.address }}</td>
+        <ng-container matColumnDef="addressLineOne">
+          <th mat-header-cell *matHeaderCellDef>Street</th>
+          <td mat-cell *matCellDef="let element">{{ element.addressLineOne }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="addressLineTwo">
+          <th mat-header-cell *matHeaderCellDef>Apt/Unit</th>
+          <td mat-cell *matCellDef="let element">{{ element.addressLineTwo }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="city">
+          <th mat-header-cell *matHeaderCellDef>City</th>
+          <td mat-cell *matCellDef="let element">{{ element.city }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="state">
+          <th mat-header-cell *matHeaderCellDef>State</th>
+          <td mat-cell *matCellDef="let element">{{ element.state }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="zip">
+          <th mat-header-cell *matHeaderCellDef>Zip</th>
+          <td mat-cell *matCellDef="let element">{{ element.zip }}</td>
         </ng-container>
 
         <ng-container matColumnDef="email">
