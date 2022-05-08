@@ -259,3 +259,11 @@ li a:hover:not(.active) {
 .mat-form-field-subscript-wrapper{
   margin-top: -1.3333333333000006em;
 }
+
+.password-field {
+  margin-top:1.666667em;
+}
+
+.mat-select-value-text .mat-select-value {
+  font-size: 14px;
+}

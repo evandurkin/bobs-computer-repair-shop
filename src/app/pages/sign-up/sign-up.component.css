@@ -7,35 +7,21 @@
 // Description: Css file for the sign-up component.
 =======================================
 */
+
+
+/********** Card, Card Actions, and Container **********/
 .card-container {
   width: 50%;
   min-width: 750px;
   min-height: 600px;
+  max-width: 840px;
   padding: 0 0 15px 0;
-  margin: 5% auto;
+  margin: 7% auto;
   border-radius: 0px;
 }
 
 .mat-horizontal-content-container {
   background-color: #ffffff;
-}
-.card-title {
-  text-align: center;
-  padding-top: 19px;
-  padding-bottom: 19px;
-  background-color: #323232;
-  font-size: 22px;
-  margin-bottom: 0;
-  font-family: 'Aldrich', sans-serif;
-}
-.mat-tab-group {
-  min-height: 400px;
-}
-
-.mat-form-field {
-  width: 100%;
-  padding-bottom: 0;
-  margin-bottom: 5px;
 }
 
 .mat-card-actions {
@@ -50,13 +36,36 @@
   height: 50px;
 }
 
-.error-input {
+.card-title {
+  text-align: center;
+  padding-top: 19px;
+  padding-bottom: 19px;
+  background-color: #323232;
+  font-size: 22px;
+  margin-bottom: 0;
+  font-family: 'Aldrich', sans-serif;
+}
+
+
+/********** Mat Form Fields and Tabs **********/
+
+.mat-tab-group {
+  min-height: 400px;
+}
+
+.mat-form-field {
+  width: 100%;
+  padding-bottom: 0;
+  margin-bottom: 5px;
+}
+
+.spacer {
+  height: 50px;
+}
+
+/* .error-input {
   background-color: #f5f5f6;
-}
-
-.input-error {
-
-}
+} */
 
 .form {
   margin-top: 35px;
@@ -83,24 +92,15 @@ mat-hint {
   margin: 0 30px;
 }
 
-.return-sign-in {
-  color: #323232;
-  display: inline-flex;
-}
-
-.btn-sign-up {
-  border-radius: 0;
-  font-weight: 400;
-  font-size: 18px;
-}
-
 mat-option {
   font-family: 'Karla', sans-serif;
   font-weight: 400;
+  font-size: 14px;
 }
 
 mat-select-value {
   color: black;
+  font-size: 14px;
 }
 
 .mat-list-base .mat-list-item, .mat-list-base .mat-list-option {
@@ -115,6 +115,24 @@ mat-select-value {
   width: 66px;
 }
 
+.mat-select-value {
+  font-size: 14px;
+}
+
+
+/********** Buttons and Links **********/
+
+.return-sign-in {
+  color: #323232;
+  display: inline-flex;
+}
+
+.btn-sign-up {
+  border-radius: 0;
+  font-weight: 400;
+  font-size: 18px;
+}
+
 .btn-primary {
   border-radius: 0;
   font-size: 20px;
@@ -122,4 +140,31 @@ mat-select-value {
   padding-right: 20px;
   padding-bottom: 3px;
   padding-top: 3px;
+}
+
+.btn-back {
+  font-family: 'Aldrich', sans-serif;
+  border: none;
+  border-radius: 0;
+  font-size: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 3px;
+  padding-top: 3px;
+  background-color: #dddcdc;
+  color: #8a8a8a;
+}
+
+.btn-back:hover {
+  font-family: 'Aldrich', sans-serif;
+  border: none;
+  border-radius: 0;
+  font-size: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 3px;
+  padding-top: 3px;
+  background-color: #8a8a8a;
+  color: #dddcdc;
+  transition: .5s;
 }
