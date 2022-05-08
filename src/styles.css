@@ -59,12 +59,12 @@ mat-header-row cdk-header-row ng-star-inserted {
 
 /*********** navbar logo ***********/
 .logo-navbar {
-  font-size: 46px;
-  letter-spacing: -3pt;
+  font-size: 35px;
+  letter-spacing: -2pt;
   text-align: left;
   text-decoration: none;
   color: #568e67;
-  line-height: 80%;
+  line-height: 40%;
   overflow: hidden;
   background: linear-gradient(to right, white, white 50%, #568e67 50%);
   background-clip: text;
@@ -85,7 +85,7 @@ mat-header-row cdk-header-row ng-star-inserted {
 
 /*********** navbar links ***********/
 .navbar-link {
-  font-size: 24px;
+  font-size: 22px;
   font-family: 'Aldrich', sans-serif;
   text-decoration: none;
   color: white;
@@ -106,7 +106,7 @@ mat-header-row cdk-header-row ng-star-inserted {
 }
 
 .navbar-container {
-  margin: 2em;
+  margin: 1.5em;
   display: inline-block;
   align-items: flex-end;
   width: 100%;
@@ -119,7 +119,7 @@ mat-header-row cdk-header-row ng-star-inserted {
 
 .dashboard-header {
   font-family: 'Aldrich', sans-serif;
-  font-size: 24px;
+  font-size: 20px;
   color: white;
   margin-left: 20px;
   display: inline-block;
@@ -171,11 +171,11 @@ li a:hover:not(.active) {
 }
 
 .footer-content {
-  font-size: 16px;
+  font-size: 12px;
   letter-spacing: 3px;
   font-family: 'Karla', sans-serif;
   font-weight: 400;
-  padding: 40px;
+  padding: 30px;
   background-color: #888888;
 }
 

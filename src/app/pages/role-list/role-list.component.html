@@ -24,7 +24,7 @@
         <ng-container matColumnDef="functions" >
           <th mat-header-cell *matHeaderCellDef>Functions</th>
           <td mat-cell *matCellDef="let role" style="width: 100px;">
-            <button mat-icon-button routerLink="/session/roles/{{ role._id }}">
+            <button mat-icon-button (click)="openRoleDetailsDialog(role._id, role)">
               <mat-icon class="functions-icon">edit</mat-icon>
             </button>
             <button mat-icon-button (click)="delete(role._id, role.text)">

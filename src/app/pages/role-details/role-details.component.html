@@ -7,7 +7,7 @@
 -->
 
 <mat-dialog-content fxFlex fxLayout="column" [formGroup]="roleForm" class="dialog-questions" >
-  <h2 mat-dialog-title class="dialog-title">Edit Security Question</h2>
+  <h2 mat-dialog-title class="dialog-title">Edit Role</h2>
 
   <mat-form-field style="padding: 15px; margin: 0px;">
       <input type="text" placeholder="Role" matInput formControlName="text" [value]="roleData.text"/>
@@ -16,7 +16,7 @@
       </mat-error>
   </mat-form-field>
 
-  <div mat-dialog-actions align="end" style="padding: 15px; margin: 0px;">
+  <div mat-dialog-actions fxLayoutAlign="end" style="padding: 15px; margin: 0px;">
     <button mat-button (click)="cancel()" class="btn-back">cancel</button>
     <button mat-raised-button (click)="save()"  class="btn-primary btn-dialog">submit</button>
   </div>

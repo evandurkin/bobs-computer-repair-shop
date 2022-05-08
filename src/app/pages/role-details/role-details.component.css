@@ -42,12 +42,13 @@
 }
 
 .error-question {
-  font-size: 11pt;
+  font-size: 10pt;
 }
 
 ::ng-deep.mat-dialog-container {
   padding: 0px !important;
   background-color: #ffffff;
+  border-radius: 0px;
 }
 
 
