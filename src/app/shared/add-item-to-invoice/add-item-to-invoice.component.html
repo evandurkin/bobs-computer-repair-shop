@@ -10,8 +10,8 @@
 <form [formGroup]="addItemToForm" (ngSubmit)="createService(); addItemToForm.reset()" autocomplete="off">
   <div fxLayout="column">
     <mat-form-field appearance="fill">
-      <mat-label>Name</mat-label>
-      <input matInput formControlName="name" placeholder="Enter name of service">
+      <mat-label>Name of Service</mat-label>
+      <input matInput formControlName="name" style="color:gray">
 
       <!-- Error message-->
       <mat-error
@@ -21,10 +21,10 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Hours</mat-label>
+      <mat-label>No. of Hours</mat-label>
 
       <!-- Input to add hours -->
-      <input matInput formControlName="hours" placeholder="Hours of Labor">
+      <input matInput formControlName="hours" style="color:gray">
       <mat-error
       *ngIf="addItemToForm.controls.hours.hasError('required') && addItemToForm.controls.hours.touched">
         This field is required.
@@ -38,8 +38,8 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Parts</mat-label>
-      <input matInput formControlName="parts" placeholder="Enter cost of parts">
+      <mat-label>Parts (cost)</mat-label>
+      <input matInput formControlName="parts" placeholder="Enter cost of parts" style="color:gray">
       <mat-error
       *ngIf="addItemToForm.controls.parts.hasError('required') && addItemToForm.controls.parts.touched">
         This field is required.
