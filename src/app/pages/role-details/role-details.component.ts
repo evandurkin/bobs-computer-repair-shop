@@ -1,3 +1,11 @@
+/*<!--
+    Title: role-details.component.ts
+    Date: 07 May 2022
+    Authors: Evan Durkin, Keith Hall,
+    Gustavo Roo Gonzalez, and Gunner Bradley
+    Description: TS file for the role-details component.
+-->*/
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';

@@ -1,3 +1,11 @@
+/* <!--
+    Title: role-create.component.ts
+    Date: 07 May 2022
+    Authors: Evan Durkin, Keith Hall,
+    Gustavo Roo Gonzalez, and Gunner Bradley
+    Description: TS file for the role-create component.
+-->*/
+
 // import statements
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';

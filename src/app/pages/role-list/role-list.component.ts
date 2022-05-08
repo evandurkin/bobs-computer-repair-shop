@@ -1,3 +1,11 @@
+/*
+    Title: role-list.component.ts
+    Date: 07 May 2022
+    Authors: Evan Durkin, Keith Hall,
+    Gustavo Roo Gonzalez, and Gunner Bradley
+    Description: TS file for the role-list component.
+*/
+
 import { Component, OnInit } from '@angular/core';
 import { UserRole } from '../../shared/interfaces/user-role';
 import { RoleService } from '../../shared/services/role.service';

@@ -1,3 +1,11 @@
+<!--
+    Title: role-create.component.html
+    Date: 07 May 2022
+    Authors: Evan Durkin, Keith Hall,
+    Gustavo Roo Gonzalez, and Gunner Bradley
+    Description: Html file for the role-create component.
+-->
+
 <div fxLayout="column">
   <mat-card class="mat-elevation-z8 hp-card-sm">
     <mat-card-title>Create Role</mat-card-title>
@@ -30,13 +38,7 @@
         <button mat-raised-button (click)="cancel()" color="accent">
           Cancel
         </button>
-        <button
-          mat-raised-button
-          [disabled]="!form.valid"
-          class="hp-background"
-        >
-          Submit
-        </button>
+        <button mat-raised-button [disabled]="!form.valid">Submit</button>
       </mat-card-actions>
     </form>
   </mat-card>

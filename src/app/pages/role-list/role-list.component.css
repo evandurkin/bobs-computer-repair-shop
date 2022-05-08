@@ -1,3 +1,11 @@
+/*
+    Title: role-list.component.css
+    Date: 07 May 2022
+    Authors: Evan Durkin, Keith Hall,
+    Gustavo Roo Gonzalez, and Gunner Bradley
+    Description: Styling file for the role-list component.
+*/
+
 /************* Main Mat-Card Styling *************/
 .users-list-card {
   border-radius: 0;
@@ -8,11 +16,11 @@
 /************* Roles Table Styling *************/
 th,
 td {
- width: 180px;
+  width: 180px;
 }
 
 th {
-  font-family: 'Karla', sans-serif;
+  font-family: "Karla", sans-serif;
   font-size: 16px;
   color: white;
   background-color: #5d5d5d;
@@ -21,16 +29,18 @@ th {
 td {
   background-color: #ffffff;
   color: black;
-  border-bottom: .5px solid #8d8d8d;
+  border-bottom: 0.5px solid #8d8d8d;
 }
 
-th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
   column-gap: 10px;
 }
 
 .roles-title {
   text-align: center;
-  font-family: 'Aldrich', sans-serif;
+  font-family: "Aldrich", sans-serif;
   padding: 20px;
   margin-bottom: 0;
   background-color: #343434;
@@ -55,9 +65,9 @@ td.mat-footer-cell:last-of-type {
 
 .btn-add-role:hover {
   background-color: #5fed8a;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 #mat-dialog-title-0 {
-  margin: 0 0 40px 0
+  margin: 0 0 40px 0;
 }
