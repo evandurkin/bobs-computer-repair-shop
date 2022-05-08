@@ -74,11 +74,11 @@ export class SecurityQuestionListComponent implements OnInit {
     const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {
       data: {
         questionId,
-        dialogHeader: 'Delete Record Dialog',
-        dialogBody: `Are you sure you want to delete question ${questionText}?`,
+        dialogHeader: 'Delete Question Confirmation',
+        dialogBody: `Are you sure you want to delete this question: ${questionText}`,
       },
       disableClose: true,
-      width: '800px',
+      width: '900px',
     });
 
     dialogRef.afterClosed().subscribe((result) => {

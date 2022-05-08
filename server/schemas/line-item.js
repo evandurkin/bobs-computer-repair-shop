@@ -12,7 +12,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 let lineItemSchema = new Schema({
-  serviceName: { type: String },
+  title: { type: String },
   price: { type: Number },
   isDisabled: { type: Boolean },
 });

@@ -12,7 +12,7 @@ let Schema = mongoose.Schema;
 
 let LineItemSchema = new Schema(
   {
-    serviceName: { type: String },
+    title: { type: String },
     price: { type: Number },
     isDisabled: { type: Boolean, default: false },
   },

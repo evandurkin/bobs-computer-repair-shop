@@ -10,9 +10,7 @@
 
 // Require statements
 const express = require("express");
-const Role = require("../models/role");
-const User = require("../models/user");
-const Invoice = require('../models/invoice');
+const Invoice = require("../models/invoice");
 const ErrorResponse = require("../services/error-response");
 const BaseResponse = require("../services/base-response");
 
@@ -20,7 +18,7 @@ const router = express.Router();
 
 // create invoice API
 router.post("/:userName", async (req, res) => {
-	
+
   try {
 
     const newInvoice = {
@@ -35,7 +33,7 @@ router.post("/:userName", async (req, res) => {
     console.log(newInvoice);
 
     Invoice.create(newInvoice, function (err, invoice) {
-		
+
       if (err) {
         console.log(err);
         const createInvoiceErrorResponse = new ErrorResponse(

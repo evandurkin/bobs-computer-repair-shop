@@ -51,6 +51,7 @@ import { AddItemToInvoiceComponent } from './shared/add-item-to-invoice/add-item
 import { InvoiceDialogComponent } from './shared/invoice-dialog/invoice-dialog.component';
 import { PrintDialogComponent } from './shared/print-dialog/print-dialog.component';
 import { GuestServicesComponent } from './pages/guest-services/guest-services.component';
+import { ServicesGraphComponent } from './pages/services-graph/services-graph.component';
 
 // Browser, Http, Forms, and Cookie imports
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -128,6 +129,7 @@ import { ToastModule } from 'primeng/toast';
     InvoiceDialogComponent,
     PrintDialogComponent,
     GuestServicesComponent,
+    ServicesGraphComponent,
   ],
   imports: [
     BrowserModule,

@@ -13,11 +13,11 @@ const lineItemSchema = require("../schemas/line-item");
 
 let invoiceSchema = new Schema(
   {
-	username: { type: String },
+  	userName: { type: String },
     lineItem: [lineItemSchema],
     partsTotal: { type: Number },
     laborTotal: { type: Number },
-	lineItemTotal: { type: Number },
+    lineItemTotal: { type: Number },
     total: { type: Number },
     created: { type: Date },
     isDisabled: { type: Boolean, default: false },
