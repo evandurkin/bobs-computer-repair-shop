@@ -81,6 +81,29 @@
             </mat-error>
           </mat-form-field>
 
+          <mat-form-field >
+            <mat-label>Email</mat-label>
+            <input
+              type="text"
+              matInput
+              [formControl]="form.controls['email']" />
+            <mat-error
+              class="error"
+              *ngIf="
+                form.controls.email.hasError('required') &&
+                form.controls.email.touched">
+              Email is a required field.
+            </mat-error>
+
+            <mat-error
+              class="error"
+              *ngIf="
+                form.controls.email.hasError('email') &&
+                form.controls.email.touched">
+              Invalid email format.
+            </mat-error>
+          </mat-form-field>
+
           <mat-form-field>
             <mat-label>Phone number</mat-label>
             <input
@@ -161,29 +184,6 @@
             </mat-error>
           </mat-form-field>
 
-
-          <mat-form-field >
-            <mat-label>Email</mat-label>
-            <input
-              type="text"
-              matInput
-              [formControl]="form.controls['email']" />
-            <mat-error
-              class="error"
-              *ngIf="
-                form.controls.email.hasError('required') &&
-                form.controls.email.touched">
-              Email is a required field.
-            </mat-error>
-
-            <mat-error
-              class="error"
-              *ngIf="
-                form.controls.email.hasError('email') &&
-                form.controls.email.touched">
-              Invalid email format.
-            </mat-error>
-          </mat-form-field>
         </div>
       </mat-card-content>
       <br />
