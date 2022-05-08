@@ -6,11 +6,13 @@
     Description: TS file for the role-details component.
 -->*/
 
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RoleService } from '../../shared/services/role.service';
+import { Component, Inject, OnInit } from '@angular/core';
 import { UserRole } from '../../shared/interfaces/user-role';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { RoleService } from '../../shared/services/role.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-role-details',
@@ -18,65 +20,34 @@ import { UserRole } from '../../shared/interfaces/user-role';
   styleUrls: ['./role-details.component.css'],
 })
 export class RoleDetailsComponent implements OnInit {
-  form: FormGroup;
-  role: UserRole;
+  roleForm: FormGroup;
+  roleData: UserRole;
   roleId: string;
 
   constructor(
-    private route: ActivatedRoute,
-    private fb: FormBuilder,
-    private router: Router,
-    private roleService: RoleService
-  ) {
-    // get the roleId
-    this.roleId = this.route.snapshot.paramMap.get('roleId');
-
-    // retrieve the role with roleId
-    this.roleService.findRoleById(this.roleId).subscribe(
-      (res) => {
-        this.role = res['data'];
-        // on error
-      },
-      (err) => {
-        console.log(err);
-        // show the selected role on the form
-      },
-      () => {
-        this.form.controls['text'].setValue(this.role.text);
-      }
-    );
+    private dialogRef: MatDialogRef<RoleDetailsComponent>,
+    @Inject(MAT_DIALOG_DATA)data) {
+    this.roleData = data.roleData
   }
 
   ngOnInit(): void {
-    this.form = this.fb.group({
-      text: [null, Validators.compose([Validators.required])],
-    });
+    console.log(this.roleData.text)
+    this.roleForm = new FormGroup({
+      text: new FormControl(this.roleData.text, Validators.required)
+    })
   }
 
   /**
    * Save updated role
    */
   save() {
-    // get the new role from the form
-    const updatedRole = {
-      text: this.form.controls['text'].value,
-    } as UserRole;
-
-    // update the role
-    this.roleService.updateRole(this.roleId, updatedRole).subscribe(
-      (res) => {
-        this.router.navigate(['/session/role-list']);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    this.dialogRef.close(this.roleForm.value)
   }
 
   /**
    * Cancel and go back to role list
    */
   cancel() {
-    this.router.navigate(['/session/role-list']);
+    this.dialogRef.close();
   }
 }
