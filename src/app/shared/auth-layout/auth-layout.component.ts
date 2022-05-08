@@ -56,7 +56,7 @@ export class AuthLayoutComponent implements OnInit {
     this.router.navigate(['/']);
   }
   roleConfig(): void{
-    this.router.navigate([]);
+    this.router.navigate(['/session/role-list']);
   }
 
   adminReport(): void {

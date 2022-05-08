@@ -39,14 +39,15 @@ import { SecurityQuestionCreateComponent } from './pages/security-question-creat
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { ServicesListComponent } from './pages/services-list/services-list.component';
 import { ServicesEditComponent } from './pages/services-edit/services-edit.component';
+import { RoleCreateComponent } from './pages/role-create/role-create.component';
+import { RoleDetailsComponent } from './pages/role-details/role-details.component';
+import { RoleListComponent } from './pages/role-list/role-list.component';
 
 // Guards
 import { AuthGuard } from './auth.guard';
 import { RoleGuard } from './role.guard';
 
-
 const routes: Routes = [
-
   /* Public Routes for guests */
   {
     path: '',
@@ -63,7 +64,7 @@ const routes: Routes = [
       {
         path: 'contact',
         component: ContactComponent,
-      }
+      },
     ],
   },
 
@@ -89,21 +90,33 @@ const routes: Routes = [
         component: UserUpdateComponent,
       },
       {
+        path: 'role-list',
+        component: RoleListComponent,
+      },
+      {
+        path: 'role-create',
+        component: RoleCreateComponent,
+      },
+      {
+        path: 'role-details',
+        component: RoleDetailsComponent,
+      },
+      {
         path: 'security-questions',
         component: SecurityQuestionListComponent,
       },
       {
         path: 'security-questions/create',
-        component: SecurityQuestionCreateComponent
+        component: SecurityQuestionCreateComponent,
       },
       {
         path: 'services',
-        component: ServicesListComponent
+        component: ServicesListComponent,
       },
       {
         path: 'services/create',
-        component: ServicesEditComponent
-      }
+        component: ServicesEditComponent,
+      },
     ],
   },
   /* Standard-employee users (canActivate) */
@@ -113,27 +126,27 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard-employee',
-        component: DashboardEmployeeComponent
+        component: DashboardEmployeeComponent,
       },
       {
         path: 'user-profile',
-        component: UserProfileComponent
+        component: UserProfileComponent,
       },
       {
         path: 'user-create',
         component: UserCreateComponent,
-      }
-    ]
+      },
+    ],
   },
 
- /* Routes to pages with no headers */
+  /* Routes to pages with no headers */
   {
     path: 'post-session',
     component: PostLayoutComponent,
     children: [
       {
         path: 'sign-in',
-        component: SignInComponent
+        component: SignInComponent,
       },
       {
         path: 'sign-up',
@@ -153,12 +166,12 @@ const routes: Routes = [
       },
       {
         path: '404-error',
-        component: NotFoundComponent
+        component: NotFoundComponent,
       },
       {
         path: '500-error',
-        component: InternalServerErrorComponent
-      }
+        component: InternalServerErrorComponent,
+      },
     ],
   },
   {

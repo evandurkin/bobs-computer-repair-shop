@@ -1,0 +1,43 @@
+<div fxLayout="column">
+  <mat-card class="mat-elevation-z8 hp-card-sm">
+    <mat-card-title>Create Role</mat-card-title>
+    <br />
+
+    <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
+
+    <form [formGroup]="form" (ngSubmit)="create()" #roleForm>
+      <mat-card-content>
+        <div fxLayout="column" fxLayoutGap="10px">
+          <mat-form-field appearence="fill">
+            <mat-label>Role</mat-label>
+            <input matInput [formControl]="form.controls['text']" />
+
+            <mat-error
+              class="error"
+              *ngIf="
+                form.controls['text'].hasError('required') &&
+                form.controls['text'].touched
+              "
+            >
+              Role is a required field.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+
+      <br />
+      <mat-card-actions align="end">
+        <button mat-raised-button (click)="cancel()" color="accent">
+          Cancel
+        </button>
+        <button
+          mat-raised-button
+          [disabled]="!form.valid"
+          class="hp-background"
+        >
+          Submit
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

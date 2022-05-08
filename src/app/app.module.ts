@@ -44,6 +44,9 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { ServicesListComponent } from './pages/services-list/services-list.component';
 import { ServicesEditComponent } from './pages/services-edit/services-edit.component';
 import { DeleteServiceDialogComponent } from './shared/delete-service-dialog/delete-service-dialog.component';
+import { RoleListComponent } from './pages/role-list/role-list.component';
+import { RoleDetailsComponent } from './pages/role-details/role-details.component';
+import { RoleCreateComponent } from './pages/role-create/role-create.component';
 
 // Browser, Http, Forms, and Cookie imports
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -79,7 +82,6 @@ import { MessagesModule } from 'node_modules/primeng/messages';
 import { MessageModule } from 'node_modules/primeng/message';
 import { MessageService } from 'primeng/api';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -112,6 +114,9 @@ import { MessageService } from 'primeng/api';
     ServicesListComponent,
     ServicesEditComponent,
     DeleteServiceDialogComponent,
+    RoleCreateComponent,
+    RoleDetailsComponent,
+    RoleListComponent,
   ],
   imports: [
     BrowserModule,
@@ -139,16 +144,16 @@ import { MessageService } from 'primeng/api';
     MatSelectModule,
     MatStepperModule,
     MessageModule,
-    MessagesModule
+    MessagesModule,
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
-      multi: true
+      multi: true,
     },
     CookieService,
-    MessageService
+    MessageService,
   ],
   bootstrap: [AppComponent],
 })
