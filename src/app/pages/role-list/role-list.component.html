@@ -9,16 +9,6 @@
 <div fxLayout="column" style="margin-top: 3em">
   <mat-card class="roles-list-card">
     <mat-card-title class="roles-title">Roles Configuration</mat-card-title>
-    <mat-card-subtitle>
-      <button
-        mat-button
-        routerLink="/session/role-create"
-        class="btn-add-role"
-        style="margin-bottom: 10px"
-      >
-        Create +
-      </button>
-    </mat-card-subtitle>
 
     <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
 
@@ -31,14 +21,14 @@
           </td>
         </ng-container>
 
-        <ng-container matColumnDef="functions">
+        <ng-container matColumnDef="functions" >
           <th mat-header-cell *matHeaderCellDef>Functions</th>
-          <td mat-cell *matCellDef="let role">
+          <td mat-cell *matCellDef="let role" style="width: 100px;">
             <button mat-icon-button routerLink="/session/roles/{{ role._id }}">
-              <mat-icon class="edit-icon">edit</mat-icon>
+              <mat-icon class="functions-icon">edit</mat-icon>
             </button>
             <button mat-icon-button (click)="delete(role._id, role.text)">
-              <mat-icon color="warn">delete</mat-icon>
+              <mat-icon class="functions-icon">delete</mat-icon>
             </button>
           </td>
         </ng-container>
@@ -47,5 +37,14 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
     </mat-card-content>
+
+    <button
+    mat-button
+    routerLink="/session/role-create"
+    class="btn-add-role"
+    style="margin-bottom: 10px"
+  >
+    create +
+  </button>
   </mat-card>
 </div>

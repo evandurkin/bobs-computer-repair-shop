@@ -14,6 +14,7 @@
 .user-card {
   border-radius: 0px;
   color: black;
+  min-width: 700px;
 }
 
 .mat-error {

@@ -53,6 +53,10 @@ td.mat-footer-cell:last-of-type {
   background-color: #343434;
 }
 
+tr.mat-header-row {
+  height: 45px;
+}
+
 /************* Add User Button Styling *************/
 
 .btn-add-user {

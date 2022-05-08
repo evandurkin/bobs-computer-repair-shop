@@ -20,6 +20,9 @@ html, body {
   transition: .3s;
 }
 
+mat-header-row cdk-header-row ng-star-inserted {
+  height: 45px;
+}
 .btn-primary {
   font-family: 'Aldrich', sans-serif;
   color: #003716;
