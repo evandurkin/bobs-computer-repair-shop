@@ -98,7 +98,7 @@ const routes: Routes = [
         component: RoleCreateComponent,
       },
       {
-        path: 'role-details',
+        path: 'roles/:roleId',
         component: RoleDetailsComponent,
       },
       {
