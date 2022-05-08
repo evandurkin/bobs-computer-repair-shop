@@ -4,27 +4,27 @@
 // Date: 07 May 2022
 // Authors: Evan Durkin, Keith Hall,
 // Gustavo Roo Gonzalez, and Gunner Bradley
-// Description: Test file for the dashboard-employee component.
+// Description: Test file for the print-dialog component.
 =======================================
 */
 
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashboardEmployeeComponent } from './dashboard-employee.component';
+import { PrintDialogComponent } from './print-dialog.component';
 
-describe('DashboardEmployeeComponent', () => {
-  let component: DashboardEmployeeComponent;
-  let fixture: ComponentFixture<DashboardEmployeeComponent>;
+describe('PrintDialogComponent', () => {
+  let component: PrintDialogComponent;
+  let fixture: ComponentFixture<PrintDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashboardEmployeeComponent ]
+      declarations: [ PrintDialogComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DashboardEmployeeComponent);
+    fixture = TestBed.createComponent(PrintDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

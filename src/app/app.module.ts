@@ -47,6 +47,10 @@ import { DeleteServiceDialogComponent } from './shared/delete-service-dialog/del
 import { RoleListComponent } from './pages/role-list/role-list.component';
 import { RoleDetailsComponent } from './pages/role-details/role-details.component';
 import { RoleCreateComponent } from './pages/role-create/role-create.component';
+import { AddItemToInvoiceComponent } from './shared/add-item-to-invoice/add-item-to-invoice.component';
+import { InvoiceDialogComponent } from './shared/invoice-dialog/invoice-dialog.component';
+import { PrintDialogComponent } from './shared/print-dialog/print-dialog.component';
+import { GuestServicesComponent } from './pages/guest-services/guest-services.component';
 
 // Browser, Http, Forms, and Cookie imports
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -76,11 +80,14 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 // PrimeNG Imports
 import { MessagesModule } from 'node_modules/primeng/messages';
 import { MessageModule } from 'node_modules/primeng/message';
 import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+
 
 @NgModule({
   declarations: [
@@ -117,6 +124,10 @@ import { MessageService } from 'primeng/api';
     RoleCreateComponent,
     RoleDetailsComponent,
     RoleListComponent,
+    AddItemToInvoiceComponent,
+    InvoiceDialogComponent,
+    PrintDialogComponent,
+    GuestServicesComponent,
   ],
   imports: [
     BrowserModule,
@@ -145,6 +156,8 @@ import { MessageService } from 'primeng/api';
     MatStepperModule,
     MessageModule,
     MessagesModule,
+    MatProgressSpinnerModule,
+    ToastModule
   ],
   providers: [
     {
