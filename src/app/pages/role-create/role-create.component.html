@@ -7,38 +7,32 @@
 -->
 
 <div fxLayout="column">
-  <mat-card class="mat-elevation-z8 hp-card-sm">
-    <mat-card-title>Create Role</mat-card-title>
+  <mat-card class="mat-elevation-z8 hp-card-sm" style="padding: 0px;" class="create-card">
+    <mat-card-title class="create-title">Create a Role</mat-card-title>
     <br />
 
-    <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
+    <!-- <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages> -->
 
-    <form [formGroup]="form" (ngSubmit)="create()" #roleForm>
+    <form [formGroup]="form" (ngSubmit)="create()" #roleForm class="create-form">
       <mat-card-content>
         <div fxLayout="column" fxLayoutGap="10px">
-          <mat-form-field appearence="fill">
-            <mat-label>Role</mat-label>
-            <input matInput [formControl]="form.controls['text']" />
+          <mat-form-field>
+            <mat-label>Role Name</mat-label>
+            <input matInput [formControl]="form.controls['text']" placeholder="Role Name" (keydown.enter)="create()"/>
 
-            <mat-error
-              class="error"
-              *ngIf="
-                form.controls['text'].hasError('required') &&
-                form.controls['text'].touched
-              "
-            >
-              Role is a required field.
+            <mat-error *ngIf="form.controls.text.hasError('required') && form.controls.text.touched" style="font-size:12px;">
+              You must provide a name for the role.
             </mat-error>
           </mat-form-field>
         </div>
       </mat-card-content>
 
       <br />
-      <mat-card-actions align="end">
-        <button mat-raised-button (click)="cancel()" color="accent">
-          Cancel
+      <mat-card-actions fxLayoutAlign="end"  style="margin: 25px;">
+        <button mat-stroked-button (click)="cancel()" class="btn-back">cancel</button>
+        <button type="submit" mat-raised-button [disabled]="!form.valid" class="btn-primary">
+          submit
         </button>
-        <button mat-raised-button [disabled]="!form.valid">Submit</button>
       </mat-card-actions>
     </form>
   </mat-card>
