@@ -8,7 +8,6 @@
 ===================================================
 */
 
-// Imported modules
 import { Component, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import {
@@ -20,12 +19,9 @@ import {
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { UserService } from '../../shared/services/user.service';
 import { SecurityQuestionService } from 'src/app/shared/services/security-question.service';
-import { SecurityQuestion } from 'src/app/shared/interfaces/security-question';
-import { User } from ".../../server/models/user.js";
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
-
-
 
 @Component({
   selector: 'app-sign-up',
@@ -39,98 +35,166 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
   ],
 })
 export class SignUpComponent implements OnInit {
-  securityQuestions: SecurityQuestion[];
-  contactForm: FormGroup;
-  securityQuestionsForm: FormGroup;
-  credentialsForm: FormGroup;
+  // styling variables
+  color: ThemePalette = 'accent';
+  background: ThemePalette = 'primary';
 
-  errorMessages: string;
+  // form variable
+  newUserFormGroup: FormGroup;
+  newUser: any;
+  securityQuestions: any;
+  errorMessage: string;
 
-  // Define params
-  constructor(private http: HttpClient, private router: Router, private fb: FormBuilder, private CookieService: CookieService, private securityQuestionService: SecurityQuestionService) {
-    this.securityQuestionService.findAllSecurityQuestions().subscribe(res => {
-      this.securityQuestions = res['data']
-    }, err => {
-      console.log(err);
-    })
-   }
+  constructor(
+    private userService: UserService,
+    private securityQuestionService: SecurityQuestionService,
+    private fb: FormBuilder,
+    private cookieService: CookieService,
+    private router: Router,
+    private http: HttpClient
+  ) {}
+  ngOnInit() {
+    this.newUserFormGroup = this.fb.group({
+      firstName: new FormControl(null, Validators.required),
+      lastName: new FormControl(null, Validators.required),
+      email: new FormControl(null, Validators.required),
+      phoneNumber: new FormControl(null, Validators.required),
+      address1: new FormControl(null, Validators.required),
+      address2: new FormControl(null, Validators.required),
+      city: new FormControl(null, Validators.required),
+      state: new FormControl(null, Validators.required),
+      zip: new FormControl(null, Validators.required),
 
-   // Contact form
-  ngOnInit(): void {
-    this.contactForm = this.fb.group({
-      firstName: [null, Validators.compose([Validators.required])],
-      lastName: [null, Validators.compose([Validators.required])],
-      phoneNumber: [null, Validators.compose([Validators.required])],
-      email: [null, Validators.compose([Validators.required, Validators.email])],
-      street: [null, Validators.compose([Validators.required])],
-      city: [null, Validators.compose([Validators.required])],
-      state: [null, Validators.compose([Validators.required])],
-      zip: [null, Validators.compose([Validators.required])]
+      securityQuestion1: new FormControl(null, Validators.required),
+      securityQuestion1Answer: new FormControl(null, Validators.required),
+      securityQuestion2: new FormControl(null, Validators.required),
+      securityQuestion2Answer: new FormControl(null, Validators.required),
+      securityQuestion3: new FormControl(null, Validators.required),
+      securityQuestion3Answer: new FormControl(null, Validators.required),
 
+      userName: new FormControl(null, Validators.required),
+      password: new FormControl(
+        null,
+        Validators.compose([
+          Validators.required,
+          Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$'),
+        ])
+      ),
     });
-
-    // Security questions form
-    this.securityQuestionsForm = this.fb.group({
-      securityQuestion1: [null, Validators.compose([Validators.required])],
-      securityQuestion2: [null, Validators.compose([Validators.required])],
-      securityQuestion3: [null, Validators.compose([Validators.required])],
-      answerToSecurityQuestion1: [null, Validators.compose([Validators.required])],
-      answerToSecurityQuestion2: [null, Validators.compose([Validators.required])],
-      answerToSecurityQuestion3: [null, Validators.compose([Validators.required])],
-    });
-
-    // Verification form
-    this.credentialsForm = this.fb.group({
-      userName: [null, Validators.compose([Validators.required])],
-      password: [null, Validators.compose([Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')])],
+    this.securityQuestionService.findAllSecurityQuestions().subscribe((res) => {
+      this.securityQuestions = res['data'];
+      console.log(this.securityQuestions);
     });
   }
+  registerAccount() {
+    //address is broken up in form so here we combine it for the DB schema
+    let address1 = this.newUserFormGroup.get('address1').value.trim();
+    let address2 = this.newUserFormGroup.get('address2').value.trim();
+    let city = this.newUserFormGroup.get('city').value.trim();
+    let state = this.newUserFormGroup.get('state').value.trim();
+    let zip = this.newUserFormGroup.get('zip').value.trim();
+    let fullAddress = `${address1}, ${address2}, ${city}, ${state} ${zip}`;
 
-  //Register function
-  register() {
-
-    // Bind each form to a variable
-    const contactInformation = this.contactForm.value;
-    const securityQuestions = this.securityQuestionsForm.value;
-    const credentials = this.credentialsForm.value;
-
-    // Selected Security Questions defined as questionText and answerText
-    const selectedSecurityQuestions = [
+    let newSelectedSecurityQuestions = [
       {
-        questionText: securityQuestions.securityQuestion1,
-        answerText: securityQuestions.answerToSecurityQuestion1
+        questionText: this.newUserFormGroup.controls.securityQuestion1.value,
+        answerText: this.newUserFormGroup
+          .get('securityQuestion1Answer')
+          .value.trim(),
       },
       {
-        questionText: securityQuestions.securityQuestion2,
-        answerText: securityQuestions.answerToSecurityQuestion2
+        questionText: this.newUserFormGroup.controls.securityQuestion2.value,
+        answerText: this.newUserFormGroup
+          .get('securityQuestion2Answer')
+          .value.trim(),
       },
       {
-        questionText: securityQuestions.securityQuestion3,
-        answerText: securityQuestions.answerToSecurityQuestion3
-      }
+        questionText: this.newUserFormGroup.controls.securityQuestion3.value,
+        answerText: this.newUserFormGroup
+          .get('securityQuestion3Answer')
+          .value.trim(),
+      },
     ];
+    this.newUser = {
+      firstName: this.newUserFormGroup.get('firstName').value.trim(),
+      lastName: this.newUserFormGroup.get('lastName').value.trim(),
+      phoneNumber: this.newUserFormGroup.get('phoneNumber').value.trim(),
+      email: this.newUserFormGroup.get('email').value.trim(),
+      address: fullAddress,
+      selectedSecurityQuestion: newSelectedSecurityQuestions,
+      userName: this.newUserFormGroup.get('userName').value.trim(),
+      password: this.newUserFormGroup.get('password').value.trim(),
+    };
+    console.log(this.newUser);
 
-    console.log(selectedSecurityQuestions);
-
-     // Calls to register api and inserts the values to create a user
-    this.http.post('/api/session/register', {
-
-      userName: credentials.userName,
-      password: credentials.password,
-      firstName: contactInformation.firstName,
-      lastName: contactInformation.lastName,
-      phoneNumber: contactInformation.phoneNumber,
-      address: contactInformation.address,
-      email: contactInformation.email,
-      selectedSecurityQuestions: selectedSecurityQuestions
-    }).subscribe(res => {
-
-      // User is authenticated and permitted access to the employee dashboard.
-      this.CookieService.set('sessionuser', credentials.userName, 1);
-      this.router.navigate(['session/dashboard-employee']);
-    }, err => {
-      this.errorMessages = (`Node.js server error; httpCode:${err.httpCode};message:${err.message}`)
-      console.log(err);
+    // sends user data to database
+    this.userService.createUser(this.newUser).subscribe((err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(this.newUser);
+        // console.log(this.router);
+        // console.log(this)
+        // this.router.navigate(['/']);
+      }
     });
+
+    //Logs user in after registering
+    const userName = this.newUserFormGroup.get('userName').value.trim();
+    const password = this.newUserFormGroup.get('password').value.trim();
+
+    // Service call to server api to authenticate user
+    this.http
+      .post('/api/post-session/sign-in', {
+        userName,
+        password,
+      })
+      .subscribe(
+        (res) => {
+          console.log(res['data']);
+          if (res['data'].userName) {
+            this.cookieService.set('session_user', res['data'].userName, 1);
+            this.router.navigate(['/session/dashboard-admin']);
+          }
+        },
+        (err) => {
+          console.log(err);
+          this.errorMessage = err.error.message;
+        }
+      );
+  }
+
+  // Tabs counter config;
+  btnNextPrev = {
+    prev: true,
+    next: false,
+    index: 0,
+  };
+
+  navig(n) {
+    switch (n) {
+      case 'next':
+        {
+          this.btnNextPrev.index++;
+          if (this.btnNextPrev.index > 3) {
+            this.btnNextPrev.prev = false;
+            this.btnNextPrev.next = true;
+          } else {
+            this.btnNextPrev.prev = false;
+          }
+        }
+        break;
+      case 'prev':
+        {
+          this.btnNextPrev.index--;
+          if (this.btnNextPrev.index == 0) {
+            this.btnNextPrev.prev = true;
+            this.btnNextPrev.next = false;
+          } else {
+            this.btnNextPrev.next = false;
+          }
+        }
+        break;
+    }
   }
 }

@@ -152,21 +152,17 @@ li a:hover:not(.active) {
   letter-spacing: 3px;
   font-family: 'Karla', sans-serif;
   font-weight: 400;
-  padding: 40px;
+  padding: 20px;
   background-color: #8a8a8a;
 }
 
-.footer-link {
+.bu-link {
   color: white;
   text-decoration: none;
 }
 
-.footer-link:hover {
+.bu-link:hover {
   text-decoration: underline;
-}
-
-.footer-link:visited {
-  color: white;
 }
 
 /*********** error pages ***********/

@@ -13,8 +13,6 @@
     <form [formGroup]="form" (ngSubmit)="saveUser()" #userForm>
       <mat-card-content>
         <div fxLayout="column" fxLayoutGap="10px">
-
-          <!-- Fist and last name Fields -->
           <mat-form-field>
             <input type="text" matInput
               [formControl]="form.controls['firstName']"
@@ -33,22 +31,6 @@
             </mat-error>
           </mat-form-field>
 
-          <!-- Role -->
-          <mat-form-field style="background-color:gray">
-            <mat-label>Role</mat-label>
-            <mat-select [formControl]="form.controls['role']">
-              <mat-option *ngFor="let role of roles" [value]="role.text">{{ role.text }}</mat-option>
-            </mat-select>
-            <mat-error
-              class="error"
-              *ngIf="
-                form.controls['role'].hasError('required') &&
-                form.controls['role'].touched">
-              Role is a required field.
-            </mat-error>
-          </mat-form-field>
-
-          <!-- Phone -->
           <mat-form-field>
             <input type="text" matInput [formControl]="form.controls['phoneNumber']
 			"placeholder="Phone number"/>

@@ -37,10 +37,7 @@ import { ResetPasswordComponent } from './shared/forms/reset-password/reset-pass
 import { InternalServerErrorComponent } from './pages/internal-server-error/internal-server-error.component';
 import { AuthGuard } from './auth.guard';
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
-import { UserProfileComponent } from './pages/user-profile/user-profile.component';
-import { ServicesListComponent } from './pages/services-list/services-list.component';
-import { ServicesEditComponent } from './pages/services-edit/services-edit.component';
-import { GuestServicesComponent } from './pages/guest-services/guest-services.component';
+
 
 const routes: Routes = [
 
@@ -52,10 +49,6 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
-      },
-      {
-        path: 'guest-services',
-        component: GuestServicesComponent,
       },
       {
         path: 'about',
@@ -96,14 +89,6 @@ const routes: Routes = [
       {
         path: 'security-questions/create',
         component: SecurityQuestionCreateComponent
-      },
-      {
-        path: 'services',
-        component: ServicesListComponent
-      },
-      {
-        path: 'services/create',
-        component: ServicesEditComponent
       }
     ],
   },
@@ -115,14 +100,6 @@ const routes: Routes = [
       {
         path: 'dashboard-employee',
         component: DashboardEmployeeComponent
-      },
-      {
-        path: 'user-profile',
-        component: UserProfileComponent
-      },
-      {
-        path: 'user-create',
-        component: UserCreateComponent,
       }
     ]
   },

@@ -39,26 +39,16 @@ import { VerifyUsernameComponent } from './shared/forms/verify-username/verify-u
 import { VerifyPasswordComponent } from './shared/forms/verify-password/verify-password.component';
 import { VerifySecurityQuestionsComponent } from './shared/forms/verify-security-questions/verify-security-questions.component';
 import { InternalServerErrorComponent } from './pages/internal-server-error/internal-server-error.component';
-import { InvoiceComponent } from './pages/invoice/invoice.component';
-import { UserProfileComponent } from './pages/user-profile/user-profile.component';
-import { ServicesListComponent } from './pages/services-list/services-list.component';
-import { ServicesEditComponent } from './pages/services-edit/services-edit.component';
-import { DeleteServiceDialogComponent } from './shared/delete-service-dialog/delete-service-dialog.component';
-import { GuestServicesComponent } from './pages/guest-services/guest-services.component';
-import { InvoiceDialogComponent } from './shared/invoice-dialog/invoice-dialog.component';
-import { AddItemToInvoiceComponent } from './shared/add-item-to-invoice/add-item-to-invoice.component';
-import { PrintDialogComponent } from './shared/print-dialog/print-dialog.component';
-
 
 // Browser, Http, Forms, and Cookie imports
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
-import { ErrorInterceptor } from './shared/error.interceptor';
 import {
   HttpClient,
   HttpClientModule,
   HTTP_INTERCEPTORS,
 } from '@angular/common/http';
+import { ErrorInterceptor } from './shared/error.interceptor';
 
 // Flex Layout and Material UI Imports
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -78,13 +68,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
-// PrimeNG Imports
-import { MessagesModule } from 'node_modules/primeng/messages';
-import { MessageModule } from 'node_modules/primeng/message';
-import { MessageService } from 'primeng/api';
-import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -113,16 +96,6 @@ import { ToastModule } from 'primeng/toast';
     VerifyPasswordComponent,
     VerifySecurityQuestionsComponent,
     InternalServerErrorComponent,
-    InvoiceComponent,
-    UserProfileComponent,
-    ServicesListComponent,
-    ServicesEditComponent,
-    DeleteServiceDialogComponent,
-    GuestServicesComponent,
-    InvoiceDialogComponent,
-    AddItemToInvoiceComponent,
-    PrintDialogComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -149,19 +122,14 @@ import { ToastModule } from 'primeng/toast';
     MatListModule,
     MatSelectModule,
     MatStepperModule,
-    MessageModule,
-    MessagesModule,
-    MatProgressSpinnerModule,
-    ToastModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
-      multi: true
+      multi: true,
     },
     CookieService,
-    MessageService
   ],
   bootstrap: [AppComponent],
 })

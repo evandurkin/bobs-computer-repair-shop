@@ -16,9 +16,18 @@
         <!-- logo -->
         <a routerLink="/" class="logo-navbar">Bob's <br/> Computer Repair Shop</a>
         <title class="dashboard-header">administrator dashboard</title>
+      </div>
 
-        <a [matMenuTriggerFor]="profileMenu"
-        aria-label="User Profile Menu" style="font-size: 24px; margin-left: 40px;">admin <mat-icon style="font-size: 18px;">perm_identity</mat-icon>
+    </mat-toolbar>
+    <ul>
+      <li><a>Create an Invoice</a></li>
+      <li><a (click)="userConfig()">Users</a></li>
+      <li><a (click)="questionConfig()">Security Questions</a></li>
+      <li><a (click)="roleConfig()">Roles</a></li>
+      <li><a (click)="adminReport()">Service Graph</a></li>
+
+      <li style="float:right"><a class="active" [matMenuTriggerFor]="profileMenu"
+        aria-label="User Profile Menu">admin <mat-icon style="font-size: 18px;">perm_identity</mat-icon>
       <!-- Icon drop down menu items -->
       <mat-menu #profileMenu="matMenu">
         <p style="padding: 10px;color:white;" class="menu">
@@ -32,24 +41,9 @@
       <mat-divider></mat-divider>
 
       <!-- Dropdown menu links -->
-      <button  mat-menu-item (click)="servicesConfig()">
-        <mat-icon class="menu">list_alt</mat-icon>
-        <span class="menu">Service Configuration</span>
-      </button>
-
-      <button  mat-menu-item (click)="adminReport()">
-        <mat-icon class="menu">pie_chart_outline</mat-icon>
-        <span class="menu">Service Graph</span>
-      </button>
-
       <button  mat-menu-item (click)="userConfig()" class="menu">
         <mat-icon class="menu">people</mat-icon>
         <span class="menu">User Configuration</span>
-      </button>
-
-      <button  mat-menu-item (click)="roleConfig()" class="menu">
-        <mat-icon class="menu">admin_panel_settings</mat-icon>
-        <span class="menu">Role Configuration</span>
       </button>
 
       <button  mat-menu-item (click)="questionConfig()" class="menu">
@@ -57,6 +51,15 @@
         <span class="menu">Security Question Configuration</span>
       </button>
 
+      <button  mat-menu-item (click)="roleConfig()" class="menu">
+        <mat-icon class="menu">admin_panel_settings</mat-icon>
+        <span class="menu">Role Configuration</span>
+      </button>
+
+      <button  mat-menu-item (click)="adminReport()">
+        <mat-icon class="menu">pie_chart_outline</mat-icon>
+        <span class="menu">Service Graph</span>
+      </button>
       <!-- Lower divider -->
       <mat-divider></mat-divider>
       <button mat-menu-item (click)="signOut()" class="menu">
@@ -64,10 +67,8 @@
         <span class="menu">Sign-Out</span>
       </button>
     </mat-menu>
-      </a>
-      </div>
-
-    </mat-toolbar>
+      </a></li>
+    </ul>
   </nav>
 
   <!-- main content -->
@@ -83,8 +84,7 @@
       <mat-toolbar class="footer-content">
         <p style="margin-left: 2em">
           &copy; {{ year | date: "yyyy" }} - Bob's Computer Repair Shop -
-          <a href="https://www.bellevue.edu/" class="footer-link" target="_blank">Bellevue University</a>
-          <a routerLink="/post-session/sign-in" class="footer-link" style="margin-left: 200px;">Employee Sign-In | Register</a>
+          <a href="https://www.bellevue.edu/" class="bu-link" target="_blank">Bellevue University</a>
         </p>
       </mat-toolbar>
     </footer>

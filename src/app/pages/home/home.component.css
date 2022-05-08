@@ -4,48 +4,21 @@
 // Date: 04 April 2022
 // Authors: Evan Durkin, Keith Hall,
 // Gustavo Roo Gonzalez, and Gunner Bradley
-// Description: Css file for the home component.
+// Description: Css file for the home component.   
 =======================================
 */
-.home{
-  background-size: cover;
-  height:100vh;
-  background-image: url('../../../assets/bobs-home.jpg')
-}
-.caption {
-  margin-left: 18px;
-  color: white;
-}
-.home-message{
-  position: absolute;
-  text-align: center;
-  color: white;
-  margin-left: 3%;
-  margin-top:5%;
-}
-h1{
-  font-family: 'Aldrich', sans-serif;
-  font-size: 5.2em;
-}
-p {
-  font-family: 'Karla', sans-serif;
-  font-size: 2em;
-  text-align: center;
-  margin-left: 25%;
-  line-height: 1;
-  letter-spacing: .3;
-}
 
 .main-welcome {
     margin-top: 30px;
   }
-
+  
   .title {
     text-align: center;
     font-weight: lighter;
   }
-
+  
   .subtitle {
     text-align: center;
     font-size: 14px;
   }
+  
