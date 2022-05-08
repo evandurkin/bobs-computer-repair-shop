@@ -12,6 +12,7 @@ import { RoleService } from '../../shared/services/role.service';
 import { Message } from 'primeng/api/message';
 import { DeleteRecordDialogComponent } from 'src/app/shared/delete-record-dialog/delete-record-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { RoleDetailsComponent } from '../role-details/role-details.component';
 
 @Component({
   selector: 'app-role-list',
@@ -27,12 +28,42 @@ export class RoleListComponent implements OnInit {
     this.roleService.findAllRoles().subscribe((res) => {
       this.roles = res.data;
       console.log(this.roles);
+    },
+    (err) => {
+      console.log(err);
     });
   }
 
   ngOnInit(): void {}
 
-  delete(roleId, text) {
+  openRoleDetailsDialog(id, role) {
+    const dialogRef = this.dialog.open(RoleDetailsComponent, {
+      disableClose: true,
+      data: {
+        roleData: role
+      },
+      height: '300px',
+      width: '550px'
+    });
+
+    // after the dialog is closed the question data is added
+    dialogRef.afterClosed().subscribe(data => {
+      if(data) {
+        console.log(data)
+        this.roleService.updateRole(id, role).subscribe(() => {
+          console.log("Role has been updated!");
+          this.roleService.findAllRoles().subscribe(res => {
+            this.roles = res.data;
+            console.log(this.roles);
+          }, err => {
+            console.log(err);
+          });
+        })
+      }
+    })
+  }
+
+  delete(roleId: string, text: string): void {
     const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {
       data: {
         roleId,
@@ -47,7 +78,7 @@ export class RoleListComponent implements OnInit {
       if (result === 'confirm') {
         this.roleService.deleteRole(roleId).subscribe(
           (res) => {
-            console.log('Role deleted');
+            console.log('Role disabled');
             this.roles = this.roles.filter((role) => role._id !== roleId);
           },
           (err) => {
