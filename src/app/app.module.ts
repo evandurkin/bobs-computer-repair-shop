@@ -89,7 +89,6 @@ import { MessageModule } from 'node_modules/primeng/message';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -159,7 +158,7 @@ import { ToastModule } from 'primeng/toast';
     MessageModule,
     MessagesModule,
     MatProgressSpinnerModule,
-    ToastModule
+    ToastModule,
   ],
   providers: [
     {

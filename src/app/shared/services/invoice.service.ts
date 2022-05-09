@@ -14,23 +14,21 @@ import { Observable } from 'rxjs';
 import { Invoice } from '../interfaces/invoice';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class InvoiceService {
-
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   createInvoice(userName: string, invoice: Invoice): Observable<any> {
     return this.http.post(`/api/invoices/${userName}`, {
       userName: userName,
-      lineItem: invoice.getLineItems(),
+      lineItems: invoice.getLineItems(),
       partsTotal: invoice.partsTotal,
       laborTotal: invoice.getLaborTotal(),
       lineItemTotal: invoice.getLineItemTotal(),
       total: invoice.getTotal(),
-      created: invoice.created
-    })
+      created: invoice.created,
+    });
   }
 
   findPurchasesByServiceGraph(): Observable<any> {
