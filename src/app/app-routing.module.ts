@@ -146,6 +146,10 @@ const routes: Routes = [
         path: 'user-create',
         component: UserCreateComponent,
       },
+      {
+        path: 'services-graph',
+        component: ServicesGraphComponent,
+      },
     ],
   },
 

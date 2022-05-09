@@ -15,12 +15,11 @@ import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-standard-layout',
   templateUrl: './standard-layout.component.html',
-  styleUrls: ['./standard-layout.component.css']
+  styleUrls: ['./standard-layout.component.css'],
 })
 export class StandardLayoutComponent implements OnInit {
-
   year: number = Date.now();
-  isLoggedIn: boolean;       // Checks if a user is logged in.
+  isLoggedIn: boolean; // Checks if a user is logged in.
   userName: string;
   userRole: any;
 
@@ -41,15 +40,14 @@ export class StandardLayoutComponent implements OnInit {
   }
 
   adminReport(): void {
-    this.router.navigate([])
+    this.router.navigate(['/session-employee/services-graph']);
   }
 
   editProfile(): void {
-    this.router.navigate(['/session-employee/user-profile'])
+    this.router.navigate(['/session-employee/user-profile']);
   }
 
   servicesPage(): void {
-    this.router.navigate(['/session-employee/dashboard-employee'])
+    this.router.navigate(['/session-employee/dashboard-employee']);
   }
-
 }
