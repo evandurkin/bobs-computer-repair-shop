@@ -1,5 +1,13 @@
+/*
+    Title: role-create.component.css
+    Date: 07 May 2022
+    Authors: Evan Durkin, Keith Hall,
+    Gustavo Roo Gonzalez, and Gunner Bradley
+    Description: Styling for the role-create component.
+*/
+
 .btn-primary {
-  font-family: 'Aldrich', sans-serif;
+  font-family: "Aldrich", sans-serif;
   color: #003716;
   background-color: #568e67;
   border: none;
