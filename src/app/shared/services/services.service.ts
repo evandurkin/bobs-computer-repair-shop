@@ -34,7 +34,7 @@ export class ServicesService {
     newService: LineItem
   ): Observable<any> {
     return this.http.post('/api/session/services', {
-      serviceName: newService.serviceName,
+      title: newService.title,
       price: newService.price
     });
   }
@@ -45,7 +45,7 @@ export class ServicesService {
     updatedService: LineItem
   ): Observable<any> {
     return this.http.put('/api/session/services/' + lineItemId, {
-      serviceName: updatedService.serviceName
+      title: updatedService.title
     });
   }
 

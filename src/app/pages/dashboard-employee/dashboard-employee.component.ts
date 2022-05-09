@@ -161,7 +161,7 @@ export class DashboardEmployeeComponent implements OnInit {
     // Remove from invoice lineItems
     if (parts === undefined && hours === undefined) {
       this.invoice.removeFromLineItems({
-        serviceName: title,
+        title: title,
         price: price
       })
     }
