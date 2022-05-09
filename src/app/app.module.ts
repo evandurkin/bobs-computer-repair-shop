@@ -52,6 +52,7 @@ import { InvoiceDialogComponent } from './shared/invoice-dialog/invoice-dialog.c
 import { PrintDialogComponent } from './shared/print-dialog/print-dialog.component';
 import { GuestServicesComponent } from './pages/guest-services/guest-services.component';
 import { ServicesGraphComponent } from './pages/services-graph/services-graph.component';
+import { ServicesCreateComponent } from './pages/services-create/services-create.component';
 
 // Browser, Http, Forms, and Cookie imports
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -88,7 +89,7 @@ import { MessagesModule } from 'node_modules/primeng/messages';
 import { MessageModule } from 'node_modules/primeng/message';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
-import { ServicesCreateComponent } from './pages/services-create/services-create.component';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
   declarations: [
@@ -161,6 +162,7 @@ import { ServicesCreateComponent } from './pages/services-create/services-create
     MessagesModule,
     MatProgressSpinnerModule,
     ToastModule,
+    ChartModule,
   ],
   providers: [
     {

@@ -13,8 +13,8 @@ const lineItemSchema = require("../schemas/line-item");
 
 let invoiceSchema = new Schema(
   {
-  	userName: { type: String },
-    lineItem: [lineItemSchema],
+    userName: { type: String },
+    lineItems: [lineItemSchema],
     partsTotal: { type: Number },
     laborTotal: { type: Number },
     lineItemTotal: { type: Number },

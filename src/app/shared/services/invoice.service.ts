@@ -22,12 +22,13 @@ export class InvoiceService {
   createInvoice(userName: string, invoice: Invoice): Observable<any> {
     return this.http.post(`/api/invoices/${userName}`, {
       userName: userName,
-      lineItems: invoice.getLineItems(),
-      partsTotal: invoice.partsTotal,
-      laborTotal: invoice.getLaborTotal(),
-      lineItemTotal: invoice.getLineItemTotal(),
-      total: invoice.getTotal(),
-      created: invoice.created,
+      // *******COMMENTED OUT FOR CAUSING ERROR**********
+      // lineItems: invoice.getLineItems(),
+      // partsTotal: invoice.partsTotal,
+      // laborTotal: invoice.getLaborTotal(),
+      // lineItemTotal: invoice.getLineItemTotal(),
+      // total: invoice.getTotal(),
+      // created: invoice.created,
     });
   }
 
