@@ -88,6 +88,7 @@ import { MessagesModule } from 'node_modules/primeng/messages';
 import { MessageModule } from 'node_modules/primeng/message';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { ServicesCreateComponent } from './pages/services-create/services-create.component';
 
 @NgModule({
   declarations: [
@@ -129,6 +130,7 @@ import { ToastModule } from 'primeng/toast';
     PrintDialogComponent,
     GuestServicesComponent,
     ServicesGraphComponent,
+    ServicesCreateComponent,
   ],
   imports: [
     BrowserModule,
