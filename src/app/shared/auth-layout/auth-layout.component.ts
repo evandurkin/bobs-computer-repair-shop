@@ -67,4 +67,8 @@ export class AuthLayoutComponent implements OnInit {
     this.router.navigate(['/session/services'])
   }
 
+  servicesPage(): void {
+    this.router.navigate(['/session/dashboard-admin'])
+  }
+
 }

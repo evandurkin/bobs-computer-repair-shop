@@ -21,11 +21,11 @@
         aria-label="User Profile Menu" style="font-size: 16px; float: right; font-family: 'karla', sans-serif;">{{ userName }} <mat-icon style="font-size: 18px;">perm_identity</mat-icon>
           <!-- Icon drop down menu items -->
           <mat-menu #profileMenu="matMenu">
-            <p style="padding: 10px;color:white;" class="menu">
+            <p style="padding: 10px; padding-right: 25px; color:white;" class="menu">
                 <span style="margin-left:4px"></span>
                 <mat-icon>account_box</mat-icon>
                 <span style="margin-left:6%">Signed in as</span>
-                <span style="font-weight: 600;font-size: 24px;margin-left:10px">{{ userName }}</span>
+                <span style="font-weight: 600;font-size: 14px;margin-left:10px">{{ userName }}</span>
             </p>
 
           <!-- Divider space in dropdown -->
@@ -36,6 +36,10 @@
           <button  mat-menu-item  (click)="editProfile()" class="menu">
             <mat-icon class="menu">people</mat-icon>
             <span class="menu">Edit Profile</span>
+          </button>
+          <button  mat-menu-item (click)="servicesPage()">
+            <mat-icon class="menu">receipt</mat-icon>
+            <span class="menu">Create an Invoice</span>
           </button>
           <button  mat-menu-item (click)="adminReport()">
             <mat-icon class="menu">pie_chart_outline</mat-icon>

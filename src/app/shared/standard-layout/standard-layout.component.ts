@@ -48,4 +48,8 @@ export class StandardLayoutComponent implements OnInit {
     this.router.navigate(['/session-employee/user-profile'])
   }
 
+  servicesPage(): void {
+    this.router.navigate(['/session-employee/dashboard-employee'])
+  }
+
 }
