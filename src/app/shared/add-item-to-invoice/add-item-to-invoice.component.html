@@ -22,7 +22,7 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>No. of Hours | rate: $100/hr</mat-label>
+      <mat-label>No. of hours | rate: $100/hr</mat-label>
 
       <!-- Input to add hours -->
       <input matInput formControlName="hours" style="color:gray">
@@ -39,7 +39,7 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>No. of Parts | cost: $1/part</mat-label>
+      <mat-label>No. of parts | cost: $1/part</mat-label>
       <input matInput formControlName="parts" placeholder="Enter cost of parts" style="color:gray">
       <mat-error
       *ngIf="addItemToForm.controls.parts.hasError('required') && addItemToForm.controls.parts.touched">
@@ -52,9 +52,9 @@
       </mat-error>
     </mat-form-field>
 
-    <div fxLayoutAlign="end" style="margin: 13px;">
-      <button mat-stroked-button matDialogClose="cancel" class="btn-dialog-cancel"(click)="cancelDialog()">Back</button>
-      <button mat-raised-button matDialogClose="confirm" class="btn-primary" [disabled]="!addItemToForm.valid">Add</button>
+    <div fxLayoutAlign="space-between" style="margin: 13px;">
+      <button mat-raised-button color="accent" type="button" (click)="cancelDialog()">Back</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!addItemToForm.valid">Confirm</button>
     </div>
   </div>
 </form>
