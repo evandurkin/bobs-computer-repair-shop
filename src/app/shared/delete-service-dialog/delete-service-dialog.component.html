@@ -1,0 +1,24 @@
+<!--/*
+============================================================
+// Title: Bob’s Computer Repair Shop
+// Date: 5 May 2022
+// Authors: Evan Durkin, Keith Hall,
+// Gustavo Roo Gonzalez, and Gunner Bradley
+// Description: HTML file for delete user service Component
+============================================================
+*/-->
+
+<!-- delete confirmation pop up -->
+<h2 mat-dialog-title class="delete-title">{{ dialogHeader }}</h2>
+
+<div mat-dialog-content class="dialog-content" style="padding: 15px; margin: 0px;">
+  <p class="dialog-text">{{ dialogBody }}</p>
+  <small style="color: red; font-size: 14px;"
+    >WARNING: Deleted services cannot be recovered.</small
+  >
+</div>
+
+<div mat-dialog-actions align="end" class="btns-div">
+  <button mat-button matDialogClose="cancel" class="btn-back">cancel</button>
+  <button mat-raised-button matDialogClose="confirm"  class="btn-primary btn-dialog">submit</button>
+</div>

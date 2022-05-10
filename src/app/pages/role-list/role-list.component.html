@@ -1,0 +1,50 @@
+<!--/*
+    Title: role-list.component.html
+    Date: 07 May 2022
+    Authors: Evan Durkin, Keith Hall,
+    Gustavo Roo Gonzalez, and Gunner Bradley
+    Description: HTML file for the role-list component.
+*/-->
+
+<div fxLayout="column" style="margin-top: 3em">
+  <mat-card class="roles-list-card">
+    <mat-card-title class="roles-title">Roles Configuration</mat-card-title>
+
+    <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
+
+    <mat-card-content *ngIf="roles">
+      <table mat-table fxFlexFill [dataSource]="roles">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let role">
+            {{ role.text }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="functions" >
+          <th mat-header-cell *matHeaderCellDef>Functions</th>
+          <td mat-cell *matCellDef="let role" style="width: 100px;">
+            <button mat-icon-button (click)="openRoleDetailsDialog(role._id, role)">
+              <mat-icon class="functions-icon">edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="delete(role._id, role.text)">
+              <mat-icon class="functions-icon">delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </mat-card-content>
+
+    <button
+    mat-button
+    routerLink="/session/role-create"
+    class="btn-add-role"
+    style="margin-bottom: 10px"
+  >
+    create +
+  </button>
+  </mat-card>
+</div>

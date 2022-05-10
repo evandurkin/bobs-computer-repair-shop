@@ -35,12 +35,21 @@ import { VerifyUsernameComponent } from './shared/forms/verify-username/verify-u
 import { VerifySecurityQuestionsComponent } from './shared/forms/verify-security-questions/verify-security-questions.component';
 import { ResetPasswordComponent } from './shared/forms/reset-password/reset-password.component';
 import { InternalServerErrorComponent } from './pages/internal-server-error/internal-server-error.component';
-import { AuthGuard } from './auth.guard';
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { ServicesListComponent } from './pages/services-list/services-list.component';
+import { ServicesEditComponent } from './pages/services-edit/services-edit.component';
+import { RoleCreateComponent } from './pages/role-create/role-create.component';
+import { RoleDetailsComponent } from './pages/role-details/role-details.component';
+import { RoleListComponent } from './pages/role-list/role-list.component';
+import { GuestServicesComponent } from './pages/guest-services/guest-services.component';
+import { ServicesGraphComponent } from './pages/services-graph/services-graph.component';
 
+// Guards
+import { AuthGuard } from './auth.guard';
+import { RoleGuard } from './role.guard';
 
 const routes: Routes = [
-
   /* Public Routes for guests */
   {
     path: '',
@@ -51,13 +60,17 @@ const routes: Routes = [
         component: HomeComponent,
       },
       {
+        path: 'guest-services',
+        component: GuestServicesComponent,
+      },
+      {
         path: 'about',
         component: AboutComponent,
       },
       {
         path: 'contact',
         component: ContactComponent,
-      }
+      },
     ],
   },
 
@@ -83,13 +96,37 @@ const routes: Routes = [
         component: UserUpdateComponent,
       },
       {
+        path: 'role-list',
+        component: RoleListComponent,
+      },
+      {
+        path: 'role-create',
+        component: RoleCreateComponent,
+      },
+      {
+        path: 'roles/:roleId',
+        component: RoleDetailsComponent,
+      },
+      {
         path: 'security-questions',
         component: SecurityQuestionListComponent,
       },
       {
         path: 'security-questions/create',
-        component: SecurityQuestionCreateComponent
-      }
+        component: SecurityQuestionCreateComponent,
+      },
+      {
+        path: 'services',
+        component: ServicesListComponent,
+      },
+      {
+        path: 'services/create',
+        component: ServicesEditComponent,
+      },
+      {
+        path: 'services-graph',
+        component: ServicesGraphComponent,
+      },
     ],
   },
   /* Standard-employee users (canActivate) */
@@ -99,19 +136,31 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard-employee',
-        component: DashboardEmployeeComponent
-      }
-    ]
+        component: DashboardEmployeeComponent,
+      },
+      {
+        path: 'user-profile',
+        component: UserProfileComponent,
+      },
+      {
+        path: 'user-create',
+        component: UserCreateComponent,
+      },
+      {
+        path: 'services-graph',
+        component: ServicesGraphComponent,
+      },
+    ],
   },
 
- /* Routes to pages with no headers */
+  /* Routes to pages with no headers */
   {
     path: 'post-session',
     component: PostLayoutComponent,
     children: [
       {
         path: 'sign-in',
-        component: SignInComponent
+        component: SignInComponent,
       },
       {
         path: 'sign-up',
@@ -131,12 +180,12 @@ const routes: Routes = [
       },
       {
         path: '404-error',
-        component: NotFoundComponent
+        component: NotFoundComponent,
       },
       {
         path: '500-error',
-        component: InternalServerErrorComponent
-      }
+        component: InternalServerErrorComponent,
+      },
     ],
   },
   {

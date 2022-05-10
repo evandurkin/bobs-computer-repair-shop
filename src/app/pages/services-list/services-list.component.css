@@ -1,0 +1,68 @@
+/*
+=======================================
+// Title: Bob’s Computer Repair Shop
+// Date: 5 May 2022
+// Authors: Evan Durkin, Keith Hall,
+// Gustavo Roo Gonzalez, and Gunner Bradley
+// Description: Service List Styling
+=======================================
+*/
+
+/************* Main Mat-Card Styling *************/
+.question-list-card {
+  border-radius: 0;
+  padding: 0;
+  background-color: #ffffff;
+  width: 50%;
+  min-width: 670px;
+  margin: 5% auto;
+}
+
+/************* Users Table Styling *************/
+
+th {
+  font-family: "Karla", sans-serif;
+  font-size: 16px;
+  color: white;
+  background-color: #5d5d5d;
+}
+
+td {
+  background-color: #ffffff;
+  color: black;
+  border-bottom: 0.5px solid #8d8d8d;
+}
+
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+  column-gap: 10px;
+}
+
+th.mat-header-cell:last-of-type,
+td.mat-cell:last-of-type,
+td.mat-footer-cell:last-of-type {
+  padding-right: 0;
+}
+
+.users-title {
+  text-align: center;
+  font-family: "Aldrich", sans-serif;
+  padding: 20px;
+  margin-bottom: 0;
+  background-color: #343434;
+}
+
+/************* Add User Button Styling *************/
+
+.btn-add-user {
+  background-color: #568e67;
+  color: #003515;
+  border-radius: 0;
+  margin: 10px;
+  float: right;
+}
+
+.btn-add-user:hover {
+  background-color: #33ff66;
+}

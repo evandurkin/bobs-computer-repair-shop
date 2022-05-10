@@ -46,7 +46,11 @@ export class UserCreateComponent implements OnInit {
       firstName: [null, Validators.compose([Validators.required])],
       lastName: [null, Validators.compose([Validators.required])],
       phoneNumber: [null, Validators.compose([Validators.required])],
-      address: [null, Validators.compose([Validators.required])],
+      addressLineTwo: [null, Validators.compose([Validators.required])],
+      addressLineOne: [null, Validators.compose([Validators.required])],
+      city: [null, Validators.compose([Validators.required])],
+      state: [null, Validators.compose([Validators.required])],
+      zip: [null, Validators.compose([Validators.required])],
       email: [
         null,
         Validators.compose([Validators.required, Validators.email]),
@@ -62,7 +66,11 @@ export class UserCreateComponent implements OnInit {
       firstName: this.form.controls.firstName.value,
       lastName: this.form.controls.lastName.value,
       phoneNumber: this.form.controls.phoneNumber.value,
-      address: this.form.controls.address.value,
+      addressLineOne: this.form.controls.addressLineOne.value,
+      addressLineTwo: this.form.controls.addressLineTwo.value,
+      city: this.form.controls.city.value,
+      state: this.form.controls.state.value,
+      zip: this.form.controls.zip.value,
       email: this.form.controls.email.value,
     };
 

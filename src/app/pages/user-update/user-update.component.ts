@@ -13,8 +13,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../shared/services/user.service';
+import { RoleService } from './../../shared/services/role.service';
 import { User } from '../../shared/interfaces/user';
 import { UserRole } from '../../shared/interfaces/user-role';
+
 
 @Component({
   selector: 'app-user-update',
@@ -33,6 +35,7 @@ export class UserUpdateComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private userService: UserService,
+    private roleService: RoleService
 
   ) {
     // Retrieve user id from the url
@@ -53,11 +56,19 @@ export class UserUpdateComponent implements OnInit {
         this.form.controls.firstName.setValue(this.user.firstName);
         this.form.controls.lastName.setValue(this.user.lastName);
         this.form.controls.phoneNumber.setValue(this.user.phoneNumber);
-        this.form.controls.address.setValue(this.user.address);
         this.form.controls.email.setValue(this.user.email);
+        this.form.controls.addressLineOne.setValue(this.user.addressLineOne);
+        this.form.controls.addressLineTwo.setValue(this.user.addressLineTwo);
+        this.form.controls.city.setValue(this.user.city);
+        this.form.controls.state.setValue(this.user.state);
+        this.form.controls.zip.setValue(this.user.zip);
         this.form.controls.role.setValue(this.user.role['role']);
 
         console.log(this.user);
+
+        this.roleService.findAllRoles().subscribe((res) => {
+          this.roles = res.data;
+        });
       }
     );
   }
@@ -71,18 +82,27 @@ export class UserUpdateComponent implements OnInit {
       lastName: [null, Validators.compose([Validators.required])],
       phoneNumber: [null, Validators.compose([Validators.required])],
       address: [null, Validators.compose([Validators.required])],
+      addressLineOne: [null, Validators.compose([Validators.required])],
+      addressLineTwo: [null, Validators.compose([Validators.required])],
+      city: [null, Validators.compose([Validators.required])],
+      state: [null, Validators.compose([Validators.required])],
+      zip: [null, Validators.compose([Validators.required])],
       email: [null, Validators.compose([Validators.required, Validators.email]),],
       role: [null, Validators.compose([Validators.required])],
     });
   }
-  saveUser(): void {
+  updateUser(): void {
 
     // Get form values
     const updatedUser: User = {
       firstName: this.form.controls.firstName.value,
       lastName: this.form.controls.lastName.value,
       phoneNumber: this.form.controls.phoneNumber.value,
-      address: this.form.controls.address.value,
+      addressLineOne: this.form.controls.addressLineOne.value,
+      addressLineTwo: this.form.controls.addressLineTwo.value,
+      city: this.form.controls.city.value,
+      state: this.form.controls.state.value,
+      zip: this.form.controls.zip.value,
       email: this.form.controls.email.value,
       role: this.form.controls.role.value,
     };

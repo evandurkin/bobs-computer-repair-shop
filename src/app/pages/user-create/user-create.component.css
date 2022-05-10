@@ -1,0 +1,25 @@
+.userCreateContainer {
+  margin: 50px auto;
+}
+
+.btn-primary, .btn-back {
+  border-radius: 0px;
+}
+
+.btn-primary {
+  font-size: 20px;
+}
+
+
+.user-card {
+  border-radius: 0px;
+  color: black;
+}
+
+.mat-error {
+  font-size: 13px;
+}
+
+.mat-select-arrow {
+  color: black;
+}

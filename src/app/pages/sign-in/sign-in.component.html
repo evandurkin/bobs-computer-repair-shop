@@ -7,7 +7,7 @@
 -->
 
   <div fxLayout="row wrap" fxLayoutAlign="center start">
-    <div fxFlex.gt-sm="45">
+    <div >
 
       <!-- Sign in card -->
       <mat-card class="mat-elevation-z5 sign-in-container">
@@ -21,7 +21,7 @@
         </mat-card-title>
         <br/><br/>
         <mat-card-subtitle class="sign-in-subtitle">
-          employee sign-in
+          Employee Sign-In
         </mat-card-subtitle>
         <p class="valid-title" style="text-align: center;font-family:Karla;color:#f5f5f5">Please enter a valid username and password to proceed</p>
         <mat-card-content>
@@ -36,7 +36,7 @@
                 <!-- Username field with placeholder-->
                 <mat-form-field appearance="fill">
                   <input type="text" matInput fxFlex [formControl]="form.controls['userName']" placeholder="Username" class="input"/>
-                  <mat-error class="error-sign-in" *ngIf="form.controls.userName.hasError('required') && form.controls.userName.touched">
+                  <mat-error class="error-sign-in" *ngIf="form.controls.userName.hasError('required') && form.controls.userName.touched" style="top: calc(100% - -0.2083333333000006em);">
                     Username is a required field.
                   </mat-error>
                 </mat-form-field>
@@ -45,7 +45,7 @@
                 <mat-form-field appearance="fill">
                   <input type="password" matInput fxFlex [formControl]="form.controls['password']" placeholder="Password"/>
                   <mat-error class="error-sign-in" *ngIf="form.controls.password.hasError('required') && form.controls.password.touched">
-                    Password must be at least 8 characters, contain one number, and one letter.
+                    Must be at least 8 characters, contain one number, and one letter.
                   </mat-error>
                 </mat-form-field>
               </mat-card-content>
@@ -61,7 +61,7 @@
               </mat-card-actions>
 
               <p style="text-align: center; font-weight: lighter;">
-                <a routerLink="/post-session/sign-up" style="text-decoration: underline;color:#F5F5F5" class="help-link" color="primary">Create an Account</a>
+                <a routerLink="/post-session/sign-up" style="text-decoration: underline;color:#F5F5F5" class="help-link" color="primary">Register for an Account</a>
               </p>
 
               <p style="text-align:center; font-weight: lighter;">

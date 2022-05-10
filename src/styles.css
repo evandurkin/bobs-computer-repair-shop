@@ -10,6 +10,7 @@
 =======================================
 */
 
+
 html, body {
   height: 100%;
 }
@@ -19,10 +20,13 @@ html, body {
   transition: .3s;
 }
 
+mat-header-row cdk-header-row ng-star-inserted {
+  height: 45px;
+}
 .btn-primary {
   font-family: 'Aldrich', sans-serif;
   color: #003716;
-  background-color: #568e67;
+  background-color: #2a623d;
   border: none;
   border-radius: 0px;
 }
@@ -33,15 +37,34 @@ html, body {
   cursor: pointer;
 }
 
+.btn-back {
+  font-family: 'Aldrich', sans-serif;
+  border: none;
+  border-radius: 0;
+  font-size: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 3px;
+  padding-top: 3px;
+  background-color: #dddcdc;
+  color: #8a8a8a;
+}
+
+.btn-back:hover {
+  background-color: #8a8a8a;
+  color: #dddcdc;
+  transition: .5s;
+}
+
 
 /*********** navbar logo ***********/
 .logo-navbar {
-  font-size: 46px;
-  letter-spacing: -3pt;
+  font-size: 35px;
+  letter-spacing: -2pt;
   text-align: left;
   text-decoration: none;
   color: #568e67;
-  line-height: 80%;
+  line-height: 40%;
   overflow: hidden;
   background: linear-gradient(to right, white, white 50%, #568e67 50%);
   background-clip: text;
@@ -62,7 +85,7 @@ html, body {
 
 /*********** navbar links ***********/
 .navbar-link {
-  font-size: 24px;
+  font-size: 22px;
   font-family: 'Aldrich', sans-serif;
   text-decoration: none;
   color: white;
@@ -83,9 +106,10 @@ html, body {
 }
 
 .navbar-container {
-  margin: 2em;
-  display: flex;
+  margin: 1.5em;
+  display: inline-block;
   align-items: flex-end;
+  width: 100%;
 }
 
 .mat-toolbar-row, .mat-toolbar-single-row {
@@ -95,7 +119,7 @@ html, body {
 
 .dashboard-header {
   font-family: 'Aldrich', sans-serif;
-  font-size: 24px;
+  font-size: 20px;
   color: white;
   margin-left: 20px;
   display: inline-block;
@@ -147,22 +171,25 @@ li a:hover:not(.active) {
 }
 
 .footer-content {
-  font-size: 16px;
-  padding-left: 100px;
+  font-size: 12px;
   letter-spacing: 3px;
   font-family: 'Karla', sans-serif;
   font-weight: 400;
-  padding: 20px;
-  background-color: #8a8a8a;
+  padding: 30px;
+  background-color: #888888;
 }
 
-.bu-link {
+.footer-link {
   color: white;
   text-decoration: none;
 }
 
-.bu-link:hover {
+.footer-link:hover {
   text-decoration: underline;
+}
+
+.footer-link:visited {
+  color: white;
 }
 
 /*********** error pages ***********/
@@ -215,7 +242,20 @@ li a:hover:not(.active) {
   padding: 10px;
 }
 
+/*********** Register for an Account process ***********/
+.mat-horizontal-content-container {
+  background-color: #ffffff;
+}
 
+.mat-horizontal-stepper-header-container {
+  background-color: #8a8a8a;
+  font-family: 'Aldrich', sans-serif;
+  height: 60px;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  border-radius: 0;
+}
 
 
 #form-field {
@@ -237,3 +277,55 @@ li a:hover:not(.active) {
   border-radius: 0px;
 
 }
+
+.mat-form-field-subscript-wrapper{
+  margin-top: -1.3333333333000006em;
+}
+
+.password-field {
+  margin-top:1.666667em;
+}
+
+.mat-select-value-text .mat-select-value {
+  font-size: 14px;
+}
+
+/*********** Edit User and Update User Cards ***********/
+.user-title {
+background-color: #5b5b5b;
+padding: 18px;
+font-family: 'Aldrich', sans-serif;
+color: white;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: black;
+}
+
+.mat-form-field-empty.mat-form-field-label, .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  color: black;
+}
+
+.mat-select-arrow {
+  color: black;
+}
+
+.btn-back {
+  border-radius: 0px;
+}
+
+
+.create-card {
+  margin: 0 auto;
+  width: 50%;
+  min-width: 580px;
+  background-color: #ffffff;
+}
+
+.create-title {
+  padding: 15px;
+  color: white;
+  background-color: #5b5b5b;
+  font-family: 'Aldrich', sans-serif;
+}
+

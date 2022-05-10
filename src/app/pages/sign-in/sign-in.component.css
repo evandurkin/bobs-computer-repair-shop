@@ -12,7 +12,7 @@
 margin: 30% auto;
 padding: 35px;
 border-radius: 0;
-min-width: 500px;
+min-width: 585px;
 max-width: 650px;
 background-color: #323232;
 }
@@ -25,7 +25,7 @@ background-color: #323232;
 .error-sign-in {
   font-family: 'Karla', sans-serif;
   color: red;
-  background-color: #323232;
+  font-size: 12px;
 }
 
 .logo-sign-in {
@@ -68,9 +68,23 @@ background-color: #323232;
   cursor: pointer;
 }
 
-.mat-button.mat-primary.mat-button-disabled, .mat-button.mat-accent.mat-button-disabled, .mat-button.mat-warn.mat-button-disabled, .mat-button.mat-button-disabled.mat-button-disabled, .mat-icon-button.mat-primary.mat-button-disabled, .mat-icon-button.mat-accent.mat-button-disabled, .mat-icon-button.mat-warn.mat-button-disabled, .mat-icon-button.mat-button-disabled.mat-button-disabled, .mat-stroked-button.mat-primary.mat-button-disabled, .mat-stroked-button.mat-accent.mat-button-disabled, .mat-stroked-button.mat-warn.mat-button-disabled, .mat-stroked-button.mat-button-disabled.mat-button-disabled {
+.mat-button.mat-primary.mat-button-disabled,
+.mat-button.mat-accent.mat-button-disabled,
+.mat-button.mat-warn.mat-button-disabled,
+.mat-button.mat-button-disabled.mat-button-disabled,
+ .mat-icon-button.mat-primary.mat-button-disabled,
+ .mat-icon-button.mat-accent.mat-button-disabled,
+ .mat-icon-button.mat-warn.mat-button-disabled,
+ .mat-icon-button.mat-button-disabled.mat-button-disabled,
+ .mat-stroked-button.mat-primary.mat-button-disabled,
+ .mat-stroked-button.mat-accent.mat-button-disabled,
+ .mat-stroked-button.mat-warn.mat-button-disabled,
+ .mat-stroked-button.mat-button-disabled.mat-button-disabled {
   color: #003716;
 }
 
+mat-error error-sign-in ng-tns-c145-0 ng-star-inserted {
+  top: calc(100% - -0.2083333333000006em);
+}
 
 

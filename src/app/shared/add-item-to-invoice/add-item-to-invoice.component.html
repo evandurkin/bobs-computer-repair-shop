@@ -1,0 +1,60 @@
+<!--
+    Title: index.html
+    Date: 07 May 2022
+    Authors: Evan Durkin, Keith Hall,
+    Gustavo Roo Gonzalez, and Gunner Bradley
+    Description: Html file for the add-item-to-invoice component.
+-->
+
+<!-- Input to add new item to form and disable autocomplete -->
+<form [formGroup]="addItemToForm" (ngSubmit)="createService(); addItemToForm.reset()" autocomplete="off">
+  <div fxLayout="column">
+    <mat-form-field appearance="fill">
+      <mat-label>Name of Service</mat-label>
+      <input matInput formControlName="name" style="color:gray">
+
+      <!-- Error message-->
+      <mat-error
+      *ngIf="addItemToForm.controls.name.hasError('required') && addItemToForm.controls.name.touched">
+        This field is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>No. of Hours</mat-label>
+
+      <!-- Input to add hours -->
+      <input matInput formControlName="hours" style="color:gray">
+      <mat-error
+      *ngIf="addItemToForm.controls.hours.hasError('required') && addItemToForm.controls.hours.touched">
+        This field is required.
+      </mat-error>
+
+      <!-- Number is required for hours-->
+      <mat-error
+      *ngIf="addItemToForm.controls.hours.hasError('pattern') && addItemToForm.controls.hours.touched">
+        Must be a number.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Parts (cost)</mat-label>
+      <input matInput formControlName="parts" placeholder="Enter cost of parts" style="color:gray">
+      <mat-error
+      *ngIf="addItemToForm.controls.parts.hasError('required') && addItemToForm.controls.parts.touched">
+        This field is required.
+      </mat-error>
+
+      <mat-error
+      *ngIf="addItemToForm.controls.parts.hasError('pattern') && addItemToForm.controls.parts.touched">
+        Must be a number.
+      </mat-error>
+    </mat-form-field>
+
+    <div fxLayoutAlign="space-between">
+      <button mat-raised-button color="accent" type="button" (click)="cancelDialog()">Back</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!addItemToForm.valid">Confirm</button>
+    </div>
+  </div>
+</form>
+
