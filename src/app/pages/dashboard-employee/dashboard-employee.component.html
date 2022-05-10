@@ -13,14 +13,9 @@
     style="padding-bottom: -20px"
     fxLayout="row"
     fxLayoutAlign="center"
-    fxLayoutGap="7%"
     style="width: 100%"
   >
-    <div
-      fxLayout="column"
-      fxLayoutAlign="center"
-      style="max-width: fit-content; cursor: pointer"
-    >
+    <div class="btn-div">
       <h2 class="title-service">Services</h2>
       <h4 class="subtitle-service">select a service</h4>
 
@@ -42,7 +37,7 @@
           (click)="addServiceDialog()"
           style="border-radius: 0px"
         >
-          add additional service
+          Add Additional Service
         </button>
       </div>
     </div>
@@ -116,7 +111,7 @@
           (click)="getInvoice()"
           [disabled]="invoice.getTotal() === 0"
         >
-          create invoice
+          Create Invoice
         </button>
       </div>
     </div>

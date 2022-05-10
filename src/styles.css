@@ -275,7 +275,6 @@ li a:hover:not(.active) {
 
 .mat-dialog-container {
   border-radius: 0px;
-
 }
 
 .mat-form-field-subscript-wrapper{
@@ -289,6 +288,7 @@ li a:hover:not(.active) {
 .mat-select-value-text .mat-select-value {
   font-size: 14px;
 }
+
 
 /*********** Edit User and Update User Cards ***********/
 .user-title {

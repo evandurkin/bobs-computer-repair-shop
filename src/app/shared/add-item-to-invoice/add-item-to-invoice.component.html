@@ -8,26 +8,27 @@
 
 <!-- Input to add new item to form and disable autocomplete -->
 <form [formGroup]="addItemToForm" (ngSubmit)="createService(); addItemToForm.reset()" autocomplete="off">
-  <div fxLayout="column">
+  <div fxLayout="column" class="addService">
+    <h2 class="addServiceTitle">Add Additional Service</h2>
     <mat-form-field appearance="fill">
-      <mat-label>Name of Service</mat-label>
+      <mat-label>Service Name</mat-label>
       <input matInput formControlName="name" style="color:gray">
 
       <!-- Error message-->
       <mat-error
       *ngIf="addItemToForm.controls.name.hasError('required') && addItemToForm.controls.name.touched">
-        This field is required.
+        You must provide a name for the service.
       </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>No. of Hours</mat-label>
+      <mat-label>No. of Hours | rate: $100/hr</mat-label>
 
       <!-- Input to add hours -->
       <input matInput formControlName="hours" style="color:gray">
       <mat-error
       *ngIf="addItemToForm.controls.hours.hasError('required') && addItemToForm.controls.hours.touched">
-        This field is required.
+        You must provide the hours for the service.
       </mat-error>
 
       <!-- Number is required for hours-->
@@ -38,11 +39,11 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Parts (cost)</mat-label>
+      <mat-label>No. of Parts | cost: $1/part</mat-label>
       <input matInput formControlName="parts" placeholder="Enter cost of parts" style="color:gray">
       <mat-error
       *ngIf="addItemToForm.controls.parts.hasError('required') && addItemToForm.controls.parts.touched">
-        This field is required.
+        You must provide the cost of the parts for the service.
       </mat-error>
 
       <mat-error
@@ -51,9 +52,9 @@
       </mat-error>
     </mat-form-field>
 
-    <div fxLayoutAlign="space-between">
-      <button mat-raised-button color="accent" type="button" (click)="cancelDialog()">Back</button>
-      <button mat-raised-button color="primary" type="submit" [disabled]="!addItemToForm.valid">Confirm</button>
+    <div fxLayoutAlign="end" style="margin: 13px;">
+      <button mat-stroked-button matDialogClose="cancel" class="btn-dialog-cancel"(click)="cancelDialog()">Back</button>
+      <button mat-raised-button matDialogClose="confirm" class="btn-primary" [disabled]="!addItemToForm.valid">Add</button>
     </div>
   </div>
 </form>
