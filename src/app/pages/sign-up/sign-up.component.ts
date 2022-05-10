@@ -63,7 +63,7 @@ export class SignUpComponent implements OnInit {
       phoneNumber: [null, Validators.compose([Validators.required])],
       email: [null, Validators.compose([Validators.required, Validators.email])],
       addressLineOne: [null, Validators.compose([Validators.required])],
-      addressLineTwo: [null, Validators.compose([Validators.required])],
+      addressLineTwo: [null],
       city: [null, Validators.compose([Validators.required])],
       state: [null, Validators.compose([Validators.required])],
       zip: [null, Validators.compose([Validators.required])]

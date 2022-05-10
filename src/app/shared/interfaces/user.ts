@@ -20,7 +20,7 @@ export interface User {
   firstName: string;
   lastName: string;
   addressLineOne: string;
-  addressLineTwo: string;
+  addressLineTwo?: string;
   city: string;
   state: string;
   zip: string;

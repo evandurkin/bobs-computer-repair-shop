@@ -10,7 +10,7 @@
   <mat-card style="margin: 5% auto; padding: 0px; background-color: #ffffff;" class="mat-elevation-z8 user-card">
     <mat-card-title class="user-title">Edit User Information</mat-card-title>
     <br />
-    <form [formGroup]="form" (ngSubmit)="updateUser()" #userForm autocomplete="off" style="padding: 20px;">
+    <form [formGroup]="form" (ngSubmit)="updateUser()" #userForm="ngForm" autocomplete="off" style="padding: 20px;">
       <mat-card-content>
         <div fxLayout="column" fxLayoutGap="10px">
 
@@ -129,7 +129,7 @@
       <mat-card-actions fxLayoutAlign="end">
         <button mat-stroked-button (click)="cancel()" class="btn-back">cancel
         </button>
-        <button type="submit" mat-stroked-button [disabled]="!form.valid" class="btn-primary">submit
+        <button type="submit" mat-stroked-button [disabled]="!userForm.form.valid" class="btn-primary">submit
         </button>
       </mat-card-actions>
     </form>

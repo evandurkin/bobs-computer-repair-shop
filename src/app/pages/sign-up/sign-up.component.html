@@ -56,9 +56,6 @@
                 <mat-form-field fxFlex appearance="fill">
                   <mat-label>Address Line 2</mat-label>
                   <input matInput [formControl]="contactForm.controls['addressLineTwo']" />
-                  <mat-error class="input-error" *ngIf="contactForm.controls['addressLineTwo'].hasError('required') && contactForm.controls['addressLineTwo'].touched">
-                    Street Is A Required Field
-                  </mat-error>
                 </mat-form-field>
               </mat-list-item>
 
