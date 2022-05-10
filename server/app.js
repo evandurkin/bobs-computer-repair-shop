@@ -17,9 +17,17 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const path = require("path");
 const mongoose = require("mongoose");
+
+/**
+ * Required API's
+ */
 const UserApi = require("./routes/user-api");
 const SecurityQuestionsApi = require("./routes/security-questions-api");
 const SessionApi = require("./routes/session-api");
+const RoleApi = require("./routes/role-api");
+const ServicesApi = require("./routes/services-api");
+const InvoiceApi = require("./routes/invoice-api");
+const SessionEmployeeApi = require("./routes/session-employee-api");
 
 /**
  * App configurations
@@ -61,6 +69,10 @@ mongoose
 app.use("/api/session/users", UserApi);
 app.use("/api/session/security-questions", SecurityQuestionsApi);
 app.use("/api/session", SessionApi);
+app.use("/api/roles", RoleApi);
+app.use("/api/session/services", ServicesApi);
+app.use("/api/invoices", InvoiceApi);
+app.use("/api/session-employee", SessionEmployeeApi);
 
 /**
  * Create and start server

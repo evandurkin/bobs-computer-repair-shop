@@ -28,6 +28,11 @@ export class UserService {
     return this.http.get('/api/session/users/' + userId);
   }
 
+  // service for API: finding a user by their ID
+  editUserById(userId: string): Observable<any> {
+    return this.http.get('/api/session-employee/user-profile/' + userId);
+  }
+
   // service for API: creating a new user
   createUser(user: User): Observable<any> {
     return this.http.post('/api/session/users', {
@@ -35,10 +40,14 @@ export class UserService {
       password: user.password,
       firstName: user.firstName,
       lastName: user.lastName,
-      address: user.address,
+      addressLineOne: user.addressLineOne,
+      addressLineTwo: user.addressLineTwo,
+      city: user.city,
+      state: user.state,
+      zip: user.zip,
       email: user.email,
       phoneNumber: user.phoneNumber,
-	  role: user.role,
+	    role: user.role,
       selectedSecurityQuestion: user.selectedSecurityQuestion,
     });
   }
@@ -48,7 +57,11 @@ export class UserService {
     return this.http.put('/api/session/users/' + userId, {
       firstName: user.firstName,
       lastName: user.lastName,
-      address: user.address,
+      addressLineOne: user.addressLineOne,
+      addressLineTwo: user.addressLineTwo,
+      city: user.city,
+      state: user.state,
+      zip: user.zip,
       email: user.email,
       phoneNumber: user.phoneNumber,
       role: user.role,

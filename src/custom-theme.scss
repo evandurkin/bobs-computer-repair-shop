@@ -150,18 +150,18 @@ $mat-dark-theme-background: (
 // Theme Config
 
 body {
-  --primary-color: #5d5d5d;
-  --primary-lighter-color: #cecece;
-  --primary-darker-color: #414141;
+  --primary-color: #5b5b5b;
+  --primary-lighter-color: #888888;
+  --primary-darker-color: #323232;
   --text-primary-color: #{$light-primary-text};
   --text-primary-lighter-color: #{$dark-primary-text};
   --text-primary-darker-color: #{$light-primary-text};
 }
 $mat-primary: (
-  main: #5d5d5d,
-  lighter: #cecece,
+  main: #5b5b5b,
+  lighter: #888888,
   darker: #414141,
-  200: #5d5d5d,
+  200: #323232,
   // For slide toggle,
   contrast:
     (
@@ -181,10 +181,10 @@ body {
   --text-accent-darker-color: #{$light-primary-text};
 }
 $mat-accent: (
-  main: #568e67,
-  lighter: #bfcfc5,
-  darker: #194427,
-  200: #568e67,
+  main: #2a623d,
+  lighter: #579068,
+  darker: #003716,
+  200: #2a623d,
   // For slide toggle,
   contrast:
     (
@@ -264,4 +264,8 @@ body {
 
 .mat-tab-group.mat-background-primary > .mat-tab-header .mat-tab-label, .mat-tab-group.mat-background-primary > .mat-tab-link-container .mat-tab-link, .mat-tab-nav-bar.mat-background-primary > .mat-tab-header .mat-tab-label, .mat-tab-nav-bar.mat-background-primary > .mat-tab-link-container .mat-tab-link {
   margin: 0 20px;
+}
+
+mat-form-field {
+  border-radius: 0;
 }

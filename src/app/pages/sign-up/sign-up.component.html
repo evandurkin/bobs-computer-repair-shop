@@ -6,424 +6,257 @@
 // Description: HTML file for sign-up page
 -->
 
-<mat-card class="signup-main">
-  <mat-card-title class="signup-title mat-display-1"
-    >Employee Account Registration</mat-card-title
-  >
+<div fxLayout="column">
+  <br><br>
+  <mat-card fxFlex class="card-container mat-elevation-z4" style="background-color: #ffffff;">
+    <mat-card-title class="card-title">Account Registration</mat-card-title>
+    <mat-card-content fxLayout="column" fxLayoutGap="10px" style="background-color: #ffffff;"class="card-content">
+      <mat-horizontal-stepper #stepper linear>
 
-  <mat-card-content>
-    <form [formGroup]="newUserFormGroup">
-      <mat-tab-group
-        mat-align-tabs="center"
-        class="mat-accent"
-        [color]="color"
-        [backgroundColor]="background"
-        [selectedIndex]="btnNextPrev.index"
-      >
-        <mat-horizontal-stepper>
-          <!-- Contact Tab -->
-          <mat-tab mat-step label="Contact Information" optional="false">
-            <div
-              fxLayout="row"
-              fxLayoutGap="30px"
-              fxLayoutAlign="center stretch"
-              style="padding-top: 30px"
-            >
-              <div fxLayout="column" fxFlex="40%">
-                <mat-form-field
-                  appearance="fill"
-                  class="form-field"
-                  style="border-radius: 0px"
-                >
-                  <mat-label>First Name</mat-label>
-                  <input
-                    matInput
-                    formControlName="firstName"
-                    required
-                    fxFlex="50"
-                  />
-                  <mat-error
-                    class="error-input"
-                    *ngIf="
-                      newUserFormGroup.controls['firstName'].hasError(
-                        'required'
-                      ) && newUserFormGroup.controls['firstName'].touched
-                    "
-                    >First name is a required field.</mat-error
-                  >
-                </mat-form-field>
-                <mat-form-field appearance="fill">
-                  <mat-label>Last Name</mat-label>
-                  <input matInput formControlName="lastName" required />
-                  <mat-error
-                    class="error-input"
-                    *ngIf="
-                      newUserFormGroup.controls['lastName'].hasError(
-                        'required'
-                      ) && newUserFormGroup.controls['lastName'].touched
-                    "
-                    >Last name is a required field.</mat-error
-                  >
-                </mat-form-field>
-                <div class="spacer"></div>
+        <!--Start of contact form (step #1)-->
+        <mat-step fxFlex [stepControl]="contactForm" class="required" errorMessage="Contact is Required">
+          <form [formGroup]="contactForm" class="form">
+            <ng-template matStepLabel>Contact Information</ng-template>
+            <br>
+            <mat-list>
 
-                <mat-form-field appearance="fill">
-                  <mat-label>Telephone</mat-label>
-                  <input matInput formControlName="phoneNumber" required />
-                  <mat-error
-                    class="error-input"
-                    *ngIf="
-                      newUserFormGroup.controls['phoneNumber'].hasError(
-                        'required'
-                      ) && newUserFormGroup.controls['phoneNumber'].touched
-                    "
-                    >Telephone is a required field.</mat-error
-                  >
+              <mat-list-item>
+                <!-- First Name -->
+                <mat-form-field fxFlex appearance="fill" class="form-field" style="margin-right: 5px; margin-bottom: 15px;">
+                  <mat-label>First Name *</mat-label>
+                  <input matInput [formControl]="contactForm.controls['firstName']" />
+                  <mat-error class="input-error" *ngIf="contactForm.controls['firstName'].hasError('required') && contactForm.controls['firstName'].touched">
+                    First Name Is A Required Field
+                  </mat-error>
                 </mat-form-field>
-                <mat-form-field appearance="fill">
-                  <mat-label>Email <Address></Address></mat-label>
-                  <input matInput formControlName="email" required />
-                  <mat-error
-                    class="error-input"
-                    *ngIf="
-                      newUserFormGroup.controls['email'].hasError('required') &&
-                      newUserFormGroup.controls['email'].touched
-                    "
-                    >Email is a required field.</mat-error
-                  >
-                  <mat-error
-                    class="error-input"
-                    *ngIf="
-                      newUserFormGroup.controls['email'].hasError('email') &&
-                      newUserFormGroup.controls['email'].touched
-                    "
-                    >Invalid email format.</mat-error
-                  >
+
+                <!-- Last name -->
+                <mat-form-field fxFlex appearance="fill" style="margin-bottom: 15px;">
+                  <mat-label>Last Name *</mat-label>
+                  <input matInput [formControl]="contactForm.controls['lastName']" />
+                  <mat-error class="input-error" *ngIf="contactForm.controls['lastName'].hasError('required') && contactForm.controls['lastName'].touched">
+                    Last Name Is A Required Field
+                  </mat-error>
                 </mat-form-field>
-              </div>
-              <div fxLayout="column" fxFlex="40%">
-                <mat-form-field appearance="fill">
-                  <mat-label>Address Line 1</mat-label>
-                  <input matInput formControlName="address1" required />
-                  <mat-error
-                    class="error-input"
-                    *ngIf="
-                      newUserFormGroup.controls['address1'].hasError(
-                        'required'
-                      ) && newUserFormGroup.controls['address1'].touched
-                    "
-                    >Address is a required field.</mat-error
-                  >
+              </mat-list-item>
+
+               <!-- Address Line 1 -->
+              <mat-list-item>
+                <mat-form-field fxFlex appearance="fill">
+                  <mat-label>Address Line 1 *</mat-label>
+                  <input matInput [formControl]="contactForm.controls['addressLineOne']" />
+                  <mat-error class="input-error" *ngIf="contactForm.controls['addressLineOne'].hasError('required') && contactForm.controls['addressLineOne'].touched">
+                    Address Line 1 Is A Required Field
+                  </mat-error>
                 </mat-form-field>
-                <mat-form-field appearance="fill">
+              </mat-list-item>
+
+              <!-- Address Line 2 -->
+              <mat-list-item>
+                <mat-form-field fxFlex appearance="fill">
                   <mat-label>Address Line 2</mat-label>
-                  <input formControlName="address2" matInput />
+                  <input matInput [formControl]="contactForm.controls['addressLineTwo']" />
+                </mat-form-field>
+              </mat-list-item>
+
+              <mat-list-item>
+                <!-- City -->
+                <mat-form-field fxFlex appearance="fill" style="margin-right: 5px;">
+                  <mat-label>City *</mat-label>
+                  <input matInput [formControl]="contactForm.controls['city']" />
+                  <mat-error class="input-error" *ngIf="contactForm.controls['city'].hasError('required') && contactForm.controls['city'].touched">
+                    City Is A Required Field
+                  </mat-error>
+                </mat-form-field>
+                <!-- State -->
+                <mat-form-field fxFlex appearance="fill" style="margin-right: 5px; width: 66px;">
+                  <mat-label>State *</mat-label>
+                  <input matInput [formControl]="contactForm.controls['state']"/>
+                  <mat-error class="input-error" *ngIf="contactForm.controls['state'].hasError('required') && contactForm.controls['state'].touched">
+                    State Is A Required Field
+                  </mat-error>
+                </mat-form-field>
+                <!-- Zip -->
+                <mat-form-field fxFlex appearance="fill">
+                  <mat-label>Zip Code *</mat-label>
+                  <input matInput [formControl]="contactForm.controls['zip']" />
+                  <mat-error class="input-error" *ngIf="contactForm.controls['zip'].hasError('required') && contactForm.controls['zip'].touched">
+                    Zip Code Is A Required Field
+                  </mat-error>
+                </mat-form-field>
+              </mat-list-item>
+
+              <mat-list-item>
+                <!--Phone Number -->
+                <mat-form-field fxFlex appearance="fill" style="margin-right: 5px; margin-top: 15px;">
+                  <mat-label>Phone Number *</mat-label>
+                  <input matInput [formControl]="contactForm.controls['phoneNumber']"
+                  />
+                  <mat-error class="input-error" *ngIf="contactForm.controls['phoneNumber'].hasError('required') && contactForm.controls['phoneNumber'].touched">
+                    Phone Number Is A Required Field
+                  </mat-error>
                 </mat-form-field>
 
-                <div
-                  fxLayout="row"
-                  fxLayoutGap="15px"
-                  fxLayoutAlign="center stretch"
-                >
-                  <mat-form-field appearance="fill" fxFlex="45%">
-                    <mat-label>City</mat-label>
-                    <input matInput formControlName="city" required />
-                    <mat-error
-                      class="error-input"
-                      *ngIf="
-                        newUserFormGroup.controls['city'].hasError(
-                          'required'
-                        ) && newUserFormGroup.controls['city'].touched
-                      "
-                      >City is a required field.</mat-error
-                    >
-                  </mat-form-field>
-                  <mat-form-field appearance="fill" fxFlex="15%">
-                    <mat-label>ST</mat-label>
-                    <input matInput formControlName="state" required />
-                    <mat-error
-                      class="error-input"
-                      *ngIf="
-                        newUserFormGroup.controls['state'].hasError(
-                          'required'
-                        ) && newUserFormGroup.controls['state'].touched
-                      "
-                      >State Req</mat-error
-                    >
-                  </mat-form-field>
-                  <mat-form-field appearance="fill" fxFlex="35%">
-                    <mat-label>Zip Code</mat-label>
-                    <input matInput formControlName="zip" required />
-                    <mat-error
-                      class="error-input"
-                      *ngIf="
-                        newUserFormGroup.controls['zip'].hasError('required') &&
-                        newUserFormGroup.controls['zip'].touched
-                      "
-                      >Zip is a required field.</mat-error
-                    >
-                  </mat-form-field>
-                </div>
-              </div>
+                <!--Email field -->
+                <mat-form-field fxFlex appearance="fill" style="margin-top:15px">
+                  <mat-label>Email *</mat-label>
+                  <input matInput [formControl]="contactForm.controls['email']" />
+                  <mat-error class="input-error" *ngIf="contactForm.controls['email'].hasError('required') && contactForm.controls['email'].touched">
+                    Email Is A Required Field
+                  </mat-error>
+                  <!--INSERT EMAIL VALIDATOR ERROR MESSAGE HERE -->
+                </mat-form-field>
+
+              </mat-list-item>
+              <br><br> <!-- Create another row -->
+
+            </mat-list>
+
+            <!--Button to move to next step-->
+            <div style="display: inline-block; width: 100%;">
+              <a routerLink="/">Return Home</a>
+              <button mat-stroked-button class="btn-primary" style="float: right;" matStepperNext>Next</button>
+              <p style="display: inline-block; float: right; color: black; margin-right: 3em;">* Required Field</p>
             </div>
-          </mat-tab>
+          </form>
+        </mat-step>
 
-          <!-- Security Questions Tab -->
+        <!--Security Questions Form (Step #2)-->
+        <mat-step [stepControl]="securityQuestionsForm" errorMessage="Security Questions Are Required">
+          <form [formGroup]="securityQuestionsForm" class="form">
+            <ng-template matStepLabel>Security Questions</ng-template>
+            <br>
+            <mat-list>
 
-          <mat-tab mat-step label="Security Questions" optional="false">
-            <div
-              fxLayout="row"
-              fxLayoutGap="30px"
-              fxLayoutAlign="center stretch"
-              style="padding-top: 50px; padding-bottom: 30px"
-            >
-              <div fxLayout="column" fxFlex="40%">
-                <mat-form-field appearance="fill">
-                  <mat-label> Select Question 1</mat-label>
-                  <mat-select formControlName="securityQuestion1">
-                    <mat-option
-                      *ngFor="let question of securityQuestions"
-                      [value]="question.text"
-                    >
+              <mat-list-item>
+                <!--Security Question #1-->
+                <mat-form-field fxFlex appearance="fill" style="margin-right: 15px; margin-bottom: 7px;">
+                  <mat-label>Security Question 1</mat-label>
+                  <mat-select [formControl]="securityQuestionsForm.controls['securityQuestion1']">
+                    <mat-option *ngFor="let question of securityQuestions" [value]="question.text">
                       {{ question.text }}
                     </mat-option>
                   </mat-select>
-                  <mat-error
-                    class="error-input"
-                    *ngIf="
-                      newUserFormGroup.controls['securityQuestion1'].hasError(
-                        'required'
-                      ) &&
-                      newUserFormGroup.controls['securityQuestion1'].touched
-                    "
-                    >You must select a first question</mat-error
-                  >
+                  <mat-error class="input-error" *ngIf="securityQuestionsForm.controls['securityQuestion1'].hasError('required') && securityQuestionsForm.controls['securityQuestion1'].touched">
+                    You must select a question.
+                  </mat-error>
                 </mat-form-field>
-                <mat-form-field appearance="fill">
-                  <mat-label>Select Question 2</mat-label>
-                  <mat-select formControlName="securityQuestion2">
-                    <mat-option
-                      *ngFor="let question of securityQuestions"
-                      [value]="question.text"
-                    >
+
+                <!--Security Question Answer #1-->
+                <mat-form-field fxFlex appearance="fill" style="margin-bottom: 7px;">
+                  <mat-label>Security Question Answer</mat-label>
+                  <input matInput [formControl]="securityQuestionsForm.controls['answerToSecurityQuestion1']" />
+                  <mat-error class="input-error" *ngIf="securityQuestionsForm.controls['answerToSecurityQuestion1'].hasError('required') && securityQuestionsForm.controls['answerToSecurityQuestion1'].touched">
+                    You must provide an answer.
+                  </mat-error>
+                </mat-form-field>
+              </mat-list-item>
+
+              <mat-list-item>
+                <!--Security Question #2-->
+                <mat-form-field fxFlex appearance="fill" style="margin-right: 15px; margin-bottom: 7px;">
+                  <mat-label>Security Question 2</mat-label>
+                  <mat-select [formControl]="securityQuestionsForm.controls['securityQuestion2']">
+                    <mat-option *ngFor="let question of securityQuestions" [value]="question.text">
                       {{ question.text }}
                     </mat-option>
                   </mat-select>
-                  <mat-error
-                    class="error-input"
-                    *ngIf="
-                      newUserFormGroup.controls['securityQuestion2'].hasError(
-                        'required'
-                      ) &&
-                      newUserFormGroup.controls['securityQuestion2'].touched
-                    "
-                    >You must select a second question</mat-error
-                  >
+                  <mat-error class="input-error" *ngIf="securityQuestionsForm.controls['securityQuestion2'].hasError('required') && securityQuestionsForm.controls['securityQuestion2'].touched">
+                    You must select a question.
+                  </mat-error>
                 </mat-form-field>
-                <mat-form-field appearance="fill">
-                  <mat-label>Select Question 3</mat-label>
-                  <mat-select formControlName="securityQuestion3">
-                    <mat-option
-                      *ngFor="let question of securityQuestions"
-                      [value]="question.text"
-                    >
+
+                <!--Security Question Answer #2-->
+                <mat-form-field fxFlex appearance="fill" style="margin-bottom: 7px;">
+                  <mat-label>Security Question Answer</mat-label>
+                  <input matInput [formControl]="securityQuestionsForm.controls['answerToSecurityQuestion2']" />
+                  <mat-error class="input-error" *ngIf="securityQuestionsForm.controls['answerToSecurityQuestion2'].hasError('required') && securityQuestionsForm.controls['answerToSecurityQuestion2'].touched">
+                    You must provide an answer.
+                  </mat-error>
+                </mat-form-field>
+              </mat-list-item>
+
+              <!--Security Question #3-->
+              <mat-list-item>
+                <mat-form-field fxFlex appearance="fill" style="margin-right: 15px; margin-bottom: 7px;">
+                  <mat-label>Security Question 3</mat-label>
+                  <mat-select [formControl]="securityQuestionsForm.controls['securityQuestion3']">
+                    <mat-option *ngFor="let question of securityQuestions" [value]="question.text">
                       {{ question.text }}
                     </mat-option>
                   </mat-select>
-                  <mat-error
-                    class="error-input"
-                    *ngIf="
-                      newUserFormGroup.controls['securityQuestion3'].hasError(
-                        'required'
-                      ) &&
-                      newUserFormGroup.controls['securityQuestion3'].touched
-                    "
-                    >You must select a third question</mat-error
-                  >
-                </mat-form-field>
-              </div>
-              <div fxLayout="column" fxFlex="40%">
-                <mat-form-field appearance="fill">
-                  <mat-label>Answer</mat-label>
-                  <input
-                    formControlName="securityQuestion1Answer"
-                    matInput
-                    required
-                  />
-                  <mat-error
-                    class="error-input"
-                    *ngIf="
-                      newUserFormGroup.controls[
-                        'securityQuestion1Answer'
-                      ].hasError('required') &&
-                      newUserFormGroup.controls['securityQuestion1Answer']
-                        .touched
-                    "
-                  >
-                    Required field
+                  <mat-error class="input-error" *ngIf="securityQuestionsForm.controls['securityQuestion3'].hasError('required') && securityQuestionsForm.controls['securityQuestion3'].touched">
+                    You must select a question.
                   </mat-error>
                 </mat-form-field>
-                <mat-form-field appearance="fill">
-                  <mat-label>Answer</mat-label>
-                  <input
-                    formControlName="securityQuestion2Answer"
-                    matInput
-                    required
-                  />
-                  <mat-error
-                    class="error-input"
-                    *ngIf="
-                      newUserFormGroup.controls[
-                        'securityQuestion2Answer'
-                      ].hasError('required') &&
-                      newUserFormGroup.controls['securityQuestion2Answer']
-                        .touched
-                    "
-                  >
-                    Required field
+
+                <mat-form-field fxFlex appearance="fill" style="margin-bottom: 7px;">
+                  <mat-label>Security Question Answer</mat-label>
+                  <input matInput [formControl]="securityQuestionsForm.controls['answerToSecurityQuestion3']" />
+                  <mat-error class="input-error" *ngIf="securityQuestionsForm.controls['answerToSecurityQuestion3'].hasError('required') && securityQuestionsForm.controls['answerToSecurityQuestion3'].touched">
+                    You must provide an answer.
                   </mat-error>
                 </mat-form-field>
-                <mat-form-field appearance="fill">
-                  <mat-label>Answer</mat-label>
-                  <input
-                    formControlName="securityQuestion3Answer"
-                    matInput
-                    required
-                  />
-                  <mat-error
-                    class="error-input"
-                    *ngIf="
-                      newUserFormGroup.controls[
-                        'securityQuestion3Answer'
-                      ].hasError('required') &&
-                      newUserFormGroup.controls['securityQuestion3Answer']
-                        .touched
-                    "
-                  >
-                    Required field
-                  </mat-error>
-                </mat-form-field>
+              </mat-list-item>
+            </mat-list>
+            <br>
+
+            <!--Button to take to next step or previous step-->
+            <div fxLayoutAlign="end">
+              <button mat-stroked-button class="btn-back" matStepperPrevious>Back</button> &nbsp;&nbsp;
+              <button mat-stroked-button class="btn-primary" [disabled]="!securityQuestionsForm.valid" matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+
+        <!--Verification Form (Step #3)-->
+        <mat-step [stepControl]="credentialsForm" errorMessage="Credentials Is Required">
+          <form [formGroup]="credentialsForm" class="form">
+            <ng-template matStepLabel>Credentials</ng-template>
+            <br>
+
+            <div class="register-credentials-container">
+              <h3 style="text-align: center; color: black; margin-bottom: 20px;">Create a Username and Password</h3>
+              <mat-list>
+
+                <mat-list-item>
+
+                  <!--Username field for verification form-->
+                  <mat-form-field fxFlex appearance="fill" style="margin-bottom: 7px;">
+                    <mat-label>Username</mat-label>
+                    <input matInput [formControl]="credentialsForm.controls['userName']" />
+                    <mat-error class="input-error" *ngIf="credentialsForm.controls['userName'].hasError('required') && credentialsForm.controls['userName'].touched">
+                      Username Is A Required Field
+                    </mat-error>
+                  </mat-form-field>
+                </mat-list-item>
+
+                <mat-list-item>
+                  <!--Password Field for verification form-->
+                  <mat-form-field fxFlex appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input matInput [formControl]="credentialsForm.controls['password']" />
+                    <mat-hint class="password-field">Password must contain at least 8 characters, one letter, and one number.</mat-hint>
+                    <mat-error class="input-error" *ngIf="credentialsForm.controls['password'].hasError('required') && credentialsForm.controls['password'].touched">
+                      Password Is A Required Field
+                    </mat-error>
+                    <mat-error class="input-error" *ngIf="credentialsForm.controls.password.hasError('pattern') && credentialsForm.controls.password.touched">
+                      Invalid. Password must contain at least 8 characters, one letter, and one number.
+                    </mat-error>
+                  </mat-form-field>
+                </mat-list-item>
+              </mat-list>
+              <br>
+              <!--Clicking register button calls the register() function to create user -->
+              <div fxLayoutAlign="end">
+                <button mat-stroked-button class="btn-back" matStepperPrevious>Back</button> &nbsp;&nbsp;
+                <button mat-stroked-button class="btn-primary" (click)="register()" [disabled]="!credentialsForm.valid">Register</button>
               </div>
             </div>
-          </mat-tab>
+          </form>
+        </mat-step>
 
-          <!-- Credentials Tab -->
-
-          <mat-tab mat-step label="Credentials" optional="false">
-            <div
-              fxLayout="row"
-              fxLayoutGap="30px"
-              fxLayoutAlign="center stretch"
-              style="padding-top: 50px; padding-bottom: 30px"
-            >
-              <div fxLayout="column" fxFlex="40%">
-                <mat-form-field appearance="fill">
-                  <mat-label>Username</mat-label>
-                  <input matInput formControlName="userName" />
-                </mat-form-field>
-
-                <mat-form-field appearance="fill">
-                  <mat-label>Password</mat-label>
-                  <input
-                    type="password"
-                    matInput
-                    [formControl]="newUserFormGroup.controls['password']"
-                  />
-                  <mat-hint
-                    >Password must be at least 8 characters, contain one letter,
-                    and one number.</mat-hint
-                  >
-                  <mat-error
-                    class="error-input"
-                    *ngIf="
-                      newUserFormGroup.controls['password'].hasError(
-                        'required'
-                      ) && newUserFormGroup.controls['password'].touched
-                    "
-                  >
-                    You must create a password
-                  </mat-error>
-
-                  <mat-error
-                    class="error-input"
-                    *ngIf="
-                      newUserFormGroup.controls.password.hasError('pattern') &&
-                      newUserFormGroup.controls.password.touched
-                    "
-                  >
-                    Password must be at least 8 characters, contain one letter,
-                    and one number.
-                  </mat-error>
-                </mat-form-field>
-              </div>
-            </div>
-          </mat-tab>
-        </mat-horizontal-stepper>
-      </mat-tab-group>
-    </form>
-  </mat-card-content>
-  <mat-card-actions> </mat-card-actions>
-
-  <mat-card-actions fxLayout="row" fxLayoutAlign="space-between center">
-    <div>
-      <button mat-button color="accent">Employee Sign In</button>
-    </div>
-    <div *ngIf="btnNextPrev.index == 0">
-      <!-- <a routerLink="/" class="return-sign-in" style="">return to sign-in</a> -->
-      <button
-        mat-button
-        class="btn-primary btn-sign-up"
-        [disabled]="btnNextPrev.next"
-        (click)="navig('next')"
-      >
-        next
-      </button>
-      <a
-        routerLink="/post-session/sign-in"
-        class="return-sign-in"
-        style="float: left; margin-right: 470px"
-        >return to sign-in</a
-      >
-    </div>
-
-    <div *ngIf="btnNextPrev.index == 1">
-      <button
-        mat-button
-        class="btn-primary btn-sign-up"
-        style="background-color: rgba(86, 131, 103, 0.6)"
-        [disabled]="btnNextPrev.prev"
-        (click)="navig('prev')"
-      >
-        prev
-      </button>
-      <button
-        mat-button
-        class="btn-primary btn-sign-up"
-        [disabled]="btnNextPrev.next"
-        (click)="navig('next')"
-      >
-        next
-      </button>
-    </div>
-    <div *ngIf="btnNextPrev.index == 2">
-      <button
-        mat-button
-        class="btn-primary btn-sign-up"
-        style="background-color: rgba(86, 131, 103, 0.6)"
-        [disabled]="btnNextPrev.prev"
-        (click)="navig('prev')"
-      >
-        prev
-      </button>
-      <button
-        mat-button
-        class="btn-primary btn-sign-up"
-        type="submit"
-        (click)="registerAccount()"
-        [disabled]="!newUserFormGroup.valid"
-      >
-        submit
-      </button>
-    </div>
-  </mat-card-actions>
-</mat-card>
+      </mat-horizontal-stepper>
+    </mat-card-content>
+  </mat-card>
+</div>

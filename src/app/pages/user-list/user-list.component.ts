@@ -29,7 +29,11 @@ export class UserListComponent implements OnInit {
     'firstName',
     'lastName',
     'phoneNumber',
-    'address',
+    'addressLineOne',
+    'addressLineTwo',
+    'city',
+    'state',
+    'zip',
     'email',
     'functions',
   ];
@@ -58,11 +62,11 @@ export class UserListComponent implements OnInit {
       data: {
         recordId,
         dialogHeader: 'Delete User Confirmation',
-        dialogBody: `Are you sure you want to delete user: ${recordId}?`,
+        dialogBody: `Are you sure you want to delete user: ${recordId} ?`,
       },
       disableClose: true,
       width: '500px',
-      height: '250px'
+      height: '300px'
     });
 
     // Remove the record upon closing the dialog.

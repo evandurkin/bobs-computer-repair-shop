@@ -1,0 +1,29 @@
+<!--
+    Title: index.html
+    Date: 07 May 2022
+    Authors: Evan Durkin, Keith Hall,
+    Gustavo Roo Gonzalez, and Gunner Bradley
+    Description: Html file for the print-dialog component.
+-->
+
+<!-- When printing is in progress, display this message-->
+<ng-container *ngIf="!done">
+  <mat-card>
+    <mat-card-title>Printing Invoice...</mat-card-title>
+    <br>
+    <mat-card-content>
+      <mat-spinner></mat-spinner>
+    </mat-card-content>
+  </mat-card>
+</ng-container>
+
+<!-- Display this when printing is complete-->
+<ng-container *ngIf="done">
+  <mat-card>
+    <mat-card-title>Done!</mat-card-title>
+    <br>
+    <mat-card-content fxLayoutAlign="center">
+      <mat-icon color="accent">check_circle_outline</mat-icon>
+    </mat-card-content>
+  </mat-card>
+</ng-container>

@@ -19,11 +19,11 @@ span {
 .main-content {
   padding-left: 0px;
   padding-bottom: 8%;
-  margin: 2% 12% 5%;
+  margin: 2% auto 5%;
 }
 
 .footer-content {
-  padding: 20px
+  padding: 10px
 }
 
 .mat-menu-content {

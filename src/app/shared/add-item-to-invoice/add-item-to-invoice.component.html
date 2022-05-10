@@ -1,0 +1,61 @@
+<!--
+    Title: index.html
+    Date: 07 May 2022
+    Authors: Evan Durkin, Keith Hall,
+    Gustavo Roo Gonzalez, and Gunner Bradley
+    Description: Html file for the add-item-to-invoice component.
+-->
+
+<!-- Input to add new item to form and disable autocomplete -->
+<form [formGroup]="addItemToForm" (ngSubmit)="createService(); addItemToForm.reset()" autocomplete="off">
+  <div fxLayout="column" class="addService">
+    <h2 class="addServiceTitle">Add Additional Service</h2>
+    <mat-form-field appearance="fill">
+      <mat-label>Service Name</mat-label>
+      <input matInput formControlName="name" style="color:gray">
+
+      <!-- Error message-->
+      <mat-error
+      *ngIf="addItemToForm.controls.name.hasError('required') && addItemToForm.controls.name.touched">
+        You must provide a name for the service.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>No. of hours | rate: $100/hr</mat-label>
+
+      <!-- Input to add hours -->
+      <input matInput formControlName="hours" style="color:gray">
+      <mat-error
+      *ngIf="addItemToForm.controls.hours.hasError('required') && addItemToForm.controls.hours.touched">
+        You must provide the hours for the service.
+      </mat-error>
+
+      <!-- Number is required for hours-->
+      <mat-error
+      *ngIf="addItemToForm.controls.hours.hasError('pattern') && addItemToForm.controls.hours.touched">
+        Must be a number.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>No. of parts | cost: $1/part</mat-label>
+      <input matInput formControlName="parts" placeholder="Enter cost of parts" style="color:gray">
+      <mat-error
+      *ngIf="addItemToForm.controls.parts.hasError('required') && addItemToForm.controls.parts.touched">
+        You must provide the cost of the parts for the service.
+      </mat-error>
+
+      <mat-error
+      *ngIf="addItemToForm.controls.parts.hasError('pattern') && addItemToForm.controls.parts.touched">
+        Must be a number.
+      </mat-error>
+    </mat-form-field>
+
+    <div fxLayoutAlign="space-between" style="margin: 13px;">
+      <button mat-raised-button color="accent" type="button" (click)="cancelDialog()">Back</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!addItemToForm.valid">Confirm</button>
+    </div>
+  </div>
+</form>
+

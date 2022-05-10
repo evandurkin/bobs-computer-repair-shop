@@ -1,0 +1,54 @@
+/*
+    Title: security question dialog
+    Date: 8 May 2022
+    Authors: Evan Durkin, Keith Hall,
+    Gustavo Roo Gonzalez, and Gunner Bradley
+    Description: CSS for edit role dialog
+*/
+
+.dialog-questions {
+  height: 100%;
+
+}
+
+.mat-dialog-content {
+  overflow: inherit;
+  font-family: 'Karla', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: black;
+}
+
+.btn-dialog {
+  border-radius: 0;
+  font-size: 14px;
+}
+
+.btn-back {
+  border-radius: 0px;
+  font-size: 14px;
+}
+
+
+.mat-input-element {
+  font-family: 'Karla', sans-serif;
+}
+
+.dialog-title {
+  margin-bottom: 40px;
+  background-color: #5b5b5b;
+  padding: 15px;
+  color: white;
+}
+
+.error-question {
+  font-size: 10pt;
+}
+
+::ng-deep.mat-dialog-container {
+  padding: 0px !important;
+  background-color: #ffffff;
+  border-radius: 0px;
+}
+
+

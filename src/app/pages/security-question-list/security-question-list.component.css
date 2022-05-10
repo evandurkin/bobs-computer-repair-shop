@@ -4,7 +4,7 @@
 // Date: 20 April 2022
 // Authors: Evan Durkin, Keith Hall,
 // Gustavo Roo Gonzalez, and Gunner Bradley
-// Description: User List Styling
+// Description: Security Question List Styling
 =======================================
 */
 
@@ -51,6 +51,10 @@ td.mat-footer-cell:last-of-type {
   padding: 20px;
   margin-bottom: 0;
   background-color: #343434;
+}
+
+tr.mat-header-row {
+  height: 45px;
 }
 
 /************* Add User Button Styling *************/

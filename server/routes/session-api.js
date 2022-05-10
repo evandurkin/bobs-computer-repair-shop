@@ -88,7 +88,6 @@ router.post("/sign-in", async (req, res) => {
 router.get("/verify/users/:userName", async (req, res) => {
   try {
     User.findOne({ userName: req.params.userName }, function (err, user) {
-
       // Error processing query
       if (err) {
         console.log(err);
@@ -207,9 +206,10 @@ router.post("/users/:userName/reset-password", async (req, res) => {
  */
 router.post("/verify/users/:userName/security-questions", async (req, res) => {
   try {
-    User.findOne({ userName: req.params.userName }, function (err, user) { // Find by user name
+    User.findOne({ userName: req.params.userName }, function (err, user) {
+      // Find by user name
 
-      // Eror response
+      // Error response
       if (err) {
         console.log(err);
         const verifySecurityQuestionsMongodbErrorResponse = new ErrorResponse(
@@ -254,12 +254,11 @@ router.post("/verify/users/:userName/security-questions", async (req, res) => {
             user
           );
           res.json(validSecurityQuestionsResponse.toObject());
-
         } else {
           console.log(
             `User ${user.userName} did not answer their security questions correctly`
           );
-          const invalidSecurityQuestionsResponse = new BaseResponse(
+          const invalidSecurityQuestionsResponse = new ErrorResponse(
             "200",
             "Error: incorrect answers",
             user
@@ -269,8 +268,8 @@ router.post("/verify/users/:userName/security-questions", async (req, res) => {
       }
     });
     // Catch error
-  } catch (e) {
-    console.log(e);
+  } catch (err) {
+    console.log(err);
     const verifySecurityQuestionsCatchErrorResponse = new ErrorResponse(
       "500",
       "Internal server error",
@@ -304,9 +303,13 @@ router.post("/register", async (req, res) => {
             password: hashedPassword,
             firstName: req.body.firstName,
             lastName: req.body.lastName,
-            phoneNumber: req.body.phoneNumber,
-            address: req.body.address,
             email: req.body.email,
+            phoneNumber: req.body.phoneNumber,
+            addressLineOne: req.body.addressLineOne,
+            addressLineTwo: req.body.addressLineTwo,
+            city: req.body.city,
+            state: req.body.state,
+            zip: req.body.zip,
             role: standardRole,
             selectedSecurityQuestions: req.body.selectedSecurityQuestions,
           };

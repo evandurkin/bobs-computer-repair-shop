@@ -15,29 +15,26 @@ import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-auth-layout',
   templateUrl: './auth-layout.component.html',
-  styleUrls: ['./auth-layout.component.css']
+  styleUrls: ['./auth-layout.component.css'],
 })
 export class AuthLayoutComponent implements OnInit {
-
   year: number = Date.now();
-  isLoggedIn: boolean;       // Checks if a user is logged in.
+  isLoggedIn: boolean; // Checks if a user is logged in.
   userName: string;
   userRole: any;
 
-  constructor(private cookieService: CookieService, private router: Router)
-  {
-
+  constructor(private cookieService: CookieService, private router: Router) {
     this.isLoggedIn = this.cookieService.get('session_user') ? true : false;
     this.userName = sessionStorage.getItem('userName');
     console.log('Signed in as: ' + this.userName);
   }
 
   // Logic for icon menu items
- ngOnInit(): void {
+  ngOnInit(): void {
     this.userName = this.cookieService.get('session_user');
   }
 
-// Check if user has Admin role
+  // Check if user has Admin role
   isAdmin(): boolean {
     return this.userRole.role === 'admin';
   }
@@ -50,17 +47,24 @@ export class AuthLayoutComponent implements OnInit {
     this.router.navigate(['/session/security-questions']);
   }
 
-// Delete session-user cookie and redirect to home page
+  // Delete session-user cookie and redirect to home page
   signOut() {
     this.cookieService.deleteAll();
     this.router.navigate(['/']);
   }
-  roleConfig(): void{
-    this.router.navigate([]);
+  roleConfig(): void {
+    this.router.navigate(['/session/role-list']);
   }
 
   adminReport(): void {
-    this.router.navigate([])
+    this.router.navigate(['/session/services-graph']);
   }
 
+  servicesConfig(): void {
+    this.router.navigate(['/session/services']);
+  }
+
+  servicesPage(): void {
+    this.router.navigate(['/session/dashboard-admin']);
+  }
 }

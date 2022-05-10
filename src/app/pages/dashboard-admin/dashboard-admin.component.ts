@@ -16,24 +16,22 @@ import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-dashboard-admin',
   templateUrl: './dashboard-admin.component.html',
-  styleUrls: ['./dashboard-admin.component.css']
+  styleUrls: ['./dashboard-admin.component.css'],
 })
 export class DashboardAdminComponent implements OnInit {
-
   year: number = Date.now();
   isLoggedIn: boolean; // Checks if a user is logged in.
   userName: string;
   userRole: any;
 
   constructor(private cookieService: CookieService, private router: Router) {
-
     this.isLoggedIn = this.cookieService.get('session_user') ? true : false;
     this.userName = sessionStorage.getItem('userName');
     console.log('Signed in as: ' + this.userName);
   }
 
   // Logic for icon menu items
- ngOnInit(): void {
+  ngOnInit(): void {
     this.userName = this.cookieService.get('session_user');
   }
 
@@ -53,12 +51,11 @@ export class DashboardAdminComponent implements OnInit {
     this.cookieService.deleteAll();
     this.router.navigate([]);
   }
-  roleConfig(): void{
+  roleConfig(): void {
     this.router.navigate([]);
   }
 
   adminReport(): void {
-    this.router.navigate([])
+    this.router.navigate(['/session/services-graph']);
   }
-
 }

@@ -1,0 +1,23 @@
+<!--
+    Title: role-details.component.html
+    Date: 07 May 2022
+    Authors: Evan Durkin, Keith Hall,
+    Gustavo Roo Gonzalez, and Gunner Bradley
+    Description: Html file for the role-details component.
+-->
+
+<mat-dialog-content fxFlex fxLayout="column" [formGroup]="roleForm" class="dialog-questions" >
+  <h2 mat-dialog-title class="dialog-title">Edit Role</h2>
+
+  <mat-form-field style="padding: 15px; margin: 0px;">
+      <input type="text" placeholder="Role" matInput formControlName="text" [value]="roleData.text"/>
+      <mat-error *ngIf="roleForm.controls.text.hasError('required') && roleForm.controls.text.touched" class="error-question">
+        You must provide a name for the role.
+      </mat-error>
+  </mat-form-field>
+
+  <div mat-dialog-actions fxLayoutAlign="end" style="padding: 15px; margin: 0px;">
+    <button mat-button (click)="cancel()" class="btn-back">cancel</button>
+    <button mat-raised-button (click)="save()"  class="btn-primary btn-dialog">submit</button>
+  </div>
+</mat-dialog-content>
