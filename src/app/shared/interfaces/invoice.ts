@@ -10,7 +10,6 @@
 
 import { LineItem } from './line-item';
 
-
 // Interface for Invoice object
 export class Invoice {
   private username: string;
@@ -76,7 +75,7 @@ export class Invoice {
     );
   }
 
-  getLaborRate() : number {
+  getLaborRate(): number {
     return this.LABOR_RATE;
   }
 

@@ -19,18 +19,18 @@ import { Invoice } from '../interfaces/invoice';
 export class InvoiceService {
   constructor(private http: HttpClient) {}
 
-  createInvoice(userName: string, invoice: Invoice): Observable<any> {
-    return this.http.post(`/api/invoices/${userName}`, {
-      userName: userName,
-      // *******COMMENTED OUT FOR CAUSING ERROR**********
-      // lineItems: invoice.getLineItems(),
-      // partsTotal: invoice.partsTotal,
-      // laborTotal: invoice.getLaborTotal(),
-      // lineItemTotal: invoice.getLineItemTotal(),
-      // total: invoice.getTotal(),
-      // created: invoice.created,
-    });
-  }
+  // Commented out because of errors
+  // createInvoice(userName: string, invoice: Invoice): Observable<any> {
+  //   return this.http.post(`/api/invoices/${userName}`, {
+  //     userName: userName,
+  //     lineItems: invoice.getLineItems(),
+  //     partsTotal: invoice.partsTotal,
+  //     laborTotal: invoice.getLaborTotal(),
+  //     lineItemTotal: invoice.getLineItemTotal(),
+  //     total: invoice.getTotal(),
+  //     created: invoice.created,
+  //   });
+  // }
 
   findPurchasesByServiceGraph(): Observable<any> {
     return this.http.get(`/api/invoices/purchases-graph`);

@@ -9,68 +9,116 @@
 <div fxLayout="column" fxFlex="100%" class="main-welcome">
   <p-toast></p-toast>
 
-  <div style="padding-bottom:-20px" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="7%" style="width: 100%;">
-
-    <div fxLayout="column" fxLayoutAlign="center"  style="max-width: fit-content;cursor:pointer;">
+  <div
+    style="padding-bottom: -20px"
+    fxLayout="row"
+    fxLayoutAlign="center"
+    fxLayoutGap="7%"
+    style="width: 100%"
+  >
+    <div
+      fxLayout="column"
+      fxLayoutAlign="center"
+      style="max-width: fit-content; cursor: pointer"
+    >
       <h2 class="title-service">Services</h2>
       <h4 class="subtitle-service">select a service</h4>
 
       <!-- Buttons -->
-        <div class="btn-service"
-        *ngFor="let product of products; let i = index"
-        (click)="addToInvoice(product.text, product.cost)" >+&nbsp;
-        {{ product.text }}  <!-- Product and price columns -->
+      <div
+        class="btn-service"
+        *ngFor="let item of lineItems; let i = index"
+        (click)="addToInvoice(item.title, item.price)"
+      >
+        +&nbsp; {{ item.title }}
+        <!-- Product and price columns -->
       </div>
       <!-- <h2 class="title-service">Add Additional Service</h2> -->
-      <div fxLayoutAlign="start" style="margin-top:7px">
-        <button mat-raised-button type="button" class="btn-add-service" (click)="addServiceDialog()" style="border-radius: 0px;">add additional service</button>
+      <div fxLayoutAlign="start" style="margin-top: 7px">
+        <button
+          mat-raised-button
+          type="button"
+          class="btn-add-service"
+          (click)="addServiceDialog()"
+          style="border-radius: 0px"
+        >
+          add additional service
+        </button>
       </div>
-
     </div>
 
     <!-- Right side -->
-    <div fxFlex="60%" fxLayout="column" fxLayoutAlign="space-between" >
-
-      <div >
+    <div fxFlex="60%" fxLayout="column" fxLayoutAlign="space-between">
+      <div>
         <!-- Data table-->
-        <mat-card fxFlex style="background-color: #ffffff;">
+        <mat-card fxFlex style="background-color: #ffffff">
           <mat-card-content>
-            <table #table mat-table [dataSource]="dataTableSource" style="width: 100%;">
-
+            <table
+              #table
+              mat-table
+              [dataSource]="dataTableSource"
+              style="width: 100%"
+            >
               <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef >Name</th>
-                <td mat-cell *matCellDef="let item">{{ item.serviceName }}</td>
+                <th mat-header-cell *matHeaderCellDef>Name</th>
+                <td mat-cell *matCellDef="let item">{{ item.title }}</td>
               </ng-container>
               <ng-container matColumnDef="price">
-                <th mat-header-cell *matHeaderCellDef style="width: 80px;">Cost</th>
-                <td mat-cell *matCellDef="let item" style="width: 80px;">{{ item.price | currency}}</td>
+                <th mat-header-cell *matHeaderCellDef style="width: 80px">
+                  Cost
+                </th>
+                <td mat-cell *matCellDef="let item" style="width: 80px">
+                  {{ item.price | currency }}
+                </td>
               </ng-container>
               <ng-container matColumnDef="functions">
                 <th mat-header-cell *matHeaderCellDef></th>
-                <td mat-cell *matCellDef="let item; let i = index" style="width: 20px;">
+                <td
+                  mat-cell
+                  *matCellDef="let item; let i = index"
+                  style="width: 20px"
+                >
                   <button mat-icon-button>
-                    <mat-icon color="primary" (click)="deleteFromInvoice(i, item.title, item.price, item.parts, item.hours)">delete</mat-icon>
+                    <mat-icon
+                      color="primary"
+                      (click)="
+                        deleteFromInvoice(
+                          i,
+                          item.title,
+                          item.price,
+                          item.parts,
+                          item.hours
+                        )
+                      "
+                      >delete</mat-icon
+                    >
                   </button>
                 </td>
               </ng-container>
 
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
             </table>
           </mat-card-content>
         </mat-card>
       </div>
 
-              <!-- Total and invoice button-->
-              <div style="display:inline-block;">
-                <!-- Total -->
-                <h1 class="total-div">Total:&nbsp;{{ total | currency}}</h1>
-              </div>
-              <!-- Invoice Button -->
-              <div>
-                <button mat-raised-button class="btn-primary btn-invoice" (click)="getInvoice()" [disabled]="invoice.getTotal() === 0">create invoice</button>
-              </div>
+      <!-- Total and invoice button-->
+      <div style="display: inline-block">
+        <!-- Total -->
+        <h1 class="total-div">Total:&nbsp;{{ total | currency }}</h1>
+      </div>
+      <!-- Invoice Button -->
+      <div>
+        <button
+          mat-raised-button
+          class="btn-primary btn-invoice"
+          (click)="getInvoice()"
+          [disabled]="invoice.getTotal() === 0"
+        >
+          create invoice
+        </button>
+      </div>
     </div>
   </div>
 </div>
-
