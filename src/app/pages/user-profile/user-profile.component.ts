@@ -36,8 +36,9 @@ export class UserProfileComponent implements OnInit {
     private dialog: MatDialog,
     private userService: UserService
   ) {
-    // Find all users (account holders)
-    this.userService.findAllUsers().subscribe(
+    // Find user (account holder)
+
+    this.userService.editUserById('6279bae12438fddb44d17675').subscribe(
 
       (res) => {
         this.users = res['data'];
