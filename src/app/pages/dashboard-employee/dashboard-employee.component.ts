@@ -86,7 +86,7 @@ export class DashboardEmployeeComponent implements OnInit {
   addToInvoice(title: string, price: number, parts?: number, hours?: number) {
     let newService = {
       title: title,
-      cost: price,
+      price: price,
     };
 
     // If an add service item, add the parts and hours value to the newService object.
