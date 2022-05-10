@@ -47,7 +47,7 @@ export class UserCreateComponent implements OnInit {
       firstName: [null, Validators.compose([Validators.required])],
       lastName: [null, Validators.compose([Validators.required])],
       phoneNumber: [null, Validators.compose([Validators.required])],
-      addressLineTwo: [null, Validators.compose([Validators.required])],
+      addressLineTwo: [null],
       addressLineOne: [null, Validators.compose([Validators.required])],
       city: [null, Validators.compose([Validators.required])],
       state: [null, Validators.compose([Validators.required])],
