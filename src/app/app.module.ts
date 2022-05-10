@@ -83,6 +83,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { TextMaskModule } from 'angular2-text-mask';
 
 // PrimeNG Imports
 import { MessagesModule } from 'node_modules/primeng/messages';
@@ -163,6 +164,7 @@ import { ChartModule } from 'primeng/chart';
     MatProgressSpinnerModule,
     ToastModule,
     ChartModule,
+    TextMaskModule
   ],
   providers: [
     {

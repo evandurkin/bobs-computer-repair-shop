@@ -90,7 +90,8 @@
                 <!--Phone Number -->
                 <mat-form-field fxFlex appearance="fill" style="margin-right: 5px; margin-top: 15px;">
                   <mat-label>Phone Number *</mat-label>
-                  <input matInput [formControl]="contactForm.controls['phoneNumber']" />
+                  <input matInput [formControl]="contactForm.controls['phoneNumber']"
+                  />
                   <mat-error class="input-error" *ngIf="contactForm.controls['phoneNumber'].hasError('required') && contactForm.controls['phoneNumber'].touched">
                     Phone Number Is A Required Field
                   </mat-error>

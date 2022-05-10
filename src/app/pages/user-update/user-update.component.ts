@@ -30,6 +30,7 @@ export class UserUpdateComponent implements OnInit {
   form: FormGroup;
   roles: UserRole[];
 
+
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,

@@ -49,8 +49,7 @@
 
           <!-- Phone -->
           <mat-form-field>
-            <input type="text" matInput [formControl]="form.controls['phoneNumber']
-			"placeholder="Phone number"/>
+            <input type="text" matInput [formControl]="form.controls['phoneNumber']"/>
             <mat-error *ngIf=
 			"form.controls.phoneNumber.hasError('required') &&
             form.controls.phoneNumber.touched">Phone number is a required field.
@@ -91,7 +90,7 @@
                 form.controls.addressLineTwo.hasError('required') &&
                 form.controls.addressLineTwo.touched">Address is a required field.
             </mat-error>
-          </mat-form-field>
+          </mat-form-field>&nbsp;&nbsp;
 
           <mat-form-field>
             <input type="text" matInput [formControl]="form.controls['city']

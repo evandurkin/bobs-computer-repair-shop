@@ -108,7 +108,9 @@
             <input
               type="text"
               matInput
-              [formControl]="form.controls['phoneNumber']"/>
+              [formControl]="form.controls['phoneNumber']"
+              [textMask]="{mask: phoneMask}" placeholder="(555)-555-5555"
+              type="tel" />
             <mat-error
 
               *ngIf="
