@@ -9,9 +9,9 @@
 <div fxLayout="column" fxFlex="100%" class="main-welcome">
   <p-toast></p-toast>
 
-  <div style="padding-bottom:-20px" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="7%" style="width: 100%;">
+  <div style="padding-bottom:-20px" fxLayout="row" fxLayoutAlign="center" style="width: 100%;">
 
-    <div fxLayout="column" fxLayoutAlign="center"  style="max-width: fit-content;cursor:pointer;">
+    <div   class="btn-div">
       <h2 class="title-service">Services</h2>
       <h4 class="subtitle-service">select a service</h4>
 
@@ -23,7 +23,7 @@
       </div>
       <!-- <h2 class="title-service">Add Additional Service</h2> -->
       <div fxLayoutAlign="start" style="margin-top:7px">
-        <button mat-raised-button type="button" class="btn-add-service" (click)="addServiceDialog()" style="border-radius: 0px;">add additional service</button>
+        <button mat-raised-button type="button" class="btn-add-service" (click)="addServiceDialog()" style="border-radius: 0px;">Add Additional Service</button>
       </div>
 
     </div>
@@ -68,7 +68,7 @@
               </div>
               <!-- Invoice Button -->
               <div>
-                <button mat-raised-button class="btn-primary btn-invoice" (click)="getInvoice()" [disabled]="invoice.getTotal() === 0">create invoice</button>
+                <button mat-raised-button class="btn-primary btn-invoice" (click)="getInvoice()" [disabled]="invoice.getTotal() === 0">Create Invoice</button>
               </div>
     </div>
   </div>

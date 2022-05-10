@@ -9,7 +9,7 @@
 */
 
 .main-welcome {
-  margin-top: -4%;
+  margin-top: 3%;
 }
 
 .title {
@@ -141,4 +141,12 @@ th {
   background-color: #ffffff;
   border-top: 1px solid #579068;
   color: #579068;
+}
+
+.btn-div {
+  display: block;
+  max-width: fit-content;
+  cursor: pointer;
+   place-content: stretch;
+   margin-right: 15px;
 }
