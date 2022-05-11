@@ -25,12 +25,17 @@ mat-label {
   background-color: #ffffff;
 }
 
-.btn-primary, .btn-dialog-cancel {
+.btn-primary, .btn-back {
   border-radius: 0;
+}
+
+.btn-back {
+  font-size: 14px;
 }
 
 .btn-primary {
   color: white;
+  background-color: green;
 }
 
 

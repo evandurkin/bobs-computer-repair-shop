@@ -53,8 +53,8 @@
     </mat-form-field>
 
     <div fxLayoutAlign="space-between" style="margin: 13px;">
-      <button mat-raised-button color="accent" type="button" (click)="cancelDialog()">Back</button>
-      <button mat-raised-button color="primary" type="submit" [disabled]="!addItemToForm.valid">Confirm</button>
+      <button mat-stroked-button type="button" class="btn-back" (click)="cancelDialog()">Back</button>
+      <button mat-raised-button type="submit" class="btn-primary" [disabled]="!addItemToForm.valid" style="background-color: #568e67;">Confirm</button>
     </div>
   </div>
 </form>

@@ -8,12 +8,68 @@
 ============================================
 */
 
+mat-card {
+  padding-left: 15px;
+  padding-right: 15px;
+}
 mat-card-title {
   text-align: center;
   font-size: 32px;
   font-family: 'Aldrich';
   margin-bottom: 5%;
+  display: inline-block;
 }
 mat-card-subtitle {
   float: right;
+  color: #579068;
 }
+
+::ng-deep.mat-dialog-container {
+  padding: 0px !important;
+  background-color: #ffffff;
+}
+
+td.mat-cell, th {
+  border-bottom-color: #579068;
+}
+.mat-table {
+  background-color: #ffffff;
+
+}
+
+tr, td, th {
+  color: #2a623d;
+}
+
+.title-invoice {
+  color: #579068;
+  font-family: 'Aldrich' sans-serif;
+  text-align: left;
+}
+
+.fees-div {
+  color: #579068;
+}
+
+.mat-typography p {
+  margin-bottom: 8px;
+}
+
+th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+  padding-left:  5px;
+  width: 75%;
+  margin-top: 10px;
+}
+
+th.mat-header-cell:last-of-type, td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type {
+  padding: 0;
+  width: 16%;
+}
+
+.btn-primary {
+  border-radius: 0px;
+  color: white;
+  padding-right: 25px;
+  padding-left: 25px;
+}
+

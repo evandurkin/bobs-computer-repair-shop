@@ -103,7 +103,6 @@ td.mat-cell, th {
 }
 .mat-table {
   background-color: #ffffff;
-
 }
 
 mat-header-cell cdk-header-cell cdk-column-name mat-column-name ng-star-inserted {
