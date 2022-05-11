@@ -42,7 +42,7 @@ app.use("/", express.static(path.join(__dirname, "../dist/bcrs")));
 /**
  * Variables
  */
-const port = process.env.port || 3000; // server port
+const port = process.env.PORT || 3000; // server port
 
 // Database connection string - mongoDB account configured to accept request from any IP
 const conn = `mongodb+srv://450-user:Qwerty123@cluster0.mlnw2.mongodb.net/bcrs?retryWrites=true&w=majority`;
