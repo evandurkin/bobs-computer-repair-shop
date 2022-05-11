@@ -238,7 +238,20 @@
                   <!--Password Field for verification form-->
                   <mat-form-field fxFlex appearance="fill">
                     <mat-label>Password</mat-label>
-                    <input matInput [formControl]="credentialsForm.controls['password']" />
+                    <input
+                    class="form-control"
+                    name="password"
+                    #password
+                    required
+                    matInput [formControl]="credentialsForm.controls['password']"
+                    placeholder="Password.."
+                    [type]="hide ? 'text' : 'password'"
+                    type="password" />
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                        <i (click)="hide = !hide" class="tim-icons icon-lock-circle"></i>
+                      </span>
+                    </div>
                     <mat-hint class="password-field">Password must contain at least 8 characters, one letter, and one number.</mat-hint>
                     <mat-error class="input-error" *ngIf="credentialsForm.controls['password'].hasError('required') && credentialsForm.controls['password'].touched">
                       Password Is A Required Field

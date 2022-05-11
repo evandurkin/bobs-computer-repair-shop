@@ -45,6 +45,7 @@ export class SignUpComponent implements OnInit {
   credentialsForm: FormGroup;
   errorMessages: string;
   phoneMask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  hide: boolean;
 
   // Define params
   constructor(private http: HttpClient, private router: Router, private fb: FormBuilder, private CookieService: CookieService, private securityQuestionService: SecurityQuestionService) {

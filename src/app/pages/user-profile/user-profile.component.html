@@ -14,7 +14,7 @@
   <mat-card class="users-list-card">
     <mat-card-title class="users-title">Edit Profile</mat-card-title>
 
-    <mat-card-content *ngIf="users">
+    <mat-card-content *ngIf="user">
       <!-- mat-table with header sections for user data-->
              <table mat-table fxFlexFill [dataSource]="users">
         <ng-container matColumnDef="userName">
