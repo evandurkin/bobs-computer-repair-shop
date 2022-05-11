@@ -135,8 +135,8 @@
                 <!--Security Question #1-->
                 <mat-form-field fxFlex appearance="fill" style="margin-right: 15px; margin-bottom: 7px;">
                   <mat-label>Security Question 1</mat-label>
-                  <mat-select [formControl]="securityQuestionsForm.controls['securityQuestion1']">
-                    <mat-option *ngFor="let question of securityQuestions" [value]="question.text">
+                  <mat-select [formControl]="securityQuestionsForm.controls['securityQuestion1']" style="font-size: 12px;">
+                    <mat-option *ngFor="let question of securityQuestions" [value]="question.text" style="font-size: 14px;">
                       {{ question.text }}
                     </mat-option>
                   </mat-select>
@@ -159,8 +159,8 @@
                 <!--Security Question #2-->
                 <mat-form-field fxFlex appearance="fill" style="margin-right: 15px; margin-bottom: 7px;">
                   <mat-label>Security Question 2</mat-label>
-                  <mat-select [formControl]="securityQuestionsForm.controls['securityQuestion2']">
-                    <mat-option *ngFor="let question of securityQuestions" [value]="question.text">
+                  <mat-select [formControl]="securityQuestionsForm.controls['securityQuestion2']" style="font-size: 12px;">
+                    <mat-option *ngFor="let question of securityQuestions" [value]="question.text" style="font-size: 14px;">
                       {{ question.text }}
                     </mat-option>
                   </mat-select>
@@ -183,8 +183,8 @@
               <mat-list-item>
                 <mat-form-field fxFlex appearance="fill" style="margin-right: 15px; margin-bottom: 7px;">
                   <mat-label>Security Question 3</mat-label>
-                  <mat-select [formControl]="securityQuestionsForm.controls['securityQuestion3']">
-                    <mat-option *ngFor="let question of securityQuestions" [value]="question.text">
+                  <mat-select [formControl]="securityQuestionsForm.controls['securityQuestion3']" style="font-size: 12px;">
+                    <mat-option *ngFor="let question of securityQuestions" [value]="question.text" style="font-size: 14px;">
                       {{ question.text }}
                     </mat-option>
                   </mat-select>

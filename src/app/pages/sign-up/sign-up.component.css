@@ -12,9 +12,7 @@
 /********** Card, Card Actions, and Container **********/
 .card-container {
   width: 50%;
-  min-width: 750px;
-  min-height: 600px;
-  max-width: 840px;
+  width: 840px;
   padding: 0 0 15px 0;
   margin: 7% auto;
   border-radius: 0px;
