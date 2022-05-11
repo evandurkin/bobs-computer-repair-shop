@@ -12,9 +12,10 @@
     background-image: url('../../../assets/pexels-rfstudio-3825582.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-position: center;
     background-size: cover;
     width: auto;
-    min-height: 1200px;
+    min-height: 900px;
   }
   .title {
     text-align: center;
@@ -61,4 +62,8 @@
   .btn-primary:hover {
     transition: 1s;
     background-color: #5fed8a;
+  }
+
+  body {
+    overflow: hidden; /* Hide scrollbars */
   }
