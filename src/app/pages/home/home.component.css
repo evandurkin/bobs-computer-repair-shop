@@ -4,21 +4,61 @@
 // Date: 04 April 2022
 // Authors: Evan Durkin, Keith Hall,
 // Gustavo Roo Gonzalez, and Gunner Bradley
-// Description: Css file for the home component.   
+// Description: Css file for the home component.
 =======================================
 */
 
-.main-welcome {
-    margin-top: 30px;
+.home {
+    background-image: url('../../../assets/pexels-rfstudio-3825582.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: auto;
+    min-height: 1200px;
   }
-  
   .title {
     text-align: center;
     font-weight: lighter;
   }
-  
+
   .subtitle {
     text-align: center;
     font-size: 14px;
   }
-  
+
+  .main-content {
+    padding-left: 0px;
+  }
+
+  .home-text {
+    margin: 15% auto 3%;
+    color: white;
+    background-color: #5b5b5b;
+    text-align: center;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    font-family: 'Karla', sans-serif;
+    border-top: 3px solid #888888;
+    font-size: 2em;
+  }
+
+  .btn-estimate {
+    margin: 0 auto;
+    text-align: -webkit-center;
+  }
+
+  .btn-primary {
+    font-size: 2em;
+    color: white;
+    padding: 10px;
+    padding-left: 18px;
+    padding-right: 18px;
+    border-radius: 0;
+    box-shadow:5px 10px 18px rgb(37, 37, 37);
+    background-color: #568e67;
+  }
+
+  .btn-primary:hover {
+    transition: 1s;
+    background-color: #5fed8a;
+  }
