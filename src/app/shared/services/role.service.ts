@@ -39,7 +39,7 @@ export class RoleService {
 
   // Update role
   updateRole(roleId: string, role: UserRole): Observable<any> {
-    return this.http.put(`api/roles/${roleId}`, {
+    return this.http.put(`api/roles/` + roleId, {
       text: role.text,
     });
   }

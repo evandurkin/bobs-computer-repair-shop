@@ -265,42 +265,86 @@ router.delete("/:roleId", async (req, res) => {
 /**
  * updateRole by ID
  */
-router.put("/:roleId", async (req, res) => {
+router.get("/:roleId", async (req, res) => {
   try {
-    // filter by id
-    const filter = { _id: req.params.roleId };
-    const update = req.body;
-
-    Role.findOneAndUpdate(filter, update, { new: true }, function (err, role) {
-      // on error
+    Role.findOne({ _id: req.params.roleId }, function (err, role) {
       if (err) {
         console.log(err);
-        const updateRoleMongodbErrorResponse = new ErrorResponse(
-          "500",
-          "Internal Server Error",
+        const findRoleByIdMongoDbErrorResponse = new ErrorResponse(
+          500,
+          "Internal server error",
           err
         );
-        return res.status(500).send(updateRoleMongodbErrorResponse.toObject());
-        // on success
+        res.status(500).send(findRoleByIdMongoDbErrorResponse.toObject());
       } else {
         console.log(role);
-        const updateRoleSuccessResponse = new BaseResponse(
-          "200",
-          "Role Successfully Updated",
+        const findRoleByIdResponse = new BaseResponse(
+          200,
+          "Query successful",
           role
         );
-        return res.status(200).send(updateRoleSuccessResponse.toObject());
+        res.json(findRoleByIdResponse.toObject());
       }
     });
-    // catch errors
   } catch (e) {
     console.log(e);
-    const updateRoleCatchResponse = new ErrorResponse(
-      "500",
-      "Internal Server Error",
+    const findRoleByIdCatchErrorResponse = new ErrorResponse(
+      500,
+      "Internal server error",
       e.message
     );
-    return res.status(500).send(updateRoleCatchResponse.toObject());
+    res.status(500).send(findRoleByIdCatchErrorResponse.toObject());
+  }
+});
+
+// updateRole
+router.put("/:id", async (req, res) => {
+  try {
+    Role.findOne({ _id: req.params.id }, function (err, role) {
+      if (err) {
+        console.log(err);
+        const updateRoleMongoDbErrorResponse = new ErrorResponse(
+          500,
+          "Internal server error",
+          err
+        );
+        res.status(500).send(updateRoleMongoDbErrorResponse.toObject());
+      } else {
+        console.log(role);
+
+        role.set({
+          text: req.body.text,
+        });
+
+        role.save(function (err, updatedRole) {
+          if (err) {
+            console.log(err);
+            const updatedRoleMongoDbErrorResponse = new ErrorResponse(
+              500,
+              "Internal server error",
+              err
+            );
+            res.status(500).send(updatedRoleMongoDbErrorResponse.toObject());
+          } else {
+            console.log(updatedRole);
+            const updatedRoleResponse = new BaseResponse(
+              200,
+              "Query successful",
+              updatedRole
+            );
+            res.json(updatedRoleResponse.toObject());
+          }
+        });
+      }
+    });
+  } catch (e) {
+    console.log(e);
+    const findRoleByIdCatchErrorResponse = new ErrorResponse(
+      500,
+      "Internal server error",
+      e.message
+    );
+    res.status(500).send(findRoleByIdCatchErrorResponse.toObject());
   }
 });
 

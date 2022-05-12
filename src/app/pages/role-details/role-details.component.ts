@@ -26,7 +26,7 @@ export class RoleDetailsComponent implements OnInit {
 
   constructor(
     private dialogRef: MatDialogRef<RoleDetailsComponent>,
-    @Inject(MAT_DIALOG_DATA)data) {
+    @Inject(MAT_DIALOG_DATA) data) {
     this.roleData = data.roleData
   }
 
