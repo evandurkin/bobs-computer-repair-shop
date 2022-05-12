@@ -8,15 +8,139 @@
 =======================================
 */-->
 
-<div fxLayout="column" style="margin-top: 3em;">
+ <!--
+    Title: index.html
+    Date: 11 May 2022
+    Authors: Evan Durkin, Keith Hall,
+    Gustavo Roo Gonzalez, and Gunner Bradley
+    Description: Html file for the user-profile component.
+-->
 
-  <!--mat card to hold users configuration table-->
+<div fxLayout="column">
+  <mat-card style="margin: 5% auto; padding: 0px; background-color: #ffffff;" class="mat-elevation-z8 user-card">
+    <mat-card-title class="user-title">Edit User Information</mat-card-title>
+    <br />
+    <form [formGroup]="form" (ngSubmit)="updateUser()" #userForm="ngForm" autocomplete="off" style="padding: 20px;">
+      <mat-card-content>
+        <div fxLayout="column" fxLayoutGap="10px">
+
+          <!-- Fist and last name Fields -->
+          <mat-form-field >
+            <input type="text" matInput
+              [formControl]="form.controls['firstName']"
+              placeholder="First name" class="user-form-field"/>
+
+            <mat-error
+               *ngIf="form.controls.firstName.hasError('required') &&
+                form.controls.firstName.touched">First name is a required field</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input type="text" matInput [formControl]="form.controls['lastName']"
+              placeholder="Last name"/>
+            <mat-error *ngIf="
+                form.controls.lastName.hasError('required') &&
+                form.controls.lastName.touched" >Last name is a required field.
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Phone -->
+          <mat-form-field>
+            <input type="text" matInput [formControl]="form.controls['phoneNumber']"/>
+            <mat-error *ngIf=
+			"form.controls.phoneNumber.hasError('required') &&
+            form.controls.phoneNumber.touched">Phone number is a required field.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input type="text" matInput [formControl]="form.controls['email']
+			"placeholder="Email"/>
+            <mat-error
+                 *ngIf="
+                form.controls.email.hasError('required') &&
+                form.controls.email.touched">Email is a required field.
+            </mat-error>
+
+            <mat-error
+                 *ngIf="
+                form.controls.email.hasError('email') &&
+                form.controls.email.touched">Invalid email format.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input type="text" matInput [formControl]="form.controls['addressLineOne']
+			"placeholder="Address Line 1" />
+            <mat-error
+              *ngIf="
+                form.controls.addressLineOne.hasError('required') &&
+                form.controls.addressLineOne.touched">Address is a required field.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input type="text" matInput [formControl]="form.controls['addressLineTwo']
+			"placeholder="Address Line 2" />
+            <mat-error
+               *ngIf="
+                form.controls.addressLineTwo.hasError('required') &&
+                form.controls.addressLineTwo.touched">Address is a required field.
+            </mat-error>
+          </mat-form-field>&nbsp;&nbsp;
+
+          <mat-form-field>
+            <input type="text" matInput [formControl]="form.controls['city']
+			"placeholder="City" />
+            <mat-error
+               *ngIf="
+                form.controls.city.hasError('required') &&
+                form.controls.city.touched">City is a required field.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input type="text" matInput [formControl]="form.controls['state']
+			"placeholder="State" />
+            <mat-error
+               *ngIf="
+                form.controls.state.hasError('required') &&
+                form.controls.state.touched">State is a required field.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input type="text" matInput [formControl]="form.controls['zip']
+			"placeholder="Zip Code" />
+            <mat-error
+               *ngIf="
+                form.controls.zip.hasError('zip') &&
+                form.controls.zip.touched">Zip is a required field.
+            </mat-error>
+          </mat-form-field>
+
+        </div>
+      </mat-card-content>
+      <br />
+      <mat-card-actions fxLayoutAlign="end">
+        <button mat-stroked-button (click)="cancel()" class="btn-back">cancel
+        </button>
+        <button type="submit" mat-stroked-button [disabled]="!userForm.form.valid" class="btn-primary">submit
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
+
+
+<!-- <div fxLayout="column" style="margin-top: 3em;">
+
+
   <mat-card class="users-list-card">
     <mat-card-title class="users-title">Edit Profile</mat-card-title>
 
-    <mat-card-content *ngIf="users">
-      <!-- mat-table with header sections for user data-->
-             <table mat-table fxFlexFill [dataSource]="users">
+    <mat-card-content *ngIf="user">
+
+             <table mat-table fxFlexFill [dataSource]="user">
         <ng-container matColumnDef="userName">
           <th mat-header-cell *matHeaderCellDef>Username</th>
           <td mat-cell *matCellDef="let element">
@@ -50,7 +174,7 @@
         </ng-container>
         <ng-container matColumnDef="functions">
 
-          <!-- functions for editing profile -->
+
           <th mat-header-cell *matHeaderCellDef></th>
           <td mat-cell *matCellDef="let element">
 
@@ -67,4 +191,4 @@
 
     </mat-card-content>
   </mat-card>
-</div>
+</div> -->

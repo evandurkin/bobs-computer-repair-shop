@@ -44,7 +44,7 @@ export class StandardLayoutComponent implements OnInit {
   }
 
   editProfile(): void {
-    this.router.navigate(['/session-employee/user-profile']);
+    this.router.navigate(['/session-employee/user-profile']); //this
   }
 
   servicesPage(): void {
