@@ -71,7 +71,12 @@
                 <!-- State -->
                 <mat-form-field fxFlex appearance="fill" style="margin-right: 5px; width: 66px;">
                   <mat-label>State *</mat-label>
-                  <input matInput [formControl]="contactForm.controls['state']"/>
+                  <mat-select name="state" class="form-control btn-primary btn-simple"
+                      formControlName="state">
+                        <mat-option *ngFor="let state of states" [value]="state.abbreviation">
+                          {{ state.name }}
+                        </mat-option>
+                  </mat-select>
                   <mat-error class="input-error" *ngIf="contactForm.controls['state'].hasError('required') && contactForm.controls['state'].touched">
                     State Is A Required Field
                   </mat-error>
