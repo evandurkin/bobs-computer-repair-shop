@@ -71,7 +71,7 @@
                 <!-- State -->
                 <mat-form-field fxFlex appearance="fill" style="margin-right: 5px; width: 66px;">
                   <mat-label>State *</mat-label>
-                  <mat-select name="state" class="form-control btn-primary btn-simple"
+                  <mat-select name="state" class="form-control btn-simple"
                       formControlName="state">
                         <mat-option *ngFor="let state of states" [value]="state.abbreviation">
                           {{ state.name }}
