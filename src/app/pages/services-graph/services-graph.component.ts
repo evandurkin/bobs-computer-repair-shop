@@ -1,3 +1,13 @@
+/*
+=======================================
+// Title: Bob’s Computer Repair Shop
+// Date: 11 May 2022
+// Authors: Evan Durkin, Keith Hall,
+// Gustavo Roo Gonzalez, and Gunner Bradley
+// Description: Services Graph Component
+=======================================
+*/
+
 import { Component, OnInit } from '@angular/core';
 import { InvoiceService } from 'src/app/shared/services/invoice.service';
 

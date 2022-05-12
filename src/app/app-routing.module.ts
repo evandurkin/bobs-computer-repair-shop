@@ -81,53 +81,53 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard-admin',
-        component: DashboardAdminComponent,
+        component: DashboardAdminComponent
       },
       {
         path: 'users',
-        component: UserListComponent,
+        component: UserListComponent
       },
       {
         path: 'user-create',
-        component: UserCreateComponent,
+        component: UserCreateComponent
       },
       {
         path: 'users/:userId',
-        component: UserUpdateComponent,
+        component: UserUpdateComponent
       },
       {
         path: 'role-list',
-        component: RoleListComponent,
+        component: RoleListComponent
       },
       {
         path: 'role-create',
-        component: RoleCreateComponent,
+        component: RoleCreateComponent
       },
       {
         path: 'roles/:roleId',
-        component: RoleDetailsComponent,
+        component: RoleDetailsComponent
       },
       {
         path: 'security-questions',
-        component: SecurityQuestionListComponent,
+        component: SecurityQuestionListComponent
       },
       {
         path: 'security-questions/create',
-        component: SecurityQuestionCreateComponent,
+        component: SecurityQuestionCreateComponent
       },
       {
         path: 'services',
-        component: ServicesListComponent,
+        component: ServicesListComponent
       },
       {
         path: 'services/create',
-        component: ServicesEditComponent,
+        component: ServicesEditComponent
       },
       {
         path: 'services-graph',
-        component: ServicesGraphComponent,
+        component: ServicesGraphComponent
       },
-    ],
+    ]
   },
   /* Standard-employee users (canActivate) */
   {
@@ -149,8 +149,9 @@ const routes: Routes = [
       {
         path: 'services-graph',
         component: ServicesGraphComponent,
+
       },
-    ],
+    ]
   },
 
   /* Routes to pages with no headers */
