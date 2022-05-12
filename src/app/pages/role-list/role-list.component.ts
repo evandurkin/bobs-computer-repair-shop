@@ -21,10 +21,14 @@ import { RoleDetailsComponent } from '../role-details/role-details.component';
 })
 export class RoleListComponent implements OnInit {
   roles: UserRole[];
-  displayedColumns = ['name', 'functions'];
+  displayedColumns = ['role', 'functions'];
   errorMessages: Message[];
 
-  constructor(private roleService: RoleService, private dialog: MatDialog) {
+  constructor(
+    private roleService: RoleService,
+    private dialog: MatDialog
+    )
+    {
     this.roleService.findAllRoles().subscribe((res) => {
       this.roles = res.data;
       console.log(this.roles);
@@ -50,7 +54,7 @@ export class RoleListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(data => {
       if(data) {
         console.log(data)
-        this.roleService.updateRole(id, role).subscribe(() => {
+        this.roleService.updateRole(id, data).subscribe(() => {
           console.log("Role has been updated!");
           this.roleService.findAllRoles().subscribe(res => {
             this.roles = res.data;
