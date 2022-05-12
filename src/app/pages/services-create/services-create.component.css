@@ -1,0 +1,20 @@
+.btn-primary {
+  font-family: "Aldrich", sans-serif;
+  color: #003716;
+  background-color: #568e67;
+  border: none;
+  border-radius: 0px;
+  font-size: 20px;
+}
+
+.btn-back {
+  border-radius: 0px;
+}
+
+.create-form {
+  padding: 15px;
+}
+
+.create-card {
+  border-radius: 0px;
+}

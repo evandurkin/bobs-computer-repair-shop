@@ -48,6 +48,7 @@ import { ServicesGraphComponent } from './pages/services-graph/services-graph.co
 // Guards
 import { AuthGuard } from './auth.guard';
 import { RoleGuard } from './role.guard';
+import { ServicesCreateComponent } from './pages/services-create/services-create.component';
 
 const routes: Routes = [
   /* Public Routes for guests */
@@ -120,8 +121,12 @@ const routes: Routes = [
         component: ServicesListComponent,
       },
       {
-        path: 'services/create',
+        path: 'services/edit',
         component: ServicesEditComponent,
+      },
+      {
+        path: 'services/create',
+        component: ServicesCreateComponent,
       },
       {
         path: 'services-graph',

@@ -1,1 +1,71 @@
-<p>services-create works!</p>
+<!--
+// Title: Bob’s Computer Repair Shop
+// Date: 12 May 2022
+// Authors: Evan Durkin, Keith Hall,
+// Gustavo Roo Gonzalez, and Gunner Bradley
+// Description: HTML file for creating a service
+-->
+
+<div fxLayout="column">
+  <mat-card class="mat-elevation-z8" style="padding: 0px" class="create-card">
+    <mat-card-title class="create-title">Create New Service</mat-card-title>
+
+    <br />
+
+    <form [formGroup]="form" (ngSubmit)="create()" class="create-form">
+      <mat-card-content>
+        <div fxLayout="column" fxLayoutGap="10px">
+          <mat-form-field>
+            <input
+              type="text"
+              matInput
+              [formControl]="form.controls['title']"
+              placeholder="New Service Title"
+            />
+            <mat-error
+              *ngIf="
+                form.controls.title.hasError('required') &&
+                form.controls.title.touched
+              "
+              style="font-size: 12px"
+            >
+              Title is a required field
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              type="text"
+              matInput
+              [formControl]="form.controls['price']"
+              placeholder="New Service Price"
+            />
+            <mat-error
+              *ngIf="
+                form.controls.title.hasError('required') &&
+                form.controls.title.touched
+              "
+              style="font-size: 12px"
+            >
+              Price is a required field
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+
+      <br />
+    </form>
+    <mat-card-actions fxLayoutAlign="end" style="margin: 25px">
+      <button mat-stroked-button (click)="cancel()" class="btn-back">
+        cancel
+      </button>
+      <button
+        type="submit"
+        mat-raised-button
+        [disabled]="!form.valid"
+        class="btn-primary"
+      >
+        submit
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
