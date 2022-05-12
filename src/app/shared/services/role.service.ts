@@ -31,9 +31,9 @@ export class RoleService {
   }
 
   // Create new role
-  createRole(role: UserRole): Observable<any> {
-    return this.http.post(`api/roles`, {
-      text: role.text,
+  createRole(newRole: UserRole): Observable<any> {
+    return this.http.post(`/api/roles`, {
+      text: newRole.text,
     });
   }
 

@@ -30,7 +30,7 @@ export class RoleDetailsComponent implements OnInit {
     this.roleData = data.roleData
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     console.log(this.roleData.text)
     this.roleForm = new FormGroup({
       text: new FormControl(this.roleData.text, Validators.required)

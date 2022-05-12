@@ -14,20 +14,20 @@
 
     <mat-card-content *ngIf="roles">
       <table mat-table fxFlexFill [dataSource]="roles">
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef>Name</th>
-          <td mat-cell *matCellDef="let role">
-            {{ role.text }}
+        <ng-container matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef>Role</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.text }}
           </td>
         </ng-container>
 
         <ng-container matColumnDef="functions" >
           <th mat-header-cell *matHeaderCellDef>Functions</th>
-          <td mat-cell *matCellDef="let role" style="width: 100px;">
-            <button mat-icon-button (click)="openRoleDetailsDialog(role._id, role)">
+          <td mat-cell *matCellDef="let element" style="width: 100px;">
+            <button mat-icon-button (click)="openRoleDetailsDialog(element._id, element.text)">
               <mat-icon class="functions-icon">edit</mat-icon>
             </button>
-            <button mat-icon-button (click)="delete(role._id, role.text)">
+            <button mat-icon-button (click)="delete(element._id, element.text)">
               <mat-icon class="functions-icon">delete</mat-icon>
             </button>
           </td>
@@ -44,7 +44,7 @@
     class="btn-add-role"
     style="margin-bottom: 10px"
   >
-    create +
+    Create +
   </button>
   </mat-card>
 </div>
