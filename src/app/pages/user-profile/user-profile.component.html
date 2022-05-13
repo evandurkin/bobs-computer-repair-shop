@@ -1,194 +1,94 @@
 <!--/*
 =======================================
 // Title: Bob’s Computer Repair Shop
-// Date: 23 April 2022
+// Date: 11 May 2022
 // Authors: Evan Durkin, Keith Hall,
 // Gustavo Roo Gonzalez, and Gunner Bradley
 // Description: User List HTML file
 =======================================
 */-->
 
- <!--
-    Title: index.html
-    Date: 11 May 2022
-    Authors: Evan Durkin, Keith Hall,
-    Gustavo Roo Gonzalez, and Gunner Bradley
-    Description: Html file for the user-profile component.
--->
-
 <div fxLayout="column">
-  <mat-card style="margin: 5% auto; padding: 0px; background-color: #ffffff;" class="mat-elevation-z8 user-card">
-    <mat-card-title class="user-title">Edit User Information</mat-card-title>
-    <br />
-    <form [formGroup]="form" (ngSubmit)="updateUser()" #userForm="ngForm" autocomplete="off" style="padding: 20px;">
-      <mat-card-content>
-        <div fxLayout="column" fxLayoutGap="10px">
+  <mat-card fx-Flex style="margin-top: .5%; width: 60%; margin-left: 20%;" class="mat-elevation-z8">
+    <mat-card-header>
+      <mat-card-title style="font-size:24px;margin-top:20px;">My Profile</mat-card-title>
+      <mat-card-subtitle>Information:</mat-card-subtitle>
+    </mat-card-header>
 
-          <!-- Fist and last name Fields -->
-          <mat-form-field >
-            <input type="text" matInput
-              [formControl]="form.controls['firstName']"
-              placeholder="First name" class="user-form-field"/>
+    <!-- error message display -->
+    <small style="color: red;" *ngIf="errorMessage">{{errorMessage}}</small>
 
-            <mat-error
-               *ngIf="form.controls.firstName.hasError('required') &&
-                form.controls.firstName.touched">First name is a required field</mat-error>
-          </mat-form-field>
-          <mat-form-field>
-            <input type="text" matInput [formControl]="form.controls['lastName']"
-              placeholder="Last name"/>
-            <mat-error *ngIf="
-                form.controls.lastName.hasError('required') &&
-                form.controls.lastName.touched" >Last name is a required field.
-            </mat-error>
-          </mat-form-field>
+    <mat-divider></mat-divider>
+    <br><br>
+        <mat-card-content>
+            <mat-card>
+                <mat-list role="list" style="margin-top:-50px">
+                <br><br>
+                    <mat-label>First Name:</mat-label>
+                    <mat-list-item role="firstName"><strong>{{user.firstName}}</strong></mat-list-item>
 
-          <!-- Phone -->
-          <mat-form-field>
-            <input type="text" matInput [formControl]="form.controls['phoneNumber']"/>
-            <mat-error *ngIf=
-			"form.controls.phoneNumber.hasError('required') &&
-            form.controls.phoneNumber.touched">Phone number is a required field.
-            </mat-error>
-          </mat-form-field>
+                    <mat-label>Last Name:</mat-label>
+                    <mat-list-item role="lastName"><strong>{{user.lastName}}</strong></mat-list-item>
 
-          <mat-form-field>
-            <input type="text" matInput [formControl]="form.controls['email']
-			"placeholder="Email"/>
-            <mat-error
-                 *ngIf="
-                form.controls.email.hasError('required') &&
-                form.controls.email.touched">Email is a required field.
-            </mat-error>
+                    <mat-label>Email:</mat-label>
+                    <mat-list-item role="email"><strong>{{user.email}}</strong></mat-list-item>
 
-            <mat-error
-                 *ngIf="
-                form.controls.email.hasError('email') &&
-                form.controls.email.touched">Invalid email format.
-            </mat-error>
-          </mat-form-field>
+                    <mat-label>Phone:</mat-label>
+                    <mat-list-item role="phone"><strong>{{user.phoneNumber}}</strong></mat-list-item>
 
-          <mat-form-field>
-            <input type="text" matInput [formControl]="form.controls['addressLineOne']
-			"placeholder="Address Line 1" />
-            <mat-error
-              *ngIf="
-                form.controls.addressLineOne.hasError('required') &&
-                form.controls.addressLineOne.touched">Address is a required field.
-            </mat-error>
-          </mat-form-field>
+                    <mat-label>Address1:</mat-label>
+                    <mat-list-item role="addressOne"><strong>{{user.addressLineOne}}</strong></mat-list-item>
 
-          <mat-form-field>
-            <input type="text" matInput [formControl]="form.controls['addressLineTwo']
-			"placeholder="Address Line 2" />
-            <mat-error
-               *ngIf="
-                form.controls.addressLineTwo.hasError('required') &&
-                form.controls.addressLineTwo.touched">Address is a required field.
-            </mat-error>
-          </mat-form-field>&nbsp;&nbsp;
+                    <mat-label>Address2:</mat-label>
+                    <mat-list-item role="addressTwo"><strong>{{user.addressLineTwo}}</strong></mat-list-item>
 
-          <mat-form-field>
-            <input type="text" matInput [formControl]="form.controls['city']
-			"placeholder="City" />
-            <mat-error
-               *ngIf="
-                form.controls.city.hasError('required') &&
-                form.controls.city.touched">City is a required field.
-            </mat-error>
-          </mat-form-field>
+                    <mat-label>City:</mat-label>
+                    <mat-list-item role="city"><strong>{{user.city}}</strong></mat-list-item>
 
-          <mat-form-field>
-            <input type="text" matInput [formControl]="form.controls['state']
-			"placeholder="State" />
-            <mat-error
-               *ngIf="
-                form.controls.state.hasError('required') &&
-                form.controls.state.touched">State is a required field.
-            </mat-error>
-          </mat-form-field>
+                    <mat-label>State:</mat-label>
+                    <mat-list-item role="state"><strong>{{user.state}}</strong></mat-list-item>
 
-          <mat-form-field>
-            <input type="text" matInput [formControl]="form.controls['zip']
-			"placeholder="Zip Code" />
-            <mat-error
-               *ngIf="
-                form.controls.zip.hasError('zip') &&
-                form.controls.zip.touched">Zip is a required field.
-            </mat-error>
-          </mat-form-field>
-
-        </div>
-      </mat-card-content>
-      <br />
-      <mat-card-actions fxLayoutAlign="end">
-        <button mat-stroked-button (click)="cancel()" class="btn-back">cancel
-        </button>
-        <button type="submit" mat-stroked-button [disabled]="!userForm.form.valid" class="btn-primary">submit
-        </button>
-      </mat-card-actions>
-    </form>
+                    <mat-label>Zip Code:</mat-label>
+                    <mat-list-item role="zip"><strong>{{user.zip}}</strong></mat-list-item>
+                    <button style="margin-left:90%" mat-icon-button routerLink="/session/users/{{ user._id }}">
+                      <mat-icon color="black" class="functions-icon">edit</mat-icon>
+                    </button>
+                  </mat-list>
+            </mat-card>
+           <br>
+            <mat-card class="mat-elevation-z8">
+               <mat-card-content>
+                 <br>
+                   <mat-list role="list" style="margin-top:-50px">
+                    <br>
+                   <mat-label>Edit Username:</mat-label>
+                   <mat-list-item role="username"><strong>{{user.userName}}</strong></mat-list-item>
+                   <mat-list-item role="role">
+                    <button style="margin-left:90%" mat-icon-button routerLink="/session/users/{{ user._id }}">
+                      <mat-icon color="black" class="functions-icon">edit</mat-icon>
+                    </button>
+                  </mat-list-item>
+                  <br><br>
+                   </mat-list>
+                </mat-card-content>
+            </mat-card>
+           <br>
+            <mat-card class="mat-elevation-z8">
+               <mat-card-content>
+                 <br>
+               <mat-list role="list" style="margin-top:-50px">
+                <br>
+                  <mat-label>Edit Password:</mat-label>
+                  <mat-list-item role="role">
+                    <button style="margin-left:90%" mat-icon-button routerLink="/session/users/{{ user._id }}">
+                      <mat-icon color="black" class="functions-icon">edit</mat-icon>
+                    </button>
+                  </mat-list-item>
+                    <br><br>
+               </mat-list>
+               </mat-card-content>
+           </mat-card>
+        </mat-card-content>
   </mat-card>
 </div>
 
-
-<!-- <div fxLayout="column" style="margin-top: 3em;">
-
-
-  <mat-card class="users-list-card">
-    <mat-card-title class="users-title">Edit Profile</mat-card-title>
-
-    <mat-card-content *ngIf="user">
-
-             <table mat-table fxFlexFill [dataSource]="user">
-        <ng-container matColumnDef="userName">
-          <th mat-header-cell *matHeaderCellDef>Username</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.userName }}
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="firstName">
-          <th mat-header-cell *matHeaderCellDef>First Name</th>
-          <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="lastName">
-          <th mat-header-cell *matHeaderCellDef>Last Name</th>
-          <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="phoneNumber">
-          <th mat-header-cell *matHeaderCellDef>Phone Number</th>
-          <td mat-cell *matCellDef="let element">{{ element.phoneNumber }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="address">
-          <th mat-header-cell *matHeaderCellDef>Address</th>
-          <td mat-cell *matCellDef="let element">{{ element.address }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="email">
-          <th mat-header-cell *matHeaderCellDef>Email</th>
-          <td mat-cell *matCellDef="let element">{{ element.email }}</td>
-        </ng-container>
-        <ng-container matColumnDef="functions">
-
-
-          <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let element">
-
-            <button mat-icon-button routerLink="/session/users/{{ element._id }}">
-              <mat-icon color="black" class="functions-icon">edit</mat-icon>
-            </button>
-          </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      </table>
-
-
-    </mat-card-content>
-  </mat-card>
-</div> -->

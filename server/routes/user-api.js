@@ -59,7 +59,7 @@ router.get("/", async (req, res) => {
 // findAllByID API
 router.get("/:id", async (req, res) => {
   try {
-    User.findOne({ _id: req.params.id }, function (err, user) {
+    User.findOne({ '_id': req.params.id }, function (err, user) {
       if (err) {
         console.log(err);
         const findByIdMongodbErrorResponse = new ErrorResponse(

@@ -17,6 +17,12 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const path = require("path");
 const mongoose = require("mongoose");
+const User = require('./models/user');
+const Roles = require('./models/role');
+const bcrypt = require('bcrypt');
+
+const saltRounds = 10; //default salt rounds for hashing algorithm
+const router = express.Router();
 
 /**
  * Required API's
@@ -27,7 +33,7 @@ const SessionApi = require("./routes/session-api");
 const RoleApi = require("./routes/role-api");
 const ServicesApi = require("./routes/services-api");
 const InvoiceApi = require("./routes/invoice-api");
-const SessionEmployeeApi = require("./routes/session-employee-api");
+
 
 /**
  * App configurations
@@ -72,7 +78,25 @@ app.use("/api/session", SessionApi);
 app.use("/api/roles", RoleApi);
 app.use("/api/session/services", ServicesApi);
 app.use("/api/invoices", InvoiceApi);
-app.use("/api/session-employee", SessionEmployeeApi);
+
+/**
+ *  User profile api
+ */
+
+ app.get('/api/users/:id', function(req, res, next) {
+
+  User.findOne({'_id': req.params.id}, function(err, user) {
+
+    if (err) {
+      console.log(err);
+      return next(err);
+    }  else {
+      console.log(user);
+      res.json(user);
+    }
+  })
+});
+
 
 /**
  * Create and start server
@@ -80,3 +104,6 @@ app.use("/api/session-employee", SessionEmployeeApi);
 http.createServer(app).listen(port, function () {
   console.log(`Application started and listening on port: ${port}`);
 }); // end http create server function
+
+
+module.exports = router;

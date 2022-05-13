@@ -15,6 +15,7 @@ border-radius: 0;
 min-width: 585px;
 max-width: 650px;
 background-color: #323232;
+overflow-y: hidden;
 }
 
 .form-card {

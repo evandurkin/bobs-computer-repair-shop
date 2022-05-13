@@ -1,22 +1,18 @@
-/*
+ /*
 =======================================
 // Title: Bob’s Computer Repair Shop
-// Date: 23 April 2022
+// Date: 11 May 2022
 // Authors: Evan Durkin, Keith Hall,
 // Gustavo Roo Gonzalez, and Gunner Bradley
-// Description: User List Component
+// Description: Test file for the user profile component.
 =======================================
 */
 
 // Imported modules
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { MatDialog } from '@angular/material/dialog';
-import { UserService } from './../../shared/services/user.service';
-import { User } from './../../shared/interfaces/user';
-import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
@@ -24,95 +20,28 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./user-profile.component.css'],
 })
 export class UserProfileComponent implements OnInit {
-  user: User;
-  userId: string;
-  form: FormGroup;
-  isLoggedIn: boolean;
-  displayedColumns = [
+  user: any;
+  id: any;
+  errorMessage: string;
 
-    'userName',
-    'firstName',
-    'lastName',
-    'phoneNumber',
-    'address',
-    'email',
-    'functions',
-  ];
-  constructor( private http: HttpClient,
-    private route: ActivatedRoute,
-    private fb: FormBuilder,
-    private router: Router,
-    private dialog: MatDialog,
-    private userService: UserService,
-    private cookieService: CookieService
-  ) {
-      // Retrieve user id from the url
-      this.isLoggedIn = this.cookieService.get('session_user') ? true : false;
-      this.userId = this.route.snapshot.paramMap.get('userId');
+  constructor(
+    private cookieService: CookieService,
+    private http: HttpClient,
+    private route: ActivatedRoute,) {}
 
-    this.userService.editUserById(this.userId).subscribe(
+    ngOnInit() {
+      // get userId from cookie and pull information from DB
+      this.id = this.cookieService.get('userId');
+      console.log(this.id);
+      this.http.get('/api/users/' + this.id).subscribe(res => {
+        if (res) {
+          return this.user = res;
+        } else {
+          console.log('Error no user found with id: ' + this.id);
+          return this.errorMessage = "No user found";
+        }
+      })
+    }
+}
 
-      (res) => {
-        this.user = res['data'];
-        console.log(this.user);
-      },
-      // Error Handling
-      (err) => {
-        console.log(err);
-      }
-    );
-  }
-  ngOnInit(): void {
-     // Form validators
-     this.form = this.fb.group({
-
-      firstName: [null, Validators.compose([Validators.required])],
-      lastName: [null, Validators.compose([Validators.required])],
-      phoneNumber: [null, Validators.compose([Validators.required])],
-      address: [null, Validators.compose([Validators.required])],
-      addressLineOne: [null, Validators.compose([Validators.required])],
-      addressLineTwo: [null, Validators.compose([Validators.required])],
-      city: [null, Validators.compose([Validators.required])],
-      state: [null, Validators.compose([Validators.required])],
-      zip: [null, Validators.compose([Validators.required])],
-      email: [null, Validators.compose([Validators.required, Validators.email]),]
-    });
-  }
-  updateUser(): void {
-
-    // Get form values
-    const updatedUser: User = {
-      firstName: this.form.controls.firstName.value,
-      lastName: this.form.controls.lastName.value,
-      phoneNumber: this.form.controls.phoneNumber.value,
-      addressLineOne: this.form.controls.addressLineOne.value,
-      addressLineTwo: this.form.controls.addressLineTwo.value,
-      city: this.form.controls.city.value,
-      state: this.form.controls.state.value,
-      zip: this.form.controls.zip.value,
-      email: this.form.controls.email.value
-    };
-
-    console.log('savedUser object');
-    console.log(updatedUser);
-
-    // Update the user
-    this.userService.updateUser(this.userId, updatedUser).subscribe(
-
-      (res) => {
-        // Route to the users -list component
-        this.router.navigate(['/session-employee/user-profile']);
-      },
-
-      (err) => {
-        console.log(err);
-      }
-    );
-  }
-
-  // Cancel
-  cancel(): void {
-    this.router.navigate(['/session-employee/user-profile']);
-  }
-  }
 

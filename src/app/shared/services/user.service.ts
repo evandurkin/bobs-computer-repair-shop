@@ -27,12 +27,6 @@ export class UserService {
   findUserById(userId: string): Observable<any> {
     return this.http.get('/api/session/users/' + userId);
   }
-
-  // service for API: finding a user by their ID
-  editUserById(userId: string): Observable<any> {
-    return this.http.get('/api/session-employee/user-profile/' + userId);
-  }
-
   // service for API: creating a new user
   createUser(user: User): Observable<any> {
     return this.http.post('/api/session/users', {

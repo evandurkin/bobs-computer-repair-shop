@@ -144,6 +144,10 @@ const routes: Routes = [
         component: DashboardEmployeeComponent,
       },
       {
+        path: 'user-details',
+        component: VerifyUsernameComponent,
+      },
+      {
         path: 'user-profile',
         component: UserProfileComponent,
       },
@@ -171,10 +175,7 @@ const routes: Routes = [
         path: 'sign-up',
         component: SignUpComponent,
       },
-      {
-        path: 'user-details',
-        component: VerifyUsernameComponent,
-      },
+
       {
         path: 'verify-security-questions',
         component: VerifySecurityQuestionsComponent,
