@@ -22,10 +22,10 @@
       <!-- Buttons -->
       <div
         class="btn-service"
-        *ngFor="let item of lineItems; let i = index"
-        (click)="addToInvoice(item.title, item.price)"
+        *ngFor="let product of products; let i = index"
+        (click)="addToInvoice(product.text, product.cost)"
       >
-        +&nbsp; {{ item.title }}
+        +&nbsp; {{ product.text }}
         <!-- Product and price columns -->
       </div>
       <!-- <h2 class="title-service">Add Additional Service</h2> -->

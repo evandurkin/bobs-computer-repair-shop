@@ -40,14 +40,19 @@ export class SignInComponent implements OnInit {
     const userName = this.form.controls.userName.value;
     const password = this.form.controls.password.value;
 
+
     // Service call to server api to authenticate user
     this.http.post('/api/session/sign-in', {
 
       userName,
       password
     }).subscribe(res => {
+
       console.log(res['data']);
+
       if (res['data'].userName) {
+
+        this.cookieService.set('userId', res['_id'], 1);
         this.cookieService.set('session_user', res['data'].userName, 1);
         this.router.navigate(['/session-employee/dashboard-employee']);
       }
@@ -56,5 +61,4 @@ export class SignInComponent implements OnInit {
       this.errorMessage = err.error.message;
     });
   }
-
 }

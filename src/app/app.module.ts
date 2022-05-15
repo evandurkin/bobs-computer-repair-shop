@@ -35,8 +35,7 @@ import { StandardLayoutComponent } from './shared/standard-layout/standard-layou
 import { DashboardEmployeeComponent } from './pages/dashboard-employee/dashboard-employee.component';
 import { UserUpdateComponent } from './pages/user-update/user-update.component';
 import { ResetPasswordComponent } from './shared/forms/reset-password/reset-password.component';
-import { VerifyUsernameComponent } from './shared/forms/verify-username/verify-username.component';
-import { VerifyPasswordComponent } from './shared/forms/verify-password/verify-password.component';
+import { VerifyUsernameComponent } from './shared/forms/verify-username/verify-username.component'
 import { VerifySecurityQuestionsComponent } from './shared/forms/verify-security-questions/verify-security-questions.component';
 import { InternalServerErrorComponent } from './pages/internal-server-error/internal-server-error.component';
 import { InvoiceComponent } from './pages/invoice/invoice.component';
@@ -116,7 +115,6 @@ import { ChartModule } from 'primeng/chart';
     UserUpdateComponent,
     ResetPasswordComponent,
     VerifyUsernameComponent,
-    VerifyPasswordComponent,
     VerifySecurityQuestionsComponent,
     InternalServerErrorComponent,
     InvoiceComponent,

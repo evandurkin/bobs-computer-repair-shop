@@ -18,7 +18,7 @@ const router = express.Router();
 /**
  * API: findAll Security Questions
  */
-router.get("/", async (req, res) => {
+router.get("/security-questions", async (req, res) => {
   try {
     SecurityQuestion.find({})
       .where("isDisabled")
@@ -56,7 +56,7 @@ router.get("/", async (req, res) => {
 /**
  * API: findAllByID Security Questions
  */
-router.get("/:id", async (req, res) => {
+router.get("/security-questions/:id", async (req, res) => {
   try {
     SecurityQuestion.find(
       { _id: req.params.id },
@@ -94,7 +94,7 @@ router.get("/:id", async (req, res) => {
 /**
  * API: createSecurityQuestions goes here
  */
-router.post("/", async (req, res) => {
+router.post("/security-questions", async (req, res) => {
   try {
     let newSecurityQuestion = {
       text: req.body.text,
@@ -136,7 +136,7 @@ router.post("/", async (req, res) => {
 });
 
 // Updates security question object
-router.put("/:id", async (req, res) => {
+router.put("/security-questions/:id", async (req, res) => {
   try {
     // Identifies security question record by id.
     SecurityQuestion.findOne(
@@ -205,7 +205,7 @@ router.put("/:id", async (req, res) => {
  * API: deleteSecurityQuestions goes here
  */
 
-router.delete("/:id", async (req, res) => {
+router.delete("/security-questions/:id", async (req, res) => {
   try {
     SecurityQuestion.findOne(
       { _id: req.params.id },

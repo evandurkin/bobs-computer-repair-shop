@@ -20,7 +20,7 @@ const router = express.Router();
 const saltRounds = 10; // Salt rounds for hashing algorithm
 
 // User sign-in api
-router.post("/sign-in", async (req, res) => {
+router.post("/session/sign-in", async (req, res) => {
   try {
     User.findOne({ userName: req.body.userName }, function (err, user) {
       if (err) {
@@ -85,7 +85,7 @@ router.post("/sign-in", async (req, res) => {
 });
 
 // Verify Users
-router.get("/verify/users/:userName", async (req, res) => {
+router.get("/session/verify/users/:userName", async (req, res) => {
   try {
     User.findOne({ userName: req.params.userName }, function (err, user) {
       // Error processing query
@@ -136,7 +136,7 @@ router.get("/verify/users/:userName", async (req, res) => {
  * ResetPassword
  */
 
-router.post("/users/:userName/reset-password", async (req, res) => {
+router.post("/session/users/:userName/reset-password", async (req, res) => {
   try {
     const password = req.body.password; // Set new password in req.body as a variable.
 
@@ -204,7 +204,7 @@ router.post("/users/:userName/reset-password", async (req, res) => {
 /**
  * verifySecurityQuestions
  */
-router.post("/verify/users/:userName/security-questions", async (req, res) => {
+router.post("/session/verify/users/:userName/security-questions", async (req, res) => {
   try {
     User.findOne({ userName: req.params.userName }, function (err, user) {
       // Find by user name
@@ -280,7 +280,7 @@ router.post("/verify/users/:userName/security-questions", async (req, res) => {
 });
 
 // Register new user API
-router.post("/register", async (req, res) => {
+router.post("/session/register", async (req, res) => {
   try {
     User.findOne({ userName: req.body.userName }, function (err, user) {
       if (err) {

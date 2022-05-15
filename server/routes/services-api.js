@@ -10,7 +10,7 @@
 
 // Require Statements
 const express = require("express");
-const LineItem = require("../models/line-item");
+const Service = require("../models/services");
 const BaseResponse = require("../services/base-response");
 const ErrorResponse = require("../services/error-response");
 
@@ -19,12 +19,12 @@ const router = express.Router();
 /**
  * API: findAll services
  */
-router.get("/", async (req, res) => {
+router.get("/services", async (req, res) => {
   try {
-    LineItem.find({})
+    Service.find({})
       .where("isDisabled")
       .equals(false)
-      .exec(function (err, LineItem) {
+      .exec(function (err, service) {
         if (err) {
           console.log(err);
           const findAllMongodbErrorResponse = new ErrorResponse(
@@ -34,7 +34,7 @@ router.get("/", async (req, res) => {
           );
           res.status(501).send(findAllMongodbErrorResponse.toObject());
         } else {
-          console.log(LineItem);
+          console.log(Service);
           const findAllResponse = new BaseResponse(
             200,
             "Query Successful",
@@ -57,9 +57,9 @@ router.get("/", async (req, res) => {
 /**
  * API: Find Service by ID
  */
-router.get("/:id", async (req, res) => {
+router.get("/services/:id", async (req, res) => {
   try {
-    LineItem.findOne({ _id: req.params.id }, function (err, lineItem) {
+    Service.findOne({ _id: req.params.id }, function (err, service) {
       if (err) {
         console.log(err);
         const findLineItemByIdMongodbErrorResponse = new ErrorResponse(
@@ -69,11 +69,11 @@ router.get("/:id", async (req, res) => {
         );
         res.status(500).send(findLineItemByIdMongodbErrorResponse.toObject());
       } else {
-        console.log(lineItem);
+        console.log(service);
         const findLineItemByIdResponse = new BaseResponse(
           200,
           "Query successful",
-          lineItem
+          service
         );
         res.json(findLineItemByIdResponse.toObject());
       }
@@ -93,24 +93,24 @@ router.get("/:id", async (req, res) => {
  * API: Delete service by id
  */
 
-router.delete("/:id", async (req, res) => {
+router.delete("/services/:id", async (req, res) => {
   try {
-    LineItem.findOne({ _id: req.params.id }, function (err, lineItem) {
+    Service.findOne({ _id: req.params.id }, function (err, service) {
       if (err) {
         console.log(err);
         const deleteLineItemCatchErrorResponse = new ErrorResponse(
           500,
           "MongoDB Exception Error",
-          lineItem
+          service
         );
         res.status(500).send(deleteLineItemCatchErrorResponse.toObject());
       } else {
-        console.log(lineItem);
-        lineItem.set({
+        console.log(service);
+        service.set({
           isDisabled: true,
         });
 
-        lineItem.save(function (err, savedLineItem) {
+         service.save(function (err, savedService) {
           if (err) {
             console.log(err);
             const savedLineItemMongodbErrorResponse = new ErrorResponse(
@@ -145,10 +145,10 @@ router.delete("/:id", async (req, res) => {
 /**
  * API: Update Service by ID
  */
-router.put("/:id", async (req, res) => {
+router.put("/services/:id", async (req, res) => {
   try {
     // find the service by id
-    LineItem.findOne({ _id: req.params.id }, function (err, lineItem) {
+    Service.findOne({ _id: req.params.id }, function (err, service) {
       // on error
       if (err) {
         console.log(err);
@@ -160,15 +160,15 @@ router.put("/:id", async (req, res) => {
         res.status(500).send(updateLineItemMongodbErrorResponse.toObject());
         // update service if found
       } else {
-        console.log(lineItem);
+        console.log(service);
 
-        lineItem.set({
+        service.set({
           title: req.body.title,
           price: req.body.price,
         });
 
         // save the Service
-        lineItem.save(function (err, savedLineItem) {
+        service.save(function (err, savedService) {
           // on error
           if (err) {
             console.log(err);
@@ -184,7 +184,7 @@ router.put("/:id", async (req, res) => {
             const saveLineItemResponse = new BaseResponse(
               200,
               "Query successful",
-              savedLineItem
+              savedService
             );
             res.json(saveLineItemResponse.toObject());
           }
@@ -213,7 +213,7 @@ router.post("/services", async (req, res) => {
       isDisabled: false,
     };
     // create a service based off the service object
-    LineItem.create(newLineItem, function (err, lineItem) {
+    Service.create(newLineItem, function (err, service) {
       // error message
       if (err) {
         console.log(err);

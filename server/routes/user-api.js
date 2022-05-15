@@ -19,7 +19,7 @@ const router = express.Router();
 const saltRounds = 10; //used for hashing password
 
 // findAllUsers API
-router.get("/", async (req, res) => {
+router.get("/users", async (req, res) => {
   try {
     //Finds and returns all users as an array
     User.find({})
@@ -57,9 +57,9 @@ router.get("/", async (req, res) => {
 });
 
 // findAllByID API
-router.get("/:id", async (req, res) => {
+router.get("/users/:id", async (req, res) => {
   try {
-    User.findOne({ _id: req.params.id }, function (err, user) {
+    User.findOne({ '_id': req.params.id }, function (err, user) {
       if (err) {
         console.log(err);
         const findByIdMongodbErrorResponse = new ErrorResponse(
@@ -90,7 +90,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // createUser API
-router.post("/", async (req, res) => {
+router.post("/users", async (req, res) => {
   try {
     let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // salt/hash the password
     standardRole = {
@@ -148,7 +148,7 @@ router.post("/", async (req, res) => {
 });
 
 // updateUser API
-router.put("/:id", async (req, res) => {
+router.put("/users/:id", async (req, res) => {
   try {
     // find the user by id
     User.findOne({ _id: req.params.id }, function (err, user) {
@@ -219,7 +219,7 @@ router.put("/:id", async (req, res) => {
 });
 
 // delete user API
-router.delete("/:id", async (req, res) => {
+router.delete("/users/:id", async (req, res) => {
   try {
     User.findOne({ _id: req.params.id }, function (err, user) {
       if (err) {
@@ -266,7 +266,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 // find selected security questions API for a specific user
-router.get("/:userName/security-questions", async (req, res) => {
+router.get("/users/:userName/security-questions", async (req, res) => {
   try {
     // finds user by ID
     User.findOne({ userName: req.params.userName }, function (err, user) {

@@ -9,6 +9,8 @@
 */
 
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ProductService } from '../../shared/services/product.service';
+import { Product } from '../../shared/interfaces/product.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { AddItemToInvoiceComponent } from 'src/app/shared/add-item-to-invoice/add-item-to-invoice.component';
 import { MatTable } from '@angular/material/table';
@@ -17,9 +19,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { InvoiceDialogComponent } from '../..//shared/invoice-dialog/invoice-dialog.component';
 import { HttpClient } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
-import { LineItemsService } from 'src/app/shared/services/line-items.service';
 import { PrintDialogComponent } from 'src/app/shared/print-dialog/print-dialog.component';
-import { LineItem } from 'src/app/shared/interfaces/line-item';
+
 
 @Component({
   selector: 'app-dashboard-employee',
@@ -31,31 +32,21 @@ export class DashboardEmployeeComponent implements OnInit {
   displayedColumns: Array<string> = ['name', 'price', 'functions'];
 
   total: number = 0;
-  lineItems: LineItem[];
+  products: Array<Product>;
   @ViewChild(MatTable) table: MatTable<any>;
   dataTableSource = [];
   invoice: Invoice;
 
   constructor(
-    private lineItemsService: LineItemsService,
     private messageService: MessageService,
     private dialog: MatDialog,
     private http: HttpClient,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private productService: ProductService
   ) {
-    this.invoice = new Invoice(cookieService.get('session_user'));
 
-    // Find all service Items
-    this.lineItemsService.findAllServices().subscribe(
-      (res) => {
-        this.lineItems = res['data'];
-        console.log(this.lineItems);
-      },
-      // Error Handling
-      (err) => {
-        console.log(err);
-      }
-    );
+    this.products = productService.getProducts();
+    this.invoice = new Invoice(cookieService.get('session_user'));
   }
 
   ngOnInit(): void {}
@@ -64,12 +55,14 @@ export class DashboardEmployeeComponent implements OnInit {
 
   addServiceDialog(): void {
     let dialogRef = this.dialog.open(AddItemToInvoiceComponent, {
-      disableClose: true,
+      disableClose: true
     });
 
     // Add the new item to the data table and invoice
-    dialogRef.afterClosed().subscribe((service) => {
+    dialogRef.afterClosed().subscribe(service => {
+
       if (service) {
+
         this.addToInvoice(
           service.title,
           service.price,
@@ -81,7 +74,7 @@ export class DashboardEmployeeComponent implements OnInit {
         console.log(this.invoice);
       }
     });
-  }
+  };
 
   addToInvoice(title: string, price: number, parts?: number, hours?: number) {
     let newService = {

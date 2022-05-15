@@ -39,7 +39,7 @@ export class VerifyUsernameComponent implements OnInit {
     const username = this.form.controls['username'].value;
 
     // Calls verify user api to match username
-    this.http.get('/api/session/verify/users/' + username).subscribe(res => {
+    this.http.get(`/api/session/verify/users/${username}`).subscribe(res => {
 
       // If username matches, user is routed to verify-security-questions.
       if (res) {

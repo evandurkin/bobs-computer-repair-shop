@@ -38,6 +38,7 @@ import { InternalServerErrorComponent } from './pages/internal-server-error/inte
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { ServicesListComponent } from './pages/services-list/services-list.component';
+import { ServicesCreateComponent } from './pages/services-create/services-create.component';
 import { ServicesEditComponent } from './pages/services-edit/services-edit.component';
 import { RoleCreateComponent } from './pages/role-create/role-create.component';
 import { RoleDetailsComponent } from './pages/role-details/role-details.component';
@@ -120,7 +121,11 @@ const routes: Routes = [
         component: ServicesListComponent,
       },
       {
-        path: 'services/create',
+        path: 'services-create',
+        component: ServicesCreateComponent,
+      },
+      {
+        path: 'services-edit',
         component: ServicesEditComponent,
       },
       {

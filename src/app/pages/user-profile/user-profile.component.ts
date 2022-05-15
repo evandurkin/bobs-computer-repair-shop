@@ -11,44 +11,39 @@
 // Imported modules
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MatDialog } from '@angular/material/dialog';
-import { UserService } from './../../shared/services/user.service';
-import { User } from './../../shared/interfaces/user';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css'],
 })
+
 export class UserProfileComponent implements OnInit {
-  users: User[];
-  displayedColumns = [
 
-    'userName',
-    'firstName',
-    'lastName',
-    'phoneNumber',
-    'address',
-    'email',
-    'functions',
-  ];
-  constructor( private http: HttpClient,
-    private dialog: MatDialog,
-    private userService: UserService
-  ) {
+  user: any;
+  id: any;
+  errorMessage: string;
+
+
+  constructor(private http: HttpClient, private cookieService: CookieService) { }
+
     // Find user (account holder)
+    ngOnInit() {
 
-    this.userService.editUserById('6279bae12438fddb44d17675').subscribe(
+      // get userId from cookie and pull information from DB
+      this.id = this.cookieService.get('userId');
+      console.log(this.id);
 
-      (res) => {
-        this.users = res['data'];
-        console.log(this.users);
-      },
-      // Error Handling
-      (err) => {
-        console.log(err);
-      }
-    );
-  }
-  ngOnInit(): void {}
-}
+      // Call findUserById api
+      this.http.get(`/api/users/${this.id}`).subscribe(res => {
+
+        if (res) {
+          return this.user = res;
+        } else {
+          console.log('Error no user found with id: ' + this.id);
+          return this.errorMessage = "No user found";
+        }
+      });
+    };
+};

@@ -10,6 +10,7 @@
 
 import { Injectable } from '@angular/core';
 import { LineItem } from '../interfaces/line-item';
+import { Service } from '../interfaces/service.interface';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -21,19 +22,19 @@ export class ServicesService {
 
   //service for API: find all service
   findAllServices(): Observable<any> {
-    return this.http.get('/api/session/services');
+    return this.http.get('/api/services');
   }
 
   //service for API: find service by ID
-  findServiceById(lineItemId: string): Observable<any> {
-    return this.http.get('/api/session/services/' + lineItemId);
+  findServiceById(ServiceId: string): Observable<any> {
+    return this.http.get(`/api/services/${ServiceId}`);
   }
 
   //service for API: create a new service
   createService(
     newService: LineItem
   ): Observable<any> {
-    return this.http.post('/api/session/services', {
+    return this.http.post('/api/services', {
       title: newService.title,
       price: newService.price
     });
@@ -41,16 +42,16 @@ export class ServicesService {
 
   //service for updating a service
   updateService(
-    lineItemId: string,
+    ServiceId: string,
     updatedService: LineItem
   ): Observable<any> {
-    return this.http.put('/api/session/services/' + lineItemId, {
+    return this.http.put('/api/services/' + ServiceId, {
       title: updatedService.title
     });
   }
 
   //service for deleting a service
-  deleteService(lineItemId: string): Observable<any> {
-    return this.http.delete('/api/session/services/' + lineItemId);
+  deleteService(ServiceId: string): Observable<any> {
+    return this.http.delete('/api/services/' + ServiceId);
   }
 }

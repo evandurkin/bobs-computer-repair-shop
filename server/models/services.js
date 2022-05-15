@@ -10,7 +10,7 @@
 let mongoose = require("mongoose");
 let Schema = mongoose.Schema;
 
-let LineItemSchema = new Schema(
+let ServiceSchema = new Schema(
   {
     title: { type: String },
     price: { type: Number },
@@ -21,4 +21,4 @@ let LineItemSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model("LineItem", LineItemSchema);
+module.exports = mongoose.model("Service", ServiceSchema);

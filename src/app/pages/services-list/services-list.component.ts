@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteServiceDialogComponent } from 'src/app/shared/delete-service-dialog/delete-service-dialog.component';
 import { ServicesService } from 'src/app/shared/services/services.service';
-import { LineItem } from 'src/app/shared/interfaces/line-item';
+import { Service } from 'src/app/shared/interfaces/service.interface';
 import { ServicesEditComponent } from 'src/app/pages/services-edit/services-edit.component';
 
 @Component({
@@ -21,7 +21,7 @@ import { ServicesEditComponent } from 'src/app/pages/services-edit/services-edit
   styleUrls: ['./services-list.component.css']
 })
 export class ServicesListComponent implements OnInit {
-  services: LineItem[];
+  services: Service[];
   displayedColumns = ['title', 'price', 'functions'];
 
   constructor(

@@ -17,7 +17,7 @@ const BaseResponse = require("../services/base-response");
 const router = express.Router();
 
 // create invoice API
-router.post("/:userName", async (req, res) => {
+router.post("/invoices/:userName", async (req, res) => {
   try {
     const newInvoice = {
       userName: req.params.userName,

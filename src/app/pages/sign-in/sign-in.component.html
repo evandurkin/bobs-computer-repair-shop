@@ -53,7 +53,7 @@
               <!-- Sign-in button -->
               <mat-card-actions>
                 <button
-                  mat-button
+                  mat-button (click)="signin()"
                   class="btn-primary btn-signIn"
                   type="submit"
                   [disabled]="!form.valid" fxFlex>sign in
