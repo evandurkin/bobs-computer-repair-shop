@@ -7,65 +7,72 @@
 -->
 
 <div fxLayout="column">
-  <mat-card class="mat-elevation-z8" style="padding: 0px" class="create-card">
-    <mat-card-title class="create-title">Create New Service</mat-card-title>
-
+  <mat-card
+    style="margin: 1% 19% 1% 19%; padding: 0px; background-color: #ffffff"
+    class="mat-elevation-Z5 user-card"
+  >
+    <mat-card-title class="user-title">Create a Service</mat-card-title>
     <br />
 
-    <form [formGroup]="form" (ngSubmit)="create()" class="create-form">
+    <form
+      [formGroup]="form"
+      #userForm
+      (ngSubmit)="createService()"
+      autocomplete="off"
+      style="padding: 16px"
+    >
       <mat-card-content>
         <div fxLayout="column" fxLayoutGap="10px">
           <mat-form-field>
+            <mat-label>Service Name</mat-label>
             <input
               type="text"
               matInput
               [formControl]="form.controls['title']"
-              placeholder="New Service Title"
             />
+
             <mat-error
               *ngIf="
                 form.controls.title.hasError('required') &&
                 form.controls.title.touched
               "
-              style="font-size: 12px"
             >
-              Title is a required field
+              Service Name is a required field.
             </mat-error>
           </mat-form-field>
+
           <mat-form-field>
+            <mat-label>Service Price</mat-label>
             <input
               type="text"
               matInput
               [formControl]="form.controls['price']"
-              placeholder="New Service Price"
             />
             <mat-error
               *ngIf="
-                form.controls.title.hasError('required') &&
-                form.controls.title.touched
+                form.controls.price.hasError('required') &&
+                form.controls.price.touched
               "
-              style="font-size: 12px"
             >
-              Price is a required field
+              Service Price is a required field.
             </mat-error>
           </mat-form-field>
         </div>
       </mat-card-content>
-
       <br />
+      <mat-card-actions fxLayoutAlign="end">
+        <button mat-stroked-button (click)="cancel()" class="btn-back">
+          cancel
+        </button>
+        <button
+          type="submit"
+          mat-stroked-button
+          [disabled]="!form.valid"
+          class="btn-primary"
+        >
+          submit
+        </button>
+      </mat-card-actions>
     </form>
-    <mat-card-actions fxLayoutAlign="end" style="margin: 25px">
-      <button mat-stroked-button (click)="cancel()" class="btn-back">
-        cancel
-      </button>
-      <button
-        type="submit"
-        mat-raised-button
-        [disabled]="!form.valid"
-        class="btn-primary"
-      >
-        submit
-      </button>
-    </mat-card-actions>
   </mat-card>
 </div>

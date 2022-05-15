@@ -14,15 +14,17 @@ import { DeleteServiceDialogComponent } from 'src/app/shared/delete-service-dial
 import { ServicesService } from 'src/app/shared/services/services.service';
 import { LineItem } from 'src/app/shared/interfaces/line-item';
 import { ServicesEditComponent } from 'src/app/pages/services-edit/services-edit.component';
+import { Message } from 'primeng/api/message';
 
 @Component({
   selector: 'app-services-list',
   templateUrl: './services-list.component.html',
-  styleUrls: ['./services-list.component.css']
+  styleUrls: ['./services-list.component.css'],
 })
 export class ServicesListComponent implements OnInit {
   services: LineItem[];
   displayedColumns = ['title', 'price', 'functions'];
+  errorMessages: Message[];
 
   constructor(
     private dialog: MatDialog,
@@ -32,7 +34,8 @@ export class ServicesListComponent implements OnInit {
       (res) => {
         this.services = res['data'];
         console.log('Services data ' + this.services);
-      }, (err) => {
+      },
+      (err) => {
         console.log(err);
       }
     );
@@ -44,28 +47,29 @@ export class ServicesListComponent implements OnInit {
   openEditServiceDialog(id, service) {
     const dialogRef = this.dialog.open(ServicesEditComponent, {
       disableClose: true,
-      data: {
-
-      },
+      data: {},
       height: '300px',
-      width: '550px'
+      width: '550px',
     });
 
     // after the dialog is closed the question data is added
-    dialogRef.afterClosed().subscribe(data => {
-      if(data) {
-        console.log(data)
+    dialogRef.afterClosed().subscribe((data) => {
+      if (data) {
+        console.log(data);
         this.servicesService.updateService(id, data).subscribe(() => {
-          console.log("Service has been updated!");
-          this.servicesService.findAllServices().subscribe(res => {
-            this.services = res.data;
-            console.log(this.services);
-          }, err => {
-            console.log(err);
-          });
-        })
+          console.log('Service has been updated!');
+          this.servicesService.findAllServices().subscribe(
+            (res) => {
+              this.services = res.data;
+              console.log(this.services);
+            },
+            (err) => {
+              console.log(err);
+            }
+          );
+        });
       }
-    })
+    });
   }
 
   // delete question dialog box
@@ -74,7 +78,7 @@ export class ServicesListComponent implements OnInit {
       data: {
         lineItemId,
         dialogHeader: 'Delete Service Dialog',
-        dialogBody: `Are you sure you want to delete the ${serviceName} service?`,
+        dialogBody: `Are you sure you want to delete the selected service?`,
       },
       disableClose: true,
       width: '800px',
@@ -82,14 +86,20 @@ export class ServicesListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'confirm') {
-        this.servicesService
-          .deleteService(lineItemId)
-          .subscribe((res) => {
+        this.servicesService.deleteService(lineItemId).subscribe(
+          (res) => {
             console.log(`Service Disabled`);
-            // this.services = this.services.filter((u) => u._id !== lineItemId);
-          });
+            this.services = this.services.filter(
+              (lineItem) => lineItem._id !== lineItemId
+            );
+          },
+          (err) => {
+            this.errorMessages = [
+              { severity: 'error', summary: 'Error', detail: err.message },
+            ];
+          }
+        );
       }
     });
   }
-
 }

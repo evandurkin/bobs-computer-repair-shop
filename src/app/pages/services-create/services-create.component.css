@@ -1,20 +1,25 @@
-.btn-primary {
-  font-family: "Aldrich", sans-serif;
-  color: #003716;
-  background-color: #568e67;
-  border: none;
-  border-radius: 0px;
-  font-size: 20px;
+.userCreateContainer {
+  margin: 50px auto;
 }
 
+.btn-primary,
 .btn-back {
   border-radius: 0px;
 }
 
-.create-form {
-  padding: 15px;
+.btn-primary {
+  font-size: 20px;
 }
 
-.create-card {
+.user-card {
   border-radius: 0px;
+  color: black;
+}
+
+.mat-error {
+  font-size: 13px;
+}
+
+.mat-select-arrow {
+  color: black;
 }

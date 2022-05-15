@@ -185,6 +185,10 @@ const routes: Routes = [
         component: ResetPasswordComponent,
       },
       {
+        path: 'user-details',
+        component: VerifyUsernameComponent,
+      },
+      {
         path: '404-error',
         component: NotFoundComponent,
       },
