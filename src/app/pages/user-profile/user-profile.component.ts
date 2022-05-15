@@ -33,7 +33,7 @@ export class UserProfileComponent implements OnInit {
       // get userId from cookie and pull information from DB
       this.id = this.cookieService.get('userId');
       console.log(this.id);
-      this.http.get('/api/users/' + this.id).subscribe(res => {
+      this.http.get('/api/session/users/' + this.id).subscribe(res => {
         if (res) {
           return this.user = res;
         } else {
