@@ -17,7 +17,7 @@
         <div fxLayout="column" fxLayoutGap="10px">
           <mat-form-field>
             <input type="text" matInput [formControl]="form.controls['text']"
-                    placeholder="Question" (keydown.enter)="create()" />
+                    placeholder="Question" (keydown.enter)="create()" style="color: black;"/>
 
                     <mat-error *ngIf="form.controls.text.hasError('required') && form.controls.text.touched" style="font-size:12px;">
                       Security question is a required field.
@@ -30,7 +30,7 @@
     </form>
     <mat-card-actions fxLayoutAlign="end"  style="margin: 25px;">
       <button mat-stroked-button (click)="cancel()" class="btn-back">cancel</button>
-      <button type="submit" mat-raised-button [disabled]="!form.valid" class="btn-primary">
+      <button type="submit" mat-stroked-button [disabled]="!form.valid" class="btn-primary" (click)="create()">
         submit
       </button>
     </mat-card-actions>
