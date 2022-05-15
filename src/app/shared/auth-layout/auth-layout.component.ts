@@ -25,7 +25,8 @@ export class AuthLayoutComponent implements OnInit {
 
   constructor(private cookieService: CookieService, private router: Router) {
     this.isLoggedIn = this.cookieService.get('session_user') ? true : false;
-    this.userName = sessionStorage.getItem('userName');
+    this.userName = this.cookieService.get('session_user')
+    // this.userName = sessionStorage.getItem('userName');
     console.log('Signed in as: ' + this.userName);
   }
 
