@@ -208,7 +208,7 @@ router.post("/services", async (req, res) => {
   try {
     // service object
     let newLineItem = {
-      serviceName: req.body.serviceName,
+      title: req.body.title,
       price: req.body.price,
       isDisabled: false,
     };

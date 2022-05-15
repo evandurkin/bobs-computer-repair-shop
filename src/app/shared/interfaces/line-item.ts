@@ -9,6 +9,7 @@
 */
 
 export interface LineItem {
-  title?: string,
-  price?: number
+  _id?: string;
+  title?: string;
+  price?: number;
 }

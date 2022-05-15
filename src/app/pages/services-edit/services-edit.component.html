@@ -1,1 +1,57 @@
-<p>services-edit works!</p>
+<mat-dialog-content
+  fxFlex
+  fxLayout="column"
+  [formGroup]="servicesForm"
+  class="dialog-questions"
+>
+  <h2 mat-dialog-title class="dialog-title">Edit Service</h2>
+
+  <mat-form-field style="padding: 15px; margin: 0px">
+    <input
+      type="text"
+      placeholder="Service"
+      matInput
+      formControlName="text"
+      [value]="servicesData.title"
+    />
+    <mat-error
+      *ngIf="
+        servicesForm.controls.title.hasError('required') &&
+        servicesForm.controls.title.touched
+      "
+      class="error-question"
+    >
+      You must provide a name for the service.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field style="padding: 15px; margin: 0px">
+    <input
+      type="text"
+      placeholder="Price"
+      matInput
+      formControlName="text"
+      [value]="servicesData.price"
+    />
+    <mat-error
+      *ngIf="
+        servicesForm.controls.price.hasError('required') &&
+        servicesForm.controls.price.touched
+      "
+      class="error-question"
+    >
+      You must provide a price for the service.
+    </mat-error>
+  </mat-form-field>
+
+  <div
+    mat-dialog-actions
+    fxLayoutAlign="end"
+    style="padding: 15px; margin: 0px"
+  >
+    <button mat-button (click)="cancel()" class="btn-back">cancel</button>
+    <button mat-raised-button (click)="save()" class="btn-primary btn-dialog">
+      submit
+    </button>
+  </div>
+</mat-dialog-content>
