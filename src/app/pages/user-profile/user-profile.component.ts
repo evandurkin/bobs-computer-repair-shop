@@ -13,6 +13,7 @@ import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import {User} from '../../shared/interfaces/user';
 
 @Component({
   selector: 'app-user-profile',
@@ -21,19 +22,22 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class UserProfileComponent implements OnInit {
   user: any;
+  userId: string;
   id: any;
   errorMessage: string;
 
   constructor(
     private cookieService: CookieService,
     private http: HttpClient,
-    private route: ActivatedRoute,) {}
+    private route: ActivatedRoute,) {
+
+    this.userId = this.cookieService.get('session_id');
+    console.log('User ID: ' + this.userId);
+    }
 
     ngOnInit() {
       // get userId from cookie and pull information from DB
-      this.id = this.cookieService.get('userId');
-      console.log(this.id);
-      this.http.get('/api/session/users/' + this.id).subscribe(res => {
+      this.http.get('/api/session/users/' + this.userId).subscribe(res => {
         if (res) {
           return this.user = res;
         } else {

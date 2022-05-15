@@ -47,8 +47,10 @@ export class SignInComponent implements OnInit {
       password
     }).subscribe(res => {
       console.log(res['data']);
+
       if (res['data'].userName) {
         this.cookieService.set('session_user', res['data'].userName, 1);
+        this.cookieService.set('session_id', res['data']._id, 1);
         this.router.navigate(['/session-employee/dashboard-employee']);
       }
     }, err => {
