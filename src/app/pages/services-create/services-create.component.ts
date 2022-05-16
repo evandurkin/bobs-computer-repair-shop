@@ -9,6 +9,10 @@
 */
 
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LineItem } from '../../shared/interfaces/line-item';
+import { ServicesService } from './../../shared/services/services.service';
 
 @Component({
   selector: 'app-services-create',
@@ -16,10 +20,44 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./services-create.component.css'],
 })
 export class ServicesCreateComponent implements OnInit {
+  form: FormGroup;
 
-constructor() {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private servicesService: ServicesService
+  ) {}
 
-  ngOnInit(){
+  ngOnInit(): void {
+    // Form validators
+    this.form = this.fb.group({
+      title: [null, Validators.compose([Validators.required])],
+      price: [null, Validators.compose([Validators.required])],
+    });
+  }
 
+  // Create service
+  createService(): void {
+    const newService: LineItem = {
+      title: this.form.controls.title.value,
+      price: this.form.controls.price.value,
+    };
+
+    // Call service to create Service
+    this.servicesService.createService(newService).subscribe(
+      (res) => {
+        this.router.navigate(['/session/services']);
+      },
+
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  // Cancel operation
+  cancel(): void {
+    this.router.navigate(['/session/services']);
   }
 }
+
