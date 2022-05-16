@@ -1,57 +1,48 @@
-<mat-dialog-content
-  fxFlex
-  fxLayout="column"
-  [formGroup]="servicesForm"
-  class="dialog-questions"
->
-  <h2 mat-dialog-title class="dialog-title">Edit Service</h2>
+<!--
+    Title: Services Edit Component
+    Date: 16 May 2022
+    Authors: Evan Durkin, Keith Hall,
+    Gustavo Roo Gonzalez, and Gunner Bradley
+    Description: Html file for the services edit page.
+-->
 
-  <mat-form-field style="padding: 15px; margin: 0px">
-    <input
-      type="text"
-      placeholder="Service"
-      matInput
-      formControlName="text"
-      [value]="servicesData.title"
-    />
-    <mat-error
-      *ngIf="
-        servicesForm.controls.title.hasError('required') &&
-        servicesForm.controls.title.touched
-      "
-      class="error-question"
-    >
-      You must provide a name for the service.
-    </mat-error>
-  </mat-form-field>
+<div fxFlex="column">
+  <br>
+  <div fxLayout="row">
+      <div fxFlex></div>
+      <mat-card fxFlex="50" class="mat-elevation-z8 question-list-card">
+          <mat-card-title class="service-title">Edit Service Details</mat-card-title>
+          <br />
+          <form [formGroup]="form" (ngSubmit)="saveService()" #service>
+              <mat-card-content style="margin-left:5px">
+                  <div fxLayout="column" fxLayoutGap="10px">
+                      <mat-form-field>
+                          <input matInput
+                          type="text"
+                          [formControl]="form.controls['id']" />
+                      </mat-form-field>
 
-  <mat-form-field style="padding: 15px; margin: 0px">
-    <input
-      type="text"
-      placeholder="Price"
-      matInput
-      formControlName="text"
-      [value]="servicesData.price"
-    />
-    <mat-error
-      *ngIf="
-        servicesForm.controls.price.hasError('required') &&
-        servicesForm.controls.price.touched
-      "
-      class="error-question"
-    >
-      You must provide a price for the service.
-    </mat-error>
-  </mat-form-field>
+                      <mat-form-field style="margin-left:8px">
+                        <input class="form-field" matInput type="text" [formControl]="form.controls['title']" placeholder="Enter new title">
+                      </mat-form-field>
 
-  <div
-    mat-dialog-actions
-    fxLayoutAlign="end"
-    style="padding: 15px; margin: 0px"
-  >
-    <button mat-button (click)="cancel()" class="btn-back">cancel</button>
-    <button mat-raised-button (click)="save()" class="btn-primary btn-dialog">
-      submit
-    </button>
+                      <mat-form-field style="margin-left: 4px">
+                         <input class="form-field" matInput
+                          type="text"
+                          [formControl]="form.controls['price']"
+                          placeholder="Enter new price"
+                          (keypress)="numberOnly($event)"/>
+                      </mat-form-field>
+                  </div>
+              </mat-card-content>
+              <br />
+              <mat-card-actions align="end" style="margin-right:8px">
+                  <button mat-raised-button (click)="cancel()" class="btn-add-service">Cancel</button>
+                  <button mat-raised-button class="btn-add-service">Submit</button>
+              </mat-card-actions>
+          </form>
+      </mat-card>
+      <div fxFlex></div>
   </div>
-</mat-dialog-content>
+  <br>
+</div>

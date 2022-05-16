@@ -121,7 +121,7 @@ const routes: Routes = [
         component: ServicesListComponent,
       },
       {
-        path: 'services/edit',
+        path: 'services/:serviceId',
         component: ServicesEditComponent,
       },
       {

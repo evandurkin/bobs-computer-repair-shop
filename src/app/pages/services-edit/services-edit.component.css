@@ -1,46 +1,58 @@
-.dialog-questions {
-  height: 100%;
+/*
+=======================================
+// Title: Bob’s Computer Repair Shop
+// Date: 5 May 2022
+// Authors: Evan Durkin, Keith Hall,
+// Gustavo Roo Gonzalez, and Gunner Bradley
+// Description: Service List Styling
+=======================================
+*/
 
+.question-list-card {
+  border-radius: 0;
+  padding: 0;
+  background-color: #ffffff;
+  width: 50%;
+  min-width: 670px;
+  margin: 5% auto;
+}
+.service-title {
+  text-align: center;
+  font-family: "Aldrich", sans-serif;
+  padding: 20px;
+  margin-bottom: 0;
+  background-color: #343434;
+}
+.btn-add-service {
+  background-color: #568e67;
+  color: #003515;
+  border-radius: 0;
+  margin: 10px;
+  float: right;
+}
+.btn-add-service:hover {
+  background-color: #33ff66;
+}
+/* Placeholder text color */
+::placeholder {
+  color: black;
+   /* Firefox */
 }
 
-.mat-dialog-content {
-  overflow: inherit;
-  font-family: 'Karla', sans-serif;
-  margin: 0;
-  padding: 0;
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: black;
+ padding-left: 4px;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ color: black;
+}
+/* Input text color */
+
+input[type=text], select {
   color: black;
 }
-
-.btn-dialog {
-  border-radius: 0;
-  font-size: 14px;
+.form-field {
+  font-family: Karla;
 }
-
-.btn-back {
-  border-radius: 0px;
-  font-size: 14px;
-}
-
-
-.mat-input-element {
-  font-family: 'Karla', sans-serif;
-}
-
-.dialog-title {
-  margin-bottom: 40px;
-  background-color: #5b5b5b;
-  padding: 15px;
-  color: white;
-}
-
-.error-question {
-  font-size: 10pt;
-}
-
-::ng-deep.mat-dialog-container {
-  padding: 0px !important;
-  background-color: #ffffff;
-  border-radius: 0px;
-}
-
 

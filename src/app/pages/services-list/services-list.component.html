@@ -43,8 +43,7 @@
             <!-- edit -->
             <button
               mat-icon-button
-              (click)="openEditServiceDialog(element._id, element)"
-            >
+              routerLink="/session/services/{{element._id}}">
               <mat-icon class="edit-icon functions-icon">edit</mat-icon>
             </button>
             <!-- delete -->
