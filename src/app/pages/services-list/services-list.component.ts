@@ -52,14 +52,15 @@ export class ServicesListComponent implements OnInit {
       width: '800px',
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
+    dialogRef.afterClosed().subscribe(result => {
+
       if (result === 'confirm') {
-        this.servicesService
-          .deleteService(lineItemId)
-          .subscribe((res) => {
-            console.log(`Service Disabled`);
-            // this.services = this.services.filter((u) => u._id !== lineItemId);
-          });
+
+         this.http.delete(`/api/session/services/${lineItemId}`).subscribe(res =>{
+          console.log('Service Deleted');
+          this.services = this.services.filter(service =>service._id !== lineItemId);
+          console.log(this.services);
+        });
       }
     });
   }
