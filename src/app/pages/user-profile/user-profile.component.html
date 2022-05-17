@@ -7,7 +7,7 @@
 // Description: User List HTML file
 =======================================
 */-->
-<div fxLayout="column">
+<div fxLayout="column" class="user-container">
   <mat-card fx-Flex style="margin-top: .5%; width: 60%; margin-left: 20%;" class="mat-elevation-z8 user-profile-card">
     <mat-card-header>
       <mat-card-title style="font-size:24px;margin-top:20px;" class="users-title">My Profile</mat-card-title>
@@ -18,59 +18,51 @@
     <small style="color: red;" *ngIf="errorMessage">{{errorMessage}}</small>
 
     <mat-divider></mat-divider>
-    <br><br>
+    <br>
         <mat-card-content>
             <mat-card>
                 <mat-list role="list" style="margin-top:-50px" style="font-family:Karla">
-                <br><br>
-                    <mat-label class="accent"><strong>First Name</strong></mat-label>
-                    <mat-list-item class="accent" role="firstName">{{user.firstName}}</mat-list-item>
 
-                    <mat-label><strong>Last Name</strong></mat-label>
-                    <mat-list-item role="lastName">{{user.lastName}}</mat-list-item>
+                     <mat-label>ID:</mat-label>
+                     <mat-list-item role="id" *ngIf="user._id"><strong>{{user._id}}</strong></mat-list-item>
+                     <br>
 
-                    <mat-label>Email:</mat-label>
-                    <mat-list-item role="email"><strong>{{user.email}}</strong></mat-list-item>
+                     <mat-label>Username:</mat-label>
+                     <mat-list-item role="username"><strong>{{user.userName}}</strong></mat-list-item>
+                     <br><br><br>
 
-                    <mat-label>Phone:</mat-label>
-                    <mat-list-item role="phone"><strong>{{user.phoneNumber}}</strong></mat-list-item>
+                    <mat-label><strong>First Name:</strong></mat-label>&nbsp; &nbsp; &nbsp;
+                    <span class="user-info" role="firstName">{{user.firstName}}</span><br><br>
 
-                    <mat-label>Address1:</mat-label>
-                    <mat-list-item role="addressOne"><strong>{{user.addressLineOne}}</strong></mat-list-item>
+                    <mat-label><strong>Last Name</strong></mat-label>&nbsp; &nbsp; &nbsp;
+                    <span class="user-info" role="lastName">{{user.lastName}}</span><br><br>
 
-                    <mat-label>Address2:</mat-label>
-                    <mat-list-item role="addressTwo"><strong>{{user.addressLineTwo}}</strong></mat-list-item>
+                    <mat-label>Email:</mat-label>&nbsp; &nbsp; &nbsp;
+                    <span class ="user-info" role="email">{{user.email}}</span><br> <br>
 
-                    <mat-label>City:</mat-label>
-                    <mat-list-item role="city"><strong>{{user.city}}</strong></mat-list-item>
+                    <mat-label>Phone:</mat-label>&nbsp; &nbsp; &nbsp;
+                    <span class ="user-info" role="phone">{{user.phoneNumber}}</span><br> <br>
 
-                    <mat-label>State:</mat-label>
-                    <mat-list-item role="state"><strong>{{user.state}}</strong></mat-list-item>
+                    <mat-label>Address1:</mat-label>&nbsp; &nbsp; &nbsp;
+                    <span class ="user-info" role="addressOne">{{user.addressLineOne}}</span><br> <br>
 
-                    <mat-label>Zip Code:</mat-label>
-                    <mat-list-item role="zip"><strong>{{user.zip}}</strong></mat-list-item>
+                    <mat-label>Address2:</mat-label>&nbsp; &nbsp; &nbsp;
+                    <span class ="user-info" role="addressTwo">{{user.addressLineTwo}}</span><br> <br>
+
+                    <mat-label>City:</mat-label>&nbsp; &nbsp; &nbsp;
+                    <span class ="user-info" role="city">{{user.city}}</span><br> <br>
+
+                    <mat-label>State:</mat-label>&nbsp; &nbsp; &nbsp;
+                    <span class="user-info" role="state">{{user.state}}</span><br> <br>
+
+                    <mat-label>Zip Code:</mat-label>&nbsp; &nbsp; &nbsp;
+                    <span class="user-info" role="zip">{{user.zip}}</span><br> <br>
                     <button style="margin-left:90%" mat-icon-button routerLink="/session-employee/edit-profile/{{ user._id }}">
                       <mat-icon color="black" class="functions-icon">edit</mat-icon>
                     </button>
                   </mat-list>
             </mat-card>
            <br>
-            <mat-card class="mat-elevation-z8">
-               <mat-card-content>
-                 <br>
-                   <mat-list role="list" style="margin-top:-50px">
-                    <br>
-                   <mat-label>Edit Username:</mat-label>
-                   <mat-list-item role="username"><strong>{{user.userName}}</strong></mat-list-item>
-                   <mat-list-item role="role">
-                    <button style="margin-left:90%" mat-icon-button routerLink="/session/users/{{ user._id }}">
-                      <mat-icon color="black" class="functions-icon">edit</mat-icon>
-                    </button>
-                  </mat-list-item>
-                  <br><br>
-                   </mat-list>
-                </mat-card-content>
-            </mat-card>
            <br>
             <mat-card class="mat-elevation-z8">
                <mat-card-content>
@@ -79,7 +71,7 @@
                 <br>
                   <mat-label>Edit Password:</mat-label>
                   <mat-list-item role="role">
-                    <button style="margin-left:90%" mat-icon-button routerLink="/post-session/reset-password">
+                    <button style="margin-left:90%" mat-icon-button routerLink="/session-employee/profile-verify">
                       <mat-icon color="black" class="functions-icon">edit</mat-icon>
                     </button>
                   </mat-list-item>

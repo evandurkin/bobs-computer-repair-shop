@@ -22,8 +22,11 @@
   margin-bottom: 0;
 
 }
-.mat-list-item:focus {
-  color: green !important;
+.user-info {
+  margin-left:2px;
+  margin-bottom: 5px;
+  color:  #568e67;
 }
+
 
 
