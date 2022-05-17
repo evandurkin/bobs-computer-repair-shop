@@ -22,4 +22,8 @@
   margin-bottom: 0;
 
 }
+.mat-list-item:focus {
+  color: green !important;
+}
+
 

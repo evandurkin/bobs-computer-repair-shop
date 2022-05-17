@@ -21,13 +21,13 @@
     <br><br>
         <mat-card-content>
             <mat-card>
-                <mat-list role="list" style="margin-top:-50px">
+                <mat-list role="list" style="margin-top:-50px" style="font-family:Karla">
                 <br><br>
-                    <mat-label>First Name:</mat-label>
-                    <mat-list-item role="firstName"><strong>{{user.firstName}}</strong></mat-list-item>
+                    <mat-label class="accent"><strong>First Name</strong></mat-label>
+                    <mat-list-item class="accent" role="firstName">{{user.firstName}}</mat-list-item>
 
-                    <mat-label>Last Name:</mat-label>
-                    <mat-list-item role="lastName"><strong>{{user.lastName}}</strong></mat-list-item>
+                    <mat-label><strong>Last Name</strong></mat-label>
+                    <mat-list-item role="lastName">{{user.lastName}}</mat-list-item>
 
                     <mat-label>Email:</mat-label>
                     <mat-list-item role="email"><strong>{{user.email}}</strong></mat-list-item>
@@ -79,7 +79,7 @@
                 <br>
                   <mat-label>Edit Password:</mat-label>
                   <mat-list-item role="role">
-                    <button style="margin-left:90%" mat-icon-button routerLink="/session/users/{{ user._id }}">
+                    <button style="margin-left:90%" mat-icon-button routerLink="/post-session/reset-password">
                       <mat-icon color="black" class="functions-icon">edit</mat-icon>
                     </button>
                   </mat-list-item>
