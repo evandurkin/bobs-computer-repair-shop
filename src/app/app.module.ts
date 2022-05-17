@@ -94,7 +94,8 @@ import { MessageModule } from 'node_modules/primeng/message';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { ChartModule } from 'primeng/chart';
-import { EditProfileUsernameComponent } from './pages/edit-profile-username/edit-profile-username.component';
+
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -138,8 +139,7 @@ import { EditProfileUsernameComponent } from './pages/edit-profile-username/edit
     ServicesGraphComponent,
     ServicesCreateComponent,
     EditProfileComponent,
-    EditProfilePasswordComponent,
-    EditProfileUsernameComponent,
+    EditProfilePasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -180,6 +180,7 @@ import { EditProfileUsernameComponent } from './pages/edit-profile-username/edit
       multi: true,
     },
     CookieService,
+    AuthGuard,
     MessageService,
   ],
   bootstrap: [AppComponent],

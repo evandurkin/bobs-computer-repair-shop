@@ -45,14 +45,12 @@ import { RoleListComponent } from './pages/role-list/role-list.component';
 import { GuestServicesComponent } from './pages/guest-services/guest-services.component';
 import { ServicesGraphComponent } from './pages/services-graph/services-graph.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
-import { EditProfileUsernameComponent } from './pages/edit-profile-username/edit-profile-username.component';
 import { EditProfilePasswordComponent } from './pages/edit-profile-password/edit-profile-password.component';
 
 // Guards
 import { AuthGuard } from './auth.guard';
 import { RoleGuard } from './role.guard';
 import { ServicesCreateComponent } from './pages/services-create/services-create.component';
-
 const routes: Routes = [
   /* Public Routes for guests */
   {
@@ -145,6 +143,8 @@ const routes: Routes = [
       {
         path: 'dashboard-employee',
         component: DashboardEmployeeComponent,
+        canActivate: [AuthGuard],
+
       },
       {
         path: 'user-details',
@@ -153,6 +153,7 @@ const routes: Routes = [
       {
         path: 'user-profile',
         component: UserProfileComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'user-create',
@@ -161,18 +162,18 @@ const routes: Routes = [
       {
         path: 'edit-profile/:userId',
         component: EditProfileComponent,
-      },
-      {
-        path: 'profile-username',
-        component: EditProfileUsernameComponent,
+        canActivate: [AuthGuard],
+
       },
       {
         path: 'profile-verify',
         component: EditProfilePasswordComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'services-graph',
         component: ServicesGraphComponent,
+        canActivate: [AuthGuard],
       },
     ],
   },
