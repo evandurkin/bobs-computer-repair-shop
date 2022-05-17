@@ -9,10 +9,9 @@
 */
 
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { LineItem } from '../../shared/interfaces/line-item';
-import { ServicesService } from './../../shared/services/services.service';
 
 @Component({
   selector: 'app-services-create',
@@ -20,44 +19,68 @@ import { ServicesService } from './../../shared/services/services.service';
   styleUrls: ['./services-create.component.css'],
 })
 export class ServicesCreateComponent implements OnInit {
-  form: FormGroup;
+  form:FormGroup;
+  services: any;
+  serviceIds:any=[];
+  lastId: number;
 
-  constructor(
-    private fb: FormBuilder,
-    private router: Router,
-    private servicesService: ServicesService
-  ) {}
+  constructor(private http: HttpClient, private fb: FormBuilder ,private router: Router) { }
 
-  ngOnInit(): void {
-    // Form validators
+  ngOnInit() {
+
+    this.getServices();
     this.form = this.fb.group({
-      title: [null, Validators.compose([Validators.required])],
-      price: [null, Validators.compose([Validators.required])],
+      id: [{value: this.lastId+1, disabled:true},Validators.compose([Validators.required])],
+      title: [null,Validators.compose([Validators.required])],
+      price: [null,Validators.compose([Validators.required])],
+    });
+
+  }
+  // Function that checks input whether character is a number or decimal place.
+  numberOnly(event: { which: any; keyCode: any; }): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 45 || charCode > 57)) {
+      return false;
+    }
+    return true;
+  }
+
+  getServices(){
+
+    // Http call to get the services and set form fields
+    this.http.get('/api/session/services').subscribe(res => {
+
+      this.services = res;
+
+      console.log("services", this.services);
+      this.services.forEach((element: { id: string; }) => {
+        this.serviceIds.push(parseInt(element.id));
+      });
+      this.lastId = Math.max.apply(null,this.serviceIds);
+
+      this.form.controls.id.setValue(this.lastId+1);
+    },err =>{
+      console.log(err);
     });
   }
 
-  // Create service
-  createService(): void {
-    const newService: LineItem = {
-      title: this.form.controls.title.value,
-      price: this.form.controls.price.value,
-    };
+  // Create the service
+  createService(){
 
-    // Call service to create Service
-    this.servicesService.createService(newService).subscribe(
-      (res) => {
-        this.router.navigate(['/session/services']);
-      },
+    this.http.post('/api/session/services',{
+      title:this.form.controls.title.value,
+      price:this.form.controls.price.value,
+    }).subscribe(res =>{
+      this.router.navigate(['/session/services']);
+    });
 
-      (err) => {
-        console.log(err);
-      }
-    );
   }
 
   // Cancel operation
-  cancel(): void {
+  cancel(){
+    this.form.reset();
     this.router.navigate(['/session/services']);
   }
-}
 
+
+}

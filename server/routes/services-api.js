@@ -204,45 +204,22 @@ router.put("/:id", async (req, res) => {
 });
 
 // create service API
-router.post("/services", async (req, res) => {
-  try {
-    // service object
-    let newLineItem = {
+router.post('/', function(req,res,next){
+  let newLineItem = {
+
       title: req.body.title,
-      price: req.body.price,
-      isDisabled: false,
-    };
-    // create a service based off the service object
-    LineItem.create(newLineItem, function (err, lineItem) {
-      // error message
-      if (err) {
-        console.log(err);
-        const createUserMongodbErrorResponse = new ErrorResponse(
-          500,
-          "Internal server error",
-          err
-        );
-        res.status(500).send(createLineItemMongodbErrorResponse.toObject());
-      } else {
-        // returns json of new service if successful
-        console.log(lineItem);
-        const createUserResponse = new BaseResponse(
-          200,
-          "Query successful",
-          user
-        );
-        res.json(createLineItemResponse.toObject());
+      price: req.body.price
+  };
+  LineItem.create(newLineItem,function(err,lineItem){
+      if(err){
+          console.log(err);
+          return next(err);
       }
-    });
-  } catch (e) {
-    console.log(e);
-    const createLineItemCatchErrorResponse = new BaseResponse(
-      500,
-      "Internal server error",
-      e.message
-    );
-    res.status(500).send(createLineItemCatchErrorResponse.toObject());
-  }
+      else{
+          console.log(lineItem);
+          res.json(lineItem);
+      }
+  })
 });
 
 module.exports = router;

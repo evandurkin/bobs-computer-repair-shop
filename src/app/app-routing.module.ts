@@ -125,7 +125,7 @@ const routes: Routes = [
         component: ServicesEditComponent,
       },
       {
-        path: 'services/create',
+        path: 'services/create/new',
         component: ServicesCreateComponent,
       },
       {
