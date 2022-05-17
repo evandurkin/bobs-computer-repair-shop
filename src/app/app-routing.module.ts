@@ -44,6 +44,9 @@ import { RoleDetailsComponent } from './pages/role-details/role-details.componen
 import { RoleListComponent } from './pages/role-list/role-list.component';
 import { GuestServicesComponent } from './pages/guest-services/guest-services.component';
 import { ServicesGraphComponent } from './pages/services-graph/services-graph.component';
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
+import { EditProfileUsernameComponent } from './pages/edit-profile-username/edit-profile-username.component';
+import { EditProfilePasswordComponent } from './pages/edit-profile-password/edit-profile-password.component';
 
 // Guards
 import { AuthGuard } from './auth.guard';
@@ -154,6 +157,18 @@ const routes: Routes = [
       {
         path: 'user-create',
         component: UserCreateComponent,
+      },
+      {
+        path: 'edit-profile/:userId',
+        component: EditProfileComponent,
+      },
+      {
+        path: 'profile-username',
+        component: EditProfileUsernameComponent,
+      },
+      {
+        path: 'profile-verify',
+        component: EditProfilePasswordComponent,
       },
       {
         path: 'services-graph',

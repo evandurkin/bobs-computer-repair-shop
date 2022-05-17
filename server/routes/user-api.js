@@ -57,38 +57,18 @@ router.get("/", async (req, res) => {
 });
 
 // findAllByID API
-router.get("/:id", async (req, res) => {
-  try {
-    User.findOne({ '_id': req.params.id }, function (err, user) {
-      if (err) {
-        console.log(err);
-        const findByIdMongodbErrorResponse = new ErrorResponse(
-          500,
-          "Internal server error",
-          err
-        );
-        res.status(500).send(findByIdMongodbErrorResponse.toObject());
-      } else {
-        console.log(user);
-        const findByIdResponse = new BaseResponse(
-          200,
-          "Query successful",
-          user
-        );
-        res.json(findByIdResponse.toObject());
-      }
-    });
-  } catch (e) {
-    console.log(e);
-    const findByIdCatchErrorResponse = new ErrorResponse(
-      500,
-      "Internal server error",
-      e
-    );
-    res.status(500).send(findByIdCatchErrorResponse.toObject());
-  }
-});
 
+router.get('/:id', function(req, res, next) {
+  User.findOne({'_id': req.params.id}, function(err, user) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    }  else {
+      console.log(user);
+      res.json(user);
+    }
+  })
+});
 // createUser API
 router.post("/", async (req, res) => {
   try {

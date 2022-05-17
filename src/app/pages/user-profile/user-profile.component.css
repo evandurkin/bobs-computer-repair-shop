@@ -8,3 +8,18 @@
 =======================================
 */
 
+.user-profile-card {
+  border-radius: 0;
+  padding: 0;
+  min-width: 350px;
+  max-width: 85%;
+  margin: 0 auto;
+}
+.users-title {
+  text-align: center;
+  font-family: 'Aldrich', sans-serif;
+  padding: 20px;
+  margin-bottom: 0;
+
+}
+

@@ -1,0 +1,36 @@
+/*
+============================================
+// Title: Bob’s Computer Repair Shop
+// Date: 16 May 2022
+// Authors: Evan Durkin, Keith Hall,
+// Gustavo Roo Gonzalez, and Gunner Bradley
+// Description: CSS file for the edit-profile component.
+============================================
+*/
+
+.userUpdateContainer {
+  margin: 50px auto;
+}
+
+.btn-primary, .btn-back {
+  border-radius: 0px;
+}
+
+.btn-primary {
+  font-size: 20px;
+}
+
+
+.user-card {
+  border-radius: 0px;
+  color: black;
+  min-width: 700px;
+}
+
+.mat-error {
+  font-size: 13px;
+}
+
+.mat-select-arrow {
+  color: black;
+}

@@ -22,7 +22,6 @@ import {User} from '../../shared/interfaces/user';
 })
 export class UserProfileComponent implements OnInit {
   user: any;
-  userId: string;
   id: any;
   errorMessage: string;
 
@@ -31,13 +30,13 @@ export class UserProfileComponent implements OnInit {
     private http: HttpClient,
     private route: ActivatedRoute,) {
 
-    this.userId = this.cookieService.get('session_id');
-    console.log('User ID: ' + this.userId);
     }
 
     ngOnInit() {
       // get userId from cookie and pull information from DB
-      this.http.get('/api/session/users/' + this.userId).subscribe(res => {
+      this.id = this.cookieService.get('session_id');
+      console.log('User ID: ' + this.id);
+      this.http.get('/api/session/users/' + this.id).subscribe(res => {
         if (res) {
           return this.user = res;
         } else {

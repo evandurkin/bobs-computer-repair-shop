@@ -53,6 +53,9 @@ import { PrintDialogComponent } from './shared/print-dialog/print-dialog.compone
 import { GuestServicesComponent } from './pages/guest-services/guest-services.component';
 import { ServicesGraphComponent } from './pages/services-graph/services-graph.component';
 import { ServicesCreateComponent } from './pages/services-create/services-create.component';
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
+import { EditProfilePasswordComponent } from './pages/edit-profile-password/edit-profile-password.component';
+
 
 // Browser, Http, Forms, and Cookie imports
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -91,6 +94,7 @@ import { MessageModule } from 'node_modules/primeng/message';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { ChartModule } from 'primeng/chart';
+import { EditProfileUsernameComponent } from './pages/edit-profile-username/edit-profile-username.component';
 
 @NgModule({
   declarations: [
@@ -133,6 +137,9 @@ import { ChartModule } from 'primeng/chart';
     GuestServicesComponent,
     ServicesGraphComponent,
     ServicesCreateComponent,
+    EditProfileComponent,
+    EditProfilePasswordComponent,
+    EditProfileUsernameComponent,
   ],
   imports: [
     BrowserModule,
