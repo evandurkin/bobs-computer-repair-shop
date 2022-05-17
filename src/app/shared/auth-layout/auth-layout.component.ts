@@ -40,6 +40,10 @@ export class AuthLayoutComponent implements OnInit {
     return this.userRole.role === 'admin';
   }
 
+  adminHome() {
+    this.router.navigate(['/session/dashboard-admin'])
+  }
+
   userConfig(): void {
     this.router.navigate(['/session/users']);
   }
@@ -65,7 +69,4 @@ export class AuthLayoutComponent implements OnInit {
     this.router.navigate(['/session/services']);
   }
 
-  servicesPage(): void {
-    this.router.navigate(['/session/dashboard-admin']);
-  }
 }

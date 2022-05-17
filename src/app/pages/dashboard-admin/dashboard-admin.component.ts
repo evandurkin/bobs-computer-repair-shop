@@ -9,9 +9,19 @@
 */
 
 // Imported Modules
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AddItemToInvoiceComponent } from 'src/app/shared/add-item-to-invoice/add-item-to-invoice.component';
+import { MatTable } from '@angular/material/table';
+import { Invoice } from '../../shared/interfaces/invoice';
 import { CookieService } from 'ngx-cookie-service';
+import { InvoiceDialogComponent } from '../..//shared/invoice-dialog/invoice-dialog.component';
+import { HttpClient } from '@angular/common/http';
+import { MessageService } from 'primeng/api';
+import { LineItemsService } from 'src/app/shared/services/line-items.service';
+import { PrintDialogComponent } from 'src/app/shared/print-dialog/print-dialog.component';
+import { LineItem } from 'src/app/shared/interfaces/line-item';
+
 
 @Component({
   selector: 'app-dashboard-admin',
@@ -19,43 +29,172 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./dashboard-admin.component.css'],
 })
 export class DashboardAdminComponent implements OnInit {
-  year: number = Date.now();
-  isLoggedIn: boolean; // Checks if a user is logged in.
-  userName: string;
-  userRole: any;
+  displayedColumns: Array<string> = ['name', 'price', 'functions'];
 
-  constructor(private cookieService: CookieService, private router: Router) {
-    this.isLoggedIn = this.cookieService.get('session_user') ? true : false;
-    this.userName = sessionStorage.getItem('userName');
-    console.log('Signed in as: ' + this.userName);
+  total: number = 0;
+  lineItems: LineItem[];
+  @ViewChild(MatTable) table: MatTable<any>;
+  dataTableSource = [];
+  invoice: Invoice;
+
+  constructor(
+    private lineItemsService: LineItemsService,
+    private messageService: MessageService,
+    private dialog: MatDialog,
+    private http: HttpClient,
+    private cookieService: CookieService
+  ) {
+    this.invoice = new Invoice(cookieService.get('session_user'));
+
+    // Find all service Items
+    this.lineItemsService.findAllServices().subscribe(
+      (res) => {
+        this.lineItems = res['data'];
+        console.log(this.lineItems);
+      },
+      // Error Handling
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
-  // Logic for icon menu items
-  ngOnInit(): void {
-    this.userName = this.cookieService.get('session_user');
+  ngOnInit(): void {}
+
+  // Opens the add a service dialog.
+
+  addServiceDialog(): void {
+    let dialogRef = this.dialog.open(AddItemToInvoiceComponent, {
+      disableClose: true,
+    });
+
+    // Add the new item to the data table and invoice
+    dialogRef.afterClosed().subscribe((service) => {
+      if (service) {
+        this.addToInvoice(
+          service.title,
+          service.price,
+          service.parts,
+          service.hours
+        );
+
+        console.log('-- invoice after dialog close --');
+        console.log(this.invoice);
+      }
+    });
   }
 
-  isAdmin(): boolean {
-    return this.userRole.role === 'admin';
+  addToInvoice(title: string, price: number, parts?: number, hours?: number) {
+    let newService = {
+      title: title,
+      price: price,
+    };
+
+    // If an add service item, add the parts and hours value to the newService object.
+    if (parts) newService['parts'] = parts;
+    if (hours) newService['hours'] = hours;
+
+    // Add the newService to the table
+    this.dataTableSource.push(newService);
+    this.table.renderRows();
+
+    // Add partsAmount and laborAmount to the invoice
+    this.invoice.partsAmount += Number(parts) || 0;
+    this.invoice.laborHours += Number(hours) || 0;
+
+    if (
+      newService['parts'] === undefined &&
+      newService['hours'] === undefined
+    ) {
+      console.log('This is a lineItem!');
+      this.invoice.addToLineItems(newService);
+    }
+
+    // Add to the invoice total
+    this.total += Number(price);
+
+    console.log('-- Invoice after adding --');
+    console.log(this.invoice);
   }
 
-  userConfig(): void {
-    this.router.navigate([]);
+  // Resets the home page
+  reset() {
+    this.dataTableSource = [];
+    this.table.renderRows();
+    this.total = 0;
+    this.invoice.clear();
   }
 
-  questionConfig(): void {
-    this.router.navigate([]);
+  // Creates an invoice and shows the invoice summary
+  getInvoice() {
+    // Adds invoice to database
+    this.http
+      .post('/api/invoices/' + this.cookieService.get('session_user'), {
+        lineItems: this.invoice.getLineItems(),
+        partsAmount: this.invoice.partsAmount,
+        laborAmount: this.invoice.getLaborAmount(),
+        lineItemTotal: this.invoice.getLineItemTotal(),
+        total: this.invoice.getTotal(),
+      })
+      .subscribe(
+        (res) => {
+          // Success Toast
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: `Created invoice with the amount of $${
+              Math.round((this.invoice.getTotal() + Number.EPSILON) * 100) / 100
+            }`,
+          });
+          // Open Invoice Summary Dialog
+          let dialogRef = this.dialog.open(InvoiceDialogComponent, {
+            width: '550px',
+            data: this.invoice,
+            disableClose: true,
+          });
+
+          // When dialog is closed
+          dialogRef.afterClosed().subscribe((res) => {
+            // Reset the invoice
+            this.reset();
+          });
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
   }
 
-  signOut() {
-    this.cookieService.deleteAll();
-    this.router.navigate([]);
-  }
-  roleConfig(): void {
-    this.router.navigate([]);
-  }
+  // Function called when user clicks the delete icon.
+  deleteFromInvoice(
+    index: number,
+    title: string,
+    price: number,
+    parts?: number,
+    hours?: number
+  ) {
+    // Delete item from the table
+    this.dataTableSource.splice(index, 1);
+    this.table.renderRows();
 
-  adminReport(): void {
-    this.router.navigate(['/session/services-graph']);
+    // Subtract the amount from invoice.partsAmount
+    this.invoice.partsAmount -= Number(parts) || 0;
+
+    // Subtract from invoice.laborHours
+    this.invoice.laborHours -= Number(hours) || 0;
+
+    // Remove from invoice lineItems
+    if (parts === undefined && hours === undefined) {
+      this.invoice.removeFromLineItems({
+        title: title,
+        price: price,
+      });
+    }
+
+    // Subtract from invoice.total
+    this.total -= Number(price);
+
+    console.log('-- Invoice after deletion --');
+    console.log(this.invoice);
   }
 }
