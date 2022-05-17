@@ -32,6 +32,9 @@ export class StandardLayoutComponent implements OnInit {
   ngOnInit(): void {
     this.userName = this.cookieService.get('session_user');
   }
+  employeeDash() {
+    this.router.navigate(['/session-employee/dashboard-employee']); // Route to the employee dashborad
+  }
 
   // Delete session-user cookie and redirect to home page
   signOut() {
