@@ -11,6 +11,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { RoleService } from '../services/role.service';
 
 @Component({
   selector: 'app-standard-layout',
@@ -22,11 +23,17 @@ export class StandardLayoutComponent implements OnInit {
   isLoggedIn: boolean; // Checks if a user is logged in.
   userName: string;
   userRole: any;
+  adminRole: string;
 
-  constructor(private cookieService: CookieService, private router: Router) {
+  constructor(private cookieService: CookieService, private router: Router, private roleService: RoleService ) {
     this.isLoggedIn = this.cookieService.get('session_user') ? true : false;
     this.userName = sessionStorage.getItem('userName');
     console.log('Signed in as: ' + this.userName);
+
+    // Hides navigation items to all but admin users
+    this.roleService.findUserRole(this.cookieService.get('session_user')).subscribe(res => {
+      this.userRole = res['data'].role;
+    })
   }
 
   ngOnInit(): void {
@@ -34,6 +41,9 @@ export class StandardLayoutComponent implements OnInit {
   }
   employeeDash() {
     this.router.navigate(['/session-employee/dashboard-employee']); // Route to the employee dashborad
+  }
+  adminDash() {
+    this.router.navigate(['/session/dashboard-admin']); // Route to the employee dashboard
   }
 
   // Delete session-user cookie and redirect to home page

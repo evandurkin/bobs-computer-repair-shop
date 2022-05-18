@@ -180,7 +180,7 @@ import { AuthGuard } from './auth.guard';
       multi: true,
     },
     CookieService,
-    AuthGuard,
+    [AuthGuard],
     MessageService,
   ],
   bootstrap: [AppComponent],

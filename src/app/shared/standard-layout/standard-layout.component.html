@@ -33,6 +33,10 @@
 
           <!-- Lower divider -->
           <mat-divider></mat-divider>
+          <button  mat-menu-item  *ngIf="userRole === 'admin'" (click)="adminDash()" class="menu">
+            <mat-icon class="menu">dashboard</mat-icon>
+            <span class="menu">Admin</span>
+          </button>
           <button  mat-menu-item  (click)="employeeDash()" class="menu">
             <mat-icon class="menu">home</mat-icon>
             <span class="menu">Employee Dashboard</span>

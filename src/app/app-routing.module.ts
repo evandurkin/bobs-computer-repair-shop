@@ -149,6 +149,7 @@ const routes: Routes = [
       {
         path: 'user-details',
         component: VerifyUsernameComponent,
+
       },
       {
         path: 'user-profile',

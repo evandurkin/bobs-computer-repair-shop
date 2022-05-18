@@ -34,7 +34,8 @@
           </mat-form-field>
           <!-- Phone -->
           <mat-form-field>
-            <input type="text" matInput [formControl]="form.controls['phoneNumber']"/>
+            <input type="text" matInput [formControl]="form.controls['phoneNumber']"
+            placeholder="Phone Number"/>
             <mat-error *ngIf=
 			"form.controls.phoneNumber.hasError('required') &&
             form.controls.phoneNumber.touched">Phone number is a required field.
